@@ -49,6 +49,7 @@
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/ban-ts-comment": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/no-unescaped-entities": "off"
   }
 }
