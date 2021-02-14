@@ -1,6 +1,10 @@
-const { resolve } = require('path')
+require('dotenv').config({ path: `./.env.${process.env.ENVIRONMENT}` })
+// const { resolve } = require('path')
 
 const nextConfig = {
+  env: {
+    X_API_KEY: process.env.X_API_KEY,
+  },
   webpack: (config) => {
     // src ディレクトリをエイリアスのルートに設定
     // config.resolve.alias["~"] = resolve(__dirname, "src");
