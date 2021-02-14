@@ -47,7 +47,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: any) => {
   const { id } = params
   const { data } = await getBlogBy(id)
-  console.log(data)
   return { props: { ...data } }
 }
 
