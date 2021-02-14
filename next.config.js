@@ -1,4 +1,4 @@
-require('dotenv').config({ path: `./.env.${process.env.ENVIRONMENT}` })
+// require('dotenv').config({ path: `./.env.${process.env.ENVIRONMENT}` })
 // const { resolve } = require('path')
 
 const nextConfig = {

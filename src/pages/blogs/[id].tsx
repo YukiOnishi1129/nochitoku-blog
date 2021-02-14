@@ -12,13 +12,17 @@ import { BlogItemType } from '@/types/blogItem'
 export type Porps = BlogItemType
 
 const BlogsItemPage: NextPage<BlogItemType> = (props) => {
-  const { title, body } = props
+  const { title, body, categories } = props
 
   return (
     <>
       <Header />
       <section>
         <h2>{title}</h2>
+        {categories.length !== 0 &&
+          categories.map((category) => (
+            <h3 key={category.id}>カテゴリー：{category.name}</h3>
+          ))}
         <div
           dangerouslySetInnerHTML={{
             __html: `${body}`,
@@ -43,6 +47,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }: any) => {
   const { id } = params
   const { data } = await getBlogBy(id)
+  console.log(data)
   return { props: { ...data } }
 }
 
