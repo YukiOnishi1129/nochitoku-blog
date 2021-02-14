@@ -1,4 +1,5 @@
 import { NextPage } from 'next'
+import Image from 'next/image'
 /* service */
 import { getBlogBy, getBlogs } from '@/service/blogs'
 /* components */
@@ -12,14 +13,22 @@ import { BlogItemType } from '@/types/blogItem'
 export type Porps = BlogItemType
 
 const BlogsItemPage: NextPage<BlogItemType> = (props) => {
-  const { title, body, categories } = props
+  const { title, image, body, categories } = props
+  const imageUrl = !!image ? image.url : '/no_image.png'
 
   return (
     <>
       <Header />
       <section>
+        <Image
+          src={imageUrl}
+          alt="Picture"
+          width={498 * 1.5}
+          height={332 * 1.5}
+        />
+
         <h2>{title}</h2>
-        {categories.length !== 0 &&
+        {categories.length > 0 &&
           categories.map((category) => (
             <h3 key={category.id}>カテゴリー：{category.name}</h3>
           ))}

@@ -4,6 +4,7 @@
  */
 /*types */
 import { CategoryType } from './category'
+import { ImageType } from './image'
 
 /**
  * BlogItemType
@@ -16,5 +17,6 @@ export interface BlogItemType {
   revisedAt: string
   title: string
   body: string
+  image: ImageType
   categories: CategoryType[]
 }
