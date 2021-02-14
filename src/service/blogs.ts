@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const X_API_KEY: string = process.env.X_API_KEY || ''
 
-const BASE_URL = 'https://yuki-read.microcms.io/api/v1/nochi-toku'
+const BASE_URL = 'https://yuki-read.microcms.io/api/v1/nochi-toku/'
 
 const HEADER = {
   'Content-type': 'application/json',

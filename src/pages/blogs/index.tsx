@@ -1,3 +1,7 @@
+/**
+ * Blog記事一覧
+ * @package pages
+ */
 import React from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
@@ -36,6 +40,8 @@ const Blogs: NextPage = (props: any) => {
     </div>
   )
 }
+
+// getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
 
 export const getStaticProps = async () => {
   const { data } = await getBlogs()
