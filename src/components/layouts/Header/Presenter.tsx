@@ -12,7 +12,7 @@ import Styles from './header.module.scss'
  */
 export const Presenter: React.FC = () => {
   return (
-    <div className={Styles.contaner}>
+    <div className={Styles.container}>
       <Link href="/">
         <p className={Styles.item}>Index</p>
       </Link>
