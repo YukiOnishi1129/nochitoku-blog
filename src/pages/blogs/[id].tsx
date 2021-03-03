@@ -51,7 +51,6 @@ const BlogsItemPage: NextPage<BlogItemType> = (props) => {
 // Next.jsではブログidを知り得ないので、関数内でデータを取得し、パスを定義してあげる必要がある
 export const getStaticPaths = async () => {
   const { data } = await getBlogs()
-  console.log(data)
   const paths = data.contents.map((item: BlogItemType) => `/blogs/${item.id}`)
   return {
     paths,
