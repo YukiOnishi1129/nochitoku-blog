@@ -1,5 +1,5 @@
 /**
- * Blog記事一覧
+ * カテゴリー記事一覧
  * @package pages
  */
 import React from 'react'
@@ -36,7 +36,7 @@ const BlogItem: React.FC<Props> = (props) => {
   )
 }
 
-const Blogs: NextPage = (props: any) => {
+const CategoryBlogListPage: NextPage = (props: any) => {
   const { contents } = props
 
   return (
@@ -55,10 +55,23 @@ const Blogs: NextPage = (props: any) => {
 }
 
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
+export const getStaticPaths = async () => {
+  const { data } = await getBlogs()
+  const categoryName = 'react' // TODO: 仮
+  const page = 1 // TODO: 仮
+  // pathは配列にしないとエラーになる
+  const paths = data.contents.map(
+    (item: BlogItemType) => `/category/${categoryName}/page/${page}`
+  )
+  return {
+    paths,
+    fallback: false, // getStaticPathsで返せないパスを全て404ページに返す
+  }
+}
 
 export const getStaticProps = async () => {
   const { data } = await getBlogs()
   return { props: { contents: data.contents } }
 }
 
-export default Blogs
+export default CategoryBlogListPage
