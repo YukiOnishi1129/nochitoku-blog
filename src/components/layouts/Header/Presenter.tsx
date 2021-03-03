@@ -16,11 +16,11 @@ export const Presenter: React.FC = () => {
       <Link href="/">
         <p className={Styles.item}>Index</p>
       </Link>
-      <Link href="/about">
-        <p className={Styles.item}>About</p>
+      <Link href="/category/react/page/1">
+        <p className={Styles.item}>Category</p>
       </Link>
-      <Link href="/blogs">
-        <p className={Styles.item}>Blogs</p>
+      <Link href="/search/page/1">
+        <p className={Styles.item}>Search</p>
       </Link>
     </div>
   )

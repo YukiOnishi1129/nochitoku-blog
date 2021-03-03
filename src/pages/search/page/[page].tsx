@@ -55,6 +55,18 @@ const SearchPage: NextPage = (props: any) => {
 }
 
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
+export const getStaticPaths = async () => {
+  const { data } = await getBlogs()
+  const page = 1 // TODO: 仮
+  // pathは配列にしないとエラーになる
+  const paths = data.contents.map(
+    (item: BlogItemType) => `/search/page/${page}`
+  )
+  return {
+    paths,
+    fallback: false, // getStaticPathsで返せないパスを全て404ページに返す
+  }
+}
 
 export const getStaticProps = async () => {
   const { data } = await getBlogs()

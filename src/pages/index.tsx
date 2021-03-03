@@ -3,35 +3,62 @@
  * @package pages
  */
 import React from 'react'
-import { css, SerializedStyles } from '@emotion/react'
-import Head from 'next/head'
+import { NextPage } from 'next'
 import Link from 'next/link'
-import Styles from '@/styles/Home.module.scss'
+import Image from 'next/image'
+/* service */
+import { getBlogs } from '@/service/blogs'
 /* components */
 import { Header } from '@/components/layouts/Header'
+/* types */
+import { BlogItemType } from '@/types/blogItem'
 
-type Props = {
-  blogs: {
-    id: number
-    title: string
-  }[]
-}
+type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
 
-export default function Home() {
-  const _css = css`
-    font-size: 44px;
-    color: blue;
-  `
-  // styleを上書きできる
-  const hello = (_css: SerializedStyles) => css`
-    color: red;
-    ${_css}
-  `
+const BlogItem: React.FC<Props> = (props) => {
+  const { id, title, image } = props
+  const imageUrl = !!image ? image.url : '/no_image.png'
 
   return (
-    <>
-      <Header />
-      <div css={hello(_css)}>テスト</div>
-    </>
+    <div>
+      <Link href="/blogs/[id]" as={`/blogs/${id}`}>
+        <div>
+          <Image
+            src={imageUrl}
+            alt="Picture"
+            width={498 * 1.5}
+            height={332 * 1.5}
+          />
+          <span>{title}</span>
+        </div>
+      </Link>
+    </div>
   )
 }
+
+const Blogs: NextPage = (props: any) => {
+  const { contents } = props
+
+  return (
+    <div>
+      <Header />
+      {contents.map((item: BlogItemType) => (
+        <BlogItem
+          id={item.id}
+          title={item.title}
+          image={item?.image}
+          key={item.id}
+        />
+      ))}
+    </div>
+  )
+}
+
+// getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
+
+export const getStaticProps = async () => {
+  const { data } = await getBlogs()
+  return { props: { contents: data.contents } }
+}
+
+export default Blogs
