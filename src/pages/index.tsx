@@ -1,3 +1,9 @@
+/**
+ * Blog記事一覧
+ * @package pages
+ */
+import React from 'react'
+import { css } from '@emotion/react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Styles from '@/styles/Home.module.scss'
@@ -11,11 +17,15 @@ type Props = {
   }[]
 }
 
+const hello = css`
+  color: red;
+`
+
 export default function Home() {
   return (
     <>
       <Header />
-      <div>テスト</div>
+      <div css={hello}>テスト</div>
     </>
   )
 }
