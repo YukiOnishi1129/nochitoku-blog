@@ -1,3 +1,8 @@
+/**
+ * Blog記事
+ * @package pages
+ */
+import React from 'react'
 import { NextPage } from 'next'
 import Image from 'next/image'
 /* service */
