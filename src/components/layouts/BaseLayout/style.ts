@@ -17,11 +17,17 @@ const header = () => css`
   width: 100%;
 `
 
+const headerEmpty = () => css`
+  height: 131px;
+  margin-bottom: 40px;
+`
+
 const divider = () => css`
   display: flex;
   justify-content: space-between;
   margin: 20px auto 0;
   width: 1160px;
+  min-height: 600px;
 `
 
 const footer = () => css`
@@ -34,6 +40,7 @@ const footer = () => css`
 export const styles = {
   wrapper,
   header,
+  headerEmpty,
   divider,
   footer,
 }

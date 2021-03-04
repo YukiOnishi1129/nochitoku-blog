@@ -11,6 +11,11 @@ import { Theme } from '@/styles/Theme'
  * style
  */
 const container = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   width: 100%;
 `
 
@@ -22,6 +27,7 @@ const top = css`
 const main = css`
   display: flex;
   justify-content: space-between;
+  background: ${Theme.color.Background};
   height: 93px;
   border: 1px solid ${Theme.color.Line};
   padding: 19px 138px;
