@@ -19,7 +19,7 @@ const header = () => css`
 
 const divider = () => css`
   display: flex;
-  justify-contents: space-between;
+  justify-content: space-between;
   margin: 20px auto 0;
   width: 1160px;
 `
@@ -28,6 +28,9 @@ const footer = () => css`
   width: 100%;
 `
 
+/**
+ * export styles
+ */
 export const styles = {
   wrapper,
   header,

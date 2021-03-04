@@ -11,6 +11,7 @@ import { getBlogs } from '@/service/blogs'
 /* components */
 import { BaseLayout } from '@/components/layouts/BaseLayout'
 import { Header } from '@/components/layouts/Header'
+import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 
@@ -42,14 +43,16 @@ const Blogs: NextPage = (props: any) => {
 
   return (
     <BaseLayout>
-      {contents.map((item: BlogItemType) => (
-        <BlogItem
-          id={item.id}
-          title={item.title}
-          image={item?.image}
-          key={item.id}
-        />
-      ))}
+      <BasePostPageLayout>
+        {contents.map((item: BlogItemType) => (
+          <BlogItem
+            id={item.id}
+            title={item.title}
+            image={item?.image}
+            key={item.id}
+          />
+        ))}
+      </BasePostPageLayout>
     </BaseLayout>
   )
 }
