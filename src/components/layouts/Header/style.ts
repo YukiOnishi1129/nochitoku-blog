@@ -30,6 +30,7 @@ const main = css`
 const title = css`
   cursor: pointer;
   color: ${Theme.color.Main};
+  user-select: none;
 
   h1 {
     margin-bottom: 0px;
