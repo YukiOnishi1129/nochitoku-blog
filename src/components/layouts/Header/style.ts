@@ -14,14 +14,42 @@ const container = css`
   width: 100%;
 `
 
-const headerTop = css`
+const top = css`
   height: 38px;
   background: ${Theme.color.Main};
 `
 
-const headerMain = css`
+const main = css`
+  display: flex;
+  justify-content: space-between;
   height: 93px;
   border: 1px solid ${Theme.color.Line};
+  padding: 19px 138px;
+`
+
+const title = css`
+  cursor: pointer;
+  color: ${Theme.color.Main};
+
+  h1 {
+    margin-bottom: 0px;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.3em;
+  }
+  p {
+    margin-top: 0px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0.3em;
+  }
+`
+
+const sns = css`
+  margin-top: 19px;
+  width: 142px;
+  height: 24px;
+  //   border: 1px solid red;
 `
 
 /**
@@ -29,6 +57,8 @@ const headerMain = css`
  */
 export const styles = {
   container,
-  headerTop,
-  headerMain,
+  top,
+  main,
+  title,
+  sns,
 }
