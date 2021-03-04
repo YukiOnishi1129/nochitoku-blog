@@ -21,7 +21,7 @@ const BlogItem: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <Link href="/blogs/[id]" as={`/blogs/${id}`}>
+      <Link href="/[blogId]" as={`/${id}`}>
         <div>
           <Image
             src={imageUrl}

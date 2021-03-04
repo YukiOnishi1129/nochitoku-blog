@@ -11,6 +11,11 @@ import { Theme } from '@/styles/Theme'
  * style
  */
 const container = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   width: 100%;
 `
 

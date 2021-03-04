@@ -8,7 +8,7 @@ import Image from 'next/image'
 /* service */
 import { getBlogBy, getBlogs } from '@/service/blogs'
 /* components */
-import { Header } from '@/components/layouts/Header'
+import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 
@@ -22,8 +22,7 @@ const BlogsItemPage: NextPage<BlogItemType> = (props) => {
   const imageUrl = !!image ? image.url : '/no_image.png'
 
   return (
-    <>
-      <Header />
+    <BasePostPageLayout>
       <section>
         <Image
           src={imageUrl}
@@ -43,7 +42,7 @@ const BlogsItemPage: NextPage<BlogItemType> = (props) => {
           }}
         />
       </section>
-    </>
+    </BasePostPageLayout>
   )
 }
 
@@ -51,16 +50,17 @@ const BlogsItemPage: NextPage<BlogItemType> = (props) => {
 // Next.jsではブログidを知り得ないので、関数内でデータを取得し、パスを定義してあげる必要がある
 export const getStaticPaths = async () => {
   const { data } = await getBlogs()
-  const paths = data.contents.map((item: BlogItemType) => `/blogs/${item.id}`)
+  const paths = data.contents.map((item: BlogItemType) => `/${item.id}`)
   return {
     paths,
     fallback: false, // getStaticPathsで返せないパスを全て404ページに返す
   }
 }
 
+// paramsで受け取る値は、pagesで指定した動的な値([blogId].ts)
 export const getStaticProps = async ({ params }: any) => {
-  const { id } = params
-  const { data } = await getBlogBy(id)
+  const { blogId } = params
+  const { data } = await getBlogBy(blogId)
   return { props: { ...data } }
 }
 

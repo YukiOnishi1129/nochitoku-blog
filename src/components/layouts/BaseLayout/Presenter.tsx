@@ -27,6 +27,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     <div css={styles.wrapper}>
       <div css={styles.header}>
         <Header />
+        <div css={styles.headerEmpty} />
       </div>
       <div css={styles.divider}>{children}</div>
       <div css={styles.footer}></div>
