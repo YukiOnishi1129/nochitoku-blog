@@ -17,6 +17,7 @@
   ],
   "rules": {
     "no-console": 1,
+    "no-unused-vars": [1, { "vars": "all", "args": "after-used" }],
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "@typescript-eslint/no-var-requires": 0,
