@@ -6,6 +6,7 @@
 import React from 'react'
 /* components */
 import { Header } from '@/components/layouts/Header'
+import { Footer } from '@/components/layouts/Footer'
 /* styles */
 import { styles } from './style'
 
@@ -30,7 +31,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <div css={styles.headerEmpty} />
       </div>
       <div css={styles.divider}>{children}</div>
-      <div css={styles.footer}></div>
+      <div css={styles.footer}>
+        <Footer />
+      </div>
     </div>
   )
 }

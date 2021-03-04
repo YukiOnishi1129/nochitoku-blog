@@ -27,6 +27,7 @@ const top = css`
 const main = css`
   display: flex;
   justify-content: space-between;
+  background: ${Theme.color.Background};
   height: 93px;
   border: 1px solid ${Theme.color.Line};
   padding: 19px 138px;

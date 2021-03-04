@@ -27,6 +27,7 @@ const divider = () => css`
   justify-content: space-between;
   margin: 20px auto 0;
   width: 1160px;
+  min-height: 600px;
 `
 
 const footer = () => css`

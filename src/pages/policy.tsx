@@ -4,18 +4,15 @@
  */
 import React from 'react'
 import { css, SerializedStyles } from '@emotion/react'
-import Head from 'next/head'
-import Link from 'next/link'
-import Styles from '@/styles/Home.module.scss'
 /* components */
-import { Header } from '@/components/layouts/Header'
+import { BaseFixedPageLayout } from '@/components/layouts/BaseFicxedPageLayout'
 
-type Props = {
-  blogs: {
-    id: number
-    title: string
-  }[]
-}
+// type Props = {
+//   blogs: {
+//     id: number
+//     title: string
+//   }[]
+// }
 
 export default function Policy() {
   const _css = css`
@@ -29,9 +26,8 @@ export default function Policy() {
   `
 
   return (
-    <>
-      <Header />
-      <div css={hello(_css)}>テスト</div>
-    </>
+    <BaseFixedPageLayout>
+      <div css={hello(_css)}>プライバシーポリシー</div>
+    </BaseFixedPageLayout>
   )
 }

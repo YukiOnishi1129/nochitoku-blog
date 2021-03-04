@@ -11,9 +11,12 @@ const color = {
   Line: '#c4c4c4',
 }
 
+const fontFamily = 'Hiragino Sans CNS'
+
 /**
  * export Theme
  */
 export const Theme = {
   color,
+  fontFamily,
 }
