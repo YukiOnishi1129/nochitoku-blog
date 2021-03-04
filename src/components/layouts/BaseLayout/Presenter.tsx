@@ -4,6 +4,8 @@
  * @package Component
  */
 import React from 'react'
+/* components */
+import { Header } from '@/components/layouts/Header'
 /* styles */
 import { styles } from './style'
 
@@ -23,7 +25,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
   return (
     <div css={styles.wrapper}>
-      <div css={styles.header}></div>
+      <div css={styles.header}>
+        <Header />
+      </div>
       <div css={styles.divider}>{children}</div>
       <div css={styles.footer}></div>
     </div>
