@@ -9,8 +9,6 @@ import Image from 'next/image'
 /* service */
 import { getBlogs } from '@/service/blogs'
 /* components */
-import { BaseLayout } from '@/components/layouts/BaseLayout'
-import { Header } from '@/components/layouts/Header'
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
@@ -42,18 +40,16 @@ const Blogs: NextPage = (props: any) => {
   const { contents } = props
 
   return (
-    <BaseLayout>
-      <BasePostPageLayout>
-        {contents.map((item: BlogItemType) => (
-          <BlogItem
-            id={item.id}
-            title={item.title}
-            image={item?.image}
-            key={item.id}
-          />
-        ))}
-      </BasePostPageLayout>
-    </BaseLayout>
+    <BasePostPageLayout>
+      {contents.map((item: BlogItemType) => (
+        <BlogItem
+          id={item.id}
+          title={item.title}
+          image={item?.image}
+          key={item.id}
+        />
+      ))}
+    </BasePostPageLayout>
   )
 }
 
