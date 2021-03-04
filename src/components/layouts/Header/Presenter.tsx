@@ -3,25 +3,28 @@
  * PresentationalComponent
  * @package Component
  */
-import * as React from 'react'
+import React from 'react'
 import Link from 'next/link'
-import Styles from './header.module.scss'
+/* styles */
+import { styles } from './style'
 
 /**
  * presenter
  */
 export const Presenter: React.FC = () => {
   return (
-    <div className={Styles.container}>
-      <Link href="/">
-        <p className={Styles.item}>Index</p>
-      </Link>
-      <Link href="/category/react/page/1">
-        <p className={Styles.item}>Category</p>
-      </Link>
-      <Link href="/search/page/1">
-        <p className={Styles.item}>Search</p>
-      </Link>
+    <div css={styles.container}>
+      <div css={styles.top} />
+      <div css={styles.main}>
+        <Link href="/">
+          <div css={styles.title}>
+            <h1>NOCHITOKU</h1>
+            <p>ITエンジニアの技術ブログ</p>
+          </div>
+        </Link>
+
+        <div css={styles.sns}>SNSエリア</div>
+      </div>
     </div>
   )
 }
