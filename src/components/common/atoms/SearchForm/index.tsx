@@ -5,23 +5,29 @@
 import React from 'react'
 /* types */
 import { EventType } from '@/types/event'
+/* svgs */
+import Search from '@/svgs/search.svg'
 
+/**
+ * props
+ */
 export type SearchFormProps = {
-  searchText: string
+  text: string
   onChange: EventType['onChange']
   onClick: () => void
 }
 
+/**
+ * SearchForm
+ * @param props
+ * @returns
+ */
 export const SearchForm: React.FC<SearchFormProps> = (
   props: SearchFormProps
 ) => {
-  const { searchText, onChange, onClick } = props
+  const { text, onChange, onClick } = props
+
   return (
-    <input
-      type="text"
-      value={searchText}
-      onChange={onChange}
-      onClick={onClick}
-    />
+    <input type="text" value={text} onChange={onChange} onClick={onClick} />
   )
 }
