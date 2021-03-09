@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { getBlogs } from '@/service/blogs'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { InputForm } from '@/components/common/atoms/InputForm'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 
@@ -41,6 +42,12 @@ const Blogs: NextPage = (props: any) => {
 
   return (
     <BasePostPageLayout>
+      <InputForm
+        text=""
+        placeholder=""
+        onChange={(text) => {}}
+        onClick={() => console.log('aaa')}
+      />
       {contents.map((item: BlogItemType) => (
         <BlogItem
           id={item.id}

@@ -30,14 +30,16 @@
     "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sass": "^1.32.7"
+    "sass": "^1.32.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.16",
+    "@babel/core": "^7.13.10",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@storybook/addon-actions": "^6.1.17",
     "@storybook/addon-essentials": "^6.1.17",
     "@storybook/addon-links": "^6.1.17",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^6.1.17",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
@@ -48,6 +50,8 @@
     "@typescript-eslint/parser": "^4.15.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-preset-react-app": "^10.0.0",
+    "css-loader": "^5.1.1",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-import-resolver-typescript": "^2.3.0",
@@ -61,7 +65,12 @@
     "jest-css-modules": "^2.1.0",
     "jest-dom": "^4.0.0",
     "lint-staged": "^10.5.4",
+    "postcss-loader": "^5.1.0",
     "prettier": "^2.2.1",
+    "sass-loader": "^11.0.1",
+    "storybook-addon-emotion-theme": "^2.1.1",
+    "storybook-css-modules-preset": "^1.0.6",
+    "style-loader": "^2.0.0",
     "ts-jest": "^26.5.1",
     "typescript": "^4.1.5"
   }
