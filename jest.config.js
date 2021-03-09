@@ -6,6 +6,7 @@ module.exports = {
     '^~/(.+)': '<rootDir>/src/$1',
     // test 時に CSS ファイルを読み込まないようにする設定
     '\\.css$': '<rootDir>/node_modules/jest-css-modules',
+    '\\.(scss)$': 'identity-obj-proxy',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   globals: {

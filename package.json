@@ -41,6 +41,7 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^6.1.17",
+    "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.27",
@@ -67,9 +68,8 @@
     "lint-staged": "^10.5.4",
     "postcss-loader": "^5.1.0",
     "prettier": "^2.2.1",
-    "sass-loader": "^11.0.1",
+    "sass-loader": "^10.1.1",
     "storybook-addon-emotion-theme": "^2.1.1",
-    "storybook-css-modules-preset": "^1.0.6",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.5.1",
     "typescript": "^4.1.5"

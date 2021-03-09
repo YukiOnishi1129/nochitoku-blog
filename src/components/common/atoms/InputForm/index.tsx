@@ -31,6 +31,7 @@ export const InputForm: React.FC<InputFormProps> = (props: InputFormProps) => {
   return (
     <input
       className={styles.input}
+      role="test-input-form"
       type="text"
       value={text}
       placeholder={placeholder}
