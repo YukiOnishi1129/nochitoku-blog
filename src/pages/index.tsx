@@ -45,8 +45,8 @@ const Blogs: NextPage = (props: any) => {
       <InputForm
         text=""
         placeholder=""
-        onChange={(text) => {}}
-        onClick={() => console.log('aaa')}
+        onChange={() => {}}
+        onClick={() => {}}
       />
       {contents.map((item: BlogItemType) => (
         <BlogItem
