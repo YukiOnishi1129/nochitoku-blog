@@ -1,0 +1,47 @@
+.container {
+  width: 100%;
+  height: 130px;
+  padding: 20px 40px 20px;
+  background: var(--c-main);
+}
+
+.lists {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  color: var(--c-sub);
+}
+
+.list {
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.after {
+  margin: 0 20px;
+}
+
+.sns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  height: 24px;
+}
+
+.copy {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--c-sub);
+  font-size: 14px;
+  font-family: 'Times New Roman', 'Times';
+
+  span {
+    font-size: 12px;
+    font-family: var(--f-family);
+  }
+}

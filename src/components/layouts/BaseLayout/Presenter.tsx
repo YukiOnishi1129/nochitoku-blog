@@ -8,7 +8,7 @@ import React from 'react'
 import { Header } from '@/components/layouts/Header'
 import { Footer } from '@/components/layouts/Footer'
 /* styles */
-import { styles } from './style'
+import styles from './styles.module.scss'
 
 /**
  * Props
@@ -25,13 +25,13 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   const { children } = props
 
   return (
-    <div css={styles.wrapper}>
-      <div css={styles.header}>
+    <div className={styles.wrapper}>
+      <div className={styles.header}>
         <Header />
-        <div css={styles.headerEmpty} />
+        <div className={styles.headerEmpty} />
       </div>
-      <div css={styles.divider}>{children}</div>
-      <div css={styles.footer}>
+      <div className={styles.divider}>{children}</div>
+      <div className={styles.footer}>
         <Footer />
       </div>
     </div>

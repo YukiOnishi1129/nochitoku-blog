@@ -7,7 +7,8 @@ import React from 'react'
 /* components */
 import { BaseLayout } from '@/components/layouts/BaseLayout'
 /* styles */
-import { styles } from './style'
+// import { styles } from './style'
+import styles from './styles.module.scss'
 
 /**
  * Props
@@ -25,8 +26,8 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
   return (
     <BaseLayout>
-      <article css={styles.article}>{children}</article>
-      <aside css={styles.aside}></aside>
+      <article className={styles.article}>{children}</article>
+      <aside className={styles.aside}></aside>
     </BaseLayout>
   )
 }

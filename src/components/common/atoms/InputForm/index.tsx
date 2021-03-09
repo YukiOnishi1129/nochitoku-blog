@@ -8,7 +8,7 @@ import React from 'react'
 import { EventType } from '@/types/event'
 /* styles */
 // import { styles } from './style'
-import styles from './styles.module.css'
+import styles from './styles.module.scss'
 
 /**
  * props

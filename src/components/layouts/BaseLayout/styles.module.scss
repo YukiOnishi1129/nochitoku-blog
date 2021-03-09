@@ -1,0 +1,25 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+}
+
+.headerEmpty {
+  height: 131px;
+  margin-bottom: 40px;
+}
+
+.divider {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto 0;
+  width: 1160px;
+  min-height: 600px;
+}
+
+.footer {
+  width: 100%;
+}
