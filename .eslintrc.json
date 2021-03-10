@@ -20,6 +20,7 @@
     "no-unused-vars": [1, { "vars": "all", "args": "after-used" }],
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/no-var-requires": 0,
     "@typescript-eslint/indent": 0,
     "react/jsx-filename-extension": [

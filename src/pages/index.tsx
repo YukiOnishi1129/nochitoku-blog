@@ -6,13 +6,13 @@ import React from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+/* components */
+import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+/* hooks */
+import { useSetDate } from '@/hooks/SetData'
 /* service */
 import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
-/* contexts */
-import { useCaregoryDispatch, setCategories } from '@/contexts/CategoryContext'
-/* components */
-import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 import { CategoryType } from '@/types/category'
@@ -45,17 +45,18 @@ export type PagePorps = {
   categories: CategoryType[]
 }
 
+/**
+ * Blogs
+ * @param props PagePorps
+ * @returns
+ */
 const Blogs: NextPage<PagePorps> = (props: PagePorps) => {
   const { blogList, categories } = props
-  const dispatch = useCaregoryDispatch()
-
-  const setData = () => {
-    dispatch(setCategories(categories))
-  }
+  const { setCategoryData } = useSetDate()
 
   React.useEffect(() => {
-    setData()
-  }, [])
+    setCategoryData(categories)
+  }, [categories, setCategoryData])
 
   return (
     <BasePostPageLayout>
