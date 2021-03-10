@@ -41,7 +41,7 @@ export const Presenter: React.FC<SearchInputFormProps> = (
         onClick={onClick}
       />
       <div className={styles.icon}>
-        <SearchIcon />
+        <SearchIcon size={18} />
       </div>
     </div>
   )
