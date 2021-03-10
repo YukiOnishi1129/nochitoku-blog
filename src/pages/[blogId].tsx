@@ -7,19 +7,24 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 /* service */
 import { getBlogBy, getBlogs } from '@/service/blogs'
+import { getCategories } from '@/service/categories'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
+import { CategoryType } from '@/types/category'
 
 /**
  * props
  */
-export type Porps = BlogItemType
+export type Porps = {
+  blog: BlogItemType
+  categories: CategoryType
+}
 
-const BlogsItemPage: NextPage<BlogItemType> = (props) => {
-  const { title, image, body, categories } = props
-  const imageUrl = !!image ? image.url : '/no_image.png'
+const BlogsItemPage: NextPage<Porps> = (props) => {
+  const { blog, categories } = props
+  const imageUrl = !!blog?.image ? blog.image.url : '/no_image.png'
 
   return (
     <BasePostPageLayout>
@@ -31,14 +36,14 @@ const BlogsItemPage: NextPage<BlogItemType> = (props) => {
           height={332 * 1.5}
         />
 
-        <h2>{title}</h2>
-        {categories.length > 0 &&
-          categories.map((category) => (
+        <h2>{blog.title}</h2>
+        {blog.categories.length > 0 &&
+          blog.categories.map((category) => (
             <h3 key={category.id}>カテゴリー：{category.name}</h3>
           ))}
         <div
           dangerouslySetInnerHTML={{
-            __html: `${body}`,
+            __html: `${blog.body}`,
           }}
         />
       </section>
@@ -60,8 +65,9 @@ export const getStaticPaths = async () => {
 // paramsで受け取る値は、pagesで指定した動的な値([blogId].ts)
 export const getStaticProps = async ({ params }: any) => {
   const { blogId } = params
-  const { data } = await getBlogBy(blogId)
-  return { props: { ...data } }
+  const blog = await getBlogBy(blogId)
+  const categoryData = await getCategories()
+  return { props: { blog: blog.data, categories: categoryData.data.contents } }
 }
 
 export default BlogsItemPage

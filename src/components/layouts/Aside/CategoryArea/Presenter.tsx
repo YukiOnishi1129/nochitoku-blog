@@ -10,5 +10,9 @@ import { BasicAsidePartsArea } from '@/components/layouts/Aside/BasicAsidePartsA
 import styles from './styles.module.scss'
 
 export const Presenter: React.FC = () => {
-  return <BasicAsidePartsArea title="カテゴリー">あああ</BasicAsidePartsArea>
+  return (
+    <BasicAsidePartsArea title="カテゴリー">
+      <div className={styles.container}>あああ</div>
+    </BasicAsidePartsArea>
+  )
 }
