@@ -1,5 +1,5 @@
 /**
- * layouts/Aside
+ * layouts/Aside/
  * ContainerComponent
  * @package Component
  */
