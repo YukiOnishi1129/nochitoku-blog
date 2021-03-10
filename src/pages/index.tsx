@@ -9,6 +9,8 @@ import Image from 'next/image'
 /* service */
 import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
+/* contexts */
+import { useCaregoryDispatch, setCategories } from '@/contexts/CategoryContext'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* types */
@@ -40,11 +42,20 @@ const BlogItem: React.FC<Props> = (props) => {
 
 export type PagePorps = {
   blogList: BlogItemType[]
-  categories: CategoryType
+  categories: CategoryType[]
 }
 
 const Blogs: NextPage<PagePorps> = (props: PagePorps) => {
   const { blogList, categories } = props
+  const dispatch = useCaregoryDispatch()
+
+  const setData = () => {
+    dispatch(setCategories(categories))
+  }
+
+  React.useEffect(() => {
+    setData()
+  }, [])
 
   return (
     <BasePostPageLayout>
