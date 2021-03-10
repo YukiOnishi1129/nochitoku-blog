@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -6,4 +8,10 @@ module.exports = {
     // 'storybook-css-modules-preset',
     '@storybook/preset-scss',
   ],
+  webpackFinal: async (config) => {
+    // storybookで絶対パスimportを可能にする設定
+    config.resolve.alias['@'] = path.resolve(__dirname, '../src')
+
+    return config
+  },
 }

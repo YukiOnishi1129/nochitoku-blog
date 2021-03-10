@@ -7,7 +7,6 @@ import React from 'react'
 /* types */
 import { EventType } from '@/types/event'
 /* styles */
-// import { styles } from './style'
 import styles from './styles.module.scss'
 
 /**
