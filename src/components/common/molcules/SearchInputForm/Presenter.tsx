@@ -19,7 +19,7 @@ export type SearchInputFormProps = {
   text: string
   placeholder: string
   onChange: EventType['onChange']
-  onClick: () => void
+  onKeyUp: EventType['onkeypress']
 }
 
 /**
@@ -30,7 +30,7 @@ export type SearchInputFormProps = {
 export const Presenter: React.FC<SearchInputFormProps> = (
   props: SearchInputFormProps
 ) => {
-  const { text, placeholder, onChange, onClick } = props
+  const { text, placeholder, onChange, onKeyUp } = props
 
   return (
     <div className={styles.container}>
@@ -38,7 +38,7 @@ export const Presenter: React.FC<SearchInputFormProps> = (
         text={text}
         placeholder={placeholder}
         onChange={onChange}
-        onClick={onClick}
+        onKeyUp={onKeyUp}
       />
       <div className={styles.icon}>
         <SearchIcon size={18} />

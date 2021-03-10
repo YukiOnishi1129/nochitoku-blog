@@ -12,5 +12,12 @@ import { Presenter } from './Presenter'
  * @returns
  */
 export const Aside: React.FC = () => {
-  return <Presenter />
+  const onSearchKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      // TODO:Enterしたら、検索ページへ遷移
+      //   console.log('テスト')
+      //   console.log(e.currentTarget.value)
+    }
+  }
+  return <Presenter onSearchKeyUp={onSearchKeyUp} />
 }
