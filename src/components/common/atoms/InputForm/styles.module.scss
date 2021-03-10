@@ -1,7 +1,15 @@
 .input {
   display: block;
   width: 100%;
+  height: 30px;
   color: var(--c-main);
   border: 1px solid var(--c-main);
-  padding: 10px;
+  border-radius: 1px;
+  box-sizing: border-box;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+.input::placeholder {
+  color: #c9d0d9;
 }

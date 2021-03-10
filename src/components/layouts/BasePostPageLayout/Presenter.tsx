@@ -6,8 +6,8 @@
 import React from 'react'
 /* components */
 import { BaseLayout } from '@/components/layouts/BaseLayout'
+import { Aside } from '@/components/layouts/Aside'
 /* styles */
-// import { styles } from './style'
 import styles from './styles.module.scss'
 
 /**
@@ -27,7 +27,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   return (
     <BaseLayout>
       <article className={styles.article}>{children}</article>
-      <aside className={styles.aside}></aside>
+      <Aside />
     </BaseLayout>
   )
 }

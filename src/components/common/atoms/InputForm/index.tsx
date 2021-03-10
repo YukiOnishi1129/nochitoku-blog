@@ -7,7 +7,6 @@ import React from 'react'
 /* types */
 import { EventType } from '@/types/event'
 /* styles */
-// import { styles } from './style'
 import styles from './styles.module.scss'
 
 /**
@@ -17,7 +16,7 @@ export type InputFormProps = {
   text: string
   placeholder: string
   onChange: EventType['onChange']
-  onClick: () => void
+  onKeyUp: EventType['onkeypress']
 }
 
 /**
@@ -26,7 +25,7 @@ export type InputFormProps = {
  * @returns
  */
 export const InputForm: React.FC<InputFormProps> = (props: InputFormProps) => {
-  const { text, placeholder, onChange, onClick } = props
+  const { text, placeholder, onChange, onKeyUp } = props
 
   return (
     <input
@@ -36,7 +35,7 @@ export const InputForm: React.FC<InputFormProps> = (props: InputFormProps) => {
       value={text}
       placeholder={placeholder}
       onChange={onChange}
-      onClick={onClick}
+      onKeyUp={onKeyUp}
     />
   )
 }
