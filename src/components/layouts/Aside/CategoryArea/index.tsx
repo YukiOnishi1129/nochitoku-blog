@@ -9,9 +9,11 @@ import { useCategoryState } from '@/contexts/CategoryContext'
 /* components */
 import { Presenter } from './Presenter'
 
+/**
+ * container
+ * @returns
+ */
 export const CategoryArea: React.FC = () => {
-  const state = useCategoryState()
-  //   console.log('aaa')
-  //   console.log(state.categories)
-  return <Presenter />
+  const { categories } = useCategoryState()
+  return <Presenter categories={categories} />
 }
