@@ -6,6 +6,7 @@
 import React from 'react'
 /* components */
 import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
+import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
 /* types */
 import { EventType } from '@/types/event'
 /* styles */
@@ -31,6 +32,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         placeholder="入力してください"
         onKeyUp={onSearchKeyUp}
       />
+      <div className={styles.parts}>
+        <CategoryArea />
+      </div>
     </aside>
   )
 }

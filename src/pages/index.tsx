@@ -6,12 +6,16 @@ import React from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-/* service */
-import { getBlogs } from '@/service/blogs'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+/* hooks */
+import { useSetDate } from '@/hooks/SetData'
+/* service */
+import { getBlogs } from '@/service/blogs'
+import { getCategories } from '@/service/categories'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
+import { CategoryType } from '@/types/category'
 
 type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
 
@@ -36,12 +40,27 @@ const BlogItem: React.FC<Props> = (props) => {
   )
 }
 
-const Blogs: NextPage = (props: any) => {
-  const { contents } = props
+export type PagePorps = {
+  blogList: BlogItemType[]
+  categories: CategoryType[]
+}
+
+/**
+ * Blogs
+ * @param props PagePorps
+ * @returns
+ */
+const Blogs: NextPage<PagePorps> = (props: PagePorps) => {
+  const { blogList, categories } = props
+  const { setCategoryData } = useSetDate()
+
+  React.useEffect(() => {
+    setCategoryData(categories)
+  }, [categories, setCategoryData])
 
   return (
     <BasePostPageLayout>
-      {contents.map((item: BlogItemType) => (
+      {blogList.map((item: BlogItemType) => (
         <BlogItem
           id={item.id}
           title={item.title}
@@ -56,8 +75,14 @@ const Blogs: NextPage = (props: any) => {
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
 
 export const getStaticProps = async () => {
-  const { data } = await getBlogs()
-  return { props: { contents: data.contents } }
+  const blogData = await getBlogs()
+  const categoryData = await getCategories()
+  return {
+    props: {
+      blogList: blogData.data.contents,
+      categories: categoryData.data.contents,
+    },
+  }
 }
 
 export default Blogs

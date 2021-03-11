@@ -8,10 +8,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 /* service */
 import { getBlogs } from '@/service/blogs'
+import { getCategories } from '@/service/categories'
 /* components */
 import { Header } from '@/components/layouts/Header'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
+import { CategoryType } from '@/types/category'
 
 type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
 
@@ -36,13 +38,18 @@ const BlogItem: React.FC<Props> = (props) => {
   )
 }
 
-const BlogListPage: NextPage = (props: any) => {
-  const { contents } = props
+export type PagePorps = {
+  blogList: BlogItemType[]
+  categories: CategoryType
+}
+
+const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
+  const { blogList, categories } = props
 
   return (
     <div>
       <Header />
-      {contents.map((item: BlogItemType) => (
+      {blogList.map((item: BlogItemType) => (
         <BlogItem
           id={item.id}
           title={item.title}
@@ -67,8 +74,14 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-  const { data } = await getBlogs()
-  return { props: { contents: data.contents } }
+  const blogData = await getBlogs()
+  const categoryData = await getCategories()
+  return {
+    props: {
+      blogList: blogData.data.contents,
+      categories: categoryData.data.contents,
+    },
+  }
 }
 
 export default BlogListPage

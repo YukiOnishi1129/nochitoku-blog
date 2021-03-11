@@ -1,0 +1,21 @@
+.title {
+  padding: 4px 6px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--c-main);
+}
+
+.bar {
+  background: var(--c-main);
+  height: 4px;
+}
+
+.field {
+  width: 100%;
+  //   padding: 16px 10px;
+  //   min-height: 100px;
+  box-sizing: border-box;
+  border-right: 1px solid var(--c-border);
+  border-left: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+}
