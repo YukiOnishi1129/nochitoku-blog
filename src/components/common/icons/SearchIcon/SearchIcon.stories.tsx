@@ -9,7 +9,9 @@ import { SearchIcon, SearchIconProps } from './index'
 export default {
   title: 'common/icons/SearchIcon',
   component: SearchIcon,
-  argTypes: {},
+  argTypes: {
+    color: { control: 'color' },
+  },
 } as Meta
 
 /**
