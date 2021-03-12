@@ -4,10 +4,10 @@
  * @package Component
  */
 import React from 'react'
-/* contexts */
-import { useCategoryState } from '@/contexts/CategoryContext'
 /* components */
 import { Presenter } from './Presenter'
+/* contexts */
+import { useCategoryState } from '@/contexts/CategoryContext'
 
 /**
  * container

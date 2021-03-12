@@ -13,9 +13,11 @@ import { useSetDate } from '@/hooks/SetData'
 /* service */
 import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
+import { getProfileBy } from '@/service/profile'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 import { CategoryType } from '@/types/category'
+import { ProfileType } from '@/types/profile'
 
 type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
 
@@ -40,9 +42,13 @@ const BlogItem: React.FC<Props> = (props) => {
   )
 }
 
+/**
+ * props
+ */
 export type PagePorps = {
   blogList: BlogItemType[]
   categories: CategoryType[]
+  profile: ProfileType
 }
 
 /**
@@ -51,12 +57,13 @@ export type PagePorps = {
  * @returns
  */
 const Blogs: NextPage<PagePorps> = (props: PagePorps) => {
-  const { blogList, categories } = props
-  const { setCategoryData } = useSetDate()
+  const { blogList, categories, profile } = props
+  const { setCategoryData, setProfileData } = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)
-  }, [categories, setCategoryData])
+    setProfileData(profile)
+  }, [categories, setCategoryData, profile, setProfileData])
 
   return (
     <BasePostPageLayout>
@@ -77,10 +84,12 @@ const Blogs: NextPage<PagePorps> = (props: PagePorps) => {
 export const getStaticProps = async () => {
   const blogData = await getBlogs()
   const categoryData = await getCategories()
+  const profile = await getProfileBy()
   return {
     props: {
       blogList: blogData.data.contents,
       categories: categoryData.data.contents,
+      profile: profile.data,
     },
   }
 }
