@@ -6,6 +6,7 @@
 import React from 'react'
 /* components */
 import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
+import { ProfileArea } from '@/components/layouts/Aside/ProfileArea'
 import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
 /* types */
 import { EventType } from '@/types/event'
@@ -27,11 +28,17 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   const { onSearchKeyUp } = props
   return (
     <aside className={styles.aside}>
+      {/* 検索フォーム */}
       <SearchInputForm
         text=""
         placeholder="入力してください"
         onKeyUp={onSearchKeyUp}
       />
+      {/* プロフィールエリア */}
+      <div className={styles.parts}>
+        <ProfileArea />
+      </div>
+      {/* カテゴリーエリア */}
       <div className={styles.parts}>
         <CategoryArea />
       </div>
