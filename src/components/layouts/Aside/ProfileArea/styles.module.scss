@@ -36,3 +36,25 @@
     font-size: 0.5rem;
   }
 }
+
+.sns {
+  display: flex;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+  width: 100px;
+
+  &__icon {
+    cursor: pointer;
+    margin-right: 16px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

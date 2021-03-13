@@ -31,4 +31,7 @@ export const initProfileState: ProfileType = {
   introduction: '',
   userImage: initImageState,
   contents: '',
+  twitter: '',
+  github: '',
+  facebook: '',
 }

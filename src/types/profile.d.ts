@@ -21,4 +21,7 @@ export interface ProfileType {
   userImage: ImageType
   articleImage?: ImageType
   contents: string
+  twitter: string
+  github: string
+  facebook: string
 }

@@ -5,8 +5,12 @@
  */
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 /* components */
 import { BasicAsidePartsArea } from '@/components/layouts/Aside/BasicAsidePartsArea'
+import { TwitterIcon } from '@/components/common/icons/TwitterIcon'
+import { GithubIcon } from '@/components/common/icons/GithubIcon'
+import { FaceBookIcon } from '@/components/common/icons/FaceBookIcon'
 /* types */
 import { ProfileType } from '@/types/profile'
 /* styles */
@@ -21,6 +25,7 @@ type Prop = {
 
 export const Presenter: React.FC<Prop> = (props: Prop) => {
   const { profile } = props
+  console.log(profile)
 
   return (
     <BasicAsidePartsArea title="プロフィール">
@@ -41,6 +46,35 @@ export const Presenter: React.FC<Prop> = (props: Prop) => {
             <p className={styles.profile__eng_name}>{profile.englishName}</p>
             <p className={styles.profile__position}>{profile.position}</p>
           </div>
+          <ul className={styles.sns}>
+            <li className={styles.sns__icon}>
+              <a
+                target="_blank"
+                href={profile.twitter}
+                rel="noopener noreferrer"
+              >
+                <TwitterIcon />
+              </a>
+            </li>
+            <li className={styles.sns__icon}>
+              <a
+                target="_blank"
+                href={profile.github}
+                rel="noopener noreferrer"
+              >
+                <GithubIcon />
+              </a>
+            </li>
+            <li className={styles.sns__icon}>
+              <a
+                target="_blank"
+                href={profile.facebook}
+                rel="noopener noreferrer"
+              >
+                <FaceBookIcon />
+              </a>
+            </li>
+          </ul>
         </div>
       )}
     </BasicAsidePartsArea>
