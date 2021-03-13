@@ -15,7 +15,6 @@ import { useProfileState } from '@/contexts/ProfileContext'
  */
 export const ProfileArea: React.FC = () => {
   const { profile } = useProfileState()
-  //   console.log('aaa')
-  //   console.log(profile)
-  return <Presenter />
+
+  return <Presenter profile={profile} />
 }

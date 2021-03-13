@@ -1,2 +1,38 @@
 .container {
+  padding: 20px 52px;
+}
+
+.image {
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80px;
+
+  &__pic {
+    border-radius: 50%;
+  }
+}
+
+.border {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #423a57;
+}
+
+.profile {
+  margin-right: auto;
+  margin-left: auto;
+  width: 130px;
+  letter-spacing: 0.1em;
+  &__name {
+    margin-bottom: 4px;
+    font-size: 0.875rem;
+  }
+  &__eng_name {
+    margin-bottom: 10px;
+    font-size: 0.5rem;
+  }
+  &__position {
+    font-size: 0.5rem;
+  }
 }
