@@ -5,26 +5,42 @@
 import React from 'react'
 import { NextPage } from 'next'
 import Image from 'next/image'
+/* components */
+import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+/* hooks */
+import { useSetDate } from '@/hooks/SetData'
 /* service */
 import { getBlogBy, getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
-/* components */
-import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { getProfileBy } from '@/service/profile'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 import { CategoryType } from '@/types/category'
+import { ProfileType } from '@/types/profile'
 
 /**
  * props
  */
 export type Porps = {
   blog: BlogItemType
-  categories: CategoryType
+  categories: CategoryType[]
+  profile: ProfileType
 }
 
+/**
+ * BlogsItemPage
+ * @param props Porps
+ * @returns
+ */
 const BlogsItemPage: NextPage<Porps> = (props) => {
-  const { blog, categories } = props
+  const { blog, categories, profile } = props
+  const { setCategoryData, setProfileData } = useSetDate()
   const imageUrl = !!blog?.image ? blog.image.url : '/no_image.png'
+
+  React.useEffect(() => {
+    setCategoryData(categories)
+    setProfileData(profile)
+  }, [categories, setCategoryData, profile, setProfileData])
 
   return (
     <BasePostPageLayout>
@@ -67,7 +83,14 @@ export const getStaticProps = async ({ params }: any) => {
   const { blogId } = params
   const blog = await getBlogBy(blogId)
   const categoryData = await getCategories()
-  return { props: { blog: blog.data, categories: categoryData.data.contents } }
+  const profile = await getProfileBy()
+  return {
+    props: {
+      blog: blog.data,
+      categories: categoryData.data.contents,
+      profile: profile.data,
+    },
+  }
 }
 
 export default BlogsItemPage

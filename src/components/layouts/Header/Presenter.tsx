@@ -22,8 +22,6 @@ export const Presenter: React.FC = () => {
             <p>ITエンジニアの技術ブログ</p>
           </div>
         </Link>
-
-        <div className={styles.sns}>SNSエリア</div>
       </div>
     </div>
   )

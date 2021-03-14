@@ -34,7 +34,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             return (
               <li className={styles.category} key={`${category.id}_${index}`}>
                 {/* TODO: リンク先は後ほど修正 */}
-                <Link href="./">{category.id}</Link>
+                <Link href="./">{category.name}</Link>
               </li>
             )
           })}

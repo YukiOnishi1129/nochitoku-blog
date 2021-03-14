@@ -1,0 +1,78 @@
+.container {
+  padding: 20px 52px;
+}
+
+.image {
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80px;
+
+  &__pic {
+    border-radius: 50%;
+  }
+}
+
+.border {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #423a57;
+}
+
+.profile {
+  margin-right: auto;
+  margin-left: auto;
+  width: 130px;
+  letter-spacing: 0.1em;
+  &__name {
+    margin-bottom: 4px;
+    font-size: 0.875rem;
+  }
+  &__eng_name {
+    margin-bottom: 10px;
+    font-size: 0.5rem;
+  }
+  &__position {
+    font-size: 0.5rem;
+  }
+}
+
+.sns {
+  display: flex;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+  width: 100px;
+
+  &__icon {
+    cursor: pointer;
+    margin-right: 16px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.button {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  background: var(--c-line);
+  padding: 6px 12px;
+  border: 2px solid var(--c-main);
+  border-radius: 5px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

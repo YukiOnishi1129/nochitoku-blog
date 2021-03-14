@@ -1,14 +1,14 @@
 /**
- * common/icons/SearchIcon
+ * common/icons/GithubIcon
  * Storybook
  * @package Component
  */
 import { Story, Meta } from '@storybook/react/types-6-0'
-import { SearchIcon, SearchIconProps } from './index'
+import { GithubIcon, GithubIconProps } from './index'
 
 export default {
-  title: 'common/icons/SearchIcon',
-  component: SearchIcon,
+  title: 'common/icons/GithubIcon',
+  component: GithubIcon,
   argTypes: {
     color: { control: 'color' },
   },
@@ -19,7 +19,7 @@ export default {
  * @param args
  * @returns
  */
-const Template: Story<SearchIconProps> = (args) => <SearchIcon {...args} />
+const Template: Story<GithubIconProps> = (args) => <GithubIcon {...args} />
 
 /**
  * sample
