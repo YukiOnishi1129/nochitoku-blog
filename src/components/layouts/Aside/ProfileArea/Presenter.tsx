@@ -5,7 +5,6 @@
  */
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 /* components */
 import { BasicAsidePartsArea } from '@/components/layouts/Aside/BasicAsidePartsArea'
 import { TwitterIcon } from '@/components/common/icons/TwitterIcon'
@@ -13,6 +12,7 @@ import { GithubIcon } from '@/components/common/icons/GithubIcon'
 import { FaceBookIcon } from '@/components/common/icons/FaceBookIcon'
 /* types */
 import { ProfileType } from '@/types/profile'
+import { EventType } from '@/types/event'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -21,16 +21,17 @@ import styles from './styles.module.scss'
  */
 type Prop = {
   profile: ProfileType
+  handleClick: EventType['onClickButton']
 }
 
 export const Presenter: React.FC<Prop> = (props: Prop) => {
-  const { profile } = props
-  console.log(profile)
+  const { profile, handleClick } = props
 
   return (
     <BasicAsidePartsArea title="プロフィール">
       {profile.id !== '' && (
         <div className={styles.container}>
+          {/* アバター */}
           <div className={styles.image}>
             <Image
               className={styles.image__pic}
@@ -41,11 +42,15 @@ export const Presenter: React.FC<Prop> = (props: Prop) => {
             />
           </div>
           <hr className={styles.border} />
+
+          {/* プロフィール */}
           <div className={styles.profile}>
             <p className={styles.profile__name}>{profile.name}</p>
             <p className={styles.profile__eng_name}>{profile.englishName}</p>
             <p className={styles.profile__position}>{profile.position}</p>
           </div>
+
+          {/* SNSアイコンボタン */}
           <ul className={styles.sns}>
             <li className={styles.sns__icon}>
               <a
@@ -75,6 +80,11 @@ export const Presenter: React.FC<Prop> = (props: Prop) => {
               </a>
             </li>
           </ul>
+
+          {/* ボタン */}
+          <button className={styles.button} onClick={(e) => handleClick(e)}>
+            more
+          </button>
         </div>
       )}
     </BasicAsidePartsArea>
