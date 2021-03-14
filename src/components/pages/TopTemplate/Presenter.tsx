@@ -4,9 +4,9 @@
  * @package Component
  */
 import React from 'react'
-import Link from 'next/link'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { BlogItem } from '@/components/common/molcules/BlogItem'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 
@@ -27,7 +27,12 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
   return (
     <BasePostPageLayout>
-      <div>aaa</div>
+      {/* ブログ記事一覧表示 */}
+      {blogList.map((blogItem, index) => (
+        <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
+      ))}
+
+      {/* ページネーション */}
     </BasePostPageLayout>
   )
 }

@@ -1,13 +1,10 @@
 /**
- * Blog記事一覧
+ * Topページ
  * @package pages
  */
 import React from 'react'
 import { NextPage } from 'next'
-import Link from 'next/link'
-import Image from 'next/image'
 /* components */
-import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
@@ -19,29 +16,6 @@ import { getProfileBy } from '@/service/profile'
 import { BlogItemType } from '@/types/blogItem'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
-
-type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
-
-const BlogItem: React.FC<Props> = (props) => {
-  const { id, title, image } = props
-  const imageUrl = !!image ? image.url : '/no_image.png'
-
-  return (
-    <div>
-      <Link href="/[blogId]" as={`/${id}`}>
-        <div>
-          <Image
-            src={imageUrl}
-            alt="Picture"
-            width={498 * 1.5}
-            height={332 * 1.5}
-          />
-          <span>{title}</span>
-        </div>
-      </Link>
-    </div>
-  )
-}
 
 /**
  * props
@@ -67,19 +41,6 @@ const Top: NextPage<TopPorps> = (props: TopPorps) => {
   }, [categories, setCategoryData, profile, setProfileData])
 
   return <TopTemplate blogList={blogList} />
-
-  // (
-  //   <BasePostPageLayout>
-  //     {blogList.map((item: BlogItemType) => (
-  //       <BlogItem
-  //         id={item.id}
-  //         title={item.title}
-  //         image={item?.image}
-  //         key={item.id}
-  //       />
-  //     ))}
-  //   </BasePostPageLayout>
-  // )
 }
 
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
@@ -88,6 +49,7 @@ export const getStaticProps = async () => {
   const blogData = await getBlogs()
   const categoryData = await getCategories()
   const profile = await getProfileBy()
+
   return {
     props: {
       blogList: blogData.data.contents,
