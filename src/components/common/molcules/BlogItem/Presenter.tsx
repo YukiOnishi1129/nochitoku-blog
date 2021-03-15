@@ -6,6 +6,8 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+/* logics */
+import { showYearMonthDay } from '@/logic/DateLogic'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 import { ImageType } from '@/types/image'
@@ -18,6 +20,7 @@ import styles from './styles.module.scss'
 type Props = {
   blogItem: BlogItemType
   image: ImageType
+  showDate: string
 }
 
 /**
@@ -26,11 +29,11 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogItem, image } = props
+  const { blogItem, image, showDate } = props
 
   return (
-    <div>
-      <Link href="/[blogId]" as={`/${blogItem.id}`}>
+    <Link href="/[blogId]" as={`/${blogItem.id}`}>
+      <div className={styles.container}>
         <div className={styles.image}>
           <Image
             src={image.url}
@@ -38,9 +41,17 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             width={image.width}
             height={image.height}
           />
-          <span>{blogItem.title}</span>
         </div>
-      </Link>
-    </div>
+        <div className={styles.content}>
+          <h2 className={styles.title}>{blogItem.title}</h2>
+          <div>
+            {blogItem.categories.map((category, index) => {
+              return <div key={`${category.id}_${index}`}>{category.name}</div>
+            })}
+          </div>
+          <p>{showDate}</p>
+        </div>
+      </div>
+    </Link>
   )
 }

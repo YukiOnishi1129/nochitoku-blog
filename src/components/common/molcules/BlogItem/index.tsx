@@ -6,6 +6,8 @@
 import React from 'react'
 /* components */
 import { Presenter } from './Presenter'
+/* logics */
+import { showYearMonthDay } from '@/logic/DateLogic'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 import { ImageType } from '@/types/image'
@@ -31,5 +33,11 @@ export const BlogItem: React.FC<Props> = (props: Props) => {
     height: blogItem?.image?.height ? blogItem.image.height : 422,
   }
 
-  return <Presenter blogItem={blogItem} image={propsImage} />
+  return (
+    <Presenter
+      blogItem={blogItem}
+      image={propsImage}
+      showDate={showYearMonthDay(blogItem.createdAt)}
+    />
+  )
 }
