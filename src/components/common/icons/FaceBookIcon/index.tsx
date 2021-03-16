@@ -14,7 +14,7 @@ export type FaceBookIconProps = {
 
 /**
  * FaceBookIcon
- * @param props
+ * @param props FaceBookIconProps
  * @returns
  */
 export const FaceBookIcon: React.FC<FaceBookIconProps> = (
