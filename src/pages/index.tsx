@@ -4,8 +4,6 @@
  */
 import React from 'react'
 import { NextPage } from 'next'
-import Router from 'next/router'
-import Link from 'next/link'
 /* components */
 import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
@@ -76,7 +74,7 @@ const Top: NextPage<TopPorps> = (props: TopPorps) => {
 
   return (
     <>
-      <TopTemplate blogList={blogList} />
+      <TopTemplate />
       {/* <Pagination totalCount={totalCount} /> */}
     </>
   )

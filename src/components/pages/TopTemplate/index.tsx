@@ -6,22 +6,16 @@
 import React from 'react'
 /* components */
 import { Presenter } from './Presenter'
-/* types */
-import { BlogItemType } from '@/types/blogItem'
-
-/**
- * props
- */
-type Props = {
-  blogList: BlogItemType[]
-}
+/* contexts */
+import { useBlogState } from '@/contexts/BlogContext'
 
 /**
  * container
- * @param props
+ * @param prop
  * @returns
  */
-export const TopTemplate: React.FC<Props> = (props: Props) => {
-  const { blogList } = props
-  return <Presenter blogList={blogList} />
+export const TopTemplate: React.FC = () => {
+  const { blogList, totalCount } = useBlogState()
+
+  return <Presenter blogList={blogList} totalCount={totalCount} />
 }

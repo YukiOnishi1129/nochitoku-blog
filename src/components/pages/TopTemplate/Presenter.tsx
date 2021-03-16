@@ -7,6 +7,7 @@ import React from 'react'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
+import { Pagination } from '@/components/common/molcules/Pagination'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 
@@ -15,6 +16,7 @@ import { BlogItemType } from '@/types/blogItem'
  */
 type Props = {
   blogList: BlogItemType[]
+  totalCount: number
 }
 
 /**
@@ -23,7 +25,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogList } = props
+  const { blogList, totalCount } = props
 
   return (
     <BasePostPageLayout>
@@ -33,6 +35,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       ))}
 
       {/* ページネーション */}
+      <Pagination totalCount={totalCount} />
     </BasePostPageLayout>
   )
 }
