@@ -6,6 +6,8 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+/*　component */
+import { DateArea } from '@/components/common/molcules/DateArea'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 import { ImageType } from '@/types/image'
@@ -18,7 +20,6 @@ import styles from './styles.module.scss'
 type Props = {
   blogItem: BlogItemType
   image: ImageType
-  showDate: string
 }
 
 /**
@@ -27,7 +28,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogItem, image, showDate } = props
+  const { blogItem, image } = props
 
   return (
     <Link href="/[blogId]" as={`/${blogItem.id}`}>
@@ -42,12 +43,23 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         </div>
         <div className={styles.content}>
           <h2 className={styles.title}>{blogItem.title}</h2>
-          <div>
+
+          <div className={styles.category}>
             {blogItem.categories.map((category, index) => {
-              return <div key={`${category.id}_${index}`}>{category.name}</div>
+              return (
+                <div
+                  className={styles.category__item}
+                  key={`${category.id}_${index}`}
+                >
+                  {category.name}
+                </div>
+              )
             })}
           </div>
-          <p>{showDate}</p>
+
+          <div className={styles.date}>
+            <DateArea date={blogItem.createdAt} />
+          </div>
         </div>
       </div>
     </Link>

@@ -22,3 +22,22 @@
   letter-spacing: 0.1em;
   line-height: 27px;
 }
+
+.category {
+  margin-top: 16px;
+  display: flex;
+
+  &__item {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+    color: var(--c-point);
+    border: 1px solid var(--c-point);
+    border-radius: 2px;
+  }
+}
+
+.date {
+  margin-top: 4px;
+}
