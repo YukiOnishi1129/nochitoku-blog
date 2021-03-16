@@ -6,8 +6,6 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-/* logics */
-import { showYearMonthDay } from '@/logic/DateLogic'
 /* types */
 import { BlogItemType } from '@/types/blogItem'
 import { ImageType } from '@/types/image'
