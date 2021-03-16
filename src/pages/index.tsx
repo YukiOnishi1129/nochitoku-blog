@@ -4,6 +4,8 @@
  */
 import React from 'react'
 import { NextPage } from 'next'
+import Router from 'next/router'
+import Link from 'next/link'
 /* components */
 import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
@@ -17,11 +19,34 @@ import { BlogItemType } from '@/types/blogItem'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
 
+// const Pagination = ({ totalCount }: { totalCount: number }) => {
+//   const PER_PAGE = 5
+//   const range = (start: number, end: number) => {
+//     // 「...Array」で1ページから最終ページまでの番号を配列に入れている
+//     // 「map((_, i) => start + i)」で1ページ目の番号は0なので、iを足している
+//     // ページの配列を作る
+//     return [...Array(end - start + 1)].map((_, i) => start + i)
+//   }
+
+//   return (
+//     <ul>
+//       {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
+//         <li key={index}>
+//           <Link href={`/page/${number}`}>
+//             <span>{number}</span>
+//           </Link>
+//         </li>
+//       ))}
+//     </ul>
+//   )
+// }
+
 /**
  * props
  */
 type TopPorps = {
   blogList: BlogItemType[]
+  totalCount: number
   categories: CategoryType[]
   profile: ProfileType
 }
@@ -32,15 +57,29 @@ type TopPorps = {
  * @returns
  */
 const Top: NextPage<TopPorps> = (props: TopPorps) => {
-  const { blogList, categories, profile } = props
-  const { setCategoryData, setProfileData } = useSetDate()
+  const { blogList, totalCount, categories, profile } = props
+  const { setBlogData, setCategoryData, setProfileData } = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)
     setProfileData(profile)
-  }, [categories, setCategoryData, profile, setProfileData])
+    setBlogData(blogList, totalCount)
+  }, [
+    categories,
+    setCategoryData,
+    profile,
+    setProfileData,
+    blogList,
+    totalCount,
+    setBlogData,
+  ])
 
-  return <TopTemplate blogList={blogList} />
+  return (
+    <>
+      <TopTemplate blogList={blogList} />
+      {/* <Pagination totalCount={totalCount} /> */}
+    </>
+  )
 }
 
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
@@ -53,6 +92,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       blogList: blogData.data.contents,
+      totalCount: blogData.data.totalCount,
       categories: categoryData.data.contents,
       profile: profile.data,
     },
