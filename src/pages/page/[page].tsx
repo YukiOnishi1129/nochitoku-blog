@@ -3,85 +3,105 @@
  * @package pages
  */
 import React from 'react'
-import { NextPage } from 'next'
-import Link from 'next/link'
-import Image from 'next/image'
-/* service */
-import { getBlogs } from '@/service/blogs'
-import { getCategories } from '@/service/categories'
+import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 /* components */
-import { Header } from '@/components/layouts/Header'
+import { PageTemplate } from '@/components/pages/PageTemplate'
+/* hooks */
+import { useSetDate } from '@/hooks/SetData'
+/* service */
+import { getBlogs, getBlogTotal } from '@/service/blogs'
+import { getCategories } from '@/service/categories'
+import { getProfileBy } from '@/service/profile'
+/* constants */
+import { blogShowCount } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
+import { ProfileType } from '@/types/profile'
 
-type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
-
-const BlogItem: React.FC<Props> = (props) => {
-  const { id, title, image } = props
-  const imageUrl = !!image ? image.url : '/no_image.png'
-
-  return (
-    <div>
-      <Link href="/blogs/[id]" as={`/blogs/${id}`}>
-        <div>
-          <Image
-            src={imageUrl}
-            alt="Picture"
-            width={498 * 1.5}
-            height={332 * 1.5}
-          />
-          <span>{title}</span>
-        </div>
-      </Link>
-    </div>
-  )
-}
-
+/**
+ * props
+ */
 export type PagePorps = {
   blogList: BlogItemType[]
-  categories: CategoryType
+  totalCount: number
+  categories: CategoryType[]
+  profile: ProfileType
 }
 
+/**
+ * ブログ一覧ページ (ページ遷移時)
+ * @param props PagePorps
+ * @returns
+ */
 const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
-  const { blogList, categories } = props
+  const { blogList, totalCount, categories, profile } = props
+  const { setBlogData, setCategoryData, setProfileData } = useSetDate()
+
+  React.useEffect(() => {
+    setCategoryData(categories)
+    setProfileData(profile)
+    setBlogData(blogList, totalCount)
+  }, [
+    categories,
+    setCategoryData,
+    profile,
+    setProfileData,
+    blogList,
+    totalCount,
+    setBlogData,
+  ])
 
   return (
-    <div>
-      <Header />
-      {blogList.map((item: BlogItemType) => (
-        <BlogItem
-          id={item.id}
-          title={item.title}
-          image={item?.image}
-          key={item.id}
-        />
-      ))}
-    </div>
+    <>
+      <PageTemplate />
+    </>
   )
 }
 
-// getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
-export const getStaticPaths = async () => {
-  const { data } = await getBlogs()
-  const page = 1 // TODO: 仮
-  // pathは配列にしないとエラーになる
-  const paths = data.contents.map((item: BlogItemType) => `/page/${page}`)
+/**
+ * getStaticProps
+ * @returns
+ */
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { totalCount } = await getBlogTotal()
+  // ページ番号の配列を作成
+  const pageCountArray = [
+    ...Array(Math.floor(totalCount / blogShowCount) + 1),
+  ].map((_, i) => i + 1)
+  // pathの配列を作成
+  const paths = pageCountArray.map((pageNum) => `/page/${pageNum}`)
   return {
     paths,
     fallback: false, // getStaticPathsで返せないパスを全て404ページに返す
   }
 }
 
-export const getStaticProps = async () => {
-  const blogData = await getBlogs()
-  const categoryData = await getCategories()
-  return {
-    props: {
-      blogList: blogData.data.contents,
-      categories: categoryData.data.contents,
-    },
+/**
+ * getStaticProps
+ * @returns
+ */
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { params } = context
+  // ページNo
+  let pageNum = 1
+
+  if (params?.page && typeof params.page === 'string') {
+    pageNum = Number(params.page)
   }
+
+  const offset = (pageNum - 1) * blogShowCount
+
+  const blogData = await getBlogs(offset)
+  const categoryData = await getCategories()
+  const profile = await getProfileBy()
+  const props: PagePorps = {
+    blogList: blogData.blogList,
+    totalCount: blogData.totalCount,
+    categories: categoryData,
+    profile: profile,
+  }
+  return { props }
 }
 
 export default BlogListPage

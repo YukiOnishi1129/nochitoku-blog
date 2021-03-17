@@ -1,5 +1,5 @@
 /**
- * pages/TopTemplate
+ * pages/PageTemplate
  * ContainerComponent
  * @package Component
  */
@@ -14,7 +14,7 @@ import { useBlogState } from '@/contexts/BlogContext'
  * @param prop
  * @returns
  */
-export const TopTemplate: React.FC = () => {
+export const PageTemplate: React.FC = () => {
   const { blogList, totalCount } = useBlogState()
 
   return <Presenter blogList={blogList} totalCount={totalCount} />

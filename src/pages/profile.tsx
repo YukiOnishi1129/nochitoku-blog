@@ -11,7 +11,7 @@ import { getCategories } from '@/service/categories'
 import { BaseFixedPageLayout } from '@/components/layouts/BaseFicxedPageLayout'
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 
 export type PagePorps = {
@@ -28,12 +28,12 @@ export const Profile: NextPage<PagePorps> = (props: PagePorps) => {
 }
 
 export const getStaticProps = async () => {
-  const blogData = await getBlogs()
+  const blogData = await getBlogs(0)
   const categoryData = await getCategories()
   return {
     props: {
-      blogList: blogData.data.contents,
-      categories: categoryData.data.contents,
+      blogList: blogData.blogList,
+      categories: categoryData,
     },
   }
 }

@@ -13,7 +13,7 @@ import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
 
@@ -22,6 +22,7 @@ import { ProfileType } from '@/types/profile'
  */
 type TopPorps = {
   blogList: BlogItemType[]
+  totalCount: number
   categories: CategoryType[]
   profile: ProfileType
 }
@@ -32,29 +33,43 @@ type TopPorps = {
  * @returns
  */
 const Top: NextPage<TopPorps> = (props: TopPorps) => {
-  const { blogList, categories, profile } = props
-  const { setCategoryData, setProfileData } = useSetDate()
+  const { blogList, totalCount, categories, profile } = props
+  const { setBlogData, setCategoryData, setProfileData } = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)
     setProfileData(profile)
-  }, [categories, setCategoryData, profile, setProfileData])
+    setBlogData(blogList, totalCount)
+  }, [
+    categories,
+    setCategoryData,
+    profile,
+    setProfileData,
+    blogList,
+    totalCount,
+    setBlogData,
+  ])
 
-  return <TopTemplate blogList={blogList} />
+  return (
+    <>
+      <TopTemplate />
+    </>
+  )
 }
 
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
 
 export const getStaticProps = async () => {
-  const blogData = await getBlogs()
+  const blogData = await getBlogs(0)
   const categoryData = await getCategories()
   const profile = await getProfileBy()
 
   return {
     props: {
-      blogList: blogData.data.contents,
-      categories: categoryData.data.contents,
-      profile: profile.data,
+      blogList: blogData.blogList,
+      totalCount: blogData.totalCount,
+      categories: categoryData,
+      profile: profile,
     },
   }
 }
