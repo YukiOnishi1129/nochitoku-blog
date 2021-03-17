@@ -31,7 +31,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   const { totalCount, link, pageRange } = props
 
   return (
-    <ul>
+    <ul className={styles.container}>
       {totalCount !== 0 &&
         pageRange(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
           <li key={index}>

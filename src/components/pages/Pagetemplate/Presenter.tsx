@@ -9,7 +9,7 @@ import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
 import { Pagination } from '@/components/common/molcules/Pagination'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 
 /**
  * props
@@ -35,7 +35,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       ))}
 
       {/* ページネーション */}
-      <Pagination totalCount={totalCount} link="/page/" />
+      {totalCount !== 0 && <Pagination totalCount={totalCount} link="/page/" />}
     </BasePostPageLayout>
   )
 }

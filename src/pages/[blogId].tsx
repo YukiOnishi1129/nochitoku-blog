@@ -68,7 +68,7 @@ const BlogsItemPage: NextPage<BlogDetailPorps> = (props) => {
 }
 
 /**
- * getStaticProps
+ * getStaticPaths
  * @returns
  */
 export const getStaticPaths: GetStaticPaths = async () => {

@@ -60,7 +60,7 @@ const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
 }
 
 /**
- * getStaticProps
+ * getStaticPaths
  * @returns
  */
 export const getStaticPaths: GetStaticPaths = async () => {
