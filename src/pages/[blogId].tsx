@@ -3,14 +3,14 @@
  * @package pages
  */
 import React from 'react'
-import { NextPage } from 'next'
+import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import Image from 'next/image'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
-import { getBlogBy, getBlogs } from '@/service/blogs'
+import { getBlogBy, getBlogTotal } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* types */
@@ -21,7 +21,7 @@ import { ProfileType } from '@/types/profile'
 /**
  * props
  */
-export type Porps = {
+export type BlogDetailPorps = {
   blog: BlogItemType
   categories: CategoryType[]
   profile: ProfileType
@@ -32,7 +32,7 @@ export type Porps = {
  * @param props Porps
  * @returns
  */
-const BlogsItemPage: NextPage<Porps> = (props) => {
+const BlogsItemPage: NextPage<BlogDetailPorps> = (props) => {
   const { blog, categories, profile } = props
   const { setCategoryData, setProfileData } = useSetDate()
   const imageUrl = !!blog?.image ? blog.image.url : '/no_image.png'
@@ -67,10 +67,12 @@ const BlogsItemPage: NextPage<Porps> = (props) => {
   )
 }
 
-// 静的生成のためのパスを指定
-// Next.jsではブログidを知り得ないので、関数内でデータを取得し、パスを定義してあげる必要がある
-export const getStaticPaths = async () => {
-  const { blogList } = await getBlogs(0)
+/**
+ * getStaticProps
+ * @returns
+ */
+export const getStaticPaths: GetStaticPaths = async () => {
+  const { blogList } = await getBlogTotal()
   const paths = blogList.map((item: BlogItemType) => `/${item.id}`)
   return {
     paths,
@@ -78,19 +80,27 @@ export const getStaticPaths = async () => {
   }
 }
 
-// paramsで受け取る値は、pagesで指定した動的な値([blogId].ts)
-export const getStaticProps = async ({ params }: any) => {
-  const { blogId } = params
+/**
+ * getStaticProps
+ * @returns
+ */
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { params } = context
+  let blogId = ''
+
+  if (params?.blogId && typeof params.blogId === 'string') {
+    blogId = params.blogId
+  }
+
   const blogDetailData = await getBlogBy(blogId)
   const categoryData = await getCategories()
   const profile = await getProfileBy()
-  return {
-    props: {
-      blog: blogDetailData,
-      categories: categoryData,
-      profile: profile,
-    },
+  const props: BlogDetailPorps = {
+    blog: blogDetailData,
+    categories: categoryData,
+    profile: profile,
   }
+  return { props }
 }
 
 export default BlogsItemPage
