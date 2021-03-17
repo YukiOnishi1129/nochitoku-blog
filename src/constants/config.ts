@@ -7,4 +7,4 @@
 /**
  * 1ページあたりのブログ記事表示件数
  */
-export const blogShowCount = 5
+export const blogShowCount = 3

@@ -9,17 +9,13 @@ import Link from 'next/link'
 import styles from './styles.module.scss'
 
 /**
- * const
- */
-const PER_PAGE = 5
-
-/**
  * props
  */
 type Props = {
   totalCount: number
   link: string
   currentPage: number
+  blogShowCount: number
   pageRange: (startPage: number, endPage: number) => number[] // eslint-disable-line no-unused-vars
 }
 
@@ -29,31 +25,26 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { totalCount, link, currentPage, pageRange } = props
+  const { totalCount, link, currentPage, blogShowCount, pageRange } = props
 
   return (
     <ul className={styles.container}>
       {totalCount !== 0 &&
-        pageRange(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
-          <li
-            className={
-              currentPage !== number ? styles.icon : styles.currentIcon
-            }
-            key={index}
-          >
-            <Link href={`${link}${number}`}>
-              <span
-                className={
-                  currentPage !== number
-                    ? styles.icon__number
-                    : styles.currentIcon__number
-                }
-              >
-                {number}
-              </span>
-            </Link>
-          </li>
-        ))}
+        pageRange(1, Math.ceil(totalCount / blogShowCount)).map(
+          (number, index) => (
+            <li className={styles.iconArea} key={index}>
+              <Link href={`${link}${number}`}>
+                <span
+                  className={
+                    currentPage !== number ? styles.icon : styles.currentIcon
+                  }
+                >
+                  {number}
+                </span>
+              </Link>
+            </li>
+          )
+        )}
     </ul>
   )
 }
