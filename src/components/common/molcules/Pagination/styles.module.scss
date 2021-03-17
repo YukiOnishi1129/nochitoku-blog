@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+  width: 60%;
+}
+
+.iconArea {
+  margin-right: 20px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.icon {
+  cursor: pointer;
+  margin-right: 10px;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid #bbbbbb;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 36px;
+  text-align: center;
+  color: #bbbbbb;
+  letter-spacing: 0.1em;
+  min-width: 36px;
+  height: 36px;
+  transition: color 0.25s, background-color 0.25s;
+
+  &:hover {
+    background: var(--c-main);
+    color: #dce5ec;
+  }
+}
+
+.currentIcon {
+  display: block;
+  background: var(--c-main);
+  border-radius: 50%;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 36px;
+  text-align: center;
+  color: #dce5ec;
+  letter-spacing: 0.1em;
+  min-width: 36px;
+  height: 36px;
+}

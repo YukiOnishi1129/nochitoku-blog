@@ -4,8 +4,11 @@
  * @package Component
  */
 import React from 'react'
+import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
+/* constants */
+import { blogShowCount } from '@/constants/config'
 
 /**
  * props
@@ -20,6 +23,7 @@ type Props = {
  * @returns
  */
 export const Pagination: React.FC<Props> = (props: Props) => {
+  const { query } = useRouter()
   const { totalCount, link } = props
   const pageRange = (start: number, end: number) => {
     // 「...Array」で1ページから最終ページまでの番号を配列に入れている
@@ -28,5 +32,18 @@ export const Pagination: React.FC<Props> = (props: Props) => {
     return [...Array(end - start + 1)].map((_, i) => start + i)
   }
 
-  return <Presenter totalCount={totalCount} link={link} pageRange={pageRange} />
+  let currentPage = 1
+  if (query?.page && typeof query.page === 'string') {
+    currentPage = Number(query.page)
+  }
+
+  return (
+    <Presenter
+      totalCount={totalCount}
+      link={link}
+      currentPage={currentPage}
+      blogShowCount={blogShowCount}
+      pageRange={pageRange}
+    />
+  )
 }

@@ -3,7 +3,7 @@
  * @package pages
  */
 import React from 'react'
-import { NextPage } from 'next'
+import { NextPage, GetStaticProps } from 'next'
 /* components */
 import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
@@ -57,21 +57,23 @@ const Top: NextPage<TopPorps> = (props: TopPorps) => {
   )
 }
 
-// getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
-
-export const getStaticProps = async () => {
+/**
+ * getStaticProps
+ * @returns
+ */
+export const getStaticProps: GetStaticProps = async () => {
   const blogData = await getBlogs(0)
   const categoryData = await getCategories()
   const profile = await getProfileBy()
 
-  return {
-    props: {
-      blogList: blogData.blogList,
-      totalCount: blogData.totalCount,
-      categories: categoryData,
-      profile: profile,
-    },
+  const props: TopPorps = {
+    blogList: blogData.blogList,
+    totalCount: blogData.totalCount,
+    categories: categoryData,
+    profile: profile,
   }
+
+  return { props }
 }
 
 export default Top
