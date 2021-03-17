@@ -6,7 +6,7 @@
 import globalAxios from '@/config/globalAxios'
 /* constants */
 import { blogShowCount } from '@/constants/config'
-import { initBlogData } from '@/constants/initState'
+import { initBlogItem, initBlogData } from '@/constants/initState'
 /* types */
 import { BlogDataType } from '@/types/blog'
 
@@ -41,7 +41,23 @@ export const getBlogs = async (offset: number) => {
  * ブログ記事詳細取得
  * @param id string
  */
-export const getBlogBy = (id: string) => globalAxios.get(BASE_URL + id)
+
+/**
+ * ブログ記事詳細取得
+ * @param id string
+ * @returns blogDetail BlogItemType
+ */
+export const getBlogBy = async (id: string) => {
+  let blogDetail = initBlogItem
+  try {
+    const res = await globalAxios.get(BASE_URL + id)
+    blogDetail = res.data
+  } catch (error) {
+    console.log(error)
+  }
+
+  return blogDetail
+}
 
 /**
  * ブログ全記事取得

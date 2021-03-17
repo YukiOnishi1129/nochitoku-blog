@@ -81,13 +81,13 @@ export const getStaticPaths = async () => {
 // paramsで受け取る値は、pagesで指定した動的な値([blogId].ts)
 export const getStaticProps = async ({ params }: any) => {
   const { blogId } = params
-  const blog = await getBlogBy(blogId)
+  const blogDetailData = await getBlogBy(blogId)
   const categoryData = await getCategories()
   const profile = await getProfileBy()
   return {
     props: {
-      blog: blog.data,
-      categories: categoryData.data.contents,
+      blog: blogDetailData,
+      categories: categoryData,
       profile: profile.data,
     },
   }

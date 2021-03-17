@@ -63,11 +63,11 @@ const CategoryBlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
 
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
 export const getStaticPaths = async () => {
-  const { data } = await getCategories()
+  const categoryData = await getCategories()
   // const categoryName = 'react' // TODO: 仮
   const page = 1 // TODO: 仮
   // pathは配列にしないとエラーになる
-  const paths = data.contents.map(
+  const paths = categoryData.map(
     (category: CategoryType) => `/category/${category.name}/page/${page}`
   )
   return {
@@ -82,7 +82,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       blogList: blogData.blogList,
-      categories: categoryData.data.contents,
+      categories: categoryData,
     },
   }
 }

@@ -33,7 +33,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       blogList: blogData.blogList,
-      categories: categoryData.data.contents,
+      categories: categoryData,
     },
   }
 }

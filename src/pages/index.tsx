@@ -68,7 +68,7 @@ export const getStaticProps = async () => {
     props: {
       blogList: blogData.blogList,
       totalCount: blogData.totalCount,
-      categories: categoryData.data.contents,
+      categories: categoryData,
       profile: profile.data,
     },
   }
