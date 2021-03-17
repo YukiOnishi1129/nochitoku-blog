@@ -7,7 +7,7 @@ import React from 'react'
 /* components */
 import { Presenter } from './Presenter'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { ImageType } from '@/types/image'
 
 /**

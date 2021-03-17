@@ -9,7 +9,7 @@ import Image from 'next/image'
 /*　component */
 import { DateArea } from '@/components/common/molcules/DateArea'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { ImageType } from '@/types/image'
 /* styles */
 import styles from './styles.module.scss'

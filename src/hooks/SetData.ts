@@ -9,7 +9,7 @@ import { useBlogDispatch, setBlogList } from '@/contexts/BlogContext'
 import { useCaregoryDispatch, setCategories } from '@/contexts/CategoryContext'
 import { useProfileDispatch, setProfile } from '@/contexts/ProfileContext'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
 
