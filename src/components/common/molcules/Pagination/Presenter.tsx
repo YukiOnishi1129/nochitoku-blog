@@ -19,6 +19,7 @@ const PER_PAGE = 5
 type Props = {
   totalCount: number
   link: string
+  currentPage: number
   pageRange: (startPage: number, endPage: number) => number[] // eslint-disable-line no-unused-vars
 }
 
@@ -28,15 +29,28 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { totalCount, link, pageRange } = props
+  const { totalCount, link, currentPage, pageRange } = props
 
   return (
     <ul className={styles.container}>
       {totalCount !== 0 &&
         pageRange(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
-          <li key={index}>
+          <li
+            className={
+              currentPage !== number ? styles.icon : styles.currentIcon
+            }
+            key={index}
+          >
             <Link href={`${link}${number}`}>
-              <span>{number}</span>
+              <span
+                className={
+                  currentPage !== number
+                    ? styles.icon__number
+                    : styles.currentIcon__number
+                }
+              >
+                {number}
+              </span>
             </Link>
           </li>
         ))}

@@ -6,3 +6,51 @@
   margin-bottom: 30px;
   width: 60%;
 }
+
+.icon {
+  cursor: pointer;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #bbbbbb;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__number {
+    display: block;
+    padding: 10px 14px;
+    // align-items: center;
+    font-size: 1rem;
+    color: #bbbbbb;
+    line-height: 19px;
+    letter-spacing: 0.1em;
+  }
+}
+
+.currentIcon {
+  cursor: pointer;
+  background: var(--c-main);
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #bbbbbb;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__number {
+    display: block;
+    padding: 10px 14px;
+    font-size: 1rem;
+    color: #dce5ec;
+    line-height: 19px;
+    letter-spacing: 0.1em;
+  }
+}
