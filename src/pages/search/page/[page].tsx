@@ -11,7 +11,7 @@ import { getBlogs } from '@/service/blogs'
 /* components */
 import { Header } from '@/components/layouts/Header'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 
 type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
 
@@ -56,12 +56,10 @@ const SearchPage: NextPage = (props: any) => {
 
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
 export const getStaticPaths = async () => {
-  const { data } = await getBlogs()
+  const { blogList } = await getBlogs(0)
   const page = 1 // TODO: 仮
   // pathは配列にしないとエラーになる
-  const paths = data.contents.map(
-    (item: BlogItemType) => `/search/page/${page}`
-  )
+  const paths = blogList.map((item: BlogItemType) => `/search/page/${page}`)
   return {
     paths,
     fallback: false, // getStaticPathsで返せないパスを全て404ページに返す
@@ -69,8 +67,8 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-  const { data } = await getBlogs()
-  return { props: { contents: data.contents } }
+  const { blogList } = await getBlogs(0)
+  return { props: { contents: blogList } }
 }
 
 export default SearchPage

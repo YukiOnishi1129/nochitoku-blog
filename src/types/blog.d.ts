@@ -20,3 +20,11 @@ export interface BlogItemType {
   image: ImageType
   categories: CategoryType[]
 }
+
+/**
+ * BlogDataType
+ */
+export interface BlogDataType {
+  blogList: BlogItemType[]
+  totalCount: number
+}

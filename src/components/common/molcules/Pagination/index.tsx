@@ -12,6 +12,7 @@ import { Presenter } from './Presenter'
  */
 type Props = {
   totalCount: number
+  link: string
 }
 
 /**
@@ -19,7 +20,7 @@ type Props = {
  * @returns
  */
 export const Pagination: React.FC<Props> = (props: Props) => {
-  const { totalCount } = props
+  const { totalCount, link } = props
   const pageRange = (start: number, end: number) => {
     // 「...Array」で1ページから最終ページまでの番号を配列に入れている
     // 「map((_, i) => start + i)」で1ページ目の番号は0なので、iを足している
@@ -27,5 +28,5 @@ export const Pagination: React.FC<Props> = (props: Props) => {
     return [...Array(end - start + 1)].map((_, i) => start + i)
   }
 
-  return <Presenter totalCount={totalCount} pageRange={pageRange} />
+  return <Presenter totalCount={totalCount} link={link} pageRange={pageRange} />
 }

@@ -14,7 +14,7 @@ import { getBlogBy, getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
 
@@ -70,8 +70,8 @@ const BlogsItemPage: NextPage<Porps> = (props) => {
 // 静的生成のためのパスを指定
 // Next.jsではブログidを知り得ないので、関数内でデータを取得し、パスを定義してあげる必要がある
 export const getStaticPaths = async () => {
-  const { data } = await getBlogs()
-  const paths = data.contents.map((item: BlogItemType) => `/${item.id}`)
+  const { blogList } = await getBlogs(0)
+  const paths = blogList.map((item: BlogItemType) => `/${item.id}`)
   return {
     paths,
     fallback: false, // getStaticPathsで返せないパスを全て404ページに返す

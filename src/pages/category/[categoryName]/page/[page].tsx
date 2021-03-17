@@ -12,7 +12,7 @@ import { getCategories } from '@/service/categories'
 /* components */
 import { Header } from '@/components/layouts/Header'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 
 type Props = Pick<BlogItemType, 'id' | 'title' | 'image'>
@@ -77,11 +77,11 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async () => {
-  const blogData = await getBlogs()
+  const blogData = await getBlogs(0)
   const categoryData = await getCategories()
   return {
     props: {
-      blogList: blogData.data.contents,
+      blogList: blogData.blogList,
       categories: categoryData.data.contents,
     },
   }

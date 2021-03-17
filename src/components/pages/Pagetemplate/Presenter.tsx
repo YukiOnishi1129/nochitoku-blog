@@ -1,5 +1,5 @@
 /**
- * pages/TopTemplate
+ * pages/PageTemplate
  * PresentationalComponent
  * @package Component
  */
@@ -9,7 +9,7 @@ import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
 import { Pagination } from '@/components/common/molcules/Pagination'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType } from '@/types/blogItem'
 
 /**
  * props
@@ -30,10 +30,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   return (
     <BasePostPageLayout>
       {/* ブログ記事一覧表示 */}
-      {blogList.length > 0 &&
-        blogList.map((blogItem, index) => (
-          <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
-        ))}
+      {blogList.map((blogItem, index) => (
+        <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
+      ))}
 
       {/* ページネーション */}
       <Pagination totalCount={totalCount} link="/page/" />

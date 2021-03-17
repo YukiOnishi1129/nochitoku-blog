@@ -13,31 +13,9 @@ import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
-
-// const Pagination = ({ totalCount }: { totalCount: number }) => {
-//   const PER_PAGE = 5
-//   const range = (start: number, end: number) => {
-//     // 「...Array」で1ページから最終ページまでの番号を配列に入れている
-//     // 「map((_, i) => start + i)」で1ページ目の番号は0なので、iを足している
-//     // ページの配列を作る
-//     return [...Array(end - start + 1)].map((_, i) => start + i)
-//   }
-
-//   return (
-//     <ul>
-//       {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
-//         <li key={index}>
-//           <Link href={`/page/${number}`}>
-//             <span>{number}</span>
-//           </Link>
-//         </li>
-//       ))}
-//     </ul>
-//   )
-// }
 
 /**
  * props
@@ -75,7 +53,6 @@ const Top: NextPage<TopPorps> = (props: TopPorps) => {
   return (
     <>
       <TopTemplate />
-      {/* <Pagination totalCount={totalCount} /> */}
     </>
   )
 }
@@ -83,14 +60,14 @@ const Top: NextPage<TopPorps> = (props: TopPorps) => {
 // getStaticProps: ページコンポーネントが表示される前のタイミングでデータをfetchする
 
 export const getStaticProps = async () => {
-  const blogData = await getBlogs()
+  const blogData = await getBlogs(0)
   const categoryData = await getCategories()
   const profile = await getProfileBy()
 
   return {
     props: {
-      blogList: blogData.data.contents,
-      totalCount: blogData.data.totalCount,
+      blogList: blogData.blogList,
+      totalCount: blogData.totalCount,
       categories: categoryData.data.contents,
       profile: profile.data,
     },
