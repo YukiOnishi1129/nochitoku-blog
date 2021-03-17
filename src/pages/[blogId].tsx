@@ -88,7 +88,7 @@ export const getStaticProps = async ({ params }: any) => {
     props: {
       blog: blogDetailData,
       categories: categoryData,
-      profile: profile.data,
+      profile: profile,
     },
   }
 }
