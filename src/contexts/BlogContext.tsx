@@ -5,7 +5,7 @@
  */
 import React from 'react'
 /* types */
-import { BlogItemType } from '@/types/blogItem'
+import { BlogItemType } from '@/types/blog'
 
 // State --------------
 export type BlogStateType = {
