@@ -34,7 +34,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
       ))}
 
-      {/* ページネーション */}
+      {/* ページネーションだよ */}
       {totalCount !== 0 && <Pagination totalCount={totalCount} link="/page/" />}
     </BasePostPageLayout>
   )
