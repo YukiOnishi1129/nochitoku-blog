@@ -75,7 +75,7 @@ export const getBlogsContainCategory = async (
  * @returns
  */
 export const isBlogsArchives = async (startDate: string, endDate: string) => {
-  const blogData: BlogDataType = initBlogData
+  let totalCpunt = 0
   try {
     const res = await globalAxios.get(
       BASE_URL +
@@ -84,12 +84,12 @@ export const isBlogsArchives = async (startDate: string, endDate: string) => {
         '[and]createdAt[less_than]' +
         endDate
     )
-    blogData.totalCount = res.data.totalCount
+    totalCpunt = res.data.totalCount
   } catch (error) {
     console.log(error)
   }
 
-  return blogData.totalCount > 0
+  return totalCpunt > 0
 }
 
 /**
