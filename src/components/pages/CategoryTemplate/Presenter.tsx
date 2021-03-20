@@ -1,5 +1,5 @@
 /**
- * pages/PageTemplate
+ * pages/CategoryTemplate
  * PresentationalComponent
  * @package Component
  */
@@ -17,6 +17,7 @@ import { BlogItemType } from '@/types/blog'
  * props
  */
 type Props = {
+  categoryId: string
   blogList: BlogItemType[]
   totalCount: number
 }
@@ -27,7 +28,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogList, totalCount } = props
+  const { categoryId, blogList, totalCount } = props
 
   return (
     <BasePostPageLayout>
@@ -38,7 +39,10 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
       {/* ページネーション */}
       {totalCount / blogShowCount > 1 && (
-        <Pagination totalCount={totalCount} link="/page/" />
+        <Pagination
+          totalCount={totalCount}
+          link={`/category/${categoryId}/page/`}
+        />
       )}
     </BasePostPageLayout>
   )

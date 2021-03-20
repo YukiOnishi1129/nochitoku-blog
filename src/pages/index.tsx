@@ -50,11 +50,7 @@ const Top: NextPage<TopPorps> = (props: TopPorps) => {
     setBlogData,
   ])
 
-  return (
-    <>
-      <TopTemplate />
-    </>
-  )
+  return <TopTemplate />
 }
 
 /**
