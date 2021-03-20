@@ -33,7 +33,6 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           categories.map((category, index) => {
             return (
               <li className={styles.category} key={`${category.id}_${index}`}>
-                {/* TODO: リンク先は後ほど修正 */}
                 <Link href={`/category/${category.id}/page/1`}>
                   {category.name}
                 </Link>

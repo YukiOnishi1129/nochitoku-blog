@@ -1,2 +1,22 @@
 .container {
+  width: 100%;
+}
+
+.archive {
+  background: var(--c-sub);
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--c-main);
+  letter-spacing: 0.1em;
+}
+
+.archive_even {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--c-main);
+  letter-spacing: 0.1em;
 }

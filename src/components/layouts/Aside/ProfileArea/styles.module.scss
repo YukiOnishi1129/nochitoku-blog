@@ -1,5 +1,5 @@
 .container {
-  padding: 20px 52px;
+  padding: 20px 42px;
 }
 
 .image {
@@ -22,18 +22,25 @@
 .profile {
   margin-right: auto;
   margin-left: auto;
-  width: 130px;
+  width: 150px;
   letter-spacing: 0.1em;
+  color: var(--c-main);
+
   &__name {
+    text-align: center;
     margin-bottom: 4px;
     font-size: 0.875rem;
+    font-weight: bold;
+    line-height: 18px;
   }
   &__eng_name {
+    text-align: center;
     margin-bottom: 10px;
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
   &__position {
-    font-size: 0.5rem;
+    text-align: center;
+    font-size: 0.75rem;
   }
 }
 

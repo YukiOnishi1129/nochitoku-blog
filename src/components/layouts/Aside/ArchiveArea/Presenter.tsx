@@ -29,7 +29,23 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
   return (
     <BasicAsidePartsArea title="アーカイブ">
-      <div>aaa</div>
+      <ul className={styles.container}>
+        {archiveList.length > 0 &&
+          archiveList.map((archive, index) => {
+            const archiveStyle =
+              index % 2 === 0 ? styles.archive : styles.archive_even
+            return (
+              <li
+                className={archiveStyle}
+                key={`${archive.originDate}_${index}`}
+              >
+                <Link href={`/archive/${archive.linkDate}/page/1`}>
+                  <span>&gt;&nbsp;&nbsp;{`${archive.showDate}`}</span>
+                </Link>
+              </li>
+            )
+          })}
+      </ul>
     </BasicAsidePartsArea>
   )
 }
