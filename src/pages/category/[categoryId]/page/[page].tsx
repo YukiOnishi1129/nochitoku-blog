@@ -1,15 +1,15 @@
 /**
- * Blog記事一覧 (ページ遷移時)
+ * カテゴリー記事一覧
  * @package pages
  */
 import React from 'react'
-import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 /* components */
-import { PageTemplate } from '@/components/pages/PageTemplate'
+import { CategoryTemplate } from '@/components/pages/CategoryTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
-import { getBlogs, getBlogTotal } from '@/service/blogs'
+import { getBlogsContainCategory } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* logic */
@@ -24,7 +24,7 @@ import { ProfileType } from '@/types/profile'
 /**
  * props
  */
-export type PagePorps = {
+export type CategoryBlogListPorps = {
   blogList: BlogItemType[]
   totalCount: number
   categories: CategoryType[]
@@ -32,11 +32,13 @@ export type PagePorps = {
 }
 
 /**
- * ブログ一覧ページ (ページ遷移時)
- * @param props PagePorps
+ * カテゴリー記事一覧
+ * @param props CategoryBlogListPorps
  * @returns
  */
-const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
+const CategoryBlogListPage: NextPage<CategoryBlogListPorps> = (
+  props: CategoryBlogListPorps
+) => {
   const { blogList, totalCount, categories, profile } = props
   const { setBlogData, setCategoryData, setProfileData } = useSetDate()
 
@@ -54,7 +56,7 @@ const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
     setBlogData,
   ])
 
-  return <PageTemplate />
+  return <CategoryTemplate />
 }
 
 /**
@@ -62,11 +64,19 @@ const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
  * @returns
  */
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { totalCount } = await getBlogTotal()
-  // ページ番号の配列を作成
-  const pageCountArray = createPageArray(totalCount)
-  // pathの配列を作成
-  const paths = pageCountArray.map((pageNum) => `/page/${pageNum}`)
+  const categoryData = await getCategories()
+  const paths: string[] = []
+
+  // https://qiita.com/risto24/items/b3483f0b8c484e3eea5e
+  for await (const category of categoryData) {
+    const { totalCount } = await getBlogsContainCategory(0, category.id)
+    // ページ番号の配列を作成
+    const pageCountArray = createPageArray(totalCount)
+    pageCountArray.forEach((pageNum) => {
+      paths.push(`/category/${category.id}/page/${pageNum}`)
+    })
+  }
+
   return {
     paths,
     fallback: false, // getStaticPathsで返せないパスを全て404ページに返す
@@ -80,25 +90,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
  */
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
+  // カテゴリーId
+  let categoryId = ''
   // ページNo
   let pageNum = 1
 
+  if (params?.categoryId && typeof params.categoryId === 'string') {
+    categoryId = params.categoryId
+  }
   if (params?.page && typeof params.page === 'string') {
     pageNum = Number(params.page)
   }
 
   const offset = (pageNum - 1) * blogShowCount
 
-  const blogData = await getBlogs(offset)
+  const blogData = await getBlogsContainCategory(offset, categoryId)
   const categoryData = await getCategories()
   const profile = await getProfileBy()
-  const props: PagePorps = {
+
+  const props: CategoryBlogListPorps = {
     blogList: blogData.blogList,
     totalCount: blogData.totalCount,
     categories: categoryData,
     profile: profile,
   }
+
   return { props }
 }
 
-export default BlogListPage
+export default CategoryBlogListPage

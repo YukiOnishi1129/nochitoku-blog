@@ -1,5 +1,5 @@
 /**
- * pages/PageTemplate
+ * pages/CategoryTemplate
  * PresentationalComponent
  * @package Component
  */

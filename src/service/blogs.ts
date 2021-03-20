@@ -38,6 +38,37 @@ export const getBlogs = async (offset: number) => {
 }
 
 /**
+ * カテゴリーに紐づくブログ一覧取得
+ * @param offset number
+ * @param categoryId string
+ * @returns
+ */
+export const getBlogsContainCategory = async (
+  offset: number,
+  categoryId: string
+) => {
+  const blogData: BlogDataType = initBlogData
+
+  try {
+    const res = await globalAxios.get(
+      BASE_URL +
+        QUERY_OFFSET +
+        offset +
+        QUERY_LIMIT +
+        blogShowCount +
+        '&filters=categories[contains]' +
+        categoryId
+    )
+    blogData.blogList = res.data.contents
+    blogData.totalCount = res.data.totalCount
+  } catch (error) {
+    console.log(error)
+  }
+
+  return blogData
+}
+
+/**
  * ブログ記事詳細取得
  * @param id string
  */
