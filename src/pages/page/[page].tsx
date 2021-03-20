@@ -9,21 +9,12 @@ import { PageTemplate } from '@/components/pages/PageTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
-import { getBlogs, isBlogsArchives } from '@/service/blogs'
+import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
-import {
-  getCurrentDate,
-  getBlogStartDate,
-  getStartOfMonth,
-  getEndOfMonth,
-  changeYearMonthDate,
-  changeYearMonth,
-  changeShowYearMonth,
-  subtractMonthDate,
-} from '@/logic/DateLogic'
+import { getArchiveList } from '@/logic/ArchiveLogic'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
@@ -35,7 +26,7 @@ import { ArchiveType } from '@/types/archive'
 /**
  * props
  */
-export type PagePorps = {
+type PagePorps = {
   blogList: BlogItemType[]
   totalCount: number
   categories: CategoryType[]
@@ -49,13 +40,19 @@ export type PagePorps = {
  * @returns
  */
 const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
-  const { blogList, totalCount, categories, profile } = props
-  const { setBlogData, setCategoryData, setProfileData } = useSetDate()
+  const { blogList, totalCount, categories, profile, archiveList } = props
+  const {
+    setBlogData,
+    setCategoryData,
+    setProfileData,
+    setArchive,
+  } = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)
     setProfileData(profile)
     setBlogData(blogList, totalCount)
+    setArchive(archiveList)
   }, [
     categories,
     setCategoryData,
@@ -64,6 +61,8 @@ const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
     blogList,
     totalCount,
     setBlogData,
+    archiveList,
+    setArchive,
   ])
 
   return <PageTemplate />
@@ -107,31 +106,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const categoryData = await getCategories()
   // プロフィールデータ取得 ---------
   const profile = await getProfileBy()
-
   // アーカイブデータ取得 ---------
-  const currentDate = getCurrentDate() // 現在日時
-  const startBlogDate = getBlogStartDate() // ブログ開始日時
-  // 現在月とブログ開始月の差分 (月数)
-  const diffMonthCount = currentDate.diff(startBlogDate, 'month')
-  // アーカイブ月取得処理
-  const archiveList: ArchiveType[] = []
-  for (let i = 0; i <= diffMonthCount; i++) {
-    let targetDate = currentDate.format()
-    //  現在の月以外の場合
-    if (i > 0) {
-      // 日付減算処置
-      targetDate = subtractMonthDate(targetDate, i)
-    }
-    const startMonth = getStartOfMonth(targetDate) // 対象月の月初日付取得
-    const endMonth = getEndOfMonth(targetDate) // 対象月の月末日付取得
-    if (await isBlogsArchives(startMonth, endMonth)) {
-      archiveList.push({
-        originDate: changeYearMonthDate(startMonth),
-        linkDate: changeYearMonth(startMonth),
-        showDate: changeShowYearMonth(startMonth),
-      })
-    }
-  }
+  const archiveList = await getArchiveList()
 
   const props: PagePorps = {
     blogList: blogData.blogList,
