@@ -8,6 +8,7 @@ import React from 'react'
 import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
 import { ProfileArea } from '@/components/layouts/Aside/ProfileArea'
 import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
+import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
 /* types */
 import { EventType } from '@/types/event'
 /* styles */
@@ -41,6 +42,10 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       {/* カテゴリーエリア */}
       <div className={styles.parts}>
         <CategoryArea />
+      </div>
+      {/* アーカイブエリア */}
+      <div className={styles.parts}>
+        <ArchiveArea />
       </div>
     </aside>
   )
