@@ -8,6 +8,7 @@ import React from 'react'
 import { BlogContextProvider } from './BlogContext'
 import { CategoryContextProvider } from './CategoryContext'
 import { ProfileContextProvider } from './ProfileContext'
+import { ArchiveContextProvider } from './ArchiveContext'
 
 /**
  * props
@@ -24,7 +25,9 @@ type Props = {
 export const RootContextProvider: React.FC<Props> = ({ children }: Props) => (
   <CategoryContextProvider>
     <ProfileContextProvider>
-      <BlogContextProvider>{children}</BlogContextProvider>
+      <ArchiveContextProvider>
+        <BlogContextProvider>{children}</BlogContextProvider>
+      </ArchiveContextProvider>
     </ProfileContextProvider>
   </CategoryContextProvider>
 )

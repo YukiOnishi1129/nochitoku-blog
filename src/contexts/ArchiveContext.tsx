@@ -4,10 +4,12 @@
  * @package Contexts
  */
 import React from 'react'
+/* types */
+import { ArchiveType } from '@/types/archive'
 
 // State --------------
 export type ArchiveStateType = {
-  archiveList: string[]
+  archiveList: ArchiveType[]
 }
 
 const initState: Readonly<ArchiveStateType> = {
@@ -19,7 +21,7 @@ const ActionType = {
   SET: 'ARCHIVE:SET_ARCHIVE',
 }
 
-export const setArchiveList = (archiveList: string[]) => ({
+export const setArchiveList = (archiveList: ArchiveType[]) => ({
   type: ActionType.SET,
   payload: {
     archiveList,

@@ -8,10 +8,12 @@ import React from 'react'
 import { useBlogDispatch, setBlogList } from '@/contexts/BlogContext'
 import { useCaregoryDispatch, setCategories } from '@/contexts/CategoryContext'
 import { useProfileDispatch, setProfile } from '@/contexts/ProfileContext'
+import { useArchiveDispatch, setArchiveList } from '@/contexts/ArchiveContext'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
+import { ArchiveType } from '@/types/archive'
 
 /**
  * useSetDate
@@ -21,6 +23,7 @@ export const useSetDate = () => {
   const dispatchBlog = useBlogDispatch()
   const dispatchCategory = useCaregoryDispatch()
   const dispatchProfile = useProfileDispatch()
+  const dispatchArchive = useArchiveDispatch()
 
   /**
    * setBlogData
@@ -52,9 +55,20 @@ export const useSetDate = () => {
     [dispatchProfile]
   )
 
+  /**
+   * setArchive
+   */
+  const setArchive = React.useCallback(
+    (archive: ArchiveType[]) => {
+      dispatchArchive(setArchiveList(archive))
+    },
+    [dispatchArchive]
+  )
+
   return {
     setBlogData,
     setCategoryData,
     setProfileData,
+    setArchive,
   }
 }

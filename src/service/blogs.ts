@@ -69,6 +69,30 @@ export const getBlogsContainCategory = async (
 }
 
 /**
+ * 対象日付の月の記事があるか確認
+ * @param offset
+ * @param date
+ * @returns
+ */
+export const isBlogsArchives = async (startDate: string, endDate: string) => {
+  const blogData: BlogDataType = initBlogData
+  try {
+    const res = await globalAxios.get(
+      BASE_URL +
+        '?filters=createdAt[greater_than]' +
+        startDate +
+        '[and]createdAt[less_than]' +
+        endDate
+    )
+    blogData.totalCount = res.data.totalCount
+  } catch (error) {
+    console.log(error)
+  }
+
+  return blogData.totalCount > 0
+}
+
+/**
  * ブログ記事詳細取得
  * @param id string
  */
