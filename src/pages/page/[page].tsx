@@ -9,7 +9,7 @@ import { PageTemplate } from '@/components/pages/PageTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
-import { getBlogs, getBlogTotal } from '@/service/blogs'
+import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* logic */
@@ -62,7 +62,7 @@ const BlogListPage: NextPage<PagePorps> = (props: PagePorps) => {
  * @returns
  */
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { totalCount } = await getBlogTotal()
+  const { totalCount } = await await getBlogs(0)
   // ページ番号の配列を作成
   const pageCountArray = createPageArray(totalCount)
   // pathの配列を作成

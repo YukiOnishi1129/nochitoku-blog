@@ -8,6 +8,8 @@ import React from 'react'
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
 import { Pagination } from '@/components/common/molcules/Pagination'
+/* constants */
+import { blogShowCount } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
 
@@ -35,7 +37,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       ))}
 
       {/* ページネーション */}
-      {totalCount !== 0 && <Pagination totalCount={totalCount} link="/page/" />}
+      {totalCount / blogShowCount > 1 && (
+        <Pagination totalCount={totalCount} link="/page/" />
+      )}
     </BasePostPageLayout>
   )
 }

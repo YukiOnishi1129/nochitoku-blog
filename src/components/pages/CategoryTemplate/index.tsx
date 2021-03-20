@@ -10,12 +10,26 @@ import { Presenter } from './Presenter'
 import { useBlogState } from '@/contexts/BlogContext'
 
 /**
+ * props
+ */
+type Props = {
+  categoryId: string
+}
+
+/**
  * container
  * @param prop
  * @returns
  */
-export const CategoryTemplate: React.FC = () => {
+export const CategoryTemplate: React.FC<Props> = (props: Props) => {
+  const { categoryId } = props
   const { blogList, totalCount } = useBlogState()
 
-  return <Presenter blogList={blogList} totalCount={totalCount} />
+  return (
+    <Presenter
+      categoryId={categoryId}
+      blogList={blogList}
+      totalCount={totalCount}
+    />
+  )
 }

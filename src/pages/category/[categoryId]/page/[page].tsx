@@ -25,6 +25,7 @@ import { ProfileType } from '@/types/profile'
  * props
  */
 export type CategoryBlogListPorps = {
+  categoryId: string
   blogList: BlogItemType[]
   totalCount: number
   categories: CategoryType[]
@@ -39,7 +40,7 @@ export type CategoryBlogListPorps = {
 const CategoryBlogListPage: NextPage<CategoryBlogListPorps> = (
   props: CategoryBlogListPorps
 ) => {
-  const { blogList, totalCount, categories, profile } = props
+  const { categoryId, blogList, totalCount, categories, profile } = props
   const { setBlogData, setCategoryData, setProfileData } = useSetDate()
 
   React.useEffect(() => {
@@ -56,7 +57,7 @@ const CategoryBlogListPage: NextPage<CategoryBlogListPorps> = (
     setBlogData,
   ])
 
-  return <CategoryTemplate />
+  return <CategoryTemplate categoryId={categoryId} />
 }
 
 /**
@@ -109,6 +110,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const profile = await getProfileBy()
 
   const props: CategoryBlogListPorps = {
+    categoryId: categoryId,
     blogList: blogData.blogList,
     totalCount: blogData.totalCount,
     categories: categoryData,

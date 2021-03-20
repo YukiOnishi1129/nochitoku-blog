@@ -10,9 +10,13 @@ import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
-import { getBlogBy, getBlogTotal } from '@/service/blogs'
+import { getBlogs, getBlogBy } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
+/* logic */
+import { createPageArray } from '@/logic/CommonLogic'
+/* constants */
+import { blogShowCount } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
@@ -72,8 +76,20 @@ const BlogsItemPage: NextPage<BlogDetailPorps> = (props) => {
  * @returns
  */
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { blogList } = await getBlogTotal()
-  const paths = blogList.map((item: BlogItemType) => `/${item.id}`)
+  const paths: string[] = []
+  const { totalCount } = await getBlogs(0)
+
+  // ページ番号の配列を作成
+  const pageCountArray = createPageArray(totalCount)
+
+  for await (const pageNum of pageCountArray) {
+    const offset = (pageNum - 1) * blogShowCount
+    const blogData = await getBlogs(offset)
+    blogData.blogList.forEach((blog) => {
+      paths.push(`/${blog.id}`)
+    })
+  }
+
   return {
     paths,
     fallback: false, // getStaticPathsで返せないパスを全て404ページに返す

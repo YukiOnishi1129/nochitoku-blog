@@ -89,21 +89,3 @@ export const getBlogBy = async (id: string) => {
 
   return blogDetail
 }
-
-/**
- * ブログ全記事取得
- * @returns blogData BlogDataType
- */
-export const getBlogTotal = async () => {
-  const blogData: BlogDataType = initBlogData
-
-  try {
-    const res = await globalAxios.get(BASE_URL)
-    blogData.blogList = res.data.contents
-    blogData.totalCount = res.data.totalCount
-  } catch (error) {
-    console.log(error)
-  }
-
-  return blogData
-}
