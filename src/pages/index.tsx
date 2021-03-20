@@ -9,20 +9,11 @@ import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
-import { getBlogs, isBlogsArchives } from '@/service/blogs'
+import { getBlogs } from '@/service/blogs'
 import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* logic */
-import {
-  getCurrentDate,
-  getBlogStartDate,
-  getStartOfMonth,
-  getEndOfMonth,
-  changeYearMonthDate,
-  changeYearMonth,
-  changeShowYearMonth,
-  subtractMonthDate,
-} from '@/logic/DateLogic'
+import { getArchiveList } from '@/logic/ArchiveLogic'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
@@ -79,35 +70,14 @@ const Top: NextPage<TopPorps> = (props: TopPorps) => {
  * @returns
  */
 export const getStaticProps: GetStaticProps = async () => {
+  // ブログ一覧データ取得 ---------
   const blogData = await getBlogs(0)
+  // カテゴリーデータ取得 ---------
   const categoryData = await getCategories()
+  // プロフィールデータ取得 ---------
   const profile = await getProfileBy()
-
-  const currentDate = getCurrentDate() // 現在日時
-  const startBlogDate = getBlogStartDate() // ブログ開始日時
-
-  // 現在月とブログ開始月の差分 (月数)
-  const diffMonthCount = currentDate.diff(startBlogDate, 'month')
-
-  // アーカイブ月取得処理
-  const archiveList: ArchiveType[] = []
-  for (let i = 0; i <= diffMonthCount; i++) {
-    let targetDate = currentDate.format()
-    //  現在の月以外の場合
-    if (i > 0) {
-      // 日付減算処置
-      targetDate = subtractMonthDate(targetDate, i)
-    }
-    const startMonth = getStartOfMonth(targetDate) // 対象月の月初日付取得
-    const endMonth = getEndOfMonth(targetDate) // 対象月の月末日付取得
-    if (await isBlogsArchives(startMonth, endMonth)) {
-      archiveList.push({
-        originDate: changeYearMonthDate(startMonth),
-        linkDate: changeYearMonth(startMonth),
-        showDate: changeShowYearMonth(startMonth),
-      })
-    }
-  }
+  // アーカイブデータ取得 ---------
+  const archiveList = await getArchiveList()
 
   const props: TopPorps = {
     blogList: blogData.blogList,

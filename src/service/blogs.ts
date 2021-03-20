@@ -69,13 +69,46 @@ export const getBlogsContainCategory = async (
 }
 
 /**
+ * 対象日付の月のブログ記事一覧取得
+ * @param startDate
+ * @param endDate
+ * @returns
+ */
+export const getBlogContainArchiveMonth = async (
+  offset: number,
+  startDate: string,
+  endDate: string
+) => {
+  const blogData: BlogDataType = initBlogData
+
+  try {
+    const res = await globalAxios.get(
+      BASE_URL +
+        QUERY_OFFSET +
+        offset +
+        QUERY_LIMIT +
+        blogShowCount +
+        '&filters=createdAt[greater_than]' +
+        startDate +
+        '[and]createdAt[less_than]' +
+        endDate
+    )
+    blogData.blogList = res.data.contents
+    blogData.totalCount = res.data.totalCount
+  } catch (error) {
+    console.log(error)
+  }
+  return blogData
+}
+
+/**
  * 対象日付の月の記事があるか確認
- * @param offset
- * @param date
+ * @param startDate
+ * @param endDate
  * @returns
  */
 export const isBlogsArchives = async (startDate: string, endDate: string) => {
-  const blogData: BlogDataType = initBlogData
+  let totalCpunt = 0
   try {
     const res = await globalAxios.get(
       BASE_URL +
@@ -84,12 +117,12 @@ export const isBlogsArchives = async (startDate: string, endDate: string) => {
         '[and]createdAt[less_than]' +
         endDate
     )
-    blogData.totalCount = res.data.totalCount
+    totalCpunt = res.data.totalCount
   } catch (error) {
     console.log(error)
   }
 
-  return blogData.totalCount > 0
+  return totalCpunt > 0
 }
 
 /**

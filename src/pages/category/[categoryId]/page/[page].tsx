@@ -14,39 +14,55 @@ import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
+import { getArchiveList } from '@/logic/ArchiveLogic'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
+import { ArchiveType } from '@/types/archive'
 
 /**
  * props
  */
-export type CategoryBlogListPorps = {
+type CategoryBlogListPorps = {
   categoryId: string
   blogList: BlogItemType[]
   totalCount: number
   categories: CategoryType[]
   profile: ProfileType
+  archiveList: ArchiveType[]
 }
 
 /**
- * カテゴリー記事一覧
+ * カテゴリー記事一覧ページ
  * @param props CategoryBlogListPorps
  * @returns
  */
 const CategoryBlogListPage: NextPage<CategoryBlogListPorps> = (
   props: CategoryBlogListPorps
 ) => {
-  const { categoryId, blogList, totalCount, categories, profile } = props
-  const { setBlogData, setCategoryData, setProfileData } = useSetDate()
+  const {
+    categoryId,
+    blogList,
+    totalCount,
+    categories,
+    profile,
+    archiveList,
+  } = props
+  const {
+    setBlogData,
+    setCategoryData,
+    setProfileData,
+    setArchive,
+  } = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)
     setProfileData(profile)
     setBlogData(blogList, totalCount)
+    setArchive(archiveList)
   }, [
     categories,
     setCategoryData,
@@ -55,6 +71,8 @@ const CategoryBlogListPage: NextPage<CategoryBlogListPorps> = (
     blogList,
     totalCount,
     setBlogData,
+    archiveList,
+    setArchive,
   ])
 
   return <CategoryTemplate categoryId={categoryId} />
@@ -105,9 +123,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const offset = (pageNum - 1) * blogShowCount
 
+  // ブログ一覧データ取得 ---------
   const blogData = await getBlogsContainCategory(offset, categoryId)
+  // カテゴリーデータ取得 ---------
   const categoryData = await getCategories()
+  // プロフィールデータ取得 ---------
   const profile = await getProfileBy()
+  // アーカイブデータ取得 ---------
+  const archiveList = await getArchiveList()
 
   const props: CategoryBlogListPorps = {
     categoryId: categoryId,
@@ -115,6 +138,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     totalCount: blogData.totalCount,
     categories: categoryData,
     profile: profile,
+    archiveList: archiveList,
   }
 
   return { props }

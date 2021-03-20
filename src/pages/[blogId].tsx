@@ -15,20 +15,23 @@ import { getCategories } from '@/service/categories'
 import { getProfileBy } from '@/service/profile'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
+import { getArchiveList } from '@/logic/ArchiveLogic'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
+import { ArchiveType } from '@/types/archive'
 
 /**
  * props
  */
-export type BlogDetailPorps = {
+type BlogDetailPorps = {
   blog: BlogItemType
   categories: CategoryType[]
   profile: ProfileType
+  archiveList: ArchiveType[]
 }
 
 /**
@@ -37,14 +40,22 @@ export type BlogDetailPorps = {
  * @returns
  */
 const BlogsItemPage: NextPage<BlogDetailPorps> = (props) => {
-  const { blog, categories, profile } = props
-  const { setCategoryData, setProfileData } = useSetDate()
+  const { blog, categories, profile, archiveList } = props
+  const { setCategoryData, setProfileData, setArchive } = useSetDate()
   const imageUrl = !!blog?.image ? blog.image.url : '/no_image.png'
 
   React.useEffect(() => {
     setCategoryData(categories)
     setProfileData(profile)
-  }, [categories, setCategoryData, profile, setProfileData])
+    setArchive(archiveList)
+  }, [
+    categories,
+    setCategoryData,
+    profile,
+    setProfileData,
+    archiveList,
+    setArchive,
+  ])
 
   return (
     <BasePostPageLayout>
@@ -108,13 +119,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
     blogId = params.blogId
   }
 
+  // ブログ記事詳細データ取得 ---------
   const blogDetailData = await getBlogBy(blogId)
+  // カテゴリーデータ取得 ---------
   const categoryData = await getCategories()
+  // プロフィールデータ取得 ---------
   const profile = await getProfileBy()
+  // アーカイブデータ取得 ---------
+  const archiveList = await getArchiveList()
+
   const props: BlogDetailPorps = {
     blog: blogDetailData,
     categories: categoryData,
     profile: profile,
+    archiveList: archiveList,
   }
   return { props }
 }

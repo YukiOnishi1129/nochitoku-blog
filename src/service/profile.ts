@@ -1,5 +1,5 @@
 /**
- * ノチトクカテゴリーAPI
+ * ノチトクプロフィールAPI
  * @package service
  */
 /* config */
@@ -10,11 +10,6 @@ import { initProfileState } from '@/constants/initState'
 import { ProfileType } from '@/types/profile'
 
 const BASE_URL = 'https://yuki-read.microcms.io/api/v1/profile/'
-
-/**
- * プロフィール一覧取得
- * @returns
- */
 
 /**
  * プロフィール一覧取得
