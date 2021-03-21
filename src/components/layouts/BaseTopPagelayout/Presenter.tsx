@@ -1,13 +1,13 @@
 /**
- * layouts/BaseLayout
+ * layouts/BaseTopPageLayout
  * PresentationalComponent
  * @package Component
  */
 import React from 'react'
 /* components */
 import { Header } from '@/components/layouts/Header'
-import { BreadList } from '@/components/layouts/BreadList'
 import { Footer } from '@/components/layouts/Footer'
+import { Aside } from '@/components/layouts/Aside'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -16,7 +16,6 @@ import styles from './styles.module.scss'
  */
 export type Props = {
   children: React.ReactNode
-  breadName: string
 }
 
 /**
@@ -24,7 +23,7 @@ export type Props = {
  * @param props
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { children, breadName } = props
+  const { children } = props
 
   return (
     <div className={styles.wrapper}>
@@ -32,8 +31,10 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <Header />
         <div className={styles.headerEmpty} />
       </div>
-      <BreadList breadName={breadName} />
-      <div className={styles.divider}>{children}</div>
+      <div className={styles.divider}>
+        <article className={styles.article}>{children}</article>
+        <Aside />
+      </div>
       <div className={styles.footer}>
         <Footer />
       </div>

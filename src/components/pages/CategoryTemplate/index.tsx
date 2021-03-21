@@ -14,6 +14,7 @@ import { useBlogState } from '@/contexts/BlogContext'
  */
 type Props = {
   categoryId: string
+  breadName: string
 }
 
 /**
@@ -22,7 +23,7 @@ type Props = {
  * @returns
  */
 export const CategoryTemplate: React.FC<Props> = (props: Props) => {
-  const { categoryId } = props
+  const { categoryId, breadName } = props
   const { blogList, totalCount } = useBlogState()
 
   return (
@@ -30,6 +31,7 @@ export const CategoryTemplate: React.FC<Props> = (props: Props) => {
       categoryId={categoryId}
       blogList={blogList}
       totalCount={totalCount}
+      breadName={breadName}
     />
   )
 }

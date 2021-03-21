@@ -1,5 +1,5 @@
 /**
- * layouts/BaseLayout
+ * layouts/BaseTopPageLayout
  * ContainerComponent
  * @package Component
  */
@@ -12,15 +12,14 @@ import { Presenter } from './Presenter'
  */
 export type Props = {
   children: React.ReactNode
-  breadName: string
 }
 
 /**
  * container
  * @param props
  */
-export const BaseLayout: React.FC<Props> = (props: Props) => {
-  const { children, breadName } = props
+export const BaseTopPageLayout: React.FC<Props> = (props: Props) => {
+  const { children } = props
 
-  return <Presenter breadName={breadName}>{children}</Presenter>
+  return <Presenter>{children}</Presenter>
 }

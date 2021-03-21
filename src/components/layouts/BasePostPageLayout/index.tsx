@@ -12,6 +12,7 @@ import { Presenter } from './Presenter'
  */
 export type Props = {
   children: React.ReactNode
+  breadName: string
 }
 
 /**
@@ -19,7 +20,7 @@ export type Props = {
  * @param props
  */
 export const BasePostPageLayout: React.FC<Props> = (props: Props) => {
-  const { children } = props
+  const { children, breadName } = props
 
-  return <Presenter>{children}</Presenter>
+  return <Presenter breadName={breadName}>{children}</Presenter>
 }

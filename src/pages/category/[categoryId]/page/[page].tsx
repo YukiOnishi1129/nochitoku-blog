@@ -58,6 +58,10 @@ const CategoryBlogListPage: NextPage<CategoryBlogListPorps> = (
     setArchive,
   } = useSetDate()
 
+  const categoryName = categories.filter((category) => {
+    return category.id === categoryId
+  })
+
   React.useEffect(() => {
     setCategoryData(categories)
     setProfileData(profile)
@@ -75,7 +79,12 @@ const CategoryBlogListPage: NextPage<CategoryBlogListPorps> = (
     setArchive,
   ])
 
-  return <CategoryTemplate categoryId={categoryId} />
+  return (
+    <CategoryTemplate
+      categoryId={categoryId}
+      breadName={categoryName[0].name}
+    />
+  )
 }
 
 /**
