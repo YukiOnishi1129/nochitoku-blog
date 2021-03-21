@@ -32,9 +32,11 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         {categories.length > 0 &&
           categories.map((category, index) => {
             return (
-              <li className={styles.category} key={`${category.id}_${index}`}>
+              <li className={styles.list} key={`${category.id}_${index}`}>
                 <Link href={`/category/${category.id}/page/1`}>
-                  {category.name}
+                  <div className={styles.category}>
+                    <span>{category.name}</span>
+                  </div>
                 </Link>
               </li>
             )
