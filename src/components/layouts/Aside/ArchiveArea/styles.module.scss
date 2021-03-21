@@ -10,6 +10,13 @@
   font-weight: bold;
   color: var(--c-main);
   letter-spacing: 0.1em;
+  transition: background 0.5s;
+
+  &:hover {
+    opacity: 0.9;
+    background: var(--c-main);
+    color: var(--c-sub);
+  }
 }
 
 .archive_even {
@@ -19,4 +26,11 @@
   font-weight: bold;
   color: var(--c-main);
   letter-spacing: 0.1em;
+  transition: background 0.5s;
+
+  &:hover {
+    opacity: 0.9;
+    background: var(--c-main);
+    color: var(--c-sub);
+  }
 }
