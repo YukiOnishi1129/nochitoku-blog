@@ -5,7 +5,7 @@
  */
 import React from 'react'
 /* components */
-import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { BaseTopPageLayout } from '@/components/layouts/BaseTopPagelayout'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
 import { Pagination } from '@/components/common/molcules/Pagination'
 /* constants */
@@ -30,7 +30,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   const { blogList, totalCount } = props
 
   return (
-    <BasePostPageLayout>
+    <BaseTopPageLayout>
       {/* ブログ記事一覧表示 */}
       {blogList.length > 0 &&
         blogList.map((blogItem, index) => (
@@ -41,6 +41,6 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       {totalCount / blogShowCount > 1 && (
         <Pagination totalCount={totalCount} link="/page/" />
       )}
-    </BasePostPageLayout>
+    </BaseTopPageLayout>
   )
 }
