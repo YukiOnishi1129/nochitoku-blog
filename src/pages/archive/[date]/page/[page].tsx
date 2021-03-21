@@ -15,6 +15,7 @@ import { getProfileBy } from '@/service/profile'
 import { createPageArray } from '@/logic/CommonLogic'
 import { getBlogTargetMonth } from '@/logic/BlogLogic'
 import { getArchiveList } from '@/logic/ArchiveLogic'
+import { changeShowYearMonth } from '@/logic/DateLogic'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
@@ -68,7 +69,7 @@ const ArchiveBlogListPage: NextPage<ArchivePagePorps> = (
     setArchive,
   ])
 
-  return <ArchiveTemplate date={date} />
+  return <ArchiveTemplate date={date} breadName={changeShowYearMonth(date)} />
 }
 
 /**

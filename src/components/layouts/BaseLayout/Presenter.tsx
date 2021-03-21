@@ -4,9 +4,9 @@
  * @package Component
  */
 import React from 'react'
-import Link from 'next/link'
 /* components */
 import { Header } from '@/components/layouts/Header'
+import { BreadList } from '@/components/layouts/BreadList'
 import { Footer } from '@/components/layouts/Footer'
 /* styles */
 import styles from './styles.module.scss'
@@ -16,6 +16,7 @@ import styles from './styles.module.scss'
  */
 export type Props = {
   children: React.ReactNode
+  breadName: string
 }
 
 /**
@@ -23,7 +24,7 @@ export type Props = {
  * @param props
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { children } = props
+  const { children, breadName } = props
 
   return (
     <div className={styles.wrapper}>
@@ -31,16 +32,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <Header />
         <div className={styles.headerEmpty} />
       </div>
-      <div className={styles.bread}>
-        <ul className={styles.bread__list}>
-          <li className={styles.bread__item}>
-            <Link href="/">
-              <span className={styles.bread__link}>HOME</span>
-            </Link>
-          </li>
-          <li>IT</li>
-        </ul>
-      </div>
+      <BreadList breadName={breadName} />
       <div className={styles.divider}>{children}</div>
       <div className={styles.footer}>
         <Footer />

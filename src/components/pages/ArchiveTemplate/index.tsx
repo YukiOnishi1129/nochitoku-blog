@@ -14,6 +14,7 @@ import { useBlogState } from '@/contexts/BlogContext'
  */
 type Props = {
   date: string
+  breadName: string
 }
 
 /**
@@ -22,8 +23,15 @@ type Props = {
  * @returns
  */
 export const ArchiveTemplate: React.FC<Props> = (props: Props) => {
-  const { date } = props
+  const { date, breadName } = props
   const { blogList, totalCount } = useBlogState()
 
-  return <Presenter date={date} blogList={blogList} totalCount={totalCount} />
+  return (
+    <Presenter
+      date={date}
+      blogList={blogList}
+      totalCount={totalCount}
+      breadName={breadName}
+    />
+  )
 }

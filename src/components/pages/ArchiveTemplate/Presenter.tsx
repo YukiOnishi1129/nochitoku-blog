@@ -20,6 +20,7 @@ type Props = {
   date: string
   blogList: BlogItemType[]
   totalCount: number
+  breadName: string
 }
 
 /**
@@ -28,10 +29,10 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { date, blogList, totalCount } = props
+  const { date, blogList, totalCount, breadName } = props
 
   return (
-    <BasePostPageLayout>
+    <BasePostPageLayout breadName={breadName}>
       {/* ブログ記事一覧表示 */}
       {blogList.map((blogItem, index) => (
         <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />

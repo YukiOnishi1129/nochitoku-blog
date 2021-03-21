@@ -58,7 +58,7 @@ const BlogsItemPage: NextPage<BlogDetailPorps> = (props) => {
   ])
 
   return (
-    <BasePostPageLayout>
+    <BasePostPageLayout breadName={blog.title}>
       <section>
         <Image
           src={imageUrl}
