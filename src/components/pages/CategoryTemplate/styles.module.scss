@@ -1,0 +1,21 @@
+.title {
+  margin-top: 48px;
+  margin-bottom: 48px;
+
+  &__content {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: var(--c-main);
+    letter-spacing: 0.1em;
+    flex-basis: auto;
+  }
+
+  &__border {
+    display: block;
+    margin-top: 12px;
+    border: 1px solid var(--c-sub);
+    flex-basis: auto;
+    width: 100%;
+    height: 1px;
+  }
+}
