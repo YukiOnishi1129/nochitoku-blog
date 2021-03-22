@@ -1,3 +1,17 @@
 .container {
   width: 960px;
 }
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+
+  &::after {
+    display: block;
+    content: '';
+    margin-bottom: 40px;
+    width: 30%;
+  }
+}
