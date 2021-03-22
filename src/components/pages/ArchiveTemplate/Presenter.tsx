@@ -6,6 +6,7 @@
 import React from 'react'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
 import { Pagination } from '@/components/common/molcules/Pagination'
 /* constants */
@@ -33,6 +34,8 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
   return (
     <BasePostPageLayout breadName={breadName}>
+      {/* ページタイトル */}
+      <PageTitle title={`${breadName}`} />
       {/* ブログ記事一覧表示 */}
       {blogList.map((blogItem, index) => (
         <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
