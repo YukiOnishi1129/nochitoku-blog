@@ -27,7 +27,7 @@ import { ArchiveType } from '@/types/archive'
 /**
  * props
  */
-type BlogDetailPorps = {
+type BlogItemPorps = {
   blog: BlogItemType
   categories: CategoryType[]
   profile: ProfileType
@@ -36,10 +36,10 @@ type BlogDetailPorps = {
 
 /**
  * BlogsItemPage
- * @param props Porps
+ * @param props BlogItemPorps
  * @returns
  */
-const BlogsItemPage: NextPage<BlogDetailPorps> = (props) => {
+const BlogsItemPage: NextPage<BlogItemPorps> = (props) => {
   const { blog, categories, profile, archiveList } = props
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
   const imageUrl = !!blog?.image ? blog.image.url : '/no_image.png'
@@ -128,7 +128,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()
 
-  const props: BlogDetailPorps = {
+  const props: BlogItemPorps = {
     blog: blogDetailData,
     categories: categoryData,
     profile: profile,
