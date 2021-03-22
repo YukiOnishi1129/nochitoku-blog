@@ -12,42 +12,10 @@
   // margin-bottom: 40px;
 }
 
-.bread {
-  background: var(--c-sub);
-  // height: 17px;
-  padding: 8px 0;
-
-  &__list {
-    margin: 0 auto;
-    width: 80%;
-    display: flex;
-    font-size: 0.75rem;
-    // font-weight: bold;
-    letter-spacing: 0.1em;
-    color: var(--c-main);
-  }
-
-  &__item {
-    margin-right: 5px;
-
-    &::after {
-      content: '＞';
-      padding-left: 5px;
-    }
-  }
-
-  &__link {
-    cursor: pointer;
-    &:hover {
-      opacity: 0.7;
-    }
-  }
-}
-
 .divider {
   display: flex;
   justify-content: space-around;
-  margin: 20px auto 0;
+  margin: 40px auto 0;
   width: 1160px;
   min-height: 600px;
 }
