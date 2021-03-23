@@ -28,7 +28,7 @@ export const Presenter: React.FC = () => {
         </Link>
       </ul>
       {/* SNSエリア */}
-      <div className={styles.sns}></div>
+      {/* <ul className={styles.sns}></ul> */}
 
       {/* copyright */}
       <p className={styles.copy}>
