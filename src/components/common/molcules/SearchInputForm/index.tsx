@@ -15,8 +15,9 @@ import { EventType } from '@/types/event'
 type Props = {
   text: string
   placeholder: string
+  onChange: EventType['onChange']
   onKeyUp?: EventType['onkeypress']
-  onClick?: EventType['onClick']
+  onClick?: () => void
 }
 
 /**
@@ -25,15 +26,11 @@ type Props = {
  * @returns
  */
 export const SearchInputForm: React.FC<Props> = (props: Props) => {
-  const { text, placeholder, onKeyUp, onClick } = props
-  const [searchText, setSearchText] = React.useState(text)
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value)
-  }
+  const { text, placeholder, onChange, onKeyUp, onClick } = props
 
   return (
     <Presenter
-      text={searchText}
+      text={text}
       placeholder={placeholder}
       onChange={onChange}
       onKeyUp={onKeyUp}

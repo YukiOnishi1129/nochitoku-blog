@@ -20,7 +20,7 @@ export type SearchInputFormProps = {
   placeholder: string
   onChange: EventType['onChange']
   onKeyUp?: EventType['onkeypress']
-  onClick?: EventType['onClick']
+  onClick?: () => void
 }
 
 /**

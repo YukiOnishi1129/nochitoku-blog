@@ -4,6 +4,7 @@
  * @package Component
  */
 import React from 'react'
+import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
 
@@ -12,12 +13,24 @@ import { Presenter } from './Presenter'
  * @returns
  */
 export const Aside: React.FC = () => {
+  const router = useRouter()
+  const [searchText, setSearchText] = React.useState('')
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value)
+  }
   const onSearchKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      // TODO:Enterしたら、検索ページへ遷移
-      //   console.log('テスト')
-      //   console.log(e.currentTarget.value)
+      router.push({
+        pathname: '/search',
+        query: { keyword: searchText },
+      })
     }
   }
-  return <Presenter onSearchKeyUp={onSearchKeyUp} />
+  return (
+    <Presenter
+      searchText={searchText}
+      onChange={onChange}
+      onKeyUp={onSearchKeyUp}
+    />
+  )
 }

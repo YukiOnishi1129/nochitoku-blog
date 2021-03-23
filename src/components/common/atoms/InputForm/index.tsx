@@ -17,7 +17,7 @@ export type InputFormProps = {
   placeholder: string
   onChange: EventType['onChange']
   onKeyUp?: EventType['onkeypress']
-  onClick?: EventType['onClick']
+  onClick?: () => void
 }
 
 /**
