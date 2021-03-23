@@ -7,6 +7,7 @@ import React from 'react'
 /* components */
 import { BaseLayout } from '@/components/layouts/BaseLayout'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
+import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
 import { SearchBlogItem } from './organisms/SearchBlogItem'
 /* contexts */
 import { useBlogState } from '@/contexts/BlogContext'
@@ -37,6 +38,10 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     <BaseLayout breadName={breadName}>
       <div className={styles.container}>
         <PageTitle title="検索結果" />
+        <div className={styles.input}>
+          <SearchInputForm text="テキスト" placeholder="検索" />
+        </div>
+
         <div className={styles.list}>
           {blogList.length > 0 &&
             blogList.map((blog) => (
