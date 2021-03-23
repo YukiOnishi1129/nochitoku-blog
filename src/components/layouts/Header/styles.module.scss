@@ -40,11 +40,27 @@
     line-height: 18px;
     letter-spacing: 0.3em;
   }
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
-// .sns {
-//   margin-top: 19px;
-//   width: 142px;
-//   height: 24px;
-//   //   border: 1px solid red;
-// }
+.link {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 350px;
+
+  h2 {
+    cursor: pointer;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+    color: var(--c-main);
+
+    &:hover {
+      opacity: 0.7;
+      text-decoration: underline;
+    }
+  }
+}

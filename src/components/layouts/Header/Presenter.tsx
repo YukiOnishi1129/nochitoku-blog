@@ -22,6 +22,17 @@ export const Presenter: React.FC = () => {
             <p>ITエンジニアの技術ブログ</p>
           </div>
         </Link>
+        <div className={styles.link}>
+          <Link href="/">
+            <h2>ホーム</h2>
+          </Link>
+          <Link href="/">
+            <h2>このブログについて</h2>
+          </Link>
+          <Link href="/">
+            <h2>プロフィール</h2>
+          </Link>
+        </div>
       </div>
     </div>
   )

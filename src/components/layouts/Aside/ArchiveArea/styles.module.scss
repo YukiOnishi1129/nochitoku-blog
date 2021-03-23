@@ -10,12 +10,13 @@
   font-weight: bold;
   color: var(--c-main);
   letter-spacing: 0.1em;
-  transition: background 0.5s;
+  transition: background 0.1s;
 
   &:hover {
     opacity: 0.9;
     background: var(--c-main);
     color: var(--c-sub);
+    transition: background 1s;
   }
 }
 
@@ -26,11 +27,12 @@
   font-weight: bold;
   color: var(--c-main);
   letter-spacing: 0.1em;
-  transition: background 0.5s;
+  transition: background 0.1s;
 
   &:hover {
     opacity: 0.9;
     background: var(--c-main);
     color: var(--c-sub);
+    transition: background 1s;
   }
 }
