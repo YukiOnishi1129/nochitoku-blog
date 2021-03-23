@@ -27,7 +27,7 @@ import { ArchiveType } from '@/types/archive'
 /**
  * props
  */
-export type ArchivePagePorps = {
+export type ArchiveBlogListPagePorps = {
   date: string
   blogList: BlogItemType[]
   totalCount: number
@@ -41,8 +41,8 @@ export type ArchivePagePorps = {
  * @param props ArchivePagePorps
  * @returns
  */
-const ArchiveBlogListPage: NextPage<ArchivePagePorps> = (
-  props: ArchivePagePorps
+const ArchiveBlogListPage: NextPage<ArchiveBlogListPagePorps> = (
+  props: ArchiveBlogListPagePorps
 ) => {
   const { date, blogList, totalCount, categories, profile, archiveList } = props
   const {
@@ -127,7 +127,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()
 
-  const props: ArchivePagePorps = {
+  const props: ArchiveBlogListPagePorps = {
     date: paramDate,
     blogList: blogData.blogList,
     totalCount: blogData.totalCount,

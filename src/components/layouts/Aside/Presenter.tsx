@@ -18,7 +18,10 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
-  onSearchKeyUp: EventType['onkeypress']
+  // onSearchKeyUp: EventType['onkeypress']
+  searchText: string
+  onChange: EventType['onChange']
+  onKeyUp?: EventType['onkeypress']
 }
 
 /**
@@ -26,14 +29,15 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { onSearchKeyUp } = props
+  const { searchText, onChange, onKeyUp } = props
   return (
     <aside className={styles.aside}>
       {/* 検索フォーム */}
       <SearchInputForm
-        text=""
-        placeholder="入力してください"
-        onKeyUp={onSearchKeyUp}
+        text={searchText}
+        placeholder="検索"
+        onChange={onChange}
+        onKeyUp={onKeyUp}
       />
       {/* プロフィールエリア */}
       <div className={styles.parts}>

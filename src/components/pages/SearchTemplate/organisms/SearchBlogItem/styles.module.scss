@@ -1,14 +1,14 @@
 .container {
   cursor: pointer;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-arround;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
+  width: 30%;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .image {
-  min-width: 330px;
-  max-width: 330px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   overflow: hidden;
 
@@ -25,13 +25,10 @@
   }
 }
 
-.content {
-  margin-left: 40px;
-}
-
 .title {
+  margin-top: 10px;
   padding-top: 10px;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: bold;
   letter-spacing: 0.1em;
   line-height: 27px;
@@ -53,5 +50,5 @@
 }
 
 .date {
-  margin-top: 4px;
+  margin-top: 10px;
 }

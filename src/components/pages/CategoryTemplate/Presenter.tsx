@@ -36,7 +36,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   return (
     <BasePostPageLayout breadName={breadName}>
       {/* ページタイトル */}
-      <PageTitle title={`「${breadName}」`} />
+      <PageTitle title={`「${breadName}」の記事一覧`} />
 
       {/* ブログ記事一覧表示 */}
       {blogList.map((blogItem, index) => (

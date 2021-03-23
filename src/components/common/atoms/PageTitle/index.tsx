@@ -24,7 +24,7 @@ export const PageTitle: React.FC<PageTitleProps> = (props: PageTitleProps) => {
 
   return (
     <div className={styles.title}>
-      <h2 className={styles.title__content}>{`${title}の記事一覧`}</h2>
+      <h2 className={styles.title__content}>{title}</h2>
       <p className={styles.title__border}></p>
     </div>
   )

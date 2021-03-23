@@ -16,7 +16,8 @@ export type InputFormProps = {
   text: string
   placeholder: string
   onChange: EventType['onChange']
-  onKeyUp: EventType['onkeypress']
+  onKeyUp?: EventType['onkeypress']
+  onClick?: () => void
 }
 
 /**
@@ -25,7 +26,7 @@ export type InputFormProps = {
  * @returns
  */
 export const InputForm: React.FC<InputFormProps> = (props: InputFormProps) => {
-  const { text, placeholder, onChange, onKeyUp } = props
+  const { text, placeholder, onChange, onKeyUp, onClick } = props
 
   return (
     <input
@@ -36,6 +37,7 @@ export const InputForm: React.FC<InputFormProps> = (props: InputFormProps) => {
       placeholder={placeholder}
       onChange={onChange}
       onKeyUp={onKeyUp}
+      onClick={onClick}
     />
   )
 }
