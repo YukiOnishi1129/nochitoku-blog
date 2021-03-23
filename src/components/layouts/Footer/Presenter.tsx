@@ -19,12 +19,12 @@ export const Presenter: React.FC = () => {
           <li className={styles.list}>HOME</li>
         </Link>
         <li className={styles.after}>|</li>
-        <Link href="/term">
-          <li className={styles.list}>利用規約</li>
-        </Link>
-        <li className={styles.after}>|</li>
         <Link href="/policy">
           <li className={styles.list}>プライバシーポリシー</li>
+        </Link>
+        <li className={styles.after}>|</li>
+        <Link href="/term">
+          <li className={styles.list}>利用規約</li>
         </Link>
       </ul>
       {/* SNSエリア */}
