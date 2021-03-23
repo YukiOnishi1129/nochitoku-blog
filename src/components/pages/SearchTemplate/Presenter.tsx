@@ -50,6 +50,12 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             showBlogList.map((blog) => (
               <SearchBlogItem key={blog.id} blogItem={blog} />
             ))}
+          {showBlogList.length === 0 && (
+            <div className={styles.unknown}>
+              <p>検索したキーワードは記事がありませんでした。</p>
+              <p>別のキーワードで検索してみてください。</p>
+            </div>
+          )}
         </div>
       </div>
     </BaseLayout>

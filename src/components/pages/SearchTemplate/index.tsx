@@ -38,8 +38,11 @@ export const SearchTemplate: React.FC<Props> = (props: Props) => {
   // 検索キーワードにHitしたブログ記事一覧
   const [showBlogList, setShowBlogList] = React.useState(blogList)
 
-  // 動的検索キーワード更新処理
-  // 更新時にブログリストの検索も同時実行
+  /**
+   * 動的検索キーワード更新処理
+   * 更新時にブログリストの検索も同時実行
+   * @param e React.ChangeEvent<HTMLInputElement>
+   */
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.target.value)
 

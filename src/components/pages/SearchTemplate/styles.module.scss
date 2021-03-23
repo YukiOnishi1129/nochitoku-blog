@@ -21,3 +21,14 @@
     width: 30%;
   }
 }
+
+.unknown {
+  margin-top: 40px;
+
+  p {
+    padding-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    color: var(--c-main);
+  }
+}
