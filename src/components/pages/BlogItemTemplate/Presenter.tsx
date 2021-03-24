@@ -7,6 +7,7 @@ import React from 'react'
 import Image from 'next/image'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { DateArea } from '@/components/common/molcules/DateArea'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { ImageType } from '@/types/image'
@@ -46,12 +47,26 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             <ul className={styles.leftBar__area}></ul>
           </div>
           <div className={styles.rightBar}>
-            <h2>{blogItem.title}</h2>
-            {blogItem.categories.length > 0 &&
-              blogItem.categories.map((category) => (
-                <h3 key={category.id}>カテゴリー：{category.name}</h3>
-              ))}
+            <div className={styles.rightBar__main}>
+              <h2 className={styles.rightBar__title}>{blogItem.title}</h2>
+              <div className={styles.rightBar__category}>
+                {blogItem.categories.length > 0 &&
+                  blogItem.categories.map((category) => (
+                    <div
+                      className={styles.rightBar__category__item}
+                      key={category.id}
+                    >
+                      {category.name}
+                    </div>
+                  ))}
+              </div>
+              <div className={styles.rightBar__date}>
+                <DateArea date={blogItem.createdAt} />
+              </div>
+            </div>
+
             <div
+              className={styles.contents}
               dangerouslySetInnerHTML={{
                 __html: `${blogItem.body}`,
               }}
