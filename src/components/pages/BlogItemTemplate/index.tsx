@@ -8,6 +8,7 @@ import React from 'react'
 import { Presenter } from './Presenter'
 /* types */
 import { BlogItemType } from '@/types/blog'
+import { ImageType } from '@/types/image'
 
 /**
  * props
@@ -23,7 +24,13 @@ type Props = {
  */
 export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
   const { blogItem } = props
-  const imageUrl = !!blogItem?.image ? blogItem.image.url : '/no_image.png'
+  //   const imageUrl = !!blogItem?.image ? blogItem.image.url : '/no_image.png'
 
-  return <Presenter blogItem={blogItem} imageUrl={imageUrl} />
+  const propsImage: ImageType = {
+    url: blogItem?.image?.url ? blogItem.image.url : '/no_image.png',
+    width: blogItem?.image?.width ? blogItem.image.width : 750,
+    height: blogItem?.image?.height ? blogItem.image.height : 422,
+  }
+
+  return <Presenter blogItem={blogItem} image={propsImage} />
 }

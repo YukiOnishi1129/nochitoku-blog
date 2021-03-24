@@ -1,2 +1,32 @@
 .container {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.image {
+  width: 100%;
+}
+
+.main {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftBar {
+  width: 8%;
+  border: 1px solid red;
+
+  &__area {
+    width: 100%;
+    height: 10px;
+    background: red;
+    position: sticky;
+    top: 140px;
+  }
+}
+
+.rightBar {
+  width: 88%;
+  border: 1px solid blue;
 }
