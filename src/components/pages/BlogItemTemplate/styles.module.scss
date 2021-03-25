@@ -162,7 +162,7 @@
       &:before {
         content: counter(my-counter);
         counter-increment: my-counter;
-        background-color: #333;
+        background-color: var(--c-main);
         border: 1px solid;
         border-radius: 50%;
         box-sizing: border-box;
@@ -182,7 +182,42 @@
   }
 
   ul {
-    list-style-type: disc;
+    position: relative;
+    counter-reset: my-counter;
+    padding: 20px 30px;
+    border: 3px solid var(--c-point);
+    line-height: 2.4;
+
+    &::before {
+      position: absolute;
+      content: '';
+      margin: 0 auto;
+      width: 99%;
+      min-height: 97%;
+      top: 3px;
+      left: 3px;
+      border: 1px solid var(--c-point);
+    }
+
+    li {
+      font-weight: bold;
+      margin-left: 30px;
+      position: relative;
+
+      //   https://saruwakakun.com/html-css/reference/change-before-after
+      &:before {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        background-image: url(../../../svgs/check.svg);
+        background-size: contain;
+        vertical-align: middle;
+        height: 32px;
+        width: 32px;
+        top: 2px;
+        left: -41px;
+      }
+    }
   }
 
   a {
