@@ -12,6 +12,7 @@ import 'highlight.js/styles/shades-of-purple.css'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { DateArea } from '@/components/common/molcules/DateArea'
+import { HighlightBody } from '@/components/common/molcules/HighlightBody'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { ImageType } from '@/types/image'
@@ -70,12 +71,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
               </div>
             </div>
 
-            <div
-              className={styles.contents}
-              dangerouslySetInnerHTML={{
-                __html: highlightedBody,
-              }}
-            />
+            <HighlightBody highlightedBody={highlightedBody} />
           </div>
         </main>
       </section>
