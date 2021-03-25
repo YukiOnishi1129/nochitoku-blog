@@ -5,10 +5,10 @@
  */
 import React from 'react'
 import Image from 'next/image'
-import cheerio from 'cheerio'
-import hljs from 'highlight.js'
+// import 'highlight.js/styles/hybrid.css'
+import 'highlight.js/styles/shades-of-purple.css'
+// import 'highlight.js/styles/sunburst.css'
 // import 'highlight.js/styles/night-owl.css'
-import 'highlight.js/styles/hybrid.css'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { DateArea } from '@/components/common/molcules/DateArea'
@@ -24,6 +24,7 @@ import styles from './styles.module.scss'
 type Props = {
   blogItem: BlogItemType
   image: ImageType
+  highlightedBody: string
 }
 
 /**
@@ -32,15 +33,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogItem, image } = props
-
-  const $ = cheerio.load(blogItem.body)
-
-  $('pre code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text())
-    $(elm).html(result.value)
-    $(elm).addClass('hljs')
-  })
+  const { blogItem, image, highlightedBody } = props
 
   return (
     <BasePostPageLayout breadName={blogItem.title}>
@@ -80,7 +73,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             <div
               className={styles.contents}
               dangerouslySetInnerHTML={{
-                __html: `${$.html()}`,
+                __html: highlightedBody,
               }}
             />
           </div>

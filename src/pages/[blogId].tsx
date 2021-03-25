@@ -4,6 +4,8 @@
  */
 import React from 'react'
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
+import cheerio from 'cheerio'
+import hljs from 'highlight.js'
 /* components */
 import { BlogItemTemplate } from '@/components/pages/BlogItemTemplate'
 /* hooks */
@@ -28,6 +30,7 @@ import { ArchiveType } from '@/types/archive'
  */
 type BlogItemPorps = {
   blogItem: BlogItemType
+  highlightedBody: string
   categories: CategoryType[]
   profile: ProfileType
   archiveList: ArchiveType[]
@@ -39,7 +42,7 @@ type BlogItemPorps = {
  * @returns
  */
 const BlogItemPage: NextPage<BlogItemPorps> = (props) => {
-  const { blogItem, categories, profile, archiveList } = props
+  const { blogItem, highlightedBody, categories, profile, archiveList } = props
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
   React.useEffect(() => {
@@ -55,7 +58,9 @@ const BlogItemPage: NextPage<BlogItemPorps> = (props) => {
     setArchive,
   ])
 
-  return <BlogItemTemplate blogItem={blogItem} />
+  return (
+    <BlogItemTemplate blogItem={blogItem} highlightedBody={highlightedBody} />
+  )
 }
 
 /**
@@ -104,8 +109,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()
 
+  // シンタックハイライト文章作成
+  // https://qiita.com/cawauchi/items/ff6489b17800c5676908
+  const $ = cheerio.load(blogDetailData.body)
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text())
+    $(elm).html(result.value)
+    $(elm).addClass('hljs')
+  })
+
   const props: BlogItemPorps = {
     blogItem: blogDetailData,
+    highlightedBody: $.html(),
     categories: categoryData,
     profile: profile,
     archiveList: archiveList,

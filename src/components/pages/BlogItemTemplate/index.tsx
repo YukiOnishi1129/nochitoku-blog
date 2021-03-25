@@ -15,6 +15,7 @@ import { ImageType } from '@/types/image'
  */
 type Props = {
   blogItem: BlogItemType
+  highlightedBody: string
 }
 
 /**
@@ -23,7 +24,7 @@ type Props = {
  * @returns
  */
 export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
-  const { blogItem } = props
+  const { blogItem, highlightedBody } = props
   //   const imageUrl = !!blogItem?.image ? blogItem.image.url : '/no_image.png'
 
   const propsImage: ImageType = {
@@ -32,5 +33,11 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
     height: blogItem?.image?.height ? blogItem.image.height : 422,
   }
 
-  return <Presenter blogItem={blogItem} image={propsImage} />
+  return (
+    <Presenter
+      blogItem={blogItem}
+      image={propsImage}
+      highlightedBody={highlightedBody}
+    />
+  )
 }
