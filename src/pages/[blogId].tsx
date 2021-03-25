@@ -4,9 +4,10 @@
  */
 import React from 'react'
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
-import Image from 'next/image'
+import cheerio from 'cheerio'
+import hljs from 'highlight.js'
 /* components */
-import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { BlogItemTemplate } from '@/components/pages/BlogItemTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
@@ -28,7 +29,8 @@ import { ArchiveType } from '@/types/archive'
  * props
  */
 type BlogItemPorps = {
-  blog: BlogItemType
+  blogItem: BlogItemType
+  highlightedBody: string
   categories: CategoryType[]
   profile: ProfileType
   archiveList: ArchiveType[]
@@ -39,10 +41,9 @@ type BlogItemPorps = {
  * @param props BlogItemPorps
  * @returns
  */
-const BlogsItemPage: NextPage<BlogItemPorps> = (props) => {
-  const { blog, categories, profile, archiveList } = props
+const BlogItemPage: NextPage<BlogItemPorps> = (props) => {
+  const { blogItem, highlightedBody, categories, profile, archiveList } = props
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
-  const imageUrl = !!blog?.image ? blog.image.url : '/no_image.png'
 
   React.useEffect(() => {
     setCategoryData(categories)
@@ -58,27 +59,7 @@ const BlogsItemPage: NextPage<BlogItemPorps> = (props) => {
   ])
 
   return (
-    <BasePostPageLayout breadName={blog.title}>
-      <section>
-        <Image
-          src={imageUrl}
-          alt="Picture"
-          width={498 * 1.5}
-          height={332 * 1.5}
-        />
-
-        <h2>{blog.title}</h2>
-        {blog.categories.length > 0 &&
-          blog.categories.map((category) => (
-            <h3 key={category.id}>カテゴリー：{category.name}</h3>
-          ))}
-        <div
-          dangerouslySetInnerHTML={{
-            __html: `${blog.body}`,
-          }}
-        />
-      </section>
-    </BasePostPageLayout>
+    <BlogItemTemplate blogItem={blogItem} highlightedBody={highlightedBody} />
   )
 }
 
@@ -128,8 +109,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()
 
+  // シンタックハイライト文章作成
+  // https://qiita.com/cawauchi/items/ff6489b17800c5676908
+  const $ = cheerio.load(blogDetailData.body)
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text())
+    $(elm).html(result.value)
+    $(elm).addClass('hljs')
+  })
+
   const props: BlogItemPorps = {
-    blog: blogDetailData,
+    blogItem: blogDetailData,
+    highlightedBody: $.html(),
     categories: categoryData,
     profile: profile,
     archiveList: archiveList,
@@ -137,4 +128,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return { props }
 }
 
-export default BlogsItemPage
+export default BlogItemPage

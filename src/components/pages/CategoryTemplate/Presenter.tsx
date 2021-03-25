@@ -13,7 +13,6 @@ import { Pagination } from '@/components/common/molcules/Pagination'
 import { blogShowCount } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
-/* styles */
 
 /**
  * props
