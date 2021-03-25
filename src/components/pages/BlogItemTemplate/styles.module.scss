@@ -5,6 +5,7 @@
 
 .image {
   width: 100%;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
 }
 
 .main {
@@ -15,7 +16,6 @@
 
 .leftBar {
   width: 8%;
-  //   border: 1px solid red;
 
   &__area {
     width: 100%;
@@ -36,7 +36,7 @@
 
   &__title {
     margin-bottom: 10px;
-    font-size: 1.75rem;
+    font-size: 2rem;
     font-weight: bold;
     letter-spacing: 0.1em;
     color: var(--c-main);
@@ -62,4 +62,131 @@
 }
 
 .contents {
+  letter-spacing: 0.1em;
+  color: var(--c-main);
+
+  h1 {
+    margin: 40px -16px 16px;
+    background: #989ed3;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+    color: #ffffff;
+    padding: 12px 16px;
+    font-size: 1.75rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+  }
+
+  h2 {
+    margin: 40px 0 16px;
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid #989ed3;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+    font-size: 1.625rem;
+    font-weight: bold;
+    padding: 0 0 0.5em;
+  }
+
+  h3 {
+    margin: 30px 0 12px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+  h4 {
+    margin: 30px 0 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+  h5 {
+    margin: 30px 0 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+  h6 {
+    margin: 30px 0 12px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+  }
+
+  p {
+    line-height: 1.8;
+  }
+
+  img {
+    margin: 40px 0;
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+  }
+
+  pre {
+    margin: 20px 0;
+    border-radius: 3px;
+    code {
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+  }
+
+  ol {
+    position: relative;
+    counter-reset: my-counter;
+    padding: 20px 30px;
+    border: 3px solid var(--c-point);
+    line-height: 2.4;
+
+    // 擬似要素
+    // https://monochrome-design.jp/blog/572
+
+    &::before {
+      position: absolute;
+      content: '';
+      margin: 0 auto;
+      width: 99%;
+      min-height: 97%;
+      top: 3px;
+      left: 3px;
+      border: 1px solid var(--c-point);
+    }
+
+    li {
+      font-weight: bold;
+      margin-left: 30px;
+      position: relative;
+
+      // https://125naroom.com/web/2877
+      &:before {
+        content: counter(my-counter);
+        counter-increment: my-counter;
+        background-color: #333;
+        border: 1px solid;
+        border-radius: 50%;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 26px;
+        width: 26px;
+        color: #ffffff;
+        font-size: 0.75rem;
+        line-height: 1;
+        position: absolute;
+        top: 6px;
+        left: -40px;
+      }
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  a {
+    color: #331cbf;
+    text-decoration: underline;
+  }
 }
