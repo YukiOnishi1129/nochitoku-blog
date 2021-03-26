@@ -28,3 +28,12 @@ export interface BlogDataType {
   blogList: BlogItemType[]
   totalCount: number
 }
+
+/**
+ * TableOfContentType
+ */
+export interface TableOfContentType {
+  text: string
+  id: string
+  name: string
+}

@@ -5,16 +5,12 @@
  */
 import React from 'react'
 import Image from 'next/image'
-// import 'highlight.js/styles/hybrid.css'
-import 'highlight.js/styles/shades-of-purple.css'
-// import 'highlight.js/styles/sunburst.css'
-// import 'highlight.js/styles/night-owl.css'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { DateArea } from '@/components/common/molcules/DateArea'
 import { HighlightBody } from '@/components/common/molcules/HighlightBody'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType, TableOfContentType } from '@/types/blog'
 import { ImageType } from '@/types/image'
 /* styles */
 import styles from './styles.module.scss'
@@ -26,6 +22,7 @@ type Props = {
   blogItem: BlogItemType
   image: ImageType
   highlightedBody: string
+  tableOfContents: TableOfContentType[]
 }
 
 /**
@@ -34,7 +31,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogItem, image, highlightedBody } = props
+  const { blogItem, image, highlightedBody, tableOfContents } = props
 
   return (
     <BasePostPageLayout breadName={blogItem.title}>
@@ -70,6 +67,30 @@ export const Presenter: React.FC<Props> = (props: Props) => {
                 <DateArea date={blogItem.createdAt} />
               </div>
             </div>
+
+            {tableOfContents.length > 0 && (
+              <div className={styles.table} id="create-table-of-contents">
+                <h4>目次</h4>
+                <ul id="lists">
+                  {tableOfContents.map((toc) => {
+                    const listStyle =
+                      toc.name === 'h2'
+                        ? styles.table__list_h2
+                        : styles.table__list_h1
+
+                    return (
+                      <li
+                        className={listStyle}
+                        id={'list ' + toc.name}
+                        key={toc.id}
+                      >
+                        <a href={'#' + toc.id}>{toc.text}</a>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
 
             <HighlightBody highlightedBody={highlightedBody} />
           </div>
