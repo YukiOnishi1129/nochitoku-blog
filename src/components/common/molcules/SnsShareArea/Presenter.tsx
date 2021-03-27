@@ -4,10 +4,10 @@
  * @package Component
  */
 import React from 'react'
-import { FacebookShareButton, FacebookIcon } from 'react-share'
 /* components */
 import { HatenaShareButton } from '@/components/common/atoms/HatenaShareButton'
 import { TwitterShareButton } from '@/components/common/atoms/TwitterShareButton'
+import { FacebookShareButton } from '@/components/common/atoms/FacebookShareButton'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -44,9 +44,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           {/* Facebook */}
           <li className={styles.icon}>
             {/* TODO: vercelデプロイ後確認 */}
-            <FacebookShareButton url={shareUrl}>
-              <FacebookIcon size={40} borderRadius={10} />
-            </FacebookShareButton>
+            <FacebookShareButton shareUrl={shareUrl} />
           </li>
         </ul>
       </div>
