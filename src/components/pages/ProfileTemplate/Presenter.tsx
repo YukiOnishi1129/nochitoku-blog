@@ -8,6 +8,7 @@ import Image from 'next/image'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { SnsShareBar } from '@/components/common/molcules/SnsShareBar'
+import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { SnsShareArea } from '@/components/common/molcules/SnsShareArea'
 import { HighlightBody } from '@/components/common/molcules/HighlightBody'
 /* types */
@@ -34,6 +35,8 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
   return (
     <BasePostPageLayout breadName="プロフィール">
+      {/* ページタイトル */}
+      <PageTitle title={`プロフィール`} />
       <section className={styles.container}>
         <div className={styles.image}>
           <Image
