@@ -28,35 +28,4 @@
 
 .rightBar {
   width: 88%;
-  //   border: 1px solid blue;
-
-  &__main {
-    margin-bottom: 24px;
-  }
-
-  &__title {
-    margin-bottom: 10px;
-    font-size: 2rem;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    color: var(--c-main);
-  }
-
-  &__category {
-    margin-top: 16px;
-    display: flex;
-    &__item {
-      margin-right: 16px;
-      padding: 4px 12px;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      color: var(--c-point);
-      border: 1px solid var(--c-point);
-      border-radius: 4px;
-    }
-  }
-
-  &__date {
-    margin-top: 12px;
-  }
 }

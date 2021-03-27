@@ -24,5 +24,11 @@ type Props = {
 export const TableOfContents: React.FC<Props> = (props: Props) => {
   const { tableOfContents } = props
 
-  return <Presenter tableOfContents={tableOfContents} />
+  return (
+    <>
+      {tableOfContents.length > 0 && (
+        <Presenter tableOfContents={tableOfContents} />
+      )}
+    </>
+  )
 }

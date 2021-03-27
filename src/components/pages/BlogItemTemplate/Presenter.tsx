@@ -7,7 +7,7 @@ import React from 'react'
 import Image from 'next/image'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
-import { DateArea } from '@/components/common/molcules/DateArea'
+import { TitleArea } from './organisms/TitleArea'
 import { TableOfContents } from './organisms/TableOfContents'
 import { HighlightBody } from '@/components/common/molcules/HighlightBody'
 /* types */
@@ -51,28 +51,11 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             <ul className={styles.leftBar__area}></ul>
           </div>
           <div className={styles.rightBar}>
-            <div className={styles.rightBar__main}>
-              <h2 className={styles.rightBar__title}>{blogItem.title}</h2>
-              <div className={styles.rightBar__category}>
-                {blogItem.categories.length > 0 &&
-                  blogItem.categories.map((category) => (
-                    <div
-                      className={styles.rightBar__category__item}
-                      key={category.id}
-                    >
-                      {category.name}
-                    </div>
-                  ))}
-              </div>
-              <div className={styles.rightBar__date}>
-                <DateArea date={blogItem.createdAt} />
-              </div>
-            </div>
+            {/* ブログタイトルエリア */}
+            <TitleArea blogItem={blogItem} />
 
             {/* 目次 */}
-            {tableOfContents.length > 0 && (
-              <TableOfContents tableOfContents={tableOfContents} />
-            )}
+            <TableOfContents tableOfContents={tableOfContents} />
 
             {/* 記事本文 */}
             <HighlightBody highlightedBody={highlightedBody} />
