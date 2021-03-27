@@ -1,6 +1,12 @@
+@import '@variable';
+
 .container {
   padding: 20px 42px;
   display: flex;
+
+  @include mq(lg) {
+    padding: 20px;
+  }
 }
 
 .image {
@@ -8,6 +14,10 @@
   margin-right: auto;
   margin-left: auto;
   width: 120px;
+
+  @include mq(lg) {
+    width: 100px;
+  }
 
   &__pic {
     border-radius: 50%;
@@ -20,6 +30,11 @@
   height: 200px;
   background-color: var(--c-main);
   border: 1px solid #423a57;
+
+  @include mq(lg) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .profile {
@@ -46,6 +61,10 @@
     font-size: 0.875rem;
     font-weight: bold;
     margin-bottom: 30px;
+
+    @include mq(lg) {
+      margin-bottom: 50px;
+    }
   }
 
   &__button {
@@ -75,6 +94,10 @@
   margin-left: auto;
   margin-bottom: 10px;
   width: 100px;
+
+  @include mq(lg) {
+    width: 50px;
+  }
 
   &__icon {
     cursor: pointer;

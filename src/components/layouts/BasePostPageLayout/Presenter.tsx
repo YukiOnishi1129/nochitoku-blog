@@ -28,7 +28,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   return (
     <BaseLayout breadName={breadName}>
       <article className={styles.article}>{children}</article>
-      <Aside />
+      <div className={styles.aside}>
+        <Aside />
+      </div>
     </BaseLayout>
   )
 }

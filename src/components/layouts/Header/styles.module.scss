@@ -25,6 +25,10 @@
   height: 93px;
   border: 1px solid var(--c-line);
   padding: 19px 138px;
+
+  @include mq(lg) {
+    padding: 19px 50px;
+  }
 }
 
 .title {
@@ -55,6 +59,10 @@
   justify-content: space-between;
   margin-top: 20px;
   width: 350px;
+
+  @include mq(lg) {
+    display: none;
+  }
 
   h2 {
     cursor: pointer;

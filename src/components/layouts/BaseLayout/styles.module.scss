@@ -11,7 +11,7 @@
 
 .headerEmpty {
   height: 131px;
-  // margin-bottom: 40px;
+
   @include mq(xl) {
     height: 117px;
   }
@@ -28,6 +28,10 @@
     display: block;
     margin: 30px auto 20px;
     width: 70%;
+  }
+
+  @include mq(lg) {
+    width: 90%;
   }
 }
 
