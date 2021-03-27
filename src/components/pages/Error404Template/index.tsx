@@ -1,5 +1,5 @@
 /**
- * layouts/Aside/
+ * pages/Error404Template
  * ContainerComponent
  * @package Component
  */
@@ -12,10 +12,9 @@ import { Presenter } from './Presenter'
  * container
  * @returns
  */
-export const Aside: React.FC = () => {
+export const Error404Template: React.FC = () => {
   const router = useRouter()
   const [searchText, setSearchText] = React.useState('')
-
   /**
    * 検索キーワード変更処理
    * @param e React.ChangeEvent<HTMLInputElement>

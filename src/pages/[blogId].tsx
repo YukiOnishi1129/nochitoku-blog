@@ -111,7 +111,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (params?.blogId && typeof params.blogId === 'string') {
     blogId = params.blogId
   }
-
   // ブログ記事詳細データ取得 ---------
   const blogDetailData = await getBlogBy(blogId)
   // カテゴリーデータ取得 ---------
