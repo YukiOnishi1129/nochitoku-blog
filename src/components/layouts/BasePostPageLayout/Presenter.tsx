@@ -15,7 +15,7 @@ import styles from './styles.module.scss'
  */
 export type Props = {
   children: React.ReactNode
-  breadName: string
+  breadName?: string
 }
 
 /**

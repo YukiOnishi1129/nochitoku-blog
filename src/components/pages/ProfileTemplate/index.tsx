@@ -1,5 +1,5 @@
 /**
- * pages/BlogItemTemplate
+ * pages/ProfileTemplate
  * ContainerComponent
  * @package Component
  */

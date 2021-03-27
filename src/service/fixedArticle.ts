@@ -1,0 +1,47 @@
+/**
+ * ノチトク固定記事API
+ * @package service
+ */
+/* config */
+import globalAxios from '@/config/globalAxios'
+/* constants */
+import { initFixedArticleData } from '@/constants/initState'
+
+/**
+ * constant
+ */
+const BASE_URL = 'https://yuki-read.microcms.io/api/v1/fixed/'
+
+/**
+ * プライバシーポリシーデータ取得
+ * @returns
+ */
+export const getPolicy = async () => {
+  let policyData = initFixedArticleData
+
+  try {
+    const res = await globalAxios.get(BASE_URL + 'policy')
+    policyData = res.data
+  } catch (error) {
+    console.log(error)
+  }
+
+  return policyData
+}
+
+/**
+ * 利用規約データ取得
+ * @returns
+ */
+export const getTerm = async () => {
+  let termData = initFixedArticleData
+
+  try {
+    const res = await globalAxios.get(BASE_URL + 'term')
+    termData = res.data
+  } catch (error) {
+    console.log(error)
+  }
+
+  return termData
+}

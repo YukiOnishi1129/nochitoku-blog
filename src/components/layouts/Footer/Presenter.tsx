@@ -26,11 +26,9 @@ export const Presenter: React.FC = () => {
         </Link>
         <li className={styles.after}>|</li>
         <Link href={NAVIGATION_LINK.TERM}>
-          <li className={styles.list}>利用規約</li>
+          <li className={styles.list}>免責事項</li>
         </Link>
       </ul>
-      {/* SNSエリア */}
-      {/* <ul className={styles.sns}></ul> */}
 
       {/* copyright */}
       <p className={styles.copy}>
