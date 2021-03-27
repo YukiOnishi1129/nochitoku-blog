@@ -3,6 +3,10 @@
 .error {
   margin: 30px auto 80px;
   width: 70%;
+
+  @include mq(xl) {
+    width: 90%;
+  }
 }
 
 .title {

@@ -1,3 +1,9 @@
+@import '@variable';
+
 .article {
   width: 780px;
+
+  @include mq(xl) {
+    width: 100%;
+  }
 }

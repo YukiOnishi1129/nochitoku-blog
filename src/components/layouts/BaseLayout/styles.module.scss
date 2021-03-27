@@ -12,6 +12,9 @@
 .headerEmpty {
   height: 131px;
   // margin-bottom: 40px;
+  @include mq(xl) {
+    height: 117px;
+  }
 }
 
 .divider {
@@ -23,6 +26,7 @@
 
   @include mq(xl) {
     display: block;
+    margin: 30px auto 0;
     width: 70%;
   }
 }
