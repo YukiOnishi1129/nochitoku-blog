@@ -5,16 +5,13 @@
  */
 import React from 'react'
 import Image from 'next/image'
-// import 'highlight.js/styles/hybrid.css'
-import 'highlight.js/styles/shades-of-purple.css'
-// import 'highlight.js/styles/sunburst.css'
-// import 'highlight.js/styles/night-owl.css'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
-import { DateArea } from '@/components/common/molcules/DateArea'
+import { TitleArea } from './organisms/TitleArea'
+import { TableOfContents } from './organisms/TableOfContents'
 import { HighlightBody } from '@/components/common/molcules/HighlightBody'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType, TableOfContentType } from '@/types/blog'
 import { ImageType } from '@/types/image'
 /* styles */
 import styles from './styles.module.scss'
@@ -26,6 +23,7 @@ type Props = {
   blogItem: BlogItemType
   image: ImageType
   highlightedBody: string
+  tableOfContents: TableOfContentType[]
 }
 
 /**
@@ -34,7 +32,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogItem, image, highlightedBody } = props
+  const { blogItem, image, highlightedBody, tableOfContents } = props
 
   return (
     <BasePostPageLayout breadName={blogItem.title}>
@@ -53,24 +51,13 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             <ul className={styles.leftBar__area}></ul>
           </div>
           <div className={styles.rightBar}>
-            <div className={styles.rightBar__main}>
-              <h2 className={styles.rightBar__title}>{blogItem.title}</h2>
-              <div className={styles.rightBar__category}>
-                {blogItem.categories.length > 0 &&
-                  blogItem.categories.map((category) => (
-                    <div
-                      className={styles.rightBar__category__item}
-                      key={category.id}
-                    >
-                      {category.name}
-                    </div>
-                  ))}
-              </div>
-              <div className={styles.rightBar__date}>
-                <DateArea date={blogItem.createdAt} />
-              </div>
-            </div>
+            {/* ブログタイトルエリア */}
+            <TitleArea blogItem={blogItem} />
 
+            {/* 目次 */}
+            <TableOfContents tableOfContents={tableOfContents} />
+
+            {/* 記事本文 */}
             <HighlightBody highlightedBody={highlightedBody} />
           </div>
         </main>

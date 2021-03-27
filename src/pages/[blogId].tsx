@@ -20,7 +20,7 @@ import { getArchiveList } from '@/logic/ArchiveLogic'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType, TableOfContentType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
 import { ArchiveType } from '@/types/archive'
@@ -31,6 +31,7 @@ import { ArchiveType } from '@/types/archive'
 type BlogItemPorps = {
   blogItem: BlogItemType
   highlightedBody: string
+  tableOfContents: TableOfContentType[]
   categories: CategoryType[]
   profile: ProfileType
   archiveList: ArchiveType[]
@@ -42,7 +43,14 @@ type BlogItemPorps = {
  * @returns
  */
 const BlogItemPage: NextPage<BlogItemPorps> = (props) => {
-  const { blogItem, highlightedBody, categories, profile, archiveList } = props
+  const {
+    blogItem,
+    highlightedBody,
+    tableOfContents,
+    categories,
+    profile,
+    archiveList,
+  } = props
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
   React.useEffect(() => {
@@ -59,7 +67,11 @@ const BlogItemPage: NextPage<BlogItemPorps> = (props) => {
   ])
 
   return (
-    <BlogItemTemplate blogItem={blogItem} highlightedBody={highlightedBody} />
+    <BlogItemTemplate
+      blogItem={blogItem}
+      highlightedBody={highlightedBody}
+      tableOfContents={tableOfContents}
+    />
   )
 }
 
@@ -118,9 +130,23 @@ export const getStaticProps: GetStaticProps = async (context) => {
     $(elm).addClass('hljs')
   })
 
+  // 目次作成
+  // https://blog.microcms.io/create-table-of-contents/
+  // https://ru-blog.com/nextjs-microcms-create-table-of-contents/
+  const headings = $('h1, h2').toArray()
+  const tableOfContents: TableOfContentType[] = headings.map((data) => {
+    return {
+      //@ts-ignore
+      text: String(data.children[0].data),
+      id: data.attribs.id,
+      name: data.name,
+    }
+  })
+
   const props: BlogItemPorps = {
     blogItem: blogDetailData,
     highlightedBody: $.html(),
+    tableOfContents: tableOfContents,
     categories: categoryData,
     profile: profile,
     archiveList: archiveList,

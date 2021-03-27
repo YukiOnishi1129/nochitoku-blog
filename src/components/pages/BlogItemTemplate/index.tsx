@@ -7,7 +7,7 @@ import React from 'react'
 /* components */
 import { Presenter } from './Presenter'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType, TableOfContentType } from '@/types/blog'
 import { ImageType } from '@/types/image'
 
 /**
@@ -16,6 +16,7 @@ import { ImageType } from '@/types/image'
 type Props = {
   blogItem: BlogItemType
   highlightedBody: string
+  tableOfContents: TableOfContentType[]
 }
 
 /**
@@ -24,8 +25,7 @@ type Props = {
  * @returns
  */
 export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
-  const { blogItem, highlightedBody } = props
-  //   const imageUrl = !!blogItem?.image ? blogItem.image.url : '/no_image.png'
+  const { blogItem, highlightedBody, tableOfContents } = props
 
   const propsImage: ImageType = {
     url: blogItem?.image?.url ? blogItem.image.url : '/no_image.png',
@@ -38,6 +38,7 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
       blogItem={blogItem}
       image={propsImage}
       highlightedBody={highlightedBody}
+      tableOfContents={tableOfContents}
     />
   )
 }
