@@ -7,6 +7,7 @@ import React from 'react'
 import Image from 'next/image'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { SnsShareBar } from '@/components/common/molcules/SnsShareBar'
 import { TitleArea } from './organisms/TitleArea'
 import { TableOfContents } from './organisms/TableOfContents'
 import { HighlightBody } from '@/components/common/molcules/HighlightBody'
@@ -24,6 +25,7 @@ type Props = {
   image: ImageType
   highlightedBody: string
   tableOfContents: TableOfContentType[]
+  shareUrl: string
 }
 
 /**
@@ -32,7 +34,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogItem, image, highlightedBody, tableOfContents } = props
+  const { blogItem, image, highlightedBody, tableOfContents, shareUrl } = props
 
   return (
     <BasePostPageLayout breadName={blogItem.title}>
@@ -48,7 +50,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
         <main className={styles.main}>
           <div className={styles.leftBar}>
-            <ul className={styles.leftBar__area}></ul>
+            <SnsShareBar shareUrl={shareUrl} />
           </div>
           <div className={styles.rightBar}>
             {/* ブログタイトルエリア */}
