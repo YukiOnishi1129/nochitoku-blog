@@ -4,7 +4,16 @@
  * @package Component
  */
 import React from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
+import {
+  HatenaShareButton,
+  HatenaIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  FacebookShareButton,
+  FacebookIcon,
+} from 'react-share'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { TitleArea } from './organisms/TitleArea'
@@ -33,6 +42,13 @@ type Props = {
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
   const { blogItem, image, highlightedBody, tableOfContents } = props
+  const router = useRouter()
+  let shareUrl = ''
+  if (router?.query?.blogId && typeof router.query.blogId === 'string') {
+    shareUrl = '/' + router.query.blogId
+  }
+  // TODO: 仮で設定している
+  shareUrl = 'https://read-engineer.com/2021/02/20/capital/'
 
   return (
     <BasePostPageLayout breadName={blogItem.title}>
@@ -48,7 +64,30 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
         <main className={styles.main}>
           <div className={styles.leftBar}>
-            <ul className={styles.leftBar__area}></ul>
+            <ul className={styles.leftBar__area}>
+              <li className={styles.content}>Share!!</li>
+              {/* はてブ */}
+              <li>
+                {/* TODO: vercelデプロイ後確認 */}
+                <HatenaShareButton url={shareUrl}>
+                  <HatenaIcon size={36} borderRadius={10} />
+                </HatenaShareButton>
+              </li>
+              {/* Twitter */}
+              <li>
+                {/* TODO: vercelデプロイ後確認 */}
+                <TwitterShareButton url={shareUrl}>
+                  <TwitterIcon size={36} borderRadius={10} />
+                </TwitterShareButton>
+              </li>
+              {/* Facebook */}
+              <li>
+                {/* TODO: vercelデプロイ後確認 */}
+                <FacebookShareButton url={shareUrl}>
+                  <FacebookIcon size={36} borderRadius={10} />
+                </FacebookShareButton>
+              </li>
+            </ul>
           </div>
           <div className={styles.rightBar}>
             {/* ブログタイトルエリア */}

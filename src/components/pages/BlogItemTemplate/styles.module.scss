@@ -20,10 +20,20 @@
   &__area {
     width: 100%;
     height: 10px;
-    background: red;
+
     position: sticky;
-    top: 140px;
+    top: 160px;
+    text-align: center;
   }
+
+  li {
+    margin-bottom: 20px;
+  }
+}
+
+.content {
+  // margin-top: 20px;
+  font-size: 1.125rem;
 }
 
 .rightBar {
