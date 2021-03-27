@@ -9,6 +9,8 @@ import { useRouter } from 'next/router'
 import { Presenter } from './Presenter'
 /* contexts */
 import { useProfileState } from '@/contexts/ProfileContext'
+/* constants */
+import { NAVIGATION_LINK } from '@/constants/navigation'
 
 /**
  * container
@@ -24,9 +26,9 @@ export const ProfileArea: React.FC = () => {
    */
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    // TODO: プロフィールページへ遷移
+    // プロフィールページへ遷移
     router.push({
-      pathname: `./`,
+      pathname: `${NAVIGATION_LINK.PROFILE}`,
     })
   }
 

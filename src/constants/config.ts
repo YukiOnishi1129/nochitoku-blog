@@ -1,7 +1,7 @@
 /**
  * config
  *
- * @package Cnstants
+ * @package Constants
  */
 
 /**

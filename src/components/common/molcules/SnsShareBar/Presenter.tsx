@@ -32,17 +32,17 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       {/* はてブ */}
       <li className={styles.icon}>
         {/* TODO: vercelデプロイ後確認 */}
-        <HatenaShareButton shareUrl={shareUrl} />
+        <HatenaShareButton shareUrl={shareUrl} size={30} />
       </li>
       {/* Twitter */}
       <li className={styles.icon}>
         {/* TODO: vercelデプロイ後確認 */}
-        <TwitterShareButton shareUrl={shareUrl} />
+        <TwitterShareButton shareUrl={shareUrl} size={30} />
       </li>
       {/* Facebook */}
       <li className={styles.icon}>
         {/* TODO: vercelデプロイ後確認 */}
-        <FacebookShareButton shareUrl={shareUrl} />
+        <FacebookShareButton shareUrl={shareUrl} size={30} />
       </li>
     </ul>
   )

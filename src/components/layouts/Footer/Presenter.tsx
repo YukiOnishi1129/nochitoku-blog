@@ -5,6 +5,8 @@
  */
 import React from 'react'
 import Link from 'next/link'
+/* constants */
+import { NAVIGATION_LINK } from '@/constants/navigation'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -15,15 +17,15 @@ export const Presenter: React.FC = () => {
   return (
     <div className={styles.container}>
       <ul className={styles.lists}>
-        <Link href="/">
+        <Link href={NAVIGATION_LINK.TOP}>
           <li className={styles.list}>HOME</li>
         </Link>
         <li className={styles.after}>|</li>
-        <Link href="/policy">
+        <Link href={NAVIGATION_LINK.POLICY}>
           <li className={styles.list}>プライバシーポリシー</li>
         </Link>
         <li className={styles.after}>|</li>
-        <Link href="/term">
+        <Link href={NAVIGATION_LINK.TERM}>
           <li className={styles.list}>利用規約</li>
         </Link>
       </ul>
