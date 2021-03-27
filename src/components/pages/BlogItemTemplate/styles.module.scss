@@ -22,41 +22,7 @@
   width: 88%;
 }
 
-.sns {
-  border-top: 4px solid var(--c-main);
-  border-bottom: 4px solid var(--c-main);
-  height: 68px;
+.shareArea {
   margin-top: 60px;
   margin-bottom: 80px;
-
-  &__area {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 70%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-}
-
-.share {
-  width: 30%;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-  line-height: 40px;
-}
-
-.icons {
-  display: flex;
-  justify-content: space-around;
-  width: 70%;
-}
-
-.icon {
-  display: block;
-
-  &:hover {
-    opacity: 0.7;
-  }
 }
