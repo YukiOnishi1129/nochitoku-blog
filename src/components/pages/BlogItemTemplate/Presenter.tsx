@@ -5,10 +5,10 @@
  */
 import React from 'react'
 import Image from 'next/image'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { DateArea } from '@/components/common/molcules/DateArea'
+import { TableOfContents } from './organisms/TableOfContents'
 import { HighlightBody } from '@/components/common/molcules/HighlightBody'
 /* types */
 import { BlogItemType, TableOfContentType } from '@/types/blog'
@@ -69,32 +69,12 @@ export const Presenter: React.FC<Props> = (props: Props) => {
               </div>
             </div>
 
+            {/* 目次 */}
             {tableOfContents.length > 0 && (
-              <div className={styles.table} id="create-table-of-contents">
-                <h4>目次</h4>
-                <ul id="lists">
-                  {tableOfContents.map((toc) => {
-                    const listStyle =
-                      toc.name === 'h2'
-                        ? styles.table__list_h2
-                        : styles.table__list_h1
-
-                    return (
-                      <li
-                        className={listStyle}
-                        id={'list ' + toc.name}
-                        key={toc.id}
-                      >
-                        <AnchorLink offset="140" href={'#' + toc.id}>
-                          {toc.text}
-                        </AnchorLink>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
+              <TableOfContents tableOfContents={tableOfContents} />
             )}
 
+            {/* 記事本文 */}
             <HighlightBody highlightedBody={highlightedBody} />
           </div>
         </main>
