@@ -25,10 +25,10 @@ export const Presenter: React.FC = () => {
           </div>
         </Link>
         <div className={styles.link}>
-          <Link href="/">
+          <Link href={NAVIGATION_LINK.TOP}>
             <h2>ホーム</h2>
           </Link>
-          <Link href="/">
+          <Link href={NAVIGATION_LINK.ABOUT}>
             <h2>このブログについて</h2>
           </Link>
           <Link href={NAVIGATION_LINK.PROFILE}>
