@@ -9,6 +9,7 @@ import { BaseLayout } from '@/components/layouts/BaseLayout'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
 import { SearchBlogItem } from './organisms/SearchBlogItem'
+import { BlogItemResponsive } from '@/components/common/molcules/BlogItemResponsive'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { EventType } from '@/types/event'
@@ -54,11 +55,28 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           />
         </div>
 
+        {/* 検索結果一覧 */}
         <div className={styles.list}>
           {showBlogList.length > 0 &&
             showBlogList.map((blog) => (
               <SearchBlogItem key={blog.id} blogItem={blog} />
             ))}
+
+          {showBlogList.length === 0 && (
+            <div className={styles.unknown}>
+              <p>検索したキーワードは記事がありませんでした。</p>
+              <p>別のキーワードで検索してみてください。</p>
+            </div>
+          )}
+        </div>
+
+        {/* 検索結果一覧 レスポンシブ */}
+        <div className={styles.list__responsive}>
+          {showBlogList.length > 0 &&
+            showBlogList.map((blog) => (
+              <BlogItemResponsive key={blog.id} blogItem={blog} />
+            ))}
+
           {showBlogList.length === 0 && (
             <div className={styles.unknown}>
               <p>検索したキーワードは記事がありませんでした。</p>
