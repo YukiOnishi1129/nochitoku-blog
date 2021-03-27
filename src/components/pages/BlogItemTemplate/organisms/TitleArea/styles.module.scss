@@ -1,3 +1,5 @@
+@import '@variable';
+
 .container {
   margin-bottom: 24px;
 }
@@ -23,6 +25,13 @@
     color: var(--c-point);
     border: 1px solid var(--c-point);
     border-radius: 4px;
+
+    @include mq(lg) {
+      font-size: 1rem;
+      border: 2px solid var(--c-point);
+      border-radius: 8px;
+      padding: 10px 16px;
+    }
   }
 }
 
