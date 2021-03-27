@@ -1,7 +1,45 @@
+@import '@variable';
+
 .aside {
   width: 300px;
   padding: 10px;
   margin-bottom: 100px;
+
+  @include mq(xl) {
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}
+
+.search {
+  width: 100%;
+  @include mq(xl) {
+    display: none;
+  }
+
+  &__responsive {
+    display: none;
+
+    @include mq(xl) {
+      display: block;
+      margin-top: 40px;
+    }
+  }
+}
+
+.profile {
+  margin-top: 45px;
+  @include mq(xl) {
+    display: none;
+  }
+
+  &__responsive {
+    display: none;
+    @include mq(xl) {
+      display: block;
+    }
+  }
 }
 
 .parts {

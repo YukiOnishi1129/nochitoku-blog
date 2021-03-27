@@ -1,12 +1,21 @@
+@import '@variable';
+
 .title {
-  //   margin-top: 28px;
   margin-bottom: 48px;
+
+  @include mq(xl) {
+    margin-bottom: 20px;
+  }
 
   &__content {
     margin-bottom: 20px;
     font-size: 1.5rem;
     color: var(--c-main);
     letter-spacing: 0.1em;
+
+    @include mq(xl) {
+      margin-bottom: 10px;
+    }
   }
 
   &__border {

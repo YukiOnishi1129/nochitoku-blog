@@ -44,8 +44,8 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           <Image
             src={image.url}
             alt="Picture"
-            width={image.width}
-            height={image.height}
+            width={image.width * 2}
+            height={image.height * 2}
           />
         </div>
 

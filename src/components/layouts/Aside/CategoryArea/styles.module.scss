@@ -1,3 +1,5 @@
+@import '@variable';
+
 .container {
   padding: 16px 10px;
 }
@@ -21,6 +23,11 @@
   margin: 8px;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
   transition: background 0.1s;
+
+  @include mq(xl) {
+    font-size: 1rem;
+    padding: 0.875rem 1rem;
+  }
 
   &:hover {
     background: var(--c-main);

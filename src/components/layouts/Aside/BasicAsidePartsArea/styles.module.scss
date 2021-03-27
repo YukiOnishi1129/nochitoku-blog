@@ -1,13 +1,23 @@
+@import '@variable';
+
 .title {
   padding: 4px 6px;
   font-size: 0.75rem;
   font-weight: bold;
   color: var(--c-main);
+
+  @include mq(xl) {
+    font-size: 1rem;
+  }
 }
 
 .bar {
   background: var(--c-main);
   height: 4px;
+
+  @include mq(xl) {
+    height: 10px;
+  }
 }
 
 .field {

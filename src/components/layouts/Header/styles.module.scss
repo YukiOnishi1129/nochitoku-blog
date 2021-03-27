@@ -1,4 +1,4 @@
-// @import '@/styles/variable.scss';
+@import '@variable';
 
 .container {
   position: fixed;
@@ -12,6 +12,10 @@
 .top {
   height: 38px;
   background: var(--c-main);
+
+  @include mq(xl) {
+    height: 24px;
+  }
 }
 
 .main {

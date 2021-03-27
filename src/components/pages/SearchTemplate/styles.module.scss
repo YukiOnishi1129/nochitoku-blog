@@ -1,11 +1,31 @@
+@import '@variable';
+
 .container {
   width: 960px;
   min-height: 400px;
+
+  @include mq(xl) {
+    width: 100%;
+  }
 }
 
 .input {
   margin-bottom: 30px;
   width: 500px;
+
+  @include mq(xl) {
+    display: none;
+  }
+
+  &__responsive {
+    display: none;
+    margin-bottom: 40px;
+    width: 100%;
+
+    @include mq(xl) {
+      display: block;
+    }
+  }
 }
 
 .list {
