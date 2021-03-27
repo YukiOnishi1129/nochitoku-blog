@@ -7,11 +7,11 @@ import React from 'react'
 import {
   HatenaShareButton,
   HatenaIcon,
-  TwitterShareButton,
-  TwitterIcon,
   FacebookShareButton,
   FacebookIcon,
 } from 'react-share'
+/* components */
+import { TwitterShareButton } from '@/components/common/atoms/TwitterShareButton'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -45,9 +45,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           {/* Twitter */}
           <li className={styles.icon}>
             {/* TODO: vercelデプロイ後確認 */}
-            <TwitterShareButton url={shareUrl}>
-              <TwitterIcon size={40} borderRadius={10} />
-            </TwitterShareButton>
+            <TwitterShareButton shareUrl={shareUrl} />
           </li>
           {/* Facebook */}
           <li className={styles.icon}>
