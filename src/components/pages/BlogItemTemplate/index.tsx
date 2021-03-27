@@ -4,6 +4,7 @@
  * @package Component
  */
 import React from 'react'
+import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
 /* types */
@@ -33,12 +34,21 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
     height: blogItem?.image?.height ? blogItem.image.height : 422,
   }
 
+  const router = useRouter()
+  let shareUrl = ''
+  if (router?.query?.blogId && typeof router.query.blogId === 'string') {
+    shareUrl = '/' + router.query.blogId
+  }
+  // TODO: 仮で設定している
+  shareUrl = 'https://read-engineer.com/2021/02/20/capital/'
+
   return (
     <Presenter
       blogItem={blogItem}
       image={propsImage}
       highlightedBody={highlightedBody}
       tableOfContents={tableOfContents}
+      shareUrl={shareUrl}
     />
   )
 }
