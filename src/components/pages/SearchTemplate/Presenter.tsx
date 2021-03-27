@@ -37,10 +37,19 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     <BaseLayout breadName={breadName}>
       <div className={styles.container}>
         <PageTitle title="検索結果" />
+        {/* 検索フォーム */}
         <div className={styles.input}>
           <SearchInputForm
             text={searchText}
             placeholder="検索"
+            onChange={onChange}
+          />
+        </div>
+        <div className={styles.input__responsive}>
+          <SearchInputForm
+            text={searchText}
+            placeholder="検索"
+            size={32}
             onChange={onChange}
           />
         </div>

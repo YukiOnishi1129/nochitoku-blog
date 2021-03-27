@@ -1,3 +1,5 @@
+@import '@variable';
+
 .container {
   width: 100%;
 }
@@ -11,6 +13,11 @@
   color: var(--c-main);
   letter-spacing: 0.1em;
   transition: background 0.1s;
+
+  @include mq(xl) {
+    font-size: 1rem;
+    padding: 16px 20px;
+  }
 
   &:hover {
     opacity: 0.9;
@@ -28,6 +35,11 @@
   color: var(--c-main);
   letter-spacing: 0.1em;
   transition: background 0.1s;
+
+  @include mq(xl) {
+    font-size: 1rem;
+    padding: 16px 20px;
+  }
 
   &:hover {
     opacity: 0.9;

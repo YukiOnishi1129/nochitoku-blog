@@ -1,3 +1,5 @@
+@import '@variable';
+
 .input {
   display: block;
   width: 100%;
@@ -7,7 +9,14 @@
   border-radius: 1px;
   box-sizing: border-box;
   padding: 4px 8px;
-  font-size: 14px;
+  font-size: 0.875rem;
+
+  @include mq(xl) {
+    height: 50px;
+    font-size: 1.25rem;
+    border-radius: 8px;
+    padding: 4px 16px;
+  }
 }
 
 .input::placeholder {

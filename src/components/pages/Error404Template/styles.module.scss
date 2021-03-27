@@ -1,3 +1,5 @@
+@import '@variable';
+
 .error {
   margin: 30px auto 80px;
   width: 70%;
@@ -26,6 +28,21 @@
   margin-right: auto;
   margin-left: auto;
   width: 95%;
+  @include mq(xl) {
+    display: none;
+  }
+
+  &__responsive {
+    display: none;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+
+    @include mq(xl) {
+      display: block;
+    }
+  }
 }
 
 .category {

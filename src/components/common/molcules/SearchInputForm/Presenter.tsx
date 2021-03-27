@@ -18,6 +18,7 @@ import styles from './styles.module.scss'
 export type SearchInputFormProps = {
   text: string
   placeholder: string
+  size?: number
   onChange: EventType['onChange']
   onKeyUp?: EventType['onkeypress']
   onClick?: () => void
@@ -31,7 +32,7 @@ export type SearchInputFormProps = {
 export const Presenter: React.FC<SearchInputFormProps> = (
   props: SearchInputFormProps
 ) => {
-  const { text, placeholder, onChange, onKeyUp, onClick } = props
+  const { text, placeholder, size = 18, onChange, onKeyUp, onClick } = props
 
   return (
     <div className={styles.container}>
@@ -43,7 +44,7 @@ export const Presenter: React.FC<SearchInputFormProps> = (
         onClick={onClick}
       />
       <div className={styles.icon}>
-        <SearchIcon size={18} />
+        <SearchIcon size={size} />
       </div>
     </div>
   )

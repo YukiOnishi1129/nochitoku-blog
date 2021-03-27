@@ -15,7 +15,8 @@
     "jsx": "preserve",
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@variable": ["styles/variable.scss"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

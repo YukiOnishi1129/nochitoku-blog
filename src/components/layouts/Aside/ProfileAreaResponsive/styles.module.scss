@@ -1,0 +1,91 @@
+.container {
+  padding: 20px 42px;
+  display: flex;
+}
+
+.image {
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 120px;
+
+  &__pic {
+    border-radius: 50%;
+  }
+}
+
+.border {
+  display: block;
+  width: 1px;
+  height: 200px;
+  background-color: var(--c-main);
+  border: 1px solid #423a57;
+}
+
+.profile {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 200px;
+  letter-spacing: 0.1em;
+  color: var(--c-main);
+
+  &__name {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 18px;
+  }
+  &__eng_name {
+    margin-bottom: 16px;
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+
+  &__position {
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  &__button {
+    display: block;
+    background: var(--c-sub);
+    padding: 8px 16px;
+    border: 2px solid var(--c-main);
+    border-radius: 5px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    transition: background 0.1s;
+
+    &:hover {
+      opacity: 0.9;
+      background: var(--c-main);
+      color: var(--c-sub);
+      transition: background 1s;
+    }
+  }
+}
+
+.sns {
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  width: 100px;
+
+  &__icon {
+    cursor: pointer;
+    margin-bottom: 16px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
