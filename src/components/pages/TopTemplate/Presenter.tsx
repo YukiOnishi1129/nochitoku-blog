@@ -7,11 +7,14 @@ import React from 'react'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
+import { BlogItemResponsive } from '@/components/common/molcules/BlogItemResponsive'
 import { Pagination } from '@/components/common/molcules/Pagination'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -32,10 +35,23 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   return (
     <BasePostPageLayout>
       {/* ブログ記事一覧表示 */}
-      {blogList.length > 0 &&
-        blogList.map((blogItem, index) => (
-          <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
-        ))}
+      <div className={styles.blogItem}>
+        {blogList.length > 0 &&
+          blogList.map((blogItem, index) => (
+            <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
+          ))}
+      </div>
+
+      {/* ブログ記事一覧表示 レスポンシブ*/}
+      <div className={styles.blogItem_responsive}>
+        {blogList.length > 0 &&
+          blogList.map((blogItem, index) => (
+            <BlogItemResponsive
+              key={`${blogItem.id}_${index}`}
+              blogItem={blogItem}
+            />
+          ))}
+      </div>
 
       {/* ページネーション */}
       {totalCount / blogShowCount > 1 && (

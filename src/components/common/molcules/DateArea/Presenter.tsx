@@ -14,6 +14,7 @@ import styles from './styles.module.scss'
  */
 export type DateAreaProps = {
   showDate: string
+  size?: number
 }
 
 /**
@@ -22,12 +23,12 @@ export type DateAreaProps = {
  * @returns
  */
 export const Presenter: React.FC<DateAreaProps> = (props: DateAreaProps) => {
-  const { showDate } = props
+  const { showDate, size = 12 } = props
 
   return (
     <div className={styles.container}>
       <div className={styles.icon}>
-        <ClockIcon size={12} />
+        <ClockIcon size={size} />
       </div>
 
       <p className={styles.date}>{showDate}</p>
