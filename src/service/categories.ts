@@ -23,7 +23,7 @@ export const getCategories = async () => {
     const res = await globalAxios.get(BASE_URL)
     categories = res.data.contents
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getCategories`)
   }
 
   return categories
@@ -39,6 +39,8 @@ export const getCategoryBy = async (id: string) => {
   try {
     const res = await globalAxios.get(BASE_URL + id)
     category = res.data
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(`API ERROR: getCategoryBy`)
+  }
   return category
 }

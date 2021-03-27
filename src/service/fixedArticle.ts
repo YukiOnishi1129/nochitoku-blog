@@ -23,7 +23,7 @@ export const getPolicy = async () => {
     const res = await globalAxios.get(BASE_URL + 'policy')
     policyData = res.data
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getPolicy`)
   }
 
   return policyData
@@ -40,7 +40,7 @@ export const getTerm = async () => {
     const res = await globalAxios.get(BASE_URL + 'term')
     termData = res.data
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getTerm`)
   }
 
   return termData

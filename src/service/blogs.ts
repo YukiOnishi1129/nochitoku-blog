@@ -31,7 +31,7 @@ export const getBlogs = async (offset: number) => {
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getBlogs`)
   }
 
   return blogData
@@ -62,7 +62,7 @@ export const getBlogsContainCategory = async (
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getBlogsContainCategory`)
   }
 
   return blogData
@@ -96,7 +96,7 @@ export const getBlogContainArchiveMonth = async (
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getBlogContainArchiveMonth`)
   }
   return blogData
 }
@@ -119,7 +119,7 @@ export const isBlogsArchives = async (startDate: string, endDate: string) => {
     )
     totalCpunt = res.data.totalCount
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: isBlogsArchives`)
   }
 
   return totalCpunt > 0
@@ -141,7 +141,7 @@ export const getBlogBy = async (id: string) => {
     const res = await globalAxios.get(BASE_URL + id)
     blogDetail = res.data
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getBlogBy`)
   }
 
   return blogDetail

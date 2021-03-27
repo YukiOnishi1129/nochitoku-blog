@@ -23,7 +23,9 @@ export const getProfile = async () => {
     if (res?.data?.contents) {
       profileList = res.data.contents
     }
-  } catch (error) {}
+  } catch (error) {
+    throw new Error(`API ERROR: getProfile`)
+  }
   return profileList
 }
 
@@ -39,7 +41,7 @@ export const getProfileBy = async () => {
       profile = res.data
     }
   } catch (error) {
-    console.log(error)
+    throw new Error(`API ERROR: getProfileBy`)
   }
   return profile
 }

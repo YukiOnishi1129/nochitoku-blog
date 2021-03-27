@@ -4,6 +4,7 @@
  */
 import React from 'react'
 import { NextPage, GetStaticProps } from 'next'
+import Head from 'next/head'
 /* components */
 import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
@@ -40,7 +41,14 @@ export const Error404Page: NextPage<Error404PageProps> = (
     setArchive(archiveList)
   }, [categories, setCategoryData, archiveList, setArchive])
 
-  return <Error404Template />
+  return (
+    <>
+      <Head>
+        <meta name="nochitoku" content="noindex" />
+      </Head>
+      <Error404Template />
+    </>
+  )
 }
 
 /**
