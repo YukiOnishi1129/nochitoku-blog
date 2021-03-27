@@ -18,7 +18,6 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
-  // onSearchKeyUp: EventType['onkeypress']
   searchText: string
   onChange: EventType['onChange']
   onKeyUp?: EventType['onkeypress']
@@ -30,6 +29,7 @@ type Props = {
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
   const { searchText, onChange, onKeyUp } = props
+
   return (
     <aside className={styles.aside}>
       {/* 検索フォーム */}

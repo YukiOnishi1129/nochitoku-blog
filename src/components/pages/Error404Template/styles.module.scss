@@ -1,0 +1,43 @@
+.error {
+  margin: 30px auto 80px;
+  width: 70%;
+}
+
+.title {
+  color: var(--c-line);
+  text-align: center;
+
+  h1 {
+    font-size: 3rem;
+    line-height: 72px;
+    letter-spacing: 0.1em;
+  }
+
+  h2 {
+    margin-top: 36px;
+    font-size: 1.5rem;
+    line-height: 36px;
+    letter-spacing: 0.1em;
+  }
+}
+
+.search {
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+}
+
+.category {
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+}
+
+.archive {
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 95%;
+}
