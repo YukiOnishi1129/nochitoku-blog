@@ -34,11 +34,30 @@
   justify-content: space-between;
   width: 100%;
 
+  @include mq(lg) {
+    display: none;
+  }
+
   &::after {
     display: block;
     content: '';
     margin-bottom: 40px;
     width: 30%;
+  }
+
+  &__responsive {
+    display: none;
+
+    @include mq(lg) {
+      display: block;
+    }
+
+    &::after {
+      display: block;
+      content: '';
+      margin-bottom: 40px;
+      width: 30%;
+    }
   }
 }
 

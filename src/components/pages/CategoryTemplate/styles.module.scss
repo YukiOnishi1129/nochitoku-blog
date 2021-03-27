@@ -1,0 +1,17 @@
+@import '@variable';
+
+.blogItem {
+  display: block;
+
+  @include mq(lg) {
+    display: none;
+  }
+
+  &__responsive {
+    display: none;
+
+    @include mq(lg) {
+      display: block;
+    }
+  }
+}

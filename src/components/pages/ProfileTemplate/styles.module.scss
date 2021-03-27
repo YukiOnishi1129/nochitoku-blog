@@ -1,3 +1,5 @@
+@import '@variable';
+
 .container {
   width: 100%;
   margin-bottom: 40px;
@@ -16,10 +18,17 @@
 
 .leftBar {
   width: 8%;
+
+  @include mq(lg) {
+    display: none;
+  }
 }
 
 .rightBar {
   width: 87%;
+  @include mq(lg) {
+    width: 100%;
+  }
 }
 
 .shareArea {

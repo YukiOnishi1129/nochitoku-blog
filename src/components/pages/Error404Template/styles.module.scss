@@ -24,6 +24,10 @@
     font-size: 1.5rem;
     line-height: 36px;
     letter-spacing: 0.1em;
+
+    @include mq(lg) {
+      font-size: 1.25rem;
+    }
   }
 }
 

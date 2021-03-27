@@ -14,6 +14,7 @@ import { showYearMonthDay } from '@/logic/DateLogic'
  */
 type Props = {
   date: string
+  size?: number
 }
 
 /**
@@ -22,7 +23,7 @@ type Props = {
  * @returns
  */
 export const DateArea: React.FC<Props> = (props: Props) => {
-  const { date } = props
+  const { date, size } = props
 
-  return <Presenter showDate={showYearMonthDay(date)} />
+  return <Presenter showDate={showYearMonthDay(date)} size={size} />
 }
