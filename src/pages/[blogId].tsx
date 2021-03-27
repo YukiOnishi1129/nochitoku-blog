@@ -28,7 +28,7 @@ import { ArchiveType } from '@/types/archive'
 /**
  * props
  */
-type BlogItemPorps = {
+type BlogItemPagePorps = {
   blogItem: BlogItemType
   highlightedBody: string
   tableOfContents: TableOfContentType[]
@@ -39,10 +39,10 @@ type BlogItemPorps = {
 
 /**
  * BlogsItemPage
- * @param props BlogItemPorps
+ * @param props BlogItemPagePorps
  * @returns
  */
-const BlogItemPage: NextPage<BlogItemPorps> = (props) => {
+const BlogItemPage: NextPage<BlogItemPagePorps> = (props) => {
   const {
     blogItem,
     highlightedBody,
@@ -143,7 +143,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
   })
 
-  const props: BlogItemPorps = {
+  const props: BlogItemPagePorps = {
     blogItem: blogDetailData,
     highlightedBody: $.html(),
     tableOfContents: tableOfContents,

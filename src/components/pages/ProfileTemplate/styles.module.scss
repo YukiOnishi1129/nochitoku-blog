@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.image {
+  width: 100%;
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.25));
+}
+
+.main {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftBar {
+  width: 8%;
+}
+
+.rightBar {
+  width: 88%;
+}
+
+.shareArea {
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
