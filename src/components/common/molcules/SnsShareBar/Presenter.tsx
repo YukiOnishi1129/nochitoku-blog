@@ -4,13 +4,9 @@
  * @package Component
  */
 import React from 'react'
-import {
-  HatenaShareButton,
-  HatenaIcon,
-  FacebookShareButton,
-  FacebookIcon,
-} from 'react-share'
+import { FacebookShareButton, FacebookIcon } from 'react-share'
 /* components */
+import { HatenaShareButton } from '@/components/common/atoms/HatenaShareButton'
 import { TwitterShareButton } from '@/components/common/atoms/TwitterShareButton'
 /* styles */
 import styles from './styles.module.scss'
@@ -36,9 +32,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       {/* はてブ */}
       <li className={styles.icon}>
         {/* TODO: vercelデプロイ後確認 */}
-        <HatenaShareButton url={shareUrl}>
-          <HatenaIcon size={40} borderRadius={10} />
-        </HatenaShareButton>
+        <HatenaShareButton shareUrl={shareUrl} />
       </li>
       {/* Twitter */}
       <li className={styles.icon}>
