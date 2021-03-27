@@ -12,5 +12,6 @@ export interface FixedArticleType {
   updatedAt: string
   publishedAt: string
   revisedAt: string
+  title: string
   body: string
 }

@@ -8,6 +8,7 @@ import { BlogItemType, BlogDataType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
 import { ImageType } from '@/types/image'
+import { FixedArticleType } from '@/types/fixedArticle'
 
 /**
  * initImageState
@@ -71,4 +72,17 @@ export const initProfileState: ProfileType = {
 export const initBlogData: BlogDataType = {
   blogList: [],
   totalCount: 0,
+}
+
+/**
+ * initFixedArticleData
+ */
+export const initFixedArticleData: FixedArticleType = {
+  id: '',
+  createdAt: '',
+  updatedAt: '',
+  publishedAt: '',
+  revisedAt: '',
+  title: '',
+  body: '',
 }

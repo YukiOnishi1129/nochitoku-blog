@@ -4,8 +4,8 @@
  */
 /* config */
 import globalAxios from '@/config/globalAxios'
-/* types */
-import { FixedArticleType } from '@/types/fixedArticle'
+/* constants */
+import { initFixedArticleData } from '@/constants/initState'
 
 /**
  * constant
@@ -17,14 +17,7 @@ const BASE_URL = 'https://yuki-read.microcms.io/api/v1/fixed/'
  * @returns
  */
 export const getPolicy = async () => {
-  let policyData: FixedArticleType = {
-    id: '',
-    createdAt: '',
-    updatedAt: '',
-    publishedAt: '',
-    revisedAt: '',
-    body: '',
-  }
+  let policyData = initFixedArticleData
 
   try {
     const res = await globalAxios.get(BASE_URL + 'policy')
@@ -41,14 +34,7 @@ export const getPolicy = async () => {
  * @returns
  */
 export const getTerm = async () => {
-  let termData: FixedArticleType = {
-    id: '',
-    createdAt: '',
-    updatedAt: '',
-    publishedAt: '',
-    revisedAt: '',
-    body: '',
-  }
+  let termData = initFixedArticleData
 
   try {
     const res = await globalAxios.get(BASE_URL + 'term')

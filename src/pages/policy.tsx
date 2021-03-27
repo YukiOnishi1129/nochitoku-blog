@@ -15,15 +15,16 @@ import { getPolicy } from '@/service/fixedArticle'
  * props
  */
 type PolicyPageProps = {
+  title: string
   highlightedBody: string
 }
 
 export const PolicyPage: NextPage<PolicyPageProps> = (
   props: PolicyPageProps
 ) => {
-  const { highlightedBody } = props
+  const { title, highlightedBody } = props
 
-  return <PolicyTemplate highlightedBody={highlightedBody} />
+  return <PolicyTemplate title={title} highlightedBody={highlightedBody} />
 }
 
 /**
@@ -44,6 +45,7 @@ export const getStaticProps: GetStaticProps = async () => {
   })
 
   const props: PolicyPageProps = {
+    title: termData.title,
     highlightedBody: $.html(),
   }
 

@@ -15,6 +15,7 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
+  title: string
   highlightedBody: string
 }
 
@@ -24,12 +25,12 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { highlightedBody } = props
+  const { title, highlightedBody } = props
 
   return (
-    <BaseFixedPageLayout breadName="プライバシーポリシー">
+    <BaseFixedPageLayout breadName={title}>
       {/* ページタイトル */}
-      <PageTitle title={`プライバシーポリシー`} />
+      <PageTitle title={title} />
       <div className={styles.body}>
         {/* 記事本文 */}
         <HighlightBody highlightedBody={highlightedBody} />

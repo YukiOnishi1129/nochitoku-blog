@@ -15,6 +15,7 @@ import { getTerm } from '@/service/fixedArticle'
  * props
  */
 type TermPageProps = {
+  title: string
   highlightedBody: string
 }
 
@@ -24,9 +25,9 @@ type TermPageProps = {
  * @returns
  */
 export const TermPage: NextPage<TermPageProps> = (props: TermPageProps) => {
-  const { highlightedBody } = props
+  const { title, highlightedBody } = props
 
-  return <TermTemplate highlightedBody={highlightedBody} />
+  return <TermTemplate title={title} highlightedBody={highlightedBody} />
 }
 
 /**
@@ -47,6 +48,7 @@ export const getStaticProps: GetStaticProps = async () => {
   })
 
   const props: TermPageProps = {
+    title: termData.title,
     highlightedBody: $.html(),
   }
 

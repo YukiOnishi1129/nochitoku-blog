@@ -11,6 +11,7 @@ import { Presenter } from './Presenter'
  * props
  */
 type Props = {
+  title: string
   highlightedBody: string
 }
 
@@ -20,7 +21,7 @@ type Props = {
  * @returns
  */
 export const PolicyTemplate: React.FC<Props> = (props: Props) => {
-  const { highlightedBody } = props
+  const { title, highlightedBody } = props
 
-  return <Presenter highlightedBody={highlightedBody} />
+  return <Presenter title={title} highlightedBody={highlightedBody} />
 }
