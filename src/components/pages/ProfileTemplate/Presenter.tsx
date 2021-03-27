@@ -1,5 +1,5 @@
 /**
- * pages/BlogItemTemplate
+ * pages/ProfileTemplate
  * PresentationalComponent
  * @package Component
  */

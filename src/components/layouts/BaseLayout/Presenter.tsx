@@ -16,7 +16,7 @@ import styles from './styles.module.scss'
  */
 export type Props = {
   children: React.ReactNode
-  breadName: string
+  breadName?: string
 }
 
 /**
@@ -32,7 +32,8 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <Header />
         <div className={styles.headerEmpty} />
       </div>
-      <BreadList breadName={breadName} />
+      {!!breadName && <BreadList breadName={breadName} />}
+
       <div className={styles.divider}>{children}</div>
       <div className={styles.footer}>
         <Footer />

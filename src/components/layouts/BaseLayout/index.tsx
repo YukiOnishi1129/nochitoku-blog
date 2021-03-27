@@ -12,7 +12,7 @@ import { Presenter } from './Presenter'
  */
 export type Props = {
   children: React.ReactNode
-  breadName: string
+  breadName?: string
 }
 
 /**

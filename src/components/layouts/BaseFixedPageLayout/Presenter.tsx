@@ -14,6 +14,7 @@ import styles from './styles.module.scss'
  */
 export type Props = {
   children: React.ReactNode
+  breadName?: string
 }
 
 /**
@@ -21,10 +22,10 @@ export type Props = {
  * @param props
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { children } = props
+  const { children, breadName } = props
 
   return (
-    <BaseLayout>
+    <BaseLayout breadName={breadName}>
       <article className={styles.article}>{children}</article>
     </BaseLayout>
   )
