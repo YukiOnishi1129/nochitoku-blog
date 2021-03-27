@@ -5,6 +5,7 @@
  */
 import React from 'react'
 import Image from 'next/image'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { DateArea } from '@/components/common/molcules/DateArea'
@@ -84,7 +85,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
                         id={'list ' + toc.name}
                         key={toc.id}
                       >
-                        <a href={'#' + toc.id}>{toc.text}</a>
+                        <AnchorLink offset="140" href={'#' + toc.id}>
+                          {toc.text}
+                        </AnchorLink>
                       </li>
                     )
                   })}
