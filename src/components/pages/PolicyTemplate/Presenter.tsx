@@ -1,5 +1,5 @@
 /**
- * pages/TermTemplate
+ * pages/PolicyTemplate
  * PresentationalComponent
  * @package Component
  */
@@ -27,9 +27,9 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   const { highlightedBody } = props
 
   return (
-    <BaseFixedPageLayout breadName="免責事項">
+    <BaseFixedPageLayout breadName="プライバシーポリシー">
       {/* ページタイトル */}
-      <PageTitle title={`免責事項`} />
+      <PageTitle title={`プライバシーポリシー`} />
       <div className={styles.body}>
         {/* 記事本文 */}
         <HighlightBody highlightedBody={highlightedBody} />

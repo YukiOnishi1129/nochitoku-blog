@@ -9,7 +9,7 @@ import hljs from 'highlight.js'
 /* components */
 import { TermTemplate } from '@/components/pages/TermTemplate'
 /* services */
-import { getTerm } from '@/service/term'
+import { getTerm } from '@/service/fixedArticle'
 
 /**
  * props

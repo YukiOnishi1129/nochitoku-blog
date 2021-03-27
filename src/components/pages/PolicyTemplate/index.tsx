@@ -1,5 +1,5 @@
 /**
- * pages/TermTemplate
+ * pages/PolicyTemplate
  * ContainerComponent
  * @package Component
  */
@@ -19,7 +19,7 @@ type Props = {
  * @param props Props
  * @returns
  */
-export const TermTemplate: React.FC<Props> = (props: Props) => {
+export const PolicyTemplate: React.FC<Props> = (props: Props) => {
   const { highlightedBody } = props
 
   return <Presenter highlightedBody={highlightedBody} />

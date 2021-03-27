@@ -1,12 +1,12 @@
 /**
- * 利用規約のinterface
+ * 固定記事のinterface
  * @package types
  */
 
 /**
- * TermType
+ * FixedArticleType
  */
-export interface TermType {
+export interface FixedArticleType {
   id: string
   createdAt: string
   updatedAt: string
