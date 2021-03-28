@@ -15,6 +15,10 @@
   @include mq(xl) {
     height: 117px;
   }
+
+  @include mq(md) {
+    height: 76px;
+  }
 }
 
 .divider {

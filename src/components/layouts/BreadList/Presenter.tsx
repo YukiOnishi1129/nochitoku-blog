@@ -26,7 +26,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             <span className={styles.bread__link}>HOME</span>
           </Link>
         </li>
-        <li>{breadName}</li>
+        <li className={styles.breadName}>{breadName}</li>
       </ul>
     </div>
   )

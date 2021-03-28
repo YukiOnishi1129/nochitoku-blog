@@ -1,6 +1,9 @@
+@import '@variable';
+
 .contents {
   letter-spacing: 0.1em;
   color: var(--c-main);
+  width: 100%;
 
   h1 {
     margin: 40px -16px 16px;
@@ -163,5 +166,19 @@
   a {
     color: #331cbf;
     text-decoration: underline;
+  }
+
+  iframe {
+    border: none;
+
+    @include mq(lg) {
+      width: 100%;
+      height: 400px;
+    }
+
+    @include mq(md) {
+      width: 100%;
+      height: 200px;
+    }
   }
 }
