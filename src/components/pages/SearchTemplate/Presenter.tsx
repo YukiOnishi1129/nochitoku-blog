@@ -46,11 +46,22 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             onChange={onChange}
           />
         </div>
+        {/* 検索フォーム レスポンシブ*/}
         <div className={styles.input__responsive}>
           <SearchInputForm
             text={searchText}
             placeholder="検索"
             size={32}
+            onChange={onChange}
+          />
+        </div>
+
+        {/* 検索フォーム　sp */}
+        <div className={styles.input__sp}>
+          <SearchInputForm
+            text={searchText}
+            placeholder="検索"
+            size={24}
             onChange={onChange}
           />
         </div>

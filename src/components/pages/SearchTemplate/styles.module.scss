@@ -25,6 +25,23 @@
     @include mq(xl) {
       display: block;
     }
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__sp {
+    display: none;
+
+    @include mq(md) {
+      display: block;
+      margin-top: 0px;
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 30px;
+      width: 95%;
+    }
   }
 }
 
