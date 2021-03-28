@@ -48,7 +48,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       </div>
 
       {/* ブログ記事一覧表示 レスポンシブ*/}
-      <div className={styles.blogItem_responsive}>
+      <div className={styles.blogItem__responsive}>
         {blogList.length > 0 &&
           blogList.map((blogItem, index) => (
             <BlogItemResponsive

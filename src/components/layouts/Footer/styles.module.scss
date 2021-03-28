@@ -28,21 +28,12 @@
   margin: 0 20px;
 }
 
-// .sns {
-//   display: flex;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   justify-content: center;
-//   margin-top: 10px;
-//   height: 24px;
-// }
-
 .copy {
   margin-top: 20px;
   text-align: center;
   color: var(--c-sub);
   font-size: 14px;
-  font-family: 'Times New Roman', 'Times';
+  font-family: 'Times New Roman', 'Times', sans-serif;
 
   span {
     font-size: 12px;
