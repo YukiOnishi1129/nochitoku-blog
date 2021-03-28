@@ -57,6 +57,16 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             onKeyUp={onKeyUp}
           />
         </div>
+        {/* 検索フォーム　sp */}
+        <div className={styles.search__sp}>
+          <SearchInputForm
+            text={searchText}
+            placeholder="検索"
+            size={24}
+            onChange={onChange}
+            onKeyUp={onKeyUp}
+          />
+        </div>
         {/* カテゴリーエリア */}
         <div className={styles.category}>
           <CategoryArea />
