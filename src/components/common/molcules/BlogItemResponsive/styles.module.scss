@@ -56,7 +56,7 @@
   flex-wrap: wrap;
 
   @include mq(md) {
-    margin-top: 2px;
+    margin-top: 10px;
   }
 
   &__item {
@@ -70,10 +70,10 @@
     border-radius: 8px;
 
     @include mq(md) {
-      font-size: 0.5rem;
-      padding: 4px 8px;
-      border: 1px solid var(--c-point);
-      border-radius: 4px;
+      font-size: 0.75rem;
+      padding: 6px 8px;
+      // border: 1px solid var(--c-point);
+      // border-radius: 4px;
       margin-bottom: 6px;
     }
   }
