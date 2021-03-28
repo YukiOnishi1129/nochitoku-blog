@@ -5,6 +5,8 @@
  */
 import React from 'react'
 import Modal, { Styles } from 'react-modal'
+/* components */
+import { CloseIcon } from '@/components/common/icons/CloseIcon'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -47,6 +49,12 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <li onClick={handleAboutLink}>このブログについて</li>
         <li onClick={handleProfileLink}>プロフィール</li>
       </ul>
+
+      <div className={styles.close} onClick={handleCloseMenuModal}>
+        <div className={styles.close__icon}>
+          <CloseIcon />
+        </div>
+      </div>
     </Modal>
   )
 }
@@ -64,6 +72,7 @@ const customStyles: Styles = {
   },
 
   content: {
+    position: 'relative',
     top: '50%',
     left: '60% ',
     right: '0',
