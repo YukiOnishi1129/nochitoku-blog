@@ -45,8 +45,12 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     >
       <ul className={styles.links}>
         <li className={styles.title}>MENU</li>
-        <li onClick={handleHomeLink}>ホーム</li>
-        <li onClick={handleAboutLink}>このブログについて</li>
+        <li className={styles.link} onClick={handleHomeLink}>
+          ホーム
+        </li>
+        <li className={styles.link} onClick={handleAboutLink}>
+          このブログについて
+        </li>
         <li onClick={handleProfileLink}>プロフィール</li>
       </ul>
 
