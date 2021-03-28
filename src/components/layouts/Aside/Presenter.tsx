@@ -64,6 +64,17 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         />
       </div>
 
+      {/* 検索フォーム レスポンシブ */}
+      <div className={styles.search__sp}>
+        <SearchInputForm
+          text={searchText}
+          placeholder="検索"
+          size={20}
+          onChange={onChange}
+          onKeyUp={onKeyUp}
+        />
+      </div>
+
       {/* カテゴリーエリア */}
       <div className={styles.parts}>
         <CategoryArea />

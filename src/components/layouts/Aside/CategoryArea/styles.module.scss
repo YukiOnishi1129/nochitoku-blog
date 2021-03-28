@@ -2,6 +2,10 @@
 
 .container {
   padding: 16px 10px;
+
+  @include mq(md) {
+    padding: 4px 5px;
+  }
 }
 
 .list {
@@ -27,6 +31,11 @@
   @include mq(xl) {
     font-size: 1rem;
     padding: 0.875rem 1rem;
+  }
+
+  @include mq(md) {
+    font-size: 0.5rem;
+    padding: 0.3rem 0.75rem;
   }
 
   &:hover {

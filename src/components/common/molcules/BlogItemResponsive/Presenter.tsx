@@ -59,6 +59,10 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <div className={styles.date}>
           <DateArea date={blogItem.createdAt} size={18} />
         </div>
+
+        <div className={styles.date__sp}>
+          <DateArea date={blogItem.createdAt} size={12} />
+        </div>
       </div>
     </Link>
   )

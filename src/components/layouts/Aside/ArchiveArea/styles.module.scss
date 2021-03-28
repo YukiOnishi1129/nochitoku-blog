@@ -19,6 +19,11 @@
     padding: 16px 20px;
   }
 
+  @include mq(md) {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+  }
+
   &:hover {
     opacity: 0.9;
     background: var(--c-main);
@@ -39,6 +44,11 @@
   @include mq(xl) {
     font-size: 1rem;
     padding: 16px 20px;
+  }
+
+  @include mq(md) {
+    padding: 10px 20px;
+    font-size: 0.75rem;
   }
 
   &:hover {

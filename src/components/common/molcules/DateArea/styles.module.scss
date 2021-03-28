@@ -6,7 +6,6 @@
 
 .icon {
   display: block;
-  //   padding-top: 3px;
   padding-right: 4px;
 }
 
@@ -18,5 +17,9 @@
 
   @include mq(lg) {
     font-size: 1rem;
+  }
+
+  @include mq(md) {
+    font-size: 0.625rem;
   }
 }

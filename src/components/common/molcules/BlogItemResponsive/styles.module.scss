@@ -1,3 +1,5 @@
+@import '@variable';
+
 .container {
   cursor: pointer;
   margin-bottom: 40px;
@@ -39,12 +41,23 @@
   font-weight: bold;
   letter-spacing: 0.1em;
   line-height: 27px;
+
+  @include mq(md) {
+    margin-top: 0;
+    padding-top: 2px;
+    font-size: 0.75rem;
+    line-height: 24px;
+  }
 }
 
 .category {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
+
+  @include mq(md) {
+    margin-top: 2px;
+  }
 
   &__item {
     margin-right: 16px;
@@ -55,9 +68,29 @@
     color: var(--c-point);
     border: 2px solid var(--c-point);
     border-radius: 8px;
+
+    @include mq(md) {
+      font-size: 0.5rem;
+      padding: 4px 8px;
+      border: 1px solid var(--c-point);
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
   }
 }
 
 .date {
   margin-top: 4px;
+
+  @include mq(md) {
+    display: none;
+  }
+
+  &__sp {
+    display: none;
+
+    @include mq(md) {
+      display: block;
+    }
+  }
 }

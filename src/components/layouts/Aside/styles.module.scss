@@ -25,6 +25,19 @@
       display: block;
       margin-top: 40px;
     }
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__sp {
+    display: none;
+
+    @include mq(md) {
+      margin-top: 40px;
+      display: block;
+    }
   }
 }
 
@@ -33,11 +46,18 @@
   @include mq(xl) {
     display: none;
   }
+  @include mq(md) {
+    display: block;
+    margin-top: 0;
+  }
 
   &__responsive {
     display: none;
     @include mq(xl) {
       display: block;
+    }
+    @include mq(md) {
+      display: none;
     }
   }
 }
