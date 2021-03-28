@@ -10,6 +10,7 @@
   box-sizing: border-box;
   padding: 4px 8px;
   font-size: 0.875rem;
+  background: #fff;
 
   @include mq(xl) {
     height: 50px;

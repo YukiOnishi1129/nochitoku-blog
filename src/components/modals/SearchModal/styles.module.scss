@@ -1,0 +1,13 @@
+@import '@variable';
+
+.title {
+  padding-bottom: 20px;
+  font-size: 1.125rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--c-main);
+
+  @include mq(sm) {
+    font-size: 0.875rem;
+  }
+}

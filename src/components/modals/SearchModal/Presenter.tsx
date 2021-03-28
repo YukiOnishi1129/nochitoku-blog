@@ -9,6 +9,8 @@ import Modal, { Styles } from 'react-modal'
 import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
 /* types */
 import { EventType } from '@/types/event'
+/* styles */
+import styles from './styles.module.scss'
 
 Modal.setAppElement('#__next')
 
@@ -43,6 +45,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       onRequestClose={handleCloseSearchModal}
       style={customStyles}
     >
+      <h2 className={styles.title}>ブログ記事を検索できます。</h2>
       <SearchInputForm
         text={searchText}
         placeholder="検索"
@@ -71,7 +74,9 @@ const customStyles: Styles = {
     bottom: 'auto',
     marginRight: '-50%',
     width: '80%',
-    height: '100px',
+    height: '140px',
     transform: 'translate(-50%, -50%)',
+    padding: '30px 20px 0',
+    borderRadius: '8px',
   },
 }
