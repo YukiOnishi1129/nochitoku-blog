@@ -4,7 +4,7 @@
   margin-top: 50px;
 
   li {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     text-align: center;
     font-weight: bold;
     letter-spacing: 0.3em;
@@ -20,7 +20,7 @@
   background: var(--c-line);
   height: 60px;
   line-height: 60px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 
   @include mq(sm) {
     margin-bottom: 40px;
@@ -30,7 +30,7 @@
 }
 
 .link {
-  margin-bottom: 80px;
+  margin-bottom: 50px;
   @include mq(sm) {
     margin-bottom: 40px;
   }
