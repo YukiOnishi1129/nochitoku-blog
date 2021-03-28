@@ -4,6 +4,7 @@
  */
 /* constants */
 import { blogShowCount } from '@/constants/config'
+import { NAVIGATION_LINK } from '@/constants/navigation'
 
 /**
  * ページ番号配列作成
@@ -14,4 +15,13 @@ export const createPageArray = (totalCount: number) => {
   return [...Array(Math.floor(totalCount / blogShowCount) + 1)].map(
     (_, i) => i + 1
   )
+}
+
+/**
+ * 検索ページではないかを判定
+ * @param pathName string
+ * @returns
+ */
+export const isNotSearchPage = (pathName: string) => {
+  return NAVIGATION_LINK.SEARCH !== pathName
 }

@@ -13,4 +13,5 @@ export const NAVIGATION_LINK = {
   PROFILE: '/profile', // プロフィールページリンク
   POLICY: '/policy', // プライバシーポリシーページリンク
   TERM: '/term', // 利用規約ページリンク
+  SEARCH: '/search',
 }

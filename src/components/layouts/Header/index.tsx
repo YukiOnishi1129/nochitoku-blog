@@ -4,6 +4,7 @@
  * @package Component
  */
 import React from 'react'
+import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
 
@@ -21,6 +22,12 @@ type Props = {
  */
 export const Header: React.FC<Props> = (props: Props) => {
   const { handleOpenSearchModal } = props
+  const router = useRouter()
 
-  return <Presenter handleOpenSearchModal={handleOpenSearchModal} />
+  return (
+    <Presenter
+      pathName={router.pathname}
+      handleOpenSearchModal={handleOpenSearchModal}
+    />
+  )
 }

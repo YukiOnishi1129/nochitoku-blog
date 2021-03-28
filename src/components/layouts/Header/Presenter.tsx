@@ -9,6 +9,8 @@ import Link from 'next/link'
 import { SearchIcon } from '@/components/common/icons/SearchIcon'
 /* constants */
 import { NAVIGATION_LINK } from '@/constants/navigation'
+/* logic */
+import { isNotSearchPage } from '@/logic/CommonLogic'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -16,6 +18,7 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
+  pathName: string
   handleOpenSearchModal: () => void
 }
 
@@ -25,7 +28,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { handleOpenSearchModal } = props
+  const { pathName, handleOpenSearchModal } = props
 
   return (
     <div className={styles.container}>
@@ -52,9 +55,15 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         {/* SP アイコン */}
         <div className={styles.menu}>
           {/* 検索 */}
-          <div className={styles.menu__search} onClick={handleOpenSearchModal}>
-            <SearchIcon />
-          </div>
+          {isNotSearchPage(pathName) && (
+            <div
+              className={styles.menu__search}
+              onClick={handleOpenSearchModal}
+            >
+              <SearchIcon />
+            </div>
+          )}
+
           {/* ハンバーガー */}
           <div></div>
         </div>
