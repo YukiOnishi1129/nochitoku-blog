@@ -16,6 +16,9 @@ Modal.setAppElement('#__next')
 type Props = {
   isMenuModalVisible: boolean
   handleCloseMenuModal: () => void
+  handleHomeLink: () => void
+  handleAboutLink: () => void
+  handleProfileLink: () => void
 }
 
 /**
@@ -24,7 +27,13 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { isMenuModalVisible, handleCloseMenuModal } = props
+  const {
+    isMenuModalVisible,
+    handleCloseMenuModal,
+    handleHomeLink,
+    handleAboutLink,
+    handleProfileLink,
+  } = props
 
   return (
     <Modal
@@ -32,10 +41,11 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       onRequestClose={handleCloseMenuModal}
       style={customStyles}
     >
-      <ul>
-        <li>aa</li>
-        <li>aa</li>
-        <li>aa</li>
+      <ul className={styles.links}>
+        <li className={styles.title}>MENU</li>
+        <li onClick={handleHomeLink}>ホーム</li>
+        <li onClick={handleAboutLink}>このブログについて</li>
+        <li onClick={handleProfileLink}>プロフィール</li>
       </ul>
     </Modal>
   )
@@ -55,15 +65,15 @@ const customStyles: Styles = {
 
   content: {
     top: '50%',
-    left: '50%',
-    right: 'auto',
+    left: '60% ',
+    right: '0',
     bottom: 'auto',
     marginRight: '-50%',
     width: '80%',
-    height: '140px',
+    height: '100%',
     transform: 'translate(-50%, -50%)',
-    padding: '30px 20px 0',
-    borderRadius: '8px',
-    backgroundColor: ' #F0EEEE;',
+    padding: '30px 0 0',
+    borderRadius: '0',
+    backgroundColor: '#F0EEEE',
   },
 }
