@@ -37,6 +37,10 @@
   @include mq(lg) {
     width: 90%;
   }
+
+  @include mq(lg) {
+    margin: 10px auto 20px;
+  }
 }
 
 .footer {

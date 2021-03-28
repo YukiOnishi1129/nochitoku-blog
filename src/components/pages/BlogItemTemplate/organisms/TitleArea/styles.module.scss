@@ -11,11 +11,21 @@
   line-height: 3rem;
   letter-spacing: 0.1em;
   color: var(--c-main);
+
+  @include mq(lg) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-bottom: 4px;
+  }
 }
 
 .category {
   margin-top: 16px;
   display: flex;
+
+  @include mq(md) {
+    margin-top: 2px;
+  }
 
   &__item {
     margin-right: 16px;
@@ -32,9 +42,19 @@
       border-radius: 8px;
       padding: 10px 16px;
     }
+
+    @include mq(md) {
+      font-size: 0.75rem;
+      line-height: 1.5rem;
+      padding: 0px 8px;
+    }
   }
 }
 
 .date {
   margin-top: 12px;
+
+  @include mq(md) {
+    margin-top: 4px;
+  }
 }

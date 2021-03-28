@@ -14,6 +14,10 @@
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+
+  @include mq(md) {
+    margin-top: 4px;
+  }
 }
 
 .leftBar {
