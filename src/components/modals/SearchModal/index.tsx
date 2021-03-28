@@ -1,5 +1,5 @@
 /**
- * layouts/BaseLayout
+ * modals/SearchModal
  * ContainerComponent
  * @package Component
  */

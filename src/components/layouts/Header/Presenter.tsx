@@ -7,6 +7,7 @@ import React from 'react'
 import Link from 'next/link'
 /* components */
 import { SearchIcon } from '@/components/common/icons/SearchIcon'
+import { MenuIcon } from '@/components/common/icons/MenuIcon'
 /* constants */
 import { NAVIGATION_LINK } from '@/constants/navigation'
 /* logic */
@@ -20,6 +21,7 @@ import styles from './styles.module.scss'
 type Props = {
   pathName: string
   handleOpenSearchModal: () => void
+  handleOpenMenuModal: () => void
 }
 
 /**
@@ -28,7 +30,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { pathName, handleOpenSearchModal } = props
+  const { pathName, handleOpenSearchModal, handleOpenMenuModal } = props
 
   return (
     <div className={styles.container}>
@@ -53,19 +55,18 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           </Link>
         </div>
         {/* SP アイコン */}
-        <div className={styles.menu}>
+        <div className={styles.sp}>
           {/* 検索 */}
           {isNotSearchPage(pathName) && (
-            <div
-              className={styles.menu__search}
-              onClick={handleOpenSearchModal}
-            >
+            <div className={styles.sp__search} onClick={handleOpenSearchModal}>
               <SearchIcon />
             </div>
           )}
 
           {/* ハンバーガー */}
-          <div></div>
+          <div className={styles.sp__menu} onClick={handleOpenMenuModal}>
+            <MenuIcon />
+          </div>
         </div>
       </div>
     </div>

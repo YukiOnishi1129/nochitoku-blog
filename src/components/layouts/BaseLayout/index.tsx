@@ -24,9 +24,11 @@ export type Props = {
 export const BaseLayout: React.FC<Props> = (props: Props) => {
   const router = useRouter()
   const { children, breadName } = props
-  // SearchModal用のstateとfunction
+  // SearchModal用のstate
   const [searchText, setSearchText] = React.useState('')
   const [isSearchModalVisible, setIsSearchModalVisible] = React.useState(false)
+  // MenuModal用のstate
+  const [isMenuModalVisible, setIsMenuModalVisible] = React.useState(false)
 
   /**
    * SearchModalを開く処理
@@ -40,6 +42,20 @@ export const BaseLayout: React.FC<Props> = (props: Props) => {
    */
   const handleCloseSearchModal = () => {
     setIsSearchModalVisible(false)
+  }
+
+  /**
+   * SearchModalを開く処理
+   */
+  const handleOpenMenuModal = () => {
+    setIsMenuModalVisible(true)
+  }
+
+  /**
+   * SearchModalを閉じる処理
+   */
+  const handleCloseMenuModal = () => {
+    setIsMenuModalVisible(false)
   }
 
   /**
@@ -77,9 +93,12 @@ export const BaseLayout: React.FC<Props> = (props: Props) => {
       breadName={breadName}
       searchText={searchText}
       isSearchModalVisible={isSearchModalVisible}
+      isMenuModalVisible={isMenuModalVisible}
       scrollToTop={scrollToTop}
       handleOpenSearchModal={handleOpenSearchModal}
       handleCloseSearchModal={handleCloseSearchModal}
+      handleOpenMenuModal={handleOpenMenuModal}
+      handleCloseMenuModal={handleCloseMenuModal}
       onChangeSearchText={onChangeSearchText}
       onKeyUpSearch={onKeyUpSearch}
     >

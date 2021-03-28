@@ -1,14 +1,10 @@
 /**
- * modals/SearchModal
+ * modals/MenuModal
  * PresentationalConponent
  * @package Component
  */
 import React from 'react'
 import Modal, { Styles } from 'react-modal'
-/* components */
-import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
-/* types */
-import { EventType } from '@/types/event'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -18,11 +14,8 @@ Modal.setAppElement('#__next')
  * Props
  */
 type Props = {
-  searchText: string
-  isSearchModalVisible: boolean
-  handleCloseSearchModal: () => void
-  onChangeSearchText: EventType['onChange']
-  onKeyUpSearch: EventType['onkeypress']
+  isMenuModalVisible: boolean
+  handleCloseMenuModal: () => void
 }
 
 /**
@@ -31,27 +24,19 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const {
-    searchText,
-    isSearchModalVisible,
-    handleCloseSearchModal,
-    onChangeSearchText,
-    onKeyUpSearch,
-  } = props
+  const { isMenuModalVisible, handleCloseMenuModal } = props
 
   return (
     <Modal
-      isOpen={isSearchModalVisible}
-      onRequestClose={handleCloseSearchModal}
+      isOpen={isMenuModalVisible}
+      onRequestClose={handleCloseMenuModal}
       style={customStyles}
     >
-      <h2 className={styles.title}>ブログ記事を検索できます。</h2>
-      <SearchInputForm
-        text={searchText}
-        placeholder="検索"
-        onChange={onChangeSearchText}
-        onKeyUp={onKeyUpSearch}
-      />
+      <ul>
+        <li>aa</li>
+        <li>aa</li>
+        <li>aa</li>
+      </ul>
     </Modal>
   )
 }
@@ -79,5 +64,6 @@ const customStyles: Styles = {
     transform: 'translate(-50%, -50%)',
     padding: '30px 20px 0',
     borderRadius: '8px',
+    backgroundColor: ' #F0EEEE;',
   },
 }

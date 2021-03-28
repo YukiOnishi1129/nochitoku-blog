@@ -39,7 +39,7 @@
     display: flex;
     justify-content: space-between;
     height: 60px;
-    padding: 10px 30px;
+    padding: 10px 10px 10px 20px;
   }
 }
 
@@ -99,13 +99,19 @@
   }
 }
 
-.menu {
+.sp {
   display: none;
   @include mq(md) {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
   }
 
   &__search {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  &__menu {
     cursor: pointer;
   }
 }
