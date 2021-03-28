@@ -11,6 +11,10 @@ module.exports = {
   webpackFinal: async (config) => {
     // storybookで絶対パスimportを可能にする設定
     config.resolve.alias['@'] = path.resolve(__dirname, '../src')
+    config.resolve.alias['@variable'] = path.resolve(
+      __dirname,
+      '../src/styles/variable.scss'
+    )
 
     return config
   },
