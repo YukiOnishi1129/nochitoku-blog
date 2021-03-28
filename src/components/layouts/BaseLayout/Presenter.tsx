@@ -10,6 +10,7 @@ import { BreadList } from '@/components/layouts/BreadList'
 import { Footer } from '@/components/layouts/Footer'
 import { ArrowIcon } from '@/components/common/icons/ArrowIcon'
 import { SearchModal } from '@/components/modals/SearchModal'
+import { MenuModal } from '@/components/modals/MenuModal'
 /* types */
 import { EventType } from '@/types/event'
 /* styles */
@@ -23,8 +24,11 @@ export type Props = {
   breadName?: string
   searchText: string
   isSearchModalVisible: boolean
+  isMenuModalVisible: boolean
   handleOpenSearchModal: () => void
   handleCloseSearchModal: () => void
+  handleOpenMenuModal: () => void
+  handleCloseMenuModal: () => void
   onChangeSearchText: EventType['onChange']
   onKeyUpSearch: EventType['onkeypress']
   scrollToTop: () => void
@@ -40,8 +44,11 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     breadName,
     searchText,
     isSearchModalVisible,
+    isMenuModalVisible,
     handleOpenSearchModal,
     handleCloseSearchModal,
+    handleOpenMenuModal,
+    handleCloseMenuModal,
     onChangeSearchText,
     onKeyUpSearch,
     scrollToTop,
@@ -50,7 +57,10 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <Header handleOpenSearchModal={handleOpenSearchModal} />
+        <Header
+          handleOpenSearchModal={handleOpenSearchModal}
+          handleOpenMenuModal={handleOpenMenuModal}
+        />
         <div className={styles.headerEmpty} />
       </div>
       {!!breadName && <BreadList breadName={breadName} />}
@@ -74,6 +84,11 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         handleCloseSearchModal={handleCloseSearchModal}
         onChangeSearchText={onChangeSearchText}
         onKeyUpSearch={onKeyUpSearch}
+      />
+      {/* メニューモーダル */}
+      <MenuModal
+        isMenuModalVisible={isMenuModalVisible}
+        handleCloseMenuModal={handleCloseMenuModal}
       />
     </div>
   )

@@ -64,7 +64,8 @@ const customStyles: Styles = {
     position: 'fixed',
     top: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: 'rgba(22, 21, 21, 0.56)',
+    zIndex: 14,
   },
 
   content: {

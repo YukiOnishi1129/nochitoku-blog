@@ -1,0 +1,29 @@
+.links {
+  margin-top: 50px;
+
+  li {
+    margin-bottom: 32px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.3em;
+    color: var(--c-main);
+  }
+}
+
+.title {
+  background: var(--c-line);
+  height: 30px;
+  line-height: 30px;
+}
+
+.close {
+  position: absolute;
+  margin: 0 auto;
+  bottom: 30px;
+  width: 100%;
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+  }
+}

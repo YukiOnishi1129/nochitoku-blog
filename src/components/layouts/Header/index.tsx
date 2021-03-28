@@ -13,6 +13,7 @@ import { Presenter } from './Presenter'
  */
 type Props = {
   handleOpenSearchModal: () => void
+  handleOpenMenuModal: () => void
 }
 
 /**
@@ -21,13 +22,14 @@ type Props = {
  * @returns
  */
 export const Header: React.FC<Props> = (props: Props) => {
-  const { handleOpenSearchModal } = props
+  const { handleOpenSearchModal, handleOpenMenuModal } = props
   const router = useRouter()
 
   return (
     <Presenter
       pathName={router.pathname}
       handleOpenSearchModal={handleOpenSearchModal}
+      handleOpenMenuModal={handleOpenMenuModal}
     />
   )
 }
