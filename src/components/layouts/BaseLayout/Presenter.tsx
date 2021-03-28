@@ -9,6 +9,9 @@ import { Header } from '@/components/layouts/Header'
 import { BreadList } from '@/components/layouts/BreadList'
 import { Footer } from '@/components/layouts/Footer'
 import { ArrowIcon } from '@/components/common/icons/ArrowIcon'
+import { SearchModal } from '@/components/modals/SearchModal'
+/* types */
+import { EventType } from '@/types/event'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -18,6 +21,12 @@ import styles from './styles.module.scss'
 export type Props = {
   children: React.ReactNode
   breadName?: string
+  searchText: string
+  isSearchModalVisible: boolean
+  handleOpenSearchModal: () => void
+  handleCloseSearchModal: () => void
+  onChangeSearchText: EventType['onChange']
+  onKeyUpSearch: EventType['onkeypress']
   scrollToTop: () => void
 }
 
@@ -26,12 +35,22 @@ export type Props = {
  * @param props
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { children, breadName, scrollToTop } = props
+  const {
+    children,
+    breadName,
+    searchText,
+    isSearchModalVisible,
+    handleOpenSearchModal,
+    handleCloseSearchModal,
+    onChangeSearchText,
+    onKeyUpSearch,
+    scrollToTop,
+  } = props
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
-        <Header />
+        <Header handleOpenSearchModal={handleOpenSearchModal} />
         <div className={styles.headerEmpty} />
       </div>
       {!!breadName && <BreadList breadName={breadName} />}
@@ -48,6 +67,14 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       <div className={styles.fixButton__sp} onClick={scrollToTop}>
         <ArrowIcon size={44} color="#c8c8c8" />
       </div>
+      {/* 検索モーダル */}
+      <SearchModal
+        searchText={searchText}
+        isSearchModalVisible={isSearchModalVisible}
+        handleCloseSearchModal={handleCloseSearchModal}
+        onChangeSearchText={onChangeSearchText}
+        onKeyUpSearch={onKeyUpSearch}
+      />
     </div>
   )
 }
