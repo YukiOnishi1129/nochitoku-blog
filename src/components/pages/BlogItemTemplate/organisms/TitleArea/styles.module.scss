@@ -22,6 +22,7 @@
 .category {
   margin-top: 16px;
   display: flex;
+  flex-wrap: wrap;
 
   @include mq(md) {
     margin-top: 2px;
@@ -35,6 +36,7 @@
     color: var(--c-point);
     border: 1px solid var(--c-point);
     border-radius: 4px;
+    margin-bottom: 8px;
 
     @include mq(lg) {
       font-size: 1rem;
@@ -52,9 +54,9 @@
 }
 
 .date {
-  margin-top: 12px;
+  margin-top: 4px;
 
   @include mq(md) {
-    margin-top: 4px;
+    margin-top: 0;
   }
 }
