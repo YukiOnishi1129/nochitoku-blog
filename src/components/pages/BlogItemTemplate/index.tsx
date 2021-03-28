@@ -7,6 +7,8 @@ import React from 'react'
 import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
+/* constants */
+import { NOCHITOKU_URL } from '@/constants/config'
 /* types */
 import { BlogItemType, TableOfContentType } from '@/types/blog'
 import { ImageType } from '@/types/image'
@@ -35,12 +37,10 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
   }
 
   const router = useRouter()
-  let shareUrl = ''
-  if (router?.query?.blogId && typeof router.query.blogId === 'string') {
-    shareUrl = '/' + router.query.blogId
+  let shareUrl = NOCHITOKU_URL
+  if (router?.asPath && typeof router.asPath === 'string') {
+    shareUrl = NOCHITOKU_URL + router.asPath
   }
-  // TODO: 仮で設定している
-  shareUrl = 'https://read-engineer.com/2021/02/20/capital/'
 
   return (
     <Presenter
