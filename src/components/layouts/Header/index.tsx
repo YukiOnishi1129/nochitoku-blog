@@ -8,6 +8,19 @@ import React from 'react'
 import { Presenter } from './Presenter'
 
 /**
- * container
+ * props
  */
-export const Header: React.FC = () => <Presenter />
+type Props = {
+  handleOpenSearchModal: () => void
+}
+
+/**
+ * container
+ * @param props Props
+ * @returns
+ */
+export const Header: React.FC<Props> = (props: Props) => {
+  const { handleOpenSearchModal } = props
+
+  return <Presenter handleOpenSearchModal={handleOpenSearchModal} />
+}

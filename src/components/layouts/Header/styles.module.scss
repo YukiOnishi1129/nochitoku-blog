@@ -6,7 +6,6 @@
   left: 0;
   right: 0;
   z-index: 10;
-  // width: 100%;
 }
 
 .top {
@@ -37,7 +36,8 @@
   }
 
   @include mq(md) {
-    // width: 300px;
+    display: flex;
+    justify-content: space-between;
     height: 60px;
     padding: 10px 30px;
   }
@@ -96,5 +96,16 @@
       opacity: 0.7;
       text-decoration: underline;
     }
+  }
+}
+
+.menu {
+  display: none;
+  @include mq(md) {
+    display: block;
+  }
+
+  &__search {
+    cursor: pointer;
   }
 }
