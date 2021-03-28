@@ -1,6 +1,12 @@
+@import '@variable';
+
 .bread {
   background: var(--c-sub);
   padding: 8px 0;
+
+  @include mq(md) {
+    padding: 4px 4px;
+  }
 
   &__list {
     margin: 0 auto;
@@ -9,10 +15,30 @@
     font-size: 0.75rem;
     letter-spacing: 0.1em;
     color: var(--c-main);
+
+    @include mq(lg) {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    @include mq(md) {
+      margin: 0 auto;
+      font-size: 0.5rem;
+      width: 100%;
+    }
   }
 
   &__item {
     margin-right: 5px;
+
+    @include mq(lg) {
+      width: 20%;
+      text-align: right;
+    }
+
+    @include mq(md) {
+      width: 20%;
+    }
 
     &::after {
       content: '＞';
@@ -25,5 +51,19 @@
     &:hover {
       opacity: 0.7;
     }
+  }
+}
+
+.breadName {
+  @include mq(lg) {
+    display: block;
+    width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @include mq(md) {
+    width: 80%;
   }
 }

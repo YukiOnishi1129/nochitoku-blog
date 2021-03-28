@@ -3,6 +3,9 @@
 .container {
   width: 100%;
   margin-bottom: 40px;
+  @include mq(md) {
+    margin-bottom: 0;
+  }
 }
 
 .image {
@@ -14,6 +17,10 @@
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
+
+  @include mq(md) {
+    margin-top: 4px;
+  }
 }
 
 .leftBar {

@@ -17,6 +17,11 @@
     font-size: 3rem;
     line-height: 72px;
     letter-spacing: 0.1em;
+
+    @include mq(md) {
+      font-size: 2.125rem;
+      line-height: 36px;
+    }
   }
 
   h2 {
@@ -27,6 +32,12 @@
 
     @include mq(lg) {
       font-size: 1.25rem;
+    }
+
+    @include mq(md) {
+      margin-top: 10px;
+      font-size: 0.5rem;
+      line-height: 18px;
     }
   }
 }
@@ -49,6 +60,21 @@
 
     @include mq(xl) {
       display: block;
+    }
+
+    @include mq(md) {
+      display: none;
+    }
+  }
+
+  &__sp {
+    display: none;
+    @include mq(md) {
+      display: block;
+      margin-top: 50px;
+      margin-right: auto;
+      margin-left: auto;
+      width: 95%;
     }
   }
 }

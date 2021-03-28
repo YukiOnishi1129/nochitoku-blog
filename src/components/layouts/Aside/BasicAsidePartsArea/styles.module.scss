@@ -9,6 +9,9 @@
   @include mq(xl) {
     font-size: 1rem;
   }
+  @include mq(md) {
+    font-size: 0.75rem;
+  }
 }
 
 .bar {
@@ -17,6 +20,9 @@
 
   @include mq(xl) {
     height: 10px;
+  }
+  @include mq(md) {
+    height: 4px;
   }
 }
 

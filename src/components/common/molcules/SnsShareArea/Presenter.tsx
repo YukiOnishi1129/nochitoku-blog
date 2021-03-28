@@ -46,6 +46,21 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             {/* TODO: vercelデプロイ後確認 */}
             <FacebookShareButton shareUrl={shareUrl} />
           </li>
+          {/* はてブ SP */}
+          <li className={styles.icon__sp}>
+            {/* TODO: vercelデプロイ後確認 */}
+            <HatenaShareButton shareUrl={shareUrl} size={32} />
+          </li>
+          {/* Twitter SP */}
+          <li className={styles.icon__sp}>
+            {/* TODO: vercelデプロイ後確認 */}
+            <TwitterShareButton shareUrl={shareUrl} size={32} />
+          </li>
+          {/* Facebook SP */}
+          <li className={styles.icon__sp}>
+            {/* TODO: vercelデプロイ後確認 */}
+            <FacebookShareButton shareUrl={shareUrl} size={32} />
+          </li>
         </ul>
       </div>
     </div>

@@ -1,3 +1,5 @@
+@import '@variable';
+
 .container {
   position: relative;
 }
@@ -6,4 +8,9 @@
   position: absolute;
   right: 15px;
   top: 5px;
+
+  @include mq(md) {
+    right: 15px;
+    top: 8px;
+  }
 }

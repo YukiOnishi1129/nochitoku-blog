@@ -1,3 +1,5 @@
+@import '@variable';
+
 .container {
   border-top: 4px solid var(--c-main);
   border-bottom: 4px solid var(--c-main);
@@ -10,6 +12,12 @@
     width: 70%;
     padding-top: 10px;
     padding-bottom: 10px;
+
+    @include mq(md) {
+      width: 90%;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
   }
 }
 
@@ -19,6 +27,11 @@
   font-weight: bold;
   text-align: center;
   line-height: 40px;
+
+  @include mq(md) {
+    font-size: 1rem;
+    line-height: 30px;
+  }
 }
 
 .icons {
@@ -30,7 +43,23 @@
 .icon {
   display: block;
 
+  @include mq(md) {
+    display: none;
+  }
+
   &:hover {
     opacity: 0.7;
+  }
+
+  &__sp {
+    display: none;
+
+    @include mq(md) {
+      display: block;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 }
