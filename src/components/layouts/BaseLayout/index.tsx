@@ -4,6 +4,7 @@
  * @package Component
  */
 import React from 'react'
+import { animateScroll as scroll } from 'react-scroll'
 /* components */
 import { Presenter } from './Presenter'
 
@@ -21,6 +22,13 @@ export type Props = {
  */
 export const BaseLayout: React.FC<Props> = (props: Props) => {
   const { children, breadName } = props
+  const scrollToTop = () => {
+    scroll.scrollToTop()
+  }
 
-  return <Presenter breadName={breadName}>{children}</Presenter>
+  return (
+    <Presenter breadName={breadName} scrollToTop={scrollToTop}>
+      {children}
+    </Presenter>
+  )
 }
