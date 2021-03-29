@@ -4,7 +4,7 @@
  * @package Component
  */
 import React from 'react'
-import Modal, { Styles } from 'react-modal'
+import Modal from 'react-modal'
 /* components */
 import { CloseIcon } from '@/components/common/icons/CloseIcon'
 /* styles */
@@ -41,7 +41,17 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     <Modal
       isOpen={isMenuModalVisible}
       onRequestClose={handleCloseMenuModal}
-      style={customStyles}
+      overlayClassName={{
+        base: styles.overlay_base,
+        afterOpen: styles.overlay_after,
+        beforeClose: styles.overlay_before,
+      }}
+      className={{
+        base: styles.content_base,
+        afterOpen: styles.content_after,
+        beforeClose: styles.content_before,
+      }}
+      closeTimeoutMS={500}
     >
       <ul className={styles.links}>
         <li className={styles.title}>MENU</li>
@@ -61,32 +71,4 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       </div>
     </Modal>
   )
-}
-
-/**
- * styles
- */
-const customStyles: Styles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    backgroundColor: 'rgba(22, 21, 21, 0.56)',
-    zIndex: 14,
-  },
-
-  content: {
-    position: 'relative',
-    top: '50%',
-    left: '60% ',
-    right: '0',
-    bottom: 'auto',
-    marginRight: '-50%',
-    width: '80%',
-    height: '100%',
-    transform: 'translate(-50%, -50%)',
-    padding: '30px 0 0',
-    borderRadius: '0',
-    backgroundColor: '#F0EEEE',
-  },
 }
