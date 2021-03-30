@@ -8,8 +8,9 @@ import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
 /* constants */
-import { NOCHITOKU_URL } from '@/constants/config'
+import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* types */
+import { MetaHeadType } from '@/types/metaHead'
 import { ProfileType } from '@/types/profile'
 import { ImageType } from '@/types/image'
 
@@ -43,8 +44,17 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
     shareUrl = NOCHITOKU_URL + router.asPath
   }
 
+  const metaData: MetaHeadType = {
+    title: 'プロフィール' + ' | ' + BASE_TITLE,
+    description: '', // TODO: 後で入れる
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    image: '', // TODO: 後で入れる
+    url: NOCHITOKU_URL + router.asPath,
+  }
+
   return (
     <Presenter
+      metaData={metaData}
       image={propsImage}
       highlightedBody={highlightedBody}
       shareUrl={shareUrl}

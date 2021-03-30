@@ -8,12 +8,15 @@ import { useRouter } from 'next/router'
 import { animateScroll as scroll } from 'react-scroll'
 /* components */
 import { Presenter } from './Presenter'
+/* types */
+import { MetaHeadType } from '@/types/metaHead'
 
 /**
  * Props
  */
 export type Props = {
   children: React.ReactNode
+  metaData: MetaHeadType
   breadName?: string
 }
 
@@ -23,7 +26,7 @@ export type Props = {
  */
 export const BaseLayout: React.FC<Props> = (props: Props) => {
   const router = useRouter()
-  const { children, breadName } = props
+  const { children, metaData, breadName } = props
   // SearchModal用のstate
   const [searchText, setSearchText] = React.useState('')
   const [isSearchModalVisible, setIsSearchModalVisible] = React.useState(false)
@@ -90,6 +93,7 @@ export const BaseLayout: React.FC<Props> = (props: Props) => {
 
   return (
     <Presenter
+      metaData={metaData}
       breadName={breadName}
       searchText={searchText}
       isSearchModalVisible={isSearchModalVisible}

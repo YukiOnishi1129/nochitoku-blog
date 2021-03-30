@@ -6,12 +6,15 @@
 import React from 'react'
 /* components */
 import { Presenter } from './Presenter'
+/* types */
+import { MetaHeadType } from '@/types/metaHead'
 
 /**
  * Props
  */
 export type Props = {
   children: React.ReactNode
+  metaData: MetaHeadType
   breadName?: string
 }
 
@@ -20,7 +23,11 @@ export type Props = {
  * @param props
  */
 export const BasePostPageLayout: React.FC<Props> = (props: Props) => {
-  const { children, breadName } = props
+  const { children, metaData, breadName } = props
 
-  return <Presenter breadName={breadName}>{children}</Presenter>
+  return (
+    <Presenter metaData={metaData} breadName={breadName}>
+      {children}
+    </Presenter>
+  )
 }

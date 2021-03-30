@@ -12,6 +12,7 @@ import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { SnsShareArea } from '@/components/common/molcules/SnsShareArea'
 import { HighlightBody } from '@/components/common/molcules/HighlightBody'
 /* types */
+import { MetaHeadType } from '@/types/metaHead'
 import { ImageType } from '@/types/image'
 /* styles */
 import styles from './styles.module.scss'
@@ -20,6 +21,7 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
+  metaData: MetaHeadType
   image: ImageType
   highlightedBody: string
   shareUrl: string
@@ -31,10 +33,10 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { image, highlightedBody, shareUrl } = props
+  const { metaData, image, highlightedBody, shareUrl } = props
 
   return (
-    <BasePostPageLayout breadName="プロフィール">
+    <BasePostPageLayout metaData={metaData} breadName="プロフィール">
       {/* ページタイトル */}
       <PageTitle title={`プロフィール`} />
       <section className={styles.container}>

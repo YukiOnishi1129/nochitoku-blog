@@ -8,8 +8,9 @@ import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
 /* constants */
-import { NOCHITOKU_URL } from '@/constants/config'
+import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* types */
+import { MetaHeadType } from '@/types/metaHead'
 import { BlogItemType, TableOfContentType } from '@/types/blog'
 import { ImageType } from '@/types/image'
 
@@ -42,8 +43,17 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
     shareUrl = NOCHITOKU_URL + router.asPath
   }
 
+  const metaData: MetaHeadType = {
+    title: `${blogItem.title} | ${BASE_TITLE}`,
+    description: '',
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    image: '', // TODO: 後で入れる
+    url: NOCHITOKU_URL + router.asPath,
+  }
+
   return (
     <Presenter
+      metaData={metaData}
       blogItem={blogItem}
       image={propsImage}
       highlightedBody={highlightedBody}

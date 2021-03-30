@@ -7,6 +7,10 @@ import React from 'react'
 import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
+/* constants */
+import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
+/* types */
+import { MetaHeadType } from '@/types/metaHead'
 
 /**
  * container
@@ -37,8 +41,17 @@ export const Error404Template: React.FC = () => {
     }
   }
 
+  const metaData: MetaHeadType = {
+    title: 'NOT FOUND' + ' | ' + BASE_TITLE,
+    description: '', // TODO: 後で入れる
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    image: '', // TODO: 後で入れる
+    url: NOCHITOKU_URL,
+  }
+
   return (
     <Presenter
+      metaData={metaData}
       searchText={searchText}
       onChange={onChange}
       onKeyUp={onSearchKeyUp}

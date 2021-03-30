@@ -11,6 +11,7 @@ import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
 import { SearchBlogItem } from './organisms/SearchBlogItem'
 import { BlogItemResponsive } from '@/components/common/molcules/BlogItemResponsive'
 /* types */
+import { MetaHeadType } from '@/types/metaHead'
 import { BlogItemType } from '@/types/blog'
 import { EventType } from '@/types/event'
 /* styles*/
@@ -20,6 +21,7 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
+  metaData: MetaHeadType
   breadName: string
   searchText: string
   showBlogList: BlogItemType[]
@@ -32,10 +34,10 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { breadName, searchText, showBlogList, onChange } = props
+  const { metaData, breadName, searchText, showBlogList, onChange } = props
 
   return (
-    <BaseLayout breadName={breadName}>
+    <BaseLayout metaData={metaData} breadName={breadName}>
       <div className={styles.container}>
         <PageTitle title="検索結果" />
         {/* 検索フォーム */}
