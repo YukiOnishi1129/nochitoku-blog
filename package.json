@@ -30,6 +30,7 @@
     "dotenv": "^8.2.0",
     "highlight.js": "^10.7.1",
     "next": "10.0.6",
+    "next-pwa": "^5.0.6",
     "react": "17.0.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "17.0.1",
