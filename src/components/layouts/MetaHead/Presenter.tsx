@@ -40,9 +40,6 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       <meta name="twitter:description" content={metaData.description} />
       <meta name="twitter:image" content={metaData.image} />
       <link rel="canonical" href={metaData.url} />
-      {/* TODO: ロゴ画像 */}
-      {/* <link rel="icon" href={''} />
-      <link rel="apple-touch-icon" href={''} /> */}
       <link
         rel="apple-touch-icon"
         sizes="114x114"
@@ -62,6 +59,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       />
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+      <link rel="shortcut icon" href="/favicon.ico" />
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff"></meta>
     </Head>
