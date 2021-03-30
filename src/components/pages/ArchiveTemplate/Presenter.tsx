@@ -13,6 +13,7 @@ import { Pagination } from '@/components/common/molcules/Pagination'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
+import { MetaHeadType } from '@/types/metaHead'
 import { BlogItemType } from '@/types/blog'
 /* styles */
 import styles from './styles.module.scss'
@@ -21,6 +22,7 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
+  metaData: MetaHeadType
   date: string
   blogList: BlogItemType[]
   totalCount: number
@@ -33,10 +35,10 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { date, blogList, totalCount, breadName } = props
+  const { metaData, date, blogList, totalCount, breadName } = props
 
   return (
-    <BasePostPageLayout breadName={breadName}>
+    <BasePostPageLayout metaData={metaData} breadName={breadName}>
       {/* ページタイトル */}
       <PageTitle title={`${breadName}の記事一覧`} />
       {/* ブログ記事一覧表示 */}

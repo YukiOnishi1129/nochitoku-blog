@@ -12,9 +12,8 @@ import { Pagination } from '@/components/common/molcules/Pagination'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blog'
-/* types */
 import { MetaHeadType } from '@/types/metaHead'
+import { BlogItemType } from '@/types/blog'
 /* styles */
 import styles from './styles.module.scss'
 
