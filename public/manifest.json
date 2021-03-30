@@ -2,6 +2,12 @@
   "name": "NOCHITOKU",
   "short_name": "NOCHITOKU",
   "description": "",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrate-primary",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -13,9 +19,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone",
-  "orientation": "any"
+  ]
 }

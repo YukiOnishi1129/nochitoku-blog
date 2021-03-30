@@ -1,8 +1,9 @@
 // require('dotenv').config({ path: `./.env.${process.env.ENVIRONMENT}` })
 // const { resolve } = require('path')
 // const path = require('path')
+const withPWA = require('next-pwa')
 
-const nextConfig = {
+const nextConfig = withPWA({
   env: {
     X_API_KEY: process.env.X_API_KEY,
   },
@@ -12,11 +13,15 @@ const nextConfig = {
   // sassOptions: {
   //   includePaths: [path.join(__dirname, 'src/styles')],
   // },
+  pwa: {
+    dest: 'public', // swの出力ディレクトリ
+    // runtimeCaching: []
+  },
   webpack: (config) => {
     // src ディレクトリをエイリアスのルートに設定
     // config.resolve.alias["~"] = resolve(__dirname, "src");
     return config
   },
-}
+})
 
 module.exports = nextConfig
