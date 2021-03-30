@@ -30,7 +30,7 @@ export const PolicyTemplate: React.FC<Props> = (props: Props) => {
   const router = useRouter()
 
   const metaData: MetaHeadType = {
-    title: title + ' | ' + BASE_TITLE,
+    title: `${title} | ${BASE_TITLE}`,
     description:
       'NOCHITOKU(https://nochitoku-it.com/)（以下、「当サイト」とします。）における利用規約は、下記の通りです。',
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？

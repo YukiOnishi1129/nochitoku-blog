@@ -47,7 +47,7 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
     title: `${blogItem.title} | ${BASE_TITLE}`,
     description: '',
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
-    image: '', // TODO: 後で入れる
+    image: blogItem.image.url,
     url: NOCHITOKU_URL + router.asPath,
   }
 

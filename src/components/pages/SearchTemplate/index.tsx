@@ -58,7 +58,7 @@ export const SearchTemplate: React.FC<Props> = (props: Props) => {
   }
 
   const metaData: MetaHeadType = {
-    title: '検索結果' + ' | ' + BASE_TITLE,
+    title: `${breadName} | ${BASE_TITLE}`,
     description: '', //  TODO: 後で入れる
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
     image: NOCHITOKU_URL + '/assets/share_image.png',

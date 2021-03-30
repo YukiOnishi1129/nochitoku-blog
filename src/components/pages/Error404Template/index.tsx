@@ -42,7 +42,7 @@ export const Error404Template: React.FC = () => {
   }
 
   const metaData: MetaHeadType = {
-    title: 'NOT FOUND' + ' | ' + BASE_TITLE,
+    title: `NOT FOUND | ${BASE_TITLE}`,
     description: '', // TODO: 後で入れる
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
     image: NOCHITOKU_URL + '/assets/share_image.png',
