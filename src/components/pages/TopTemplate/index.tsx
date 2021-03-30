@@ -9,7 +9,7 @@ import { Presenter } from './Presenter'
 /* contexts */
 import { useBlogState } from '@/contexts/BlogContext'
 /* constants */
-import { NOCHITOKU_URL } from '@/constants/config'
+import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
 
@@ -22,7 +22,7 @@ export const TopTemplate: React.FC = () => {
   const { blogList, totalCount } = useBlogState()
 
   const metaData: MetaHeadType = {
-    title: 'NOCHITOKU',
+    title: BASE_TITLE,
     description: '', // TODO: description考える
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
     image: '', // TODO: 後で入れる

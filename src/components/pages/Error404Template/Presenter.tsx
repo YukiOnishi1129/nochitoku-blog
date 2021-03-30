@@ -10,6 +10,7 @@ import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
 import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
 import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
 /* types */
+import { MetaHeadType } from '@/types/metaHead'
 import { EventType } from '@/types/event'
 /* styles */
 import styles from './styles.module.scss'
@@ -18,6 +19,7 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
+  metaData: MetaHeadType
   searchText: string
   onChange: EventType['onChange']
   onKeyUp?: EventType['onkeypress']
@@ -29,10 +31,10 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { searchText, onChange, onKeyUp } = props
+  const { metaData, searchText, onChange, onKeyUp } = props
 
   return (
-    <BaseFixedPageLayout>
+    <BaseFixedPageLayout metaData={metaData}>
       <div className={styles.error}>
         <div className={styles.title}>
           <h1>NOT FOUND</h1>
