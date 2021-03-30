@@ -8,6 +8,10 @@ import React from 'react'
 import { Presenter } from './Presenter'
 /* contexts */
 import { useBlogState } from '@/contexts/BlogContext'
+/* constants */
+import { NOCHITOKU_URL } from '@/constants/config'
+/* types */
+import { MetaHeadType } from '@/types/metaHead'
 
 /**
  * container
@@ -17,5 +21,19 @@ import { useBlogState } from '@/contexts/BlogContext'
 export const TopTemplate: React.FC = () => {
   const { blogList, totalCount } = useBlogState()
 
-  return <Presenter blogList={blogList} totalCount={totalCount} />
+  const metaData: MetaHeadType = {
+    title: 'NOCHITOKU',
+    description: '', // TODO: description考える
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    image: '', // TODO: 後で入れる
+    url: NOCHITOKU_URL,
+  }
+
+  return (
+    <Presenter
+      metaData={metaData}
+      blogList={blogList}
+      totalCount={totalCount}
+    />
+  )
 }

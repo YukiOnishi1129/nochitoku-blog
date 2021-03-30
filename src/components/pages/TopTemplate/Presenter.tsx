@@ -4,7 +4,6 @@
  * @package Component
  */
 import React from 'react'
-import Head from 'next/head'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
 import { BlogItem } from '@/components/common/molcules/BlogItem'
@@ -14,6 +13,8 @@ import { Pagination } from '@/components/common/molcules/Pagination'
 import { blogShowCount } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
+/* types */
+import { MetaHeadType } from '@/types/metaHead'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -21,6 +22,7 @@ import styles from './styles.module.scss'
  * props
  */
 type Props = {
+  metaData: MetaHeadType
   blogList: BlogItemType[]
   totalCount: number
 }
@@ -31,14 +33,11 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { blogList, totalCount } = props
+  const { metaData, blogList, totalCount } = props
 
   return (
     <>
-      {/* <Head>
-        <title>aaaaaaaaaa</title>
-      </Head> */}
-      <BasePostPageLayout>
+      <BasePostPageLayout metaData={metaData}>
         {/* ブログ記事一覧表示 */}
         <div className={styles.blogItem}>
           {blogList.length > 0 &&

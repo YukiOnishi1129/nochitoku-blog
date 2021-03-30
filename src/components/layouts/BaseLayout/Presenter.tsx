@@ -5,6 +5,7 @@
  */
 import React from 'react'
 /* components */
+import { MetaHead } from '@/components/layouts/MetaHead'
 import { Header } from '@/components/layouts/Header'
 import { BreadList } from '@/components/layouts/BreadList'
 import { Footer } from '@/components/layouts/Footer'
@@ -13,6 +14,7 @@ import { SearchModal } from '@/components/modals/SearchModal'
 import { MenuModal } from '@/components/modals/MenuModal'
 /* types */
 import { EventType } from '@/types/event'
+import { MetaHeadType } from '@/types/metaHead'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -21,6 +23,7 @@ import styles from './styles.module.scss'
  */
 export type Props = {
   children: React.ReactNode
+  metaData: MetaHeadType
   breadName?: string
   searchText: string
   isSearchModalVisible: boolean
@@ -41,6 +44,7 @@ export type Props = {
 export const Presenter: React.FC<Props> = (props: Props) => {
   const {
     children,
+    metaData,
     breadName,
     searchText,
     isSearchModalVisible,
@@ -55,41 +59,44 @@ export const Presenter: React.FC<Props> = (props: Props) => {
   } = props
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.header}>
-        <Header
-          handleOpenSearchModal={handleOpenSearchModal}
-          handleOpenMenuModal={handleOpenMenuModal}
-        />
-        <div className={styles.headerEmpty} />
-      </div>
-      {!!breadName && <BreadList breadName={breadName} />}
+    <>
+      <MetaHead metaData={metaData} />
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
+          <Header
+            handleOpenSearchModal={handleOpenSearchModal}
+            handleOpenMenuModal={handleOpenMenuModal}
+          />
+          <div className={styles.headerEmpty} />
+        </div>
+        {!!breadName && <BreadList breadName={breadName} />}
 
-      <div className={styles.divider}>{children}</div>
-      <div className={styles.footer}>
-        <Footer />
+        <div className={styles.divider}>{children}</div>
+        <div className={styles.footer}>
+          <Footer />
+        </div>
+        {/* スクロールトップボタン */}
+        <div className={styles.fixButton} onClick={scrollToTop}>
+          <ArrowIcon size={70} color="#c8c8c8" />
+        </div>
+        {/* スクロールトップボタン SP */}
+        <div className={styles.fixButton__sp} onClick={scrollToTop}>
+          <ArrowIcon size={44} color="#c8c8c8" />
+        </div>
+        {/* 検索モーダル */}
+        <SearchModal
+          searchText={searchText}
+          isSearchModalVisible={isSearchModalVisible}
+          handleCloseSearchModal={handleCloseSearchModal}
+          onChangeSearchText={onChangeSearchText}
+          onKeyUpSearch={onKeyUpSearch}
+        />
+        {/* メニューモーダル */}
+        <MenuModal
+          isMenuModalVisible={isMenuModalVisible}
+          handleCloseMenuModal={handleCloseMenuModal}
+        />
       </div>
-      {/* スクロールトップボタン */}
-      <div className={styles.fixButton} onClick={scrollToTop}>
-        <ArrowIcon size={70} color="#c8c8c8" />
-      </div>
-      {/* スクロールトップボタン SP */}
-      <div className={styles.fixButton__sp} onClick={scrollToTop}>
-        <ArrowIcon size={44} color="#c8c8c8" />
-      </div>
-      {/* 検索モーダル */}
-      <SearchModal
-        searchText={searchText}
-        isSearchModalVisible={isSearchModalVisible}
-        handleCloseSearchModal={handleCloseSearchModal}
-        onChangeSearchText={onChangeSearchText}
-        onKeyUpSearch={onKeyUpSearch}
-      />
-      {/* メニューモーダル */}
-      <MenuModal
-        isMenuModalVisible={isMenuModalVisible}
-        handleCloseMenuModal={handleCloseMenuModal}
-      />
-    </div>
+    </>
   )
 }
