@@ -61,7 +61,7 @@ export const SearchTemplate: React.FC<Props> = (props: Props) => {
     title: '検索結果' + ' | ' + BASE_TITLE,
     description: '', //  TODO: 後で入れる
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
-    image: '', // TODO: 後で入れる
+    image: NOCHITOKU_URL + '/assets/share_image.png',
     url: NOCHITOKU_URL + router.pathname,
   }
 

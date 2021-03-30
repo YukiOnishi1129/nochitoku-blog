@@ -37,7 +37,7 @@ export const ArchiveTemplate: React.FC<Props> = (props: Props) => {
     title: `「${breadName}」の記事一覧 | ${BASE_TITLE}`,
     description: '', // TODO: 後で入れる
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
-    image: NOCHITOKU_URL + '/public/share_image.png',
+    image: NOCHITOKU_URL + '/assets/share_image.png',
     url: NOCHITOKU_URL + router.asPath,
   }
 

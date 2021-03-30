@@ -34,7 +34,7 @@ export const TermTemplate: React.FC<Props> = (props: Props) => {
     description:
       'NOCHITOKU（以下、「当サイト」と言います。）では、お客様からお預かりする個人情報の重要性を強く認識し、個人情報の保護に関する法律、その他の関係法令を遵守すると共に、以下に定めるプライバシーポリシーに従って、個人情報を安全かつ適切に取り扱うことを宣言いたします。',
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
-    image: '', // TODO: 後で入れる
+    image: NOCHITOKU_URL + '/assets/share_image.png',
     url: NOCHITOKU_URL + router.asPath,
   }
 
