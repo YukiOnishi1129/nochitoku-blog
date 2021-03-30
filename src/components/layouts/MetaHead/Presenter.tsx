@@ -33,8 +33,8 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       <meta property="og:url" content={metaData.url} />
       <meta property="og:image" content={metaData.image} />
       <meta property="og:site_name" content={metaData.title} />
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@tcr_jp" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@YukiOnishi" />
       <meta name="twitter:url" content={metaData.image} />
       <meta name="twitter:title" content={metaData.title} />
       <meta name="twitter:description" content={metaData.description} />
