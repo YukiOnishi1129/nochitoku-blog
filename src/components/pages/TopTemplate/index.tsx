@@ -25,7 +25,7 @@ export const TopTemplate: React.FC = () => {
     title: BASE_TITLE,
     description: '', // TODO: description考える
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
-    image: '', // TODO: 後で入れる
+    image: NOCHITOKU_URL + '/public/share_image.png',
     url: NOCHITOKU_URL,
   }
 
