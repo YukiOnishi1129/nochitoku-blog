@@ -2,10 +2,10 @@
 
 .bread {
   background: var(--c-sub);
-  padding: 8px 0;
+  padding: 12px 0;
 
   @include mq(md) {
-    padding: 4px 4px;
+    padding: 12px 4px;
   }
 
   &__list {
@@ -23,8 +23,11 @@
 
     @include mq(md) {
       margin: 0 auto;
-      font-size: 0.5rem;
+      font-size: 0.75rem;
       width: 100%;
+    }
+    @include mq(sm) {
+      font-size: 0.6255rem;
     }
   }
 

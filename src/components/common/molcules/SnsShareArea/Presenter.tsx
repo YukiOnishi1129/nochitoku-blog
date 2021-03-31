@@ -16,6 +16,7 @@ import styles from './styles.module.scss'
  */
 type Props = {
   shareUrl: string
+  title: string
 }
 
 /**
@@ -24,7 +25,7 @@ type Props = {
  * @returns
  */
 export const Presenter: React.FC<Props> = (props: Props) => {
-  const { shareUrl } = props
+  const { shareUrl, title } = props
 
   return (
     <div className={styles.container}>
@@ -39,7 +40,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           {/* Twitter */}
           <li className={styles.icon}>
             {/* TODO: vercelデプロイ後確認 */}
-            <TwitterShareButton shareUrl={shareUrl} />
+            <TwitterShareButton shareUrl={shareUrl} title={title} />
           </li>
           {/* Facebook */}
           <li className={styles.icon}>
@@ -54,7 +55,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
           {/* Twitter SP */}
           <li className={styles.icon__sp}>
             {/* TODO: vercelデプロイ後確認 */}
-            <TwitterShareButton shareUrl={shareUrl} size={32} />
+            <TwitterShareButton shareUrl={shareUrl} title={title} size={32} />
           </li>
           {/* Facebook SP */}
           <li className={styles.icon__sp}>
