@@ -6,7 +6,7 @@
 
 .title {
   margin-bottom: 10px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   line-height: 3rem;
   letter-spacing: 0.1em;
@@ -29,14 +29,23 @@
   }
 
   &__item {
+    cursor: pointer;
     margin-right: 16px;
     padding: 4px 12px;
-    font-size: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
     letter-spacing: 0.1em;
     color: var(--c-point);
-    border: 1px solid var(--c-point);
-    border-radius: 4px;
+    border: 2px solid var(--c-point);
+    border-radius: 8px;
     margin-bottom: 8px;
+    transition: background 0.5s;
+
+    &:hover {
+      color: #fff;
+      background: var(--c-point);
+      transition: background 1s;
+    }
 
     @include mq(lg) {
       font-size: 1rem;
