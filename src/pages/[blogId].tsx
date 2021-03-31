@@ -3,11 +3,13 @@
  * @package pages
  */
 import React from 'react'
+import Head from 'next/head'
 import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 /* components */
 import { BlogItemTemplate } from '@/components/pages/BlogItemTemplate'
+import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
 /* service */
@@ -55,9 +57,11 @@ const BlogItemPage: NextPage<BlogItemPagePorps> = (props) => {
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
   React.useEffect(() => {
-    setCategoryData(categories)
-    setProfileData(profile)
-    setArchive(archiveList)
+    if (!!categories && !!profile && !!archiveList) {
+      setCategoryData(categories)
+      setProfileData(profile)
+      setArchive(archiveList)
+    }
   }, [
     categories,
     setCategoryData,
@@ -68,11 +72,22 @@ const BlogItemPage: NextPage<BlogItemPagePorps> = (props) => {
   ])
 
   return (
-    <BlogItemTemplate
-      blogItem={blogItem}
-      highlightedBody={highlightedBody}
-      tableOfContents={tableOfContents}
-    />
+    <>
+      {!blogItem ? (
+        <>
+          <Head>
+            <meta name="nochitoku" content="noindex" />
+          </Head>
+          <Error404Template />
+        </>
+      ) : (
+        <BlogItemTemplate
+          blogItem={blogItem}
+          highlightedBody={highlightedBody}
+          tableOfContents={tableOfContents}
+        />
+      )}
+    </>
   )
 }
 
@@ -120,47 +135,53 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (previewData?.draftKey && typeof previewData.draftKey === 'string') {
     draftKey = previewData.draftKey
   }
-  // ブログ記事詳細データ取得 ---------
-  const blogDetailData = await getBlogBy(blogId, draftKey)
-  // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
-  // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
-  // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
 
-  // シンタックハイライト文章作成
-  // https://qiita.com/cawauchi/items/ff6489b17800c5676908
-  const $ = cheerio.load(blogDetailData.body)
-  $('pre code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text())
-    $(elm).html(result.value)
-    $(elm).addClass('hljs')
-  })
+  try {
+    // ブログ記事詳細データ取得 ---------
+    const blogDetailData = await getBlogBy(blogId, draftKey)
+    // カテゴリーデータ取得 ---------
+    const categoryData = await getCategories()
+    // プロフィールデータ取得 ---------
+    const profile = await getProfileBy()
+    // アーカイブデータ取得 ---------
+    const archiveList = await getArchiveList()
 
-  // 目次作成
-  // https://blog.microcms.io/create-table-of-contents/
-  // https://ru-blog.com/nextjs-microcms-create-table-of-contents/
-  const headings = $('h1, h2').toArray()
-  const tableOfContents: TableOfContentType[] = headings.map((data) => {
-    return {
-      //@ts-ignore
-      text: String(data.children[0].data),
-      id: data.attribs.id,
-      name: data.name,
+    // シンタックハイライト文章作成
+    // https://qiita.com/cawauchi/items/ff6489b17800c5676908
+    const $ = cheerio.load(blogDetailData.body)
+    $('pre code').each((_, elm) => {
+      const result = hljs.highlightAuto($(elm).text())
+      $(elm).html(result.value)
+      $(elm).addClass('hljs')
+    })
+
+    // 目次作成
+    // https://blog.microcms.io/create-table-of-contents/
+    // https://ru-blog.com/nextjs-microcms-create-table-of-contents/
+    const headings = $('h1, h2').toArray()
+    const tableOfContents: TableOfContentType[] = headings.map((data) => {
+      return {
+        //@ts-ignore
+        text: String(data.children[0].data),
+        id: data.attribs.id,
+        name: data.name,
+      }
+    })
+
+    const props: BlogItemPagePorps = {
+      blogItem: blogDetailData,
+      highlightedBody: $.html(),
+      tableOfContents: tableOfContents,
+      categories: categoryData,
+      profile: profile,
+      archiveList: archiveList,
+      draftKey: draftKey,
     }
-  })
-
-  const props: BlogItemPagePorps = {
-    blogItem: blogDetailData,
-    highlightedBody: $.html(),
-    tableOfContents: tableOfContents,
-    categories: categoryData,
-    profile: profile,
-    archiveList: archiveList,
-    draftKey: draftKey,
+    return { props }
+  } catch (error) {
+    //https://github.com/vercel/next.js/discussions/11862
+    return { notFound: true }
   }
-  return { props }
 }
 
 export default BlogItemPage
