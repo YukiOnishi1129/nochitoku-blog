@@ -128,12 +128,15 @@ export const isBlogsArchives = async (startDate: string, endDate: string) => {
 /**
  * ブログ記事詳細取得
  * @param id string
+ * @param draftKey string
  * @returns blogDetail BlogItemType
  */
-export const getBlogBy = async (id: string) => {
+export const getBlogBy = async (id: string, draftKey: string) => {
   let blogDetail = initBlogItem
   try {
-    const res = await globalAxios.get(BASE_URL + id)
+    const res = await globalAxios.get(
+      `${BASE_URL}${id}${draftKey !== '' ? `?draftKey=${draftKey}` : ''}`
+    )
     blogDetail = res.data
   } catch (error) {
     throw new Error(`API ERROR: getBlogBy`)
