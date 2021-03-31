@@ -1,13 +1,83 @@
 @import '@variable';
 
-.title {
-  padding-bottom: 20px;
-  font-size: 1.125rem;
-  letter-spacing: 0.1em;
-  text-align: center;
-  color: var(--c-main);
+.close {
+  width: 100%;
 
-  @include mq(sm) {
-    font-size: 0.875rem;
+  svg {
+    display: block;
+    margin: 20px auto;
+  }
+}
+
+.overlay_base {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(22, 21, 21, 0.56);
+  opacity: 0;
+  transition-property: background-color, opacity;
+  transition-duration: 500ms;
+  transition-timing-function: ease-in-out;
+  z-index: 14;
+}
+
+.overlay_after {
+  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+}
+
+.overlay_before {
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition-duration: 500ms;
+}
+
+.content_base {
+  width: 0;
+  height: 140px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transition-property: background-color, width, height;
+  transition-duration: 500ms;
+  transform: translate(-50%, -50%);
+  padding: 30px 20px 0;
+  border-radius: 8px;
+  background-color: #f0eeee;
+
+  div {
+    display: none;
+    div {
+      input {
+        background-color: #f0eeee;
+      }
+    }
+  }
+}
+
+.content_after {
+  width: 90%;
+  height: 140px;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  background-color: #f0eeee;
+
+  div {
+    display: block;
+  }
+}
+
+.content_before {
+  width: 0;
+  background-color: transparent;
+
+  div {
+    display: none;
   }
 }
