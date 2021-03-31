@@ -8,6 +8,12 @@ import globalAxios from '@/config/globalAxios'
 
 const BASE_URL = 'https://yuki-read.microcms.io/api/v1/blogs/'
 
+/**
+ *
+ * @param req
+ * @param res
+ * @returns
+ */
 const preview = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!req.query.slug) {
     return res.status(404).end()
