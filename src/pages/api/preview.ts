@@ -15,9 +15,11 @@ const BASE_URL = 'https://yuki-read.microcms.io/api/v1/blogs/'
  * @returns
  */
 const preview = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (!req.query.slug) {
-    return res.status(404).end()
-  }
+  //   console.log('プレビュー')
+  //   if (!req.query.slug) {
+  //     console.log('プレビュー404')
+  //     return res.status(404).end()
+  //   }
 
   const content = await globalAxios.get(
     `${BASE_URL}${req.query.slug}?fields=id&draftKey=${req.query.draftKey}`
