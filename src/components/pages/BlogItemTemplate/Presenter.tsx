@@ -55,7 +55,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         {!!draftKey && (
           <div>
             現在プレビューモードで閲覧中です。
-            <Link href={`{/api/cancel-preview?id=${blogItem.id}}`}>
+            <Link href={`/api/cancel-preview?id=${blogItem.id}`}>
               <a>プレビューを解除</a>
             </Link>
           </div>
