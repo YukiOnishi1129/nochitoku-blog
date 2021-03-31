@@ -8,7 +8,7 @@ const nextConfig = withPWA({
     domains: ['images.microcms-assets.io'],
   },
   pwa: {
-    dest: 'public', // swの出力ディレクトリ
+    dest: 'public/sw', // swの出力ディレクトリ
     // runtimeCaching: []
   },
   webpack: (config) => {
