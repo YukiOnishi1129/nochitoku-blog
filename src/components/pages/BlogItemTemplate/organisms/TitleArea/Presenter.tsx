@@ -4,6 +4,7 @@
  * @package Component
  */
 import React from 'react'
+import Link from 'next/link'
 /* components */
 import { DateArea } from '@/components/common/molcules/DateArea'
 /* types */
@@ -32,8 +33,10 @@ export const Presenter: React.FC<Props> = (props: Props) => {
       <div className={styles.category}>
         {blogItem.categories.length > 0 &&
           blogItem.categories.map((category) => (
-            <div className={styles.category__item} key={category.id}>
-              {category.name}
+            <div key={category.id}>
+              <Link href={`/category/${category.id}/page/1`}>
+                <div className={styles.category__item}>{category.name}</div>
+              </Link>
             </div>
           ))}
       </div>
