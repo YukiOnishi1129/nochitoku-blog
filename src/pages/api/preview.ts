@@ -9,9 +9,9 @@ import globalAxios from '@/config/globalAxios'
 const BASE_URL = 'https://yuki-read.microcms.io/api/v1/blogs/'
 
 /**
- *
- * @param req
- * @param res
+ * プレビューAPI
+ * @param req NextApiRequest
+ * @param res NextApiResponse
  * @returns
  */
 const preview = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -28,11 +28,9 @@ const preview = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   res.setPreviewData({
-    // @ts-ignore
-    blogId: content.id,
+    blogId: content.data.id,
     draftKey: req.query.draftKey,
   })
-  // @ts-ignore
   res.writeHead(307, { Location: `/${content.data.id}` })
   res.end('Preview mode enabled')
 }

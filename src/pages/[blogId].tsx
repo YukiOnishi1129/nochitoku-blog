@@ -53,6 +53,7 @@ const BlogItemPage: NextPage<BlogItemPagePorps> = (props) => {
     categories,
     profile,
     archiveList,
+    draftKey,
   } = props
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
@@ -85,6 +86,7 @@ const BlogItemPage: NextPage<BlogItemPagePorps> = (props) => {
           blogItem={blogItem}
           highlightedBody={highlightedBody}
           tableOfContents={tableOfContents}
+          draftKey={draftKey}
         />
       )}
     </>
@@ -112,7 +114,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true, // getStaticPathsで返せないパスを全て404ページに返す
+    fallback: true, // プレビューのためtrueに設定
   }
 }
 

@@ -4,6 +4,7 @@
  * @package Component
  */
 import React from 'react'
+import Link from 'next/link'
 import Image from 'next/image'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
@@ -29,6 +30,7 @@ type Props = {
   highlightedBody: string
   tableOfContents: TableOfContentType[]
   shareUrl: string
+  draftKey?: string
 }
 
 /**
@@ -44,11 +46,20 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     highlightedBody,
     tableOfContents,
     shareUrl,
+    draftKey,
   } = props
 
   return (
     <BasePostPageLayout metaData={metaData} breadName={blogItem.title}>
       <section className={styles.container}>
+        {!!draftKey && (
+          <div>
+            現在プレビューモードで閲覧中です。
+            <Link href={`{/api/cancel-preview?id=${blogItem.id}}`}>
+              <a>プレビューを解除</a>
+            </Link>
+          </div>
+        )}
         <div className={styles.image}>
           <Image
             src={image.url}
