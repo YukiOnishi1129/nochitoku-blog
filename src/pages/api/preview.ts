@@ -33,7 +33,7 @@ const preview = async (req: NextApiRequest, res: NextApiResponse) => {
     draftKey: req.query.draftKey,
   })
   // @ts-ignore
-  res.writeHead(307, { Location: `/${content.id}` })
+  res.writeHead(307, { Location: `/${req.query.slug}` })
   res.end('Preview mode enabled')
 }
 
