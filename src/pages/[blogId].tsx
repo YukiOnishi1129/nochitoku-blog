@@ -97,7 +97,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false, // getStaticPathsで返せないパスを全て404ページに返す
+    fallback: true, // getStaticPathsで返せないパスを全て404ページに返す
   }
 }
 
