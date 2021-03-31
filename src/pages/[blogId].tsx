@@ -35,6 +35,7 @@ type BlogItemPagePorps = {
   categories: CategoryType[]
   profile: ProfileType
   archiveList: ArchiveType[]
+  draftKey: string
 }
 
 /**
@@ -107,12 +108,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context
   let blogId = ''
+  let draftKey = ''
 
   if (params?.blogId && typeof params.blogId === 'string') {
     blogId = params.blogId
   }
+  if (params?.draftKey && typeof params.draftKey === 'string') {
+    draftKey = params.draftKey
+  }
   // ブログ記事詳細データ取得 ---------
-  const blogDetailData = await getBlogBy(blogId)
+  const blogDetailData = await getBlogBy(blogId, draftKey)
   // カテゴリーデータ取得 ---------
   const categoryData = await getCategories()
   // プロフィールデータ取得 ---------
@@ -149,6 +154,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     categories: categoryData,
     profile: profile,
     archiveList: archiveList,
+    draftKey: draftKey,
   }
   return { props }
 }
