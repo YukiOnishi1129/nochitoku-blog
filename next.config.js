@@ -1,6 +1,3 @@
-// require('dotenv').config({ path: `./.env.${process.env.ENVIRONMENT}` })
-// const { resolve } = require('path')
-// const path = require('path')
 const withPWA = require('next-pwa')
 
 const nextConfig = withPWA({
@@ -10,9 +7,6 @@ const nextConfig = withPWA({
   images: {
     domains: ['images.microcms-assets.io'],
   },
-  // sassOptions: {
-  //   includePaths: [path.join(__dirname, 'src/styles')],
-  // },
   pwa: {
     dest: 'public', // swの出力ディレクトリ
     // runtimeCaching: []

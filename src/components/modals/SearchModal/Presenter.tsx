@@ -4,9 +4,10 @@
  * @package Component
  */
 import React from 'react'
-import Modal, { Styles } from 'react-modal'
+import Modal from 'react-modal'
 /* components */
 import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
+import { CloseIcon } from '@/components/common/icons/CloseIcon'
 /* types */
 import { EventType } from '@/types/event'
 /* styles */
@@ -43,41 +44,29 @@ export const Presenter: React.FC<Props> = (props: Props) => {
     <Modal
       isOpen={isSearchModalVisible}
       onRequestClose={handleCloseSearchModal}
-      style={customStyles}
+      overlayClassName={{
+        base: styles.overlay_base,
+        afterOpen: styles.overlay_after,
+        beforeClose: styles.overlay_before,
+      }}
+      className={{
+        base: styles.content_base,
+        afterOpen: styles.content_after,
+        beforeClose: styles.content_before,
+      }}
+      closeTimeoutMS={500}
     >
-      <h2 className={styles.title}>ブログ記事を検索できます。</h2>
-      <SearchInputForm
-        text={searchText}
-        placeholder="検索"
-        onChange={onChangeSearchText}
-        onKeyUp={onKeyUpSearch}
-      />
+      <div>
+        <SearchInputForm
+          text={searchText}
+          placeholder="検索"
+          onChange={onChangeSearchText}
+          onKeyUp={onKeyUpSearch}
+        />
+        <div className={styles.close} onClick={handleCloseSearchModal}>
+          <CloseIcon size={32} />
+        </div>
+      </div>
     </Modal>
   )
-}
-
-/**
- * styles
- */
-const customStyles: Styles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    backgroundColor: 'rgba(22, 21, 21, 0.56)',
-    zIndex: 14,
-  },
-
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    width: '80%',
-    height: '140px',
-    transform: 'translate(-50%, -50%)',
-    padding: '30px 20px 0',
-    borderRadius: '8px',
-  },
 }

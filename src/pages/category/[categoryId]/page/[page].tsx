@@ -36,7 +36,7 @@ type CategoryBlogListPagePorps = {
 }
 
 /**
- * カテゴリー記事一覧ページ
+ * CategoryBlogListPage
  * @param props CategoryBlogListPorps
  * @returns
  */

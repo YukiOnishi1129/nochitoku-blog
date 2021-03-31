@@ -35,7 +35,7 @@ type BlogListPagePorps = {
 }
 
 /**
- * ブログ一覧ページ (ページ遷移時)
+ * BlogListPage
  * @param props PagePorps
  * @returns
  */

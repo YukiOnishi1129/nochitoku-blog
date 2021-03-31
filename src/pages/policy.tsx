@@ -19,6 +19,11 @@ type PolicyPageProps = {
   highlightedBody: string
 }
 
+/**
+ * PolicyPage
+ * @param props PolicyPageProps
+ * @returns
+ */
 export const PolicyPage: NextPage<PolicyPageProps> = (
   props: PolicyPageProps
 ) => {
