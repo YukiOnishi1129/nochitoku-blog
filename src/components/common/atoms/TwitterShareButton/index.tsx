@@ -14,6 +14,7 @@ import {
  */
 export type TwitterShareButtonProps = {
   shareUrl: string
+  title: string
   size?: number
   radius?: number
 }
@@ -26,10 +27,15 @@ export type TwitterShareButtonProps = {
 export const TwitterShareButton: React.FC<TwitterShareButtonProps> = (
   props: TwitterShareButtonProps
 ) => {
-  const { shareUrl, size = 40, radius = 10 } = props
+  const { shareUrl, size = 40, radius = 10, title } = props
+  const shareTitle = '\n\n' + title
 
   return (
-    <TwitterShareArea url={shareUrl}>
+    <TwitterShareArea
+      hashtags={['NOCHITOKU']}
+      title={shareTitle}
+      url={shareUrl}
+    >
       <TwitterIcon size={size} borderRadius={radius} />
     </TwitterShareArea>
   )

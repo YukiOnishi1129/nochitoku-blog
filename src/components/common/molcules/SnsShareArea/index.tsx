@@ -12,6 +12,7 @@ import { Presenter } from './Presenter'
  */
 type Props = {
   shareUrl: string
+  title: string
 }
 
 /**
@@ -20,7 +21,7 @@ type Props = {
  * @returns
  */
 export const SnsShareArea: React.FC<Props> = (props: Props) => {
-  const { shareUrl } = props
+  const { shareUrl, title } = props
 
-  return <Presenter shareUrl={shareUrl} />
+  return <Presenter shareUrl={shareUrl} title={title} />
 }

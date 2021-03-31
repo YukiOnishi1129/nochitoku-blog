@@ -61,7 +61,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         <main className={styles.main}>
           <div className={styles.leftBar}>
             {/* SNSシェアボタン */}
-            <SnsShareBar shareUrl={shareUrl} />
+            <SnsShareBar title={blogItem.title} shareUrl={shareUrl} />
           </div>
 
           <div className={styles.rightBar}>
@@ -76,7 +76,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
 
             {/* SNSシェアボタン */}
             <div className={styles.shareArea}>
-              <SnsShareArea shareUrl={shareUrl} />
+              <SnsShareArea title={blogItem.title} shareUrl={shareUrl} />
             </div>
           </div>
         </main>
