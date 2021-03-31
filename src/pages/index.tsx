@@ -32,7 +32,7 @@ type TopPageProps = {
 }
 
 /**
- * Top
+ * TopPage
  * @param props TopProps
  * @returns
  */

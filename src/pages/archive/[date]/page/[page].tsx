@@ -37,7 +37,7 @@ export type ArchiveBlogListPagePorps = {
 }
 
 /**
- * アーカイブ記事一覧ページ
+ * ArchiveBlogListPage
  * @param props ArchivePagePorps
  * @returns
  */

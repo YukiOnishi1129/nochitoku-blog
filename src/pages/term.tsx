@@ -20,7 +20,7 @@ type TermPageProps = {
 }
 
 /**
- * 利用規約ページ
+ * TermPage
  * @param props TermPageProps
  * @returns
  */

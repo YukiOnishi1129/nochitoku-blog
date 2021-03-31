@@ -26,7 +26,7 @@ type SearchPageProps = {
 }
 
 /**
- * Search
+ * SearchPage
  * @param props
  * @returns
  */

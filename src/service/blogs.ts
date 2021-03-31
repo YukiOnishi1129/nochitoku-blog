@@ -128,11 +128,6 @@ export const isBlogsArchives = async (startDate: string, endDate: string) => {
 /**
  * ブログ記事詳細取得
  * @param id string
- */
-
-/**
- * ブログ記事詳細取得
- * @param id string
  * @returns blogDetail BlogItemType
  */
 export const getBlogBy = async (id: string) => {
