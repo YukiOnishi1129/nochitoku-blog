@@ -106,15 +106,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
  * @returns
  */
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { params } = context
+  const { params, previewData } = context
   let blogId = ''
   let draftKey = ''
+
+  if (!params?.blogId) {
+    throw new Error('Error: ID not found')
+  }
 
   if (params?.blogId && typeof params.blogId === 'string') {
     blogId = params.blogId
   }
-  if (params?.draftKey && typeof params.draftKey === 'string') {
-    draftKey = params.draftKey
+  if (previewData?.draftKey && typeof previewData.draftKey === 'string') {
+    draftKey = previewData.draftKey
   }
   // ブログ記事詳細データ取得 ---------
   const blogDetailData = await getBlogBy(blogId, draftKey)
