@@ -30,6 +30,7 @@ export const initBlogItem: BlogItemType = {
   revisedAt: '',
   title: '',
   body: '',
+  description: '',
   image: initImageState,
   categories: [],
 }
@@ -60,6 +61,8 @@ export const initProfileState: ProfileType = {
   position: '',
   introduction: '',
   userImage: initImageState,
+  articleImage: initImageState,
+  description: '',
   contents: '',
   twitter: '',
   github: '',
