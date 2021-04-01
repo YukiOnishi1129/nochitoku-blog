@@ -21,7 +21,7 @@ export const getCurrentDate = () => {
  * @returns
  */
 export const getBlogStartDate = () => {
-  return dayjs('2021-02-01')
+  return dayjs('2021-04-01')
 }
 
 /**
@@ -85,4 +85,22 @@ export const changeShowYearMonth = (date: string) => {
  */
 export const subtractMonthDate = (date: string, diffMonth: number) => {
   return dayjs(date).subtract(diffMonth, 'M').format()
+}
+
+/**
+ * 1日増算処理
+ * @param date
+ * @returns
+ */
+export const addOneDay = (date: string) => {
+  return dayjs(date).add(1, 'd').format()
+}
+
+/**
+ * 1日減算処理
+ * @param date
+ * @returns
+ */
+export const subtractOneDay = (date: string) => {
+  return dayjs(date).subtract(1, 'd').format()
 }

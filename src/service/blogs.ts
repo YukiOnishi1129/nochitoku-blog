@@ -7,6 +7,8 @@ import globalAxios from '@/config/globalAxios'
 /* constants */
 import { blogShowCount } from '@/constants/config'
 import { initBlogItem, initBlogData } from '@/constants/initState'
+/* logics */
+import { addOneDay, subtractOneDay } from '@/logic/DateLogic'
 /* types */
 import { BlogDataType } from '@/types/blog'
 
@@ -109,13 +111,15 @@ export const getBlogContainArchiveMonth = async (
  */
 export const isBlogsArchives = async (startDate: string, endDate: string) => {
   let totalCpunt = 0
+  const queryStartDate = subtractOneDay(startDate)
+  const queryEndDate = addOneDay(endDate)
   try {
     const res = await globalAxios.get(
       BASE_URL +
         '?filters=createdAt[greater_than]' +
-        startDate +
+        queryStartDate +
         '[and]createdAt[less_than]' +
-        endDate
+        queryEndDate
     )
     totalCpunt = res.data.totalCount
   } catch (error) {

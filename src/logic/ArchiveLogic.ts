@@ -40,6 +40,7 @@ export const getArchiveList = async () => {
     }
     const startMonth = getStartOfMonth(targetDate) // 対象月の月初日付取得
     const endMonth = getEndOfMonth(targetDate) // 対象月の月末日付取得
+
     // 対象の年月に投稿した記事があるか判定
     if (await isBlogsArchives(startMonth, endMonth)) {
       archiveList.push({
