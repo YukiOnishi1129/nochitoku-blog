@@ -31,11 +31,9 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
   const { profile, highlightedBody } = props
 
   const propsImage: ImageType = {
-    url: profile?.articleImage?.url
-      ? profile.articleImage.url
-      : '/no_image.png',
-    width: profile?.articleImage?.width ? profile.articleImage.width : 750,
-    height: profile?.articleImage?.height ? profile.articleImage.height : 422,
+    url: profile.articleImage.url,
+    width: profile.articleImage.width,
+    height: profile.articleImage.height,
   }
 
   const router = useRouter()
@@ -46,8 +44,8 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
 
   const metaData: MetaHeadType = {
     title: `プロフィール | ${BASE_TITLE}`,
-    description: '', // TODO: 後で入れる
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    description: profile.description,
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
     image: propsImage.url,
     url: NOCHITOKU_URL + router.asPath,
   }

@@ -23,8 +23,9 @@ export const TopTemplate: React.FC = () => {
 
   const metaData: MetaHeadType = {
     title: BASE_TITLE,
-    description: '', // TODO: description考える
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    description:
+      'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
     image: NOCHITOKU_URL + '/assets/share_image.png',
     url: NOCHITOKU_URL,
   }

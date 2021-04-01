@@ -24,9 +24,10 @@ export const PageTemplate: React.FC = () => {
   const router = useRouter()
 
   const metaData: MetaHeadType = {
-    title: BASE_TITLE, // TODO: 後で入れる
-    description: '',
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    title: BASE_TITLE,
+    description:
+      'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
     image: NOCHITOKU_URL + '/assets/share_image.png',
     url: NOCHITOKU_URL + router.asPath,
   }

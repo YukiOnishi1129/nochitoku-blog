@@ -46,8 +46,8 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
 
   const metaData: MetaHeadType = {
     title: `${blogItem.title} | ${BASE_TITLE}`,
-    description: '',
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    description: blogItem.description,
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
     image: blogItem.image.url,
     url: NOCHITOKU_URL + router.asPath,
   }

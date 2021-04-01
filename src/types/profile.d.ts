@@ -19,7 +19,8 @@ export interface ProfileType {
   position: string
   introduction: string
   userImage: ImageType
-  articleImage?: ImageType
+  articleImage: ImageType
+  description: string
   contents: string
   twitter: string
   github: string

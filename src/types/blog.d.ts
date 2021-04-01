@@ -16,6 +16,7 @@ export interface BlogItemType {
   publishedAt: string
   revisedAt: string
   title: string
+  description: string
   body: string
   image: ImageType
   categories: CategoryType[]
