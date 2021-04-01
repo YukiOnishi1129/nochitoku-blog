@@ -10,7 +10,9 @@ import { initFixedArticleData } from '@/constants/initState'
 /**
  * constant
  */
-const BASE_URL = 'https://yuki-read.microcms.io/api/v1/fixed/'
+const BASE_URL = `${
+  process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'
+}/fixed/`
 
 /**
  * プライバシーポリシーデータ取得

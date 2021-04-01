@@ -9,7 +9,12 @@ import { initProfileState } from '@/constants/initState'
 /* types */
 import { ProfileType } from '@/types/profile'
 
-const BASE_URL = 'https://yuki-read.microcms.io/api/v1/profile/'
+/**
+ * constant
+ */
+const BASE_URL = `${
+  process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'
+}/profile/`
 
 /**
  * プロフィール一覧取得

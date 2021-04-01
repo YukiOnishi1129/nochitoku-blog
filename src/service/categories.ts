@@ -12,7 +12,9 @@ import { CategoryType } from '@/types/category'
 /**
  * constant
  */
-const BASE_URL = 'https://yuki-read.microcms.io/api/v1/categories/'
+const BASE_URL = `${
+  process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'
+}/categories/`
 
 /**
  * カテゴリー一覧取得

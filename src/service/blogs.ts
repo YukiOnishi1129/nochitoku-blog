@@ -15,7 +15,9 @@ import { BlogDataType } from '@/types/blog'
 /**
  * constant
  */
-const BASE_URL = 'https://yuki-read.microcms.io/api/v1/blogs/'
+const BASE_URL = `${
+  process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'
+}/blogs/`
 const QUERY_OFFSET = '?offset='
 const QUERY_LIMIT = '&limit='
 
