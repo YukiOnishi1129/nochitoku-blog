@@ -47,7 +47,7 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
   const metaData: MetaHeadType = {
     title: `プロフィール | ${BASE_TITLE}`,
     description: '', // TODO: 後で入れる
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS', //TODO: keywordは固定？
+    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
     image: propsImage.url,
     url: NOCHITOKU_URL + router.asPath,
   }
