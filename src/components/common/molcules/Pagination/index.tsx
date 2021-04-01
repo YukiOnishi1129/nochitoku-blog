@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 /* components */
 import { Presenter } from './Presenter'
 /* constants */
-import { blogShowCount } from '@/constants/config'
+import { BLOG_SHOW_COUNT } from '@/constants/config'
 
 /**
  * props
@@ -42,7 +42,7 @@ export const Pagination: React.FC<Props> = (props: Props) => {
       totalCount={totalCount}
       link={link}
       currentPage={currentPage}
-      blogShowCount={blogShowCount}
+      blogShowCount={BLOG_SHOW_COUNT}
       pageRange={pageRange}
     />
   )

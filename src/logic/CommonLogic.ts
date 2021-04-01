@@ -3,7 +3,7 @@
  * @package logics
  */
 /* constants */
-import { blogShowCount } from '@/constants/config'
+import { BLOG_SHOW_COUNT } from '@/constants/config'
 import { NAVIGATION_LINK } from '@/constants/navigation'
 
 /**
@@ -12,7 +12,7 @@ import { NAVIGATION_LINK } from '@/constants/navigation'
  * @returns
  */
 export const createPageArray = (totalCount: number) => {
-  return [...Array(Math.floor(totalCount / blogShowCount) + 1)].map(
+  return [...Array(Math.floor(totalCount / BLOG_SHOW_COUNT) + 1)].map(
     (_, i) => i + 1
   )
 }

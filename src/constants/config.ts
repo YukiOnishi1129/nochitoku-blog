@@ -7,7 +7,7 @@
 /**
  * 1ページあたりのブログ記事表示件数
  */
-export const blogShowCount = Number(process.env.BLOG_SHOW_COUNT) || 8
+export const BLOG_SHOW_COUNT = Number(process.env.BLOG_SHOW_COUNT) || 8
 
 /**
  * ブログのURL

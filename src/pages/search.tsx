@@ -13,7 +13,7 @@ import { getBlogs } from '@/service/blogs'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
 /* constants */
-import { blogShowCount } from '@/constants/config'
+import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
 
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const pageCountArray = createPageArray(totalCount)
 
   for await (const pageNum of pageCountArray) {
-    const offset = (pageNum - 1) * blogShowCount
+    const offset = (pageNum - 1) * BLOG_SHOW_COUNT
     const blogData = await getBlogs(offset)
     blogData.blogList.forEach((blog) => {
       blogDagaList.push(blog)

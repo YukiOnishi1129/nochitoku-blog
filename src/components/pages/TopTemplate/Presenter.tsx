@@ -10,7 +10,7 @@ import { BlogItem } from '@/components/common/molcules/BlogItem'
 import { BlogItemResponsive } from '@/components/common/molcules/BlogItemResponsive'
 import { Pagination } from '@/components/common/molcules/Pagination'
 /* constants */
-import { blogShowCount } from '@/constants/config'
+import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
 import { BlogItemType } from '@/types/blog'
@@ -57,7 +57,7 @@ export const Presenter: React.FC<Props> = (props: Props) => {
         </div>
 
         {/* ページネーション */}
-        {totalCount / blogShowCount > 1 && (
+        {totalCount / BLOG_SHOW_COUNT > 1 && (
           <Pagination totalCount={totalCount} link="/page/" />
         )}
       </BasePostPageLayout>

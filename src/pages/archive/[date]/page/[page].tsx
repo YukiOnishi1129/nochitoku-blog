@@ -17,7 +17,7 @@ import { getBlogTargetMonth } from '@/logic/BlogLogic'
 import { getArchiveList } from '@/logic/ArchiveLogic'
 import { changeShowYearMonth } from '@/logic/DateLogic'
 /* constants */
-import { blogShowCount } from '@/constants/config'
+import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { CategoryType } from '@/types/category'
@@ -116,7 +116,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     pageNum = Number(params.page)
   }
 
-  const offset = (pageNum - 1) * blogShowCount
+  const offset = (pageNum - 1) * BLOG_SHOW_COUNT
 
   // ブログ一覧データ取得 ---------
   const blogData = await getBlogTargetMonth(offset, paramDate)

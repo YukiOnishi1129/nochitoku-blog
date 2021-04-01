@@ -5,7 +5,7 @@
 /* config */
 import globalAxios from '@/config/globalAxios'
 /* constants */
-import { blogShowCount } from '@/constants/config'
+import { BLOG_SHOW_COUNT } from '@/constants/config'
 import { initBlogItem, initBlogData } from '@/constants/initState'
 /* logics */
 import { addOneDay, subtractOneDay } from '@/logic/DateLogic'
@@ -28,7 +28,7 @@ export const getBlogs = async (offset: number) => {
   const blogData: BlogDataType = initBlogData
   try {
     const res = await globalAxios.get(
-      BASE_URL + QUERY_OFFSET + offset + QUERY_LIMIT + blogShowCount
+      BASE_URL + QUERY_OFFSET + offset + QUERY_LIMIT + BLOG_SHOW_COUNT
     )
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
@@ -57,7 +57,7 @@ export const getBlogsContainCategory = async (
         QUERY_OFFSET +
         offset +
         QUERY_LIMIT +
-        blogShowCount +
+        BLOG_SHOW_COUNT +
         '&filters=categories[contains]' +
         categoryId
     )
@@ -89,7 +89,7 @@ export const getBlogContainArchiveMonth = async (
         QUERY_OFFSET +
         offset +
         QUERY_LIMIT +
-        blogShowCount +
+        BLOG_SHOW_COUNT +
         '&filters=createdAt[greater_than]' +
         startDate +
         '[and]createdAt[less_than]' +
