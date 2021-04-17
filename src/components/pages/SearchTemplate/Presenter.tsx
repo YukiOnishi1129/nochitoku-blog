@@ -7,9 +7,9 @@ import React from 'react'
 /* components */
 import { BaseLayout } from '@/components/layouts/BaseLayout'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
-import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
 import { SearchBlogItem } from './organisms/SearchBlogItem'
-import { BlogItemResponsive } from '@/components/common/molcules/BlogItemResponsive'
+import { BlogItemResponsive } from '@/components/common/molecules/BlogItemResponsive'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
 import { BlogItemType } from '@/types/blog'

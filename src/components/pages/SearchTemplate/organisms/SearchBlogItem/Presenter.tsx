@@ -7,7 +7,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 /*　component */
-import { DateArea } from '@/components/common/molcules/DateArea'
+import { DateArea } from '@/components/common/molecules/DateArea'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { ImageType } from '@/types/image'

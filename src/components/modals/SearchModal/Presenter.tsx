@@ -6,7 +6,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 /* components */
-import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
 import { CloseIcon } from '@/components/common/icons/CloseIcon'
 /* types */
 import { EventType } from '@/types/event'

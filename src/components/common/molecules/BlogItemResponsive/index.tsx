@@ -1,5 +1,5 @@
 /**
- * common/molcules/BlogItemResponsive
+ * common/molecules/BlogItemResponsive
  * ContainerComponent
  * @package Component
  */

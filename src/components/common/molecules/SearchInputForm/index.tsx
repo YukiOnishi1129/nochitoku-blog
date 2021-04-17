@@ -1,5 +1,5 @@
 /**
- * common/molcules/SearchInputForm
+ * common/molecules/SearchInputForm
  * ContainerComponent
  * @package Component
  */

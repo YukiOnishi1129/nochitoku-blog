@@ -6,7 +6,7 @@
 import React from 'react'
 /* components */
 import { BaseFixedPageLayout } from '@/components/layouts/BaseFixedPageLayout'
-import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
 import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
 import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
 /* types */

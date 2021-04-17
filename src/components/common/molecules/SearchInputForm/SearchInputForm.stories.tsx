@@ -1,5 +1,5 @@
 /**
- * common/molcules/SearchInputForm
+ * common/molecules/SearchInputForm
  * Storybook
  * @package Component
  */
@@ -8,7 +8,7 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import { Presenter as SearchInputForm, SearchInputFormProps } from './Presenter'
 
 export default {
-  title: 'common/molcules/SearchInputForm',
+  title: 'common/molecules/SearchInputForm',
   component: SearchInputForm,
   argTypes: {},
 } as Meta

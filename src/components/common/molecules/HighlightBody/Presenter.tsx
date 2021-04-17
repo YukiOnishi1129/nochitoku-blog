@@ -1,5 +1,5 @@
 /**
- * common/molcules/HighlightBody
+ * common/molecules/HighlightBody
  * PresentationalComponent
  * @package Component
  */

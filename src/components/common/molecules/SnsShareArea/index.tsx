@@ -1,5 +1,5 @@
 /**
- * common/molcules/SnsShareBar
+ * common/molecules/SnsShareArea
  * ContainerComponent
  * @package Component
  */
@@ -20,7 +20,7 @@ type Props = {
  * @param props Props
  * @returns
  */
-export const SnsShareBar: React.FC<Props> = (props: Props) => {
+export const SnsShareArea: React.FC<Props> = (props: Props) => {
   const { shareUrl, title } = props
 
   return <Presenter shareUrl={shareUrl} title={title} />

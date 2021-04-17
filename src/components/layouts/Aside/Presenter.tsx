@@ -5,7 +5,7 @@
  */
 import React from 'react'
 /* components */
-import { SearchInputForm } from '@/components/common/molcules/SearchInputForm'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
 import { ProfileArea } from '@/components/layouts/Aside/ProfileArea'
 import { ProfileAreaResponsive } from '@/components/layouts/Aside/ProfileAreaResponsive'
 import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'

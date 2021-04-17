@@ -7,7 +7,7 @@ import React from 'react'
 /* components */
 import { BaseFixedPageLayout } from '@/components/layouts/BaseFixedPageLayout'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
-import { HighlightBody } from '@/components/common/molcules/HighlightBody'
+import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
 /* styles */
