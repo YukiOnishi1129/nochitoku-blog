@@ -1,5 +1,5 @@
 /**
- * common/molcules/DateArea
+ * common/molecules/DateArea
  * PresentationalComponent
  * @package Component
  */

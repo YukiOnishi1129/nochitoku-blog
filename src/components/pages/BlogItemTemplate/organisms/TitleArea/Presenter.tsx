@@ -6,7 +6,7 @@
 import React from 'react'
 import Link from 'next/link'
 /* components */
-import { DateArea } from '@/components/common/molcules/DateArea'
+import { DateArea } from '@/components/common/molecules/DateArea'
 /* types */
 import { BlogItemType } from '@/types/blog'
 /* styles */

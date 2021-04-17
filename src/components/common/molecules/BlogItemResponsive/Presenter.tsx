@@ -1,5 +1,5 @@
 /**
- * common/molcules/BlogItem
+ * common/molecules/BlogItemResponsive
  * PresentationalComponent
  * @package Component
  */
@@ -7,7 +7,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 /*　component */
-import { DateArea } from '@/components/common/molcules/DateArea'
+import { DateArea } from '@/components/common/molecules/DateArea'
 /* types */
 import { BlogItemType } from '@/types/blog'
 import { ImageType } from '@/types/image'
@@ -23,7 +23,7 @@ type Props = {
 }
 
 /**
- * presenter
+ * Presenter
  * @param props Props
  * @returns
  */
@@ -41,25 +41,27 @@ export const Presenter: React.FC<Props> = (props: Props) => {
             height={image.height * 2}
           />
         </div>
-        <div className={styles.content}>
-          <h2 className={styles.title}>{blogItem.title}</h2>
+        <h2 className={styles.title}>{blogItem.title}</h2>
 
-          <div className={styles.category}>
-            {blogItem.categories.map((category, index) => {
-              return (
-                <div
-                  className={styles.category__item}
-                  key={`${category.id}_${index}`}
-                >
-                  {category.name}
-                </div>
-              )
-            })}
-          </div>
+        <div className={styles.category}>
+          {blogItem.categories.map((category, index) => {
+            return (
+              <div
+                className={styles.category__item}
+                key={`${category.id}_${index}`}
+              >
+                {category.name}
+              </div>
+            )
+          })}
+        </div>
 
-          <div className={styles.date}>
-            <DateArea date={blogItem.createdAt} />
-          </div>
+        <div className={styles.date}>
+          <DateArea date={blogItem.createdAt} size={18} />
+        </div>
+
+        <div className={styles.date__sp}>
+          <DateArea date={blogItem.createdAt} size={12} />
         </div>
       </div>
     </Link>

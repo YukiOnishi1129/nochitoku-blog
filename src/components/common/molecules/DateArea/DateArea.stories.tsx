@@ -1,5 +1,5 @@
 /**
- * common/molcules/DateArea
+ * common/molecules/DateArea
  * Storybook
  * @package Component
  */
@@ -8,7 +8,7 @@ import { Story, Meta } from '@storybook/react/types-6-0'
 import { Presenter as DateArea, DateAreaProps } from './Presenter'
 
 export default {
-  title: 'common/molcules/DateArea',
+  title: 'common/molecules/DateArea',
   component: DateArea,
   argTypes: {},
 } as Meta

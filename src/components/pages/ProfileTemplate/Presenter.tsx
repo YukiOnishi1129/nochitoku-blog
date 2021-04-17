@@ -7,10 +7,10 @@ import React from 'react'
 import Image from 'next/image'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
-import { SnsShareBar } from '@/components/common/molcules/SnsShareBar'
+import { SnsShareBar } from '@/components/common/molecules/SnsShareBar'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
-import { SnsShareArea } from '@/components/common/molcules/SnsShareArea'
-import { HighlightBody } from '@/components/common/molcules/HighlightBody'
+import { SnsShareArea } from '@/components/common/molecules/SnsShareArea'
+import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
 import { ImageType } from '@/types/image'

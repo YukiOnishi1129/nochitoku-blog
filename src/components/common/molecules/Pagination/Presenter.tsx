@@ -1,5 +1,5 @@
 /**
- * common/molcules/Pagination
+ * common/molecules/Pagination
  * PresentationalComponent
  * @package Component
  */

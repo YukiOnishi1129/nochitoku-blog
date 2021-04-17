@@ -1,5 +1,5 @@
 /**
- * common/molcules/SnsShareArea
+ * common/molecules/SnsShareArea
  * PresentationalComponent
  * @package Component
  */

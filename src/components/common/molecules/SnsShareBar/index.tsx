@@ -1,5 +1,5 @@
 /**
- * common/molcules/HighlightBody
+ * common/molecules/SnsShareBar
  * ContainerComponent
  * @package Component
  */
@@ -11,7 +11,8 @@ import { Presenter } from './Presenter'
  * props
  */
 type Props = {
-  highlightedBody: string
+  shareUrl: string
+  title: string
 }
 
 /**
@@ -19,8 +20,8 @@ type Props = {
  * @param props Props
  * @returns
  */
-export const HighlightBody: React.FC<Props> = (props: Props) => {
-  const { highlightedBody } = props
+export const SnsShareBar: React.FC<Props> = (props: Props) => {
+  const { shareUrl, title } = props
 
-  return <Presenter highlightedBody={highlightedBody} />
+  return <Presenter shareUrl={shareUrl} title={title} />
 }

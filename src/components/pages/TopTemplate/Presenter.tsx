@@ -6,9 +6,9 @@
 import React from 'react'
 /* components */
 import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
-import { BlogItem } from '@/components/common/molcules/BlogItem'
-import { BlogItemResponsive } from '@/components/common/molcules/BlogItemResponsive'
-import { Pagination } from '@/components/common/molcules/Pagination'
+import { BlogItem } from '@/components/common/molecules/BlogItem'
+import { BlogItemResponsive } from '@/components/common/molecules/BlogItemResponsive'
+import { Pagination } from '@/components/common/molecules/Pagination'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
