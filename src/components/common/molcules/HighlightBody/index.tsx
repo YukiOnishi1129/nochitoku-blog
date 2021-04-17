@@ -1,6 +1,6 @@
 /**
  * common/molcules/HighlightBody
- * ContainerConponent
+ * ContainerComponent
  * @package Component
  */
 import React from 'react'

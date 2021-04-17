@@ -1,6 +1,6 @@
 /**
  * common/molcules/SnsShareArea
- * ContainerConponent
+ * ContainerComponent
  * @package Component
  */
 import React from 'react'

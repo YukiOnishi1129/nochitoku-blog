@@ -1,7 +1,7 @@
 /**
  * initState
  *
- * @package Cnstants
+ * @package Constants
  */
 /* types */
 import { BlogItemType, BlogDataType } from '@/types/blog'

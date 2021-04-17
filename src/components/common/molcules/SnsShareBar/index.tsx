@@ -1,6 +1,6 @@
 /**
  * common/molcules/SnsShareBar
- * ContainerConponent
+ * ContainerComponent
  * @package Component
  */
 import React from 'react'

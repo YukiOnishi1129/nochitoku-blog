@@ -20,9 +20,9 @@ import { ProfileType } from '@/types/profile'
 import { ArchiveType } from '@/types/archive'
 
 /**
- * ProfilePagePorps
+ * ProfilePageProps
  */
-export type ProfilePagePorps = {
+export type ProfilePageProps = {
   profile: ProfileType
   highlightedBody: string
   categories: CategoryType[]
@@ -31,11 +31,11 @@ export type ProfilePagePorps = {
 
 /**
  * ProfilePage
- * @param props ProfilePagePorps
+ * @param props ProfilePageProps
  * @returns
  */
-export const ProfilePage: NextPage<ProfilePagePorps> = (
-  props: ProfilePagePorps
+export const ProfilePage: NextPage<ProfilePageProps> = (
+  props: ProfilePageProps
 ) => {
   const { profile, highlightedBody, categories, archiveList } = props
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
@@ -78,7 +78,7 @@ export const getStaticProps: GetStaticProps = async () => {
     $(elm).addClass('hljs')
   })
 
-  const props: ProfilePagePorps = {
+  const props: ProfilePageProps = {
     profile: profile,
     highlightedBody: $.html(),
     categories: categoryData,

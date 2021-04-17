@@ -27,7 +27,7 @@ type SearchPageProps = {
 
 /**
  * SearchPage
- * @param props
+ * @param props SearchPageProps
  * @returns
  */
 const SearchPage: NextPage<SearchPageProps> = (props: SearchPageProps) => {
@@ -47,7 +47,7 @@ const SearchPage: NextPage<SearchPageProps> = (props: SearchPageProps) => {
  */
 export const getStaticProps: GetStaticProps = async () => {
   // ブログ一覧データ取得 ---------
-  const blogDagaList: BlogItemType[] = []
+  const blogDataList: BlogItemType[] = []
   const { totalCount } = await getBlogs(0)
 
   // ページ番号の配列を作成
@@ -57,12 +57,12 @@ export const getStaticProps: GetStaticProps = async () => {
     const offset = (pageNum - 1) * BLOG_SHOW_COUNT
     const blogData = await getBlogs(offset)
     blogData.blogList.forEach((blog) => {
-      blogDagaList.push(blog)
+      blogDataList.push(blog)
     })
   }
 
   const props: SearchPageProps = {
-    blogList: blogDagaList,
+    blogList: blogDataList,
     totalCount: totalCount,
   }
 

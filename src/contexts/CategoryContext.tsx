@@ -74,5 +74,5 @@ export const CategoryContextProvider: React.FC<Props> = ({
 }
 
 export const useCategoryState = () => React.useContext(CategoryStateContext)
-export const useCaregoryDispatch = () =>
+export const useCategoryDispatch = () =>
   React.useContext(CategoryDispatchContext)

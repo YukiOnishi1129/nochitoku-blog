@@ -1,6 +1,6 @@
 /**
  * common/molcules/SearchInputForm
- * ContainerConponent
+ * ContainerComponent
  * @package Component
  */
 import React from 'react'

@@ -1,6 +1,6 @@
 /**
  * SearchTemplate/organisms/SearchBlogItem
- * ContainerConponent
+ * ContainerComponent
  * @package Component
  */
 import React from 'react'

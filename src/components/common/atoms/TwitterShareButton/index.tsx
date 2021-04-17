@@ -1,6 +1,6 @@
 /**
  * common/atoms/TwitterShareButton
- * PresentationalConponent
+ * PresentationalComponent
  * @package Component
  */
 import React from 'react'

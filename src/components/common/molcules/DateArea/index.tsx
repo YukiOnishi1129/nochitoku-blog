@@ -1,6 +1,6 @@
 /**
  * common/molcules/BlogItem
- * ContainerConponent
+ * ContainerComponent
  * @package Component
  */
 import React from 'react'

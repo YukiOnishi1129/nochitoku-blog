@@ -33,7 +33,7 @@ type TopPageProps = {
 
 /**
  * TopPage
- * @param props TopProps
+ * @param props TopPageProps
  * @returns
  */
 const TopPage: NextPage<TopPageProps> = (props: TopPageProps) => {

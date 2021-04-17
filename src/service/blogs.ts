@@ -112,7 +112,7 @@ export const getBlogContainArchiveMonth = async (
  * @returns
  */
 export const isBlogsArchives = async (startDate: string, endDate: string) => {
-  let totalCpunt = 0
+  let totalCount = 0
   const queryStartDate = subtractOneDay(startDate)
   const queryEndDate = addOneDay(endDate)
   try {
@@ -123,12 +123,12 @@ export const isBlogsArchives = async (startDate: string, endDate: string) => {
         '[and]createdAt[less_than]' +
         queryEndDate
     )
-    totalCpunt = res.data.totalCount
+    totalCount = res.data.totalCount
   } catch (error) {
     throw new Error(`API ERROR: isBlogsArchives`)
   }
 
-  return totalCpunt > 0
+  return totalCount > 0
 }
 
 /**

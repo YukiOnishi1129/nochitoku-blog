@@ -6,7 +6,7 @@
 import React from 'react'
 /* contexts */
 import { useBlogDispatch, setBlogList } from '@/contexts/BlogContext'
-import { useCaregoryDispatch, setCategories } from '@/contexts/CategoryContext'
+import { useCategoryDispatch, setCategories } from '@/contexts/CategoryContext'
 import { useProfileDispatch, setProfile } from '@/contexts/ProfileContext'
 import { useArchiveDispatch, setArchiveList } from '@/contexts/ArchiveContext'
 /* types */
@@ -21,7 +21,7 @@ import { ArchiveType } from '@/types/archive'
  */
 export const useSetDate = () => {
   const dispatchBlog = useBlogDispatch()
-  const dispatchCategory = useCaregoryDispatch()
+  const dispatchCategory = useCategoryDispatch()
   const dispatchProfile = useProfileDispatch()
   const dispatchArchive = useArchiveDispatch()
 
