@@ -10,8 +10,13 @@
 /build
 /dist
 /.next
+/out
+
+# storybook
+/.storybook
 
 # misc
+/public
 .DS_Store
 .env
 npm-debug.log*

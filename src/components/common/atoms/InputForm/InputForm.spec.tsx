@@ -1,6 +1,8 @@
 // jest使うにはこれが必要
 import '@testing-library/jest-dom/extend-expect'
 import { render, cleanup, screen } from '@testing-library/react'
+import React from 'react'
+/* components */
 import { InputForm } from './index'
 
 afterEach(cleanup)
