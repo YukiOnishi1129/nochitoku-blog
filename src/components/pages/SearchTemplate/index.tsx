@@ -22,7 +22,7 @@ type Props = {
 }
 
 /**
- * container
+ * SearchTemplate
  * @param {Props} props
  * @returns
  */
