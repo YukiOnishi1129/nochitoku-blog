@@ -27,7 +27,7 @@ type SearchPageProps = {
 
 /**
  * SearchPage
- * @param props SearchPageProps
+ * @param {SearchPageProps} props
  * @returns
  */
 const SearchPage: NextPage<SearchPageProps> = (props: SearchPageProps) => {

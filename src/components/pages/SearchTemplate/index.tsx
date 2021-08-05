@@ -1,18 +1,18 @@
 /**
  * pages/SearchTemplate
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
+/* hooks */
+import { useSearchTemplate } from './useSearchTemplate'
 /* components */
-import { Presenter } from './Presenter'
-/* contexts */
-import { useBlogState } from '@/contexts/BlogContext'
-/* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
-/* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { BaseLayout } from '@/components/layouts/BaseLayout'
+import { PageTitle } from '@/components/common/atoms/PageTitle'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
+import { SearchBlogItem } from './organisms/SearchBlogItem'
+import { BlogItemResponsive } from '@/components/common/molecules/BlogItemResponsive'
+/* styles*/
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -23,64 +23,77 @@ type Props = {
 
 /**
  * container
- * @param props
+ * @param {Props} props
  * @returns
  */
 export const SearchTemplate: React.FC<Props> = (props: Props) => {
+  /* props */
   const { breadName } = props
-  const { blogList } = useBlogState()
-  const router = useRouter()
-
-  // 初期検索キーワード
-  let queryText = ''
-  if (router?.query?.keyword && typeof router.query.keyword === 'string') {
-    queryText = router.query.keyword
-  }
-
-  // 検索ページで動的に変更する検索キーワード
-  const [searchText, setSearchText] = React.useState(queryText)
-  // 検索キーワードにHitしたブログ記事一覧
-  const [showBlogList, setShowBlogList] = React.useState(blogList)
-
-  /**
-   * 動的検索キーワード更新処理
-   * 更新時にブログリストの検索も同時実行
-   * @param e React.ChangeEvent<HTMLInputElement>
-   */
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value)
-
-    const searctBlogList = blogList.filter((blog) => {
-      // キーワード部分一致
-      return blog.title.indexOf(e.target.value) > -1
-    })
-    setShowBlogList(searctBlogList)
-  }
-
-  const metaData: MetaHeadType = {
-    title: `${breadName} | ${BASE_TITLE}`,
-    description:
-      'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: NOCHITOKU_URL + '/assets/share_image.png',
-    url: NOCHITOKU_URL + router.pathname,
-  }
-
-  React.useEffect(() => {
-    // 画面遷移時のみurlのgetで渡ってきたキーワードで検索
-    const searctBlogList = blogList.filter((blog) => {
-      return blog.title.indexOf(queryText) > -1
-    })
-    setShowBlogList(searctBlogList)
-  }, [queryText, blogList])
+  /* hooks */
+  const { state, action } = useSearchTemplate(breadName)
 
   return (
-    <Presenter
-      metaData={metaData}
-      breadName={breadName}
-      searchText={searchText}
-      showBlogList={showBlogList}
-      onChange={onChange}
-    />
+    <BaseLayout metaData={state.metaData} breadName={breadName}>
+      <div className={styles.container}>
+        <PageTitle title="検索結果" />
+        {/* 検索フォーム */}
+        <div className={styles.input}>
+          <SearchInputForm
+            text={state.searchText}
+            placeholder="検索"
+            onChange={action.onChange}
+          />
+        </div>
+        {/* 検索フォーム レスポンシブ*/}
+        <div className={styles.input__responsive}>
+          <SearchInputForm
+            text={state.searchText}
+            placeholder="検索"
+            size={32}
+            onChange={action.onChange}
+          />
+        </div>
+
+        {/* 検索フォーム　sp */}
+        <div className={styles.input__sp}>
+          <SearchInputForm
+            text={state.searchText}
+            placeholder="検索"
+            size={24}
+            onChange={action.onChange}
+          />
+        </div>
+
+        {/* 検索結果一覧 */}
+        <div className={styles.list}>
+          {state.showBlogList.length > 0 &&
+            state.showBlogList.map((blog) => (
+              <SearchBlogItem key={blog.id} blogItem={blog} />
+            ))}
+
+          {state.showBlogList.length === 0 && (
+            <div className={styles.unknown}>
+              <p>検索したキーワードは記事がありませんでした。</p>
+              <p>別のキーワードで検索してみてください。</p>
+            </div>
+          )}
+        </div>
+
+        {/* 検索結果一覧 レスポンシブ */}
+        <div className={styles.list__responsive}>
+          {state.showBlogList.length > 0 &&
+            state.showBlogList.map((blog) => (
+              <BlogItemResponsive key={blog.id} blogItem={blog} />
+            ))}
+
+          {state.showBlogList.length === 0 && (
+            <div className={styles.unknown}>
+              <p>検索したキーワードは記事がありませんでした。</p>
+              <p>別のキーワードで検索してみてください。</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </BaseLayout>
   )
 }
