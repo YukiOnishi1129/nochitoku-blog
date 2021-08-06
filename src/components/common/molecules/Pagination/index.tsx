@@ -1,14 +1,13 @@
 /**
  * common/molecules/Pagination
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
-/* components */
-import { Presenter } from './Presenter'
-/* constants */
-import { BLOG_SHOW_COUNT } from '@/constants/config'
+import Link from 'next/link'
+/* hooks */
+import { usePagination } from './usePagination'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -19,31 +18,35 @@ type Props = {
 }
 
 /**
- * container
+ * Pagination
  * @returns
  */
 export const Pagination: React.FC<Props> = (props: Props) => {
-  const { query } = useRouter()
+  /* props */
   const { totalCount, link } = props
-  const pageRange = (start: number, end: number) => {
-    // 「...Array」で1ページから最終ページまでの番号を配列に入れている
-    // 「map((_, i) => start + i)」で1ページ目の番号は0なので、iを足している
-    // ページの配列を作る
-    return [...Array(end - start + 1)].map((_, i) => start + i)
-  }
-
-  let currentPage = 1
-  if (query?.page && typeof query.page === 'string') {
-    currentPage = Number(query.page)
-  }
+  /* hooks */
+  const { state, action } = usePagination()
 
   return (
-    <Presenter
-      totalCount={totalCount}
-      link={link}
-      currentPage={currentPage}
-      blogShowCount={BLOG_SHOW_COUNT}
-      pageRange={pageRange}
-    />
+    <ul className={styles.container}>
+      {totalCount !== 0 &&
+        action
+          .pageRange(1, Math.ceil(totalCount / state.BLOG_SHOW_COUNT))
+          .map((number, index) => (
+            <li className={styles.iconArea} key={index}>
+              <Link href={`${link}${number}`}>
+                <span
+                  className={
+                    state.currentPage !== number
+                      ? styles.icon
+                      : styles.currentIcon
+                  }
+                >
+                  {number}
+                </span>
+              </Link>
+            </li>
+          ))}
+    </ul>
   )
 }

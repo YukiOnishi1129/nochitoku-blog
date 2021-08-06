@@ -1,13 +1,12 @@
 /**
  * common/atoms/HatenaShareButton
- * PresentationalComponent
  * @package Component
  */
 import React from 'react'
 import { HatenaShareButton as HatenaShareArea, HatenaIcon } from 'react-share'
 
 /**
- * props
+ * Props
  */
 export type HatenaShareButtonProps = {
   shareUrl: string
@@ -17,7 +16,7 @@ export type HatenaShareButtonProps = {
 
 /**
  * HatenaShareButton
- * @param props HatenaShareButtonProps
+ * @param {HatenaShareButtonProps} props
  * @returns
  */
 export const HatenaShareButton: React.FC<HatenaShareButtonProps> = (

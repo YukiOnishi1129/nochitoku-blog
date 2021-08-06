@@ -14,7 +14,7 @@ export type ArrowIconProps = {
 
 /**
  * ArrowIcon
- * @param props ArrowIconProps
+ * @param {ArrowIconProps} props
  * @returns
  */
 export const ArrowIcon: React.FC<ArrowIconProps> = (props: ArrowIconProps) => (

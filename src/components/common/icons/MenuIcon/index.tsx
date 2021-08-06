@@ -14,7 +14,7 @@ export type MenuIconProps = {
 
 /**
  * MenuIcon
- * @param props MenuIconProps
+ * @param {MenuIconProps} props
  * @returns
  */
 export const MenuIcon: React.FC<MenuIconProps> = (props: MenuIconProps) => (

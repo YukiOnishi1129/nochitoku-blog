@@ -1,6 +1,5 @@
 /**
  * common/atoms/PageTitle
- * PresentationalComponent
  * @package Component
  */
 import React from 'react'
@@ -16,10 +15,11 @@ export type PageTitleProps = {
 
 /**
  * PageTitle
- * @param props PageTitleProps
+ * @param {PageTitleProps} props
  * @returns
  */
 export const PageTitle: React.FC<PageTitleProps> = (props: PageTitleProps) => {
+  /* props */
   const { title } = props
 
   return (

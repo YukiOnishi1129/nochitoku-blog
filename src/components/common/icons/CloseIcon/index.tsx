@@ -14,7 +14,7 @@ export type CloseIconProps = {
 
 /**
  * CloseIcon
- * @param props CloseIconProps
+ * @param {CloseIconProps} props
  * @returns
  */
 export const CloseIcon: React.FC<CloseIconProps> = (props: CloseIconProps) => (

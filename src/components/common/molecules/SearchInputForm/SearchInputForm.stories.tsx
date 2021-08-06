@@ -5,7 +5,7 @@
  */
 import { Story, Meta } from '@storybook/react/types-6-0'
 /* components */
-import { Presenter as SearchInputForm, SearchInputFormProps } from './Presenter'
+import { SearchInputForm, SearchInputFormProps } from './index'
 
 export default {
   title: 'common/molecules/SearchInputForm',

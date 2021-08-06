@@ -1,29 +1,41 @@
 /**
  * common/molecules/BlogItem
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
 /* component */
-import { Presenter } from './Presenter'
-/* logics */
-import { showYearMonthDay } from '@/logic/DateLogic'
+import { ClockIcon } from '@/components/common/icons/ClockIcon'
+/* hooks */
+import { useDateArea } from './useDateArea'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
  */
-type Props = {
+export type DateAreaProps = {
   date: string
   size?: number
 }
 
 /**
- * container
- * @param props Props
+ * DateArea
+ * @param {Props} props
  * @returns
  */
-export const DateArea: React.FC<Props> = (props: Props) => {
+export const DateArea: React.FC<DateAreaProps> = (props: DateAreaProps) => {
+  /* props */
   const { date, size } = props
+  /* hooks */
+  const { state } = useDateArea({ date })
 
-  return <Presenter showDate={showYearMonthDay(date)} size={size} />
+  return (
+    <div className={styles.container}>
+      <div className={styles.icon}>
+        <ClockIcon size={size} />
+      </div>
+
+      <p className={styles.date}>{state.showDate}</p>
+    </div>
+  )
 }

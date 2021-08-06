@@ -14,7 +14,7 @@ export type TwitterIconProps = {
 
 /**
  * TwitterIcon
- * @param props
+ * @param {TwitterIconProps} props
  * @returns
  */
 export const TwitterIcon: React.FC<TwitterIconProps> = (

@@ -1,11 +1,11 @@
 /**
  * common/molecules/HighlightBody
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-/* components */
-import { Presenter } from './Presenter'
+import 'highlight.js/styles/shades-of-purple.css'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -15,12 +15,20 @@ type Props = {
 }
 
 /**
- * container
- * @param props Props
+ * HighlightBody
+ * @param {Props} props
  * @returns
  */
 export const HighlightBody: React.FC<Props> = (props: Props) => {
+  /* props */
   const { highlightedBody } = props
 
-  return <Presenter highlightedBody={highlightedBody} />
+  return (
+    <div
+      className={styles.contents}
+      dangerouslySetInnerHTML={{
+        __html: highlightedBody,
+      }}
+    />
+  )
 }

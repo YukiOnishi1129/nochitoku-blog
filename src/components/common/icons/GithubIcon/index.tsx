@@ -14,7 +14,7 @@ export type GithubIconProps = {
 
 /**
  * GithubIcon
- * @param props
+ * @param {GithubIconProps} props
  * @returns
  */
 export const GithubIcon: React.FC<GithubIconProps> = (

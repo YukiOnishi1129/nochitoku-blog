@@ -1,6 +1,5 @@
 /**
  * common/atoms/TwitterShareButton
- * PresentationalComponent
  * @package Component
  */
 import React from 'react'
@@ -10,7 +9,7 @@ import {
 } from 'react-share'
 
 /**
- * props
+ * Props
  */
 export type TwitterShareButtonProps = {
   shareUrl: string
@@ -21,13 +20,15 @@ export type TwitterShareButtonProps = {
 
 /**
  * TwitterShareButton
- * @param props TwitterShareButtonProps
+ * @param {TwitterShareButtonProps} props
  * @returns
  */
 export const TwitterShareButton: React.FC<TwitterShareButtonProps> = (
   props: TwitterShareButtonProps
 ) => {
+  /* props */
   const { shareUrl, size = 40, radius = 10, title } = props
+  /* local */
   const shareTitle = '\n\n' + title
 
   return (

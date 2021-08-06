@@ -1,18 +1,20 @@
 /**
  * common/molecules/SearchInputForm
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
 /* components */
-import { Presenter } from './Presenter'
+import { InputForm } from '@/components/common/atoms/InputForm'
+import { SearchIcon } from '@/components/common/icons/SearchIcon'
 /* types */
 import { EventType } from '@/types/event'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
  */
-type Props = {
+export type SearchInputFormProps = {
   text: string
   placeholder: string
   size?: number
@@ -22,21 +24,28 @@ type Props = {
 }
 
 /**
- * container
- * @param props
+ * SearchInputForm
+ * @param {SearchInputFormProps} props
  * @returns
  */
-export const SearchInputForm: React.FC<Props> = (props: Props) => {
+export const SearchInputForm: React.FC<SearchInputFormProps> = (
+  props: SearchInputFormProps
+) => {
+  /* props */
   const { text, placeholder, size, onChange, onKeyUp, onClick } = props
 
   return (
-    <Presenter
-      text={text}
-      placeholder={placeholder}
-      size={size}
-      onChange={onChange}
-      onKeyUp={onKeyUp}
-      onClick={onClick}
-    />
+    <div className={styles.container}>
+      <InputForm
+        text={text}
+        placeholder={placeholder}
+        onChange={onChange}
+        onKeyUp={onKeyUp}
+        onClick={onClick}
+      />
+      <div className={styles.icon}>
+        <SearchIcon size={size} />
+      </div>
+    </div>
   )
 }
