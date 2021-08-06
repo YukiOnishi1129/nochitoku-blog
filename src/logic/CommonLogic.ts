@@ -8,8 +8,9 @@ import { NAVIGATION_LINK } from '@/constants/navigation'
 
 /**
  * ページ番号配列作成
- * @param totalCount number
- * @returns
+ * @param {number} totalCount
+ *
+ * @returns number[]
  */
 export const createPageArrayLogic = (totalCount: number) => {
   return [...Array(Math.floor(totalCount / BLOG_SHOW_COUNT) + 1)].map(
@@ -19,9 +20,10 @@ export const createPageArrayLogic = (totalCount: number) => {
 
 /**
  * 検索ページではないかを判定
- * @param pathName string
- * @returns
+ * @param {string} pathName
+ *
+ * @returns {boolean}
  */
-export const isNotSearchPageLogic = (pathName: string) => {
+export const isNotSearchPageLogic = (pathName: string): boolean => {
   return NAVIGATION_LINK.SEARCH !== pathName
 }
