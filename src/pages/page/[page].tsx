@@ -7,24 +7,25 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 /* components */
 import { PageTemplate } from '@/components/pages/PageTemplate'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
-import { getBlogs } from '@/service/blogs'
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+import { getArchiveListService } from '@/service/ArchiveService'
+/* apis */
+import { getBlogsApi } from '@/apis/BlogApi'
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
-import { getArchiveList } from '@/logic/ArchiveLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blog'
-import { CategoryType } from '@/types/category'
-import { ProfileType } from '@/types/profile'
-import { ArchiveType } from '@/types/archive'
+import { BlogItemType } from '@/types/Blog'
+import { CategoryType } from '@/types/Category'
+import { ProfileType } from '@/types/Profile'
+import { ArchiveType } from '@/types/Archive'
 
 /**
- * props
+ * Props
  */
 type BlogListPageProps = {
   blogList: BlogItemType[]
@@ -36,13 +37,15 @@ type BlogListPageProps = {
 
 /**
  * BlogListPage
- * @param props BlogListPageProps
+ * @param {BlogListPageProps} props
  * @returns
  */
 const BlogListPage: NextPage<BlogListPageProps> = (
   props: BlogListPageProps
 ) => {
+  /* props */
   const { blogList, totalCount, categories, profile, archiveList } = props
+  /* hooks */
   const {
     setBlogData,
     setCategoryData,
@@ -75,9 +78,9 @@ const BlogListPage: NextPage<BlogListPageProps> = (
  * @returns
  */
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { totalCount } = await await getBlogs(0)
+  const { totalCount } = await getBlogsApi(0)
   // ページ番号の配列を作成
-  const pageCountArray = createPageArray(totalCount)
+  const pageCountArray = createPageArrayLogic(totalCount)
   // pathの配列を作成
   const paths = pageCountArray.map((pageNum) => `/page/${pageNum}`)
   return {
@@ -88,7 +91,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * getStaticProps
- * @param context
+ * @param {GetStaticPropsContext<ParsedUrlQuery>} context
  * @returns
  */
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -103,13 +106,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const offset = (pageNum - 1) * BLOG_SHOW_COUNT
 
   // ブログ一覧データ取得 ---------
-  const blogData = await getBlogs(offset)
+  const blogData = await getBlogsApi(offset)
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   const props: BlogListPageProps = {
     blogList: blogData.blogList,

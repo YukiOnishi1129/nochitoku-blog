@@ -4,11 +4,11 @@
  * @package Constants
  */
 /* types */
-import { BlogItemType, BlogDataType } from '@/types/blog'
-import { CategoryType } from '@/types/category'
-import { ProfileType } from '@/types/profile'
-import { ImageType } from '@/types/image'
-import { FixedArticleType } from '@/types/fixedArticle'
+import { BlogItemType, BlogDataType } from '@/types/Blog'
+import { CategoryType } from '@/types/Category'
+import { ProfileType } from '@/types/Profile'
+import { ImageType } from '@/types/Image'
+import { FixedArticleType } from '@/types/FixedArticle'
 
 /**
  * initImageState

@@ -5,7 +5,7 @@
  */
 import React from 'react'
 /* types */
-import { ArchiveType } from '@/types/archive'
+import { ArchiveType } from '@/types/Archive'
 
 // State --------------
 export type ArchiveStateType = {

@@ -11,7 +11,7 @@ import { NAVIGATION_LINK } from '@/constants/navigation'
  * @param totalCount number
  * @returns
  */
-export const createPageArray = (totalCount: number) => {
+export const createPageArrayLogic = (totalCount: number) => {
   return [...Array(Math.floor(totalCount / BLOG_SHOW_COUNT) + 1)].map(
     (_, i) => i + 1
   )
@@ -22,6 +22,6 @@ export const createPageArray = (totalCount: number) => {
  * @param pathName string
  * @returns
  */
-export const isNotSearchPage = (pathName: string) => {
+export const isNotSearchPageLogic = (pathName: string) => {
   return NAVIGATION_LINK.SEARCH !== pathName
 }

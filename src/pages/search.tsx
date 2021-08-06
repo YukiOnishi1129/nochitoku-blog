@@ -7,18 +7,18 @@ import { NextPage, GetStaticProps } from 'next'
 /* components */
 import { SearchTemplate } from '@/components/pages/SearchTemplate'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
-/* service */
-import { getBlogs } from '@/service/blogs'
+import { useSetDate } from '@/hooks/useSetData'
+/* apis */
+import { getBlogsApi } from '@/apis/BlogApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType } from '@/types/Blog'
 
 /**
- * props
+ * Props
  */
 type SearchPageProps = {
   blogList: BlogItemType[]
@@ -27,11 +27,13 @@ type SearchPageProps = {
 
 /**
  * SearchPage
- * @param props SearchPageProps
+ * @param {SearchPageProps} props
  * @returns
  */
 const SearchPage: NextPage<SearchPageProps> = (props: SearchPageProps) => {
+  /* props */
   const { blogList, totalCount } = props
+  /* hooks */
   const { setBlogData } = useSetDate()
 
   React.useEffect(() => {
@@ -48,14 +50,14 @@ const SearchPage: NextPage<SearchPageProps> = (props: SearchPageProps) => {
 export const getStaticProps: GetStaticProps = async () => {
   // ブログ一覧データ取得 ---------
   const blogDataList: BlogItemType[] = []
-  const { totalCount } = await getBlogs(0)
+  const { totalCount } = await getBlogsApi(0)
 
   // ページ番号の配列を作成
-  const pageCountArray = createPageArray(totalCount)
+  const pageCountArray = createPageArrayLogic(totalCount)
 
   for await (const pageNum of pageCountArray) {
     const offset = (pageNum - 1) * BLOG_SHOW_COUNT
-    const blogData = await getBlogs(offset)
+    const blogData = await getBlogsApi(offset)
     blogData.blogList.forEach((blog) => {
       blogDataList.push(blog)
     })

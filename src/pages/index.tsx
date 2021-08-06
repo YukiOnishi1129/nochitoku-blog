@@ -7,21 +7,21 @@ import { NextPage, GetStaticProps } from 'next'
 /* components */
 import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
-import { getBlogs } from '@/service/blogs'
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
-/* logic */
-import { getArchiveList } from '@/logic/ArchiveLogic'
+import { getArchiveListService } from '@/service/ArchiveService'
+/* apis */
+import { getBlogsApi } from '@/apis/BlogApi'
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* types */
-import { BlogItemType } from '@/types/blog'
-import { CategoryType } from '@/types/category'
-import { ProfileType } from '@/types/profile'
-import { ArchiveType } from '@/types/archive'
+import { BlogItemType } from '@/types/Blog'
+import { CategoryType } from '@/types/Category'
+import { ProfileType } from '@/types/Profile'
+import { ArchiveType } from '@/types/Archive'
 
 /**
- * props
+ * Props
  */
 type TopPageProps = {
   blogList: BlogItemType[]
@@ -33,11 +33,13 @@ type TopPageProps = {
 
 /**
  * TopPage
- * @param props TopPageProps
+ * @param {TopPageProps} props
  * @returns
  */
 const TopPage: NextPage<TopPageProps> = (props: TopPageProps) => {
+  /* props */
   const { blogList, totalCount, categories, profile, archiveList } = props
+  /* hooks */
   const {
     setBlogData,
     setCategoryData,
@@ -71,13 +73,13 @@ const TopPage: NextPage<TopPageProps> = (props: TopPageProps) => {
  */
 export const getStaticProps: GetStaticProps = async () => {
   // ブログ一覧データ取得 ---------
-  const blogData = await getBlogs(0)
+  const blogData = await getBlogsApi(0)
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   const props: TopPageProps = {
     blogList: blogData.blogList,

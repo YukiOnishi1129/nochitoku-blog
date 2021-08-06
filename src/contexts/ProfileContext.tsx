@@ -7,7 +7,7 @@ import React from 'react'
 /* constants */
 import { initProfileState } from '@/constants/initState'
 /* types */
-import { ProfileType } from '@/types/profile'
+import { ProfileType } from '@/types/Profile'
 
 // State --------------
 export type ProfileStateType = {

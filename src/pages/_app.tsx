@@ -1,5 +1,6 @@
 /**
  * _app.tsx
+ * @package pages
  */
 import React from 'react'
 import { AppProps } from 'next/app'
@@ -14,7 +15,7 @@ import '@/styles/globals.scss'
 
 /**
  * MyApp
- * @param param0 AppProps
+ * @param {AppProps} { Component, pageProps }
  * @returns
  */
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {

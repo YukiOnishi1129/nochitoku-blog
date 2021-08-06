@@ -1,14 +1,17 @@
 /**
  * modals/MenuModal
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
+import Modal from 'react-modal'
 /* components */
-import { Presenter } from './Presenter'
-/* constants */
-import { NAVIGATION_LINK } from '@/constants/navigation'
+import { CloseIcon } from '@/components/common/icons/CloseIcon'
+/* hooks */
+import { useMenuModal } from './useMenuModal'
+/* styles */
+import styles from './styles.module.scss'
+
+Modal.setAppElement('#__next')
 
 /**
  * Props
@@ -19,51 +22,48 @@ type Props = {
 }
 
 /**
- * container
- * @param props Props
+ * MenuModal
+ * @param {Props} props
  * @returns
  */
 export const MenuModal: React.FC<Props> = (props: Props) => {
-  const router = useRouter()
+  /* props */
   const { isMenuModalVisible, handleCloseMenuModal } = props
-
-  /**
-   * 「ホーム」画面遷移処理
-   */
-  const handleHomeLink = () => {
-    router.push({
-      pathname: `${NAVIGATION_LINK.TOP}`,
-    })
-    handleCloseMenuModal()
-  }
-
-  /**
-   * 「このブログについて」画面遷移処理
-   */
-  const handleAboutLink = () => {
-    router.push({
-      pathname: `${NAVIGATION_LINK.ABOUT}`,
-    })
-    handleCloseMenuModal()
-  }
-
-  /**
-   * 「プロフィール」画面遷移処理
-   */
-  const handleProfileLink = () => {
-    router.push({
-      pathname: `${NAVIGATION_LINK.PROFILE}`,
-    })
-    handleCloseMenuModal()
-  }
+  /* hooks */
+  const { action } = useMenuModal({ handleCloseMenuModal })
 
   return (
-    <Presenter
-      isMenuModalVisible={isMenuModalVisible}
-      handleCloseMenuModal={handleCloseMenuModal}
-      handleHomeLink={handleHomeLink}
-      handleAboutLink={handleAboutLink}
-      handleProfileLink={handleProfileLink}
-    />
+    <Modal
+      isOpen={isMenuModalVisible}
+      onRequestClose={handleCloseMenuModal}
+      overlayClassName={{
+        base: styles.overlay_base,
+        afterOpen: styles.overlay_after,
+        beforeClose: styles.overlay_before,
+      }}
+      className={{
+        base: styles.content_base,
+        afterOpen: styles.content_after,
+        beforeClose: styles.content_before,
+      }}
+      closeTimeoutMS={500}
+    >
+      <ul className={styles.links}>
+        <li className={styles.title}>MENU</li>
+        <li className={styles.link} onClick={action.handleHomeLink}>
+          ホーム
+        </li>
+        <li className={styles.link} onClick={action.handleAboutLink}>
+          このブログについて
+        </li>
+        <li onClick={action.handleProfileLink}>プロフィール</li>
+      </ul>
+
+      <div className={styles.close} onClick={handleCloseMenuModal}>
+        <div className={styles.close__icon}>
+          <CloseIcon />
+        </div>
+      </div>
+    </Modal>
   )
 }

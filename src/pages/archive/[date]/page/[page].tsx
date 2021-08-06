@@ -7,25 +7,26 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 /* components */
 import { ArchiveTemplate } from '@/components/pages/ArchiveTemplate'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+import { getBlogTargetMonthService } from '@/service/BlogService'
+import { getArchiveListService } from '@/service/ArchiveService'
+/* apis */
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
-import { getBlogTargetMonth } from '@/logic/BlogLogic'
-import { getArchiveList } from '@/logic/ArchiveLogic'
-import { changeShowYearMonth } from '@/logic/DateLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
+import { changeShowYearMonthLogic } from '@/logic/DateLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blog'
-import { CategoryType } from '@/types/category'
-import { ProfileType } from '@/types/profile'
-import { ArchiveType } from '@/types/archive'
+import { BlogItemType } from '@/types/Blog'
+import { CategoryType } from '@/types/Category'
+import { ProfileType } from '@/types/Profile'
+import { ArchiveType } from '@/types/Archive'
 
 /**
- * props
+ * Props
  */
 export type ArchiveBlogListPageProps = {
   date: string
@@ -38,13 +39,15 @@ export type ArchiveBlogListPageProps = {
 
 /**
  * ArchiveBlogListPage
- * @param props ArchiveBlogListPageProps
+ * @param {ArchiveBlogListPageProps} props
  * @returns
  */
 const ArchiveBlogListPage: NextPage<ArchiveBlogListPageProps> = (
   props: ArchiveBlogListPageProps
 ) => {
+  /* props */
   const { date, blogList, totalCount, categories, profile, archiveList } = props
+  /* hooks */
   const {
     setBlogData,
     setCategoryData,
@@ -69,7 +72,9 @@ const ArchiveBlogListPage: NextPage<ArchiveBlogListPageProps> = (
     setArchive,
   ])
 
-  return <ArchiveTemplate date={date} breadName={changeShowYearMonth(date)} />
+  return (
+    <ArchiveTemplate date={date} breadName={changeShowYearMonthLogic(date)} />
+  )
 }
 
 /**
@@ -78,13 +83,16 @@ const ArchiveBlogListPage: NextPage<ArchiveBlogListPageProps> = (
  */
 export const getStaticPaths: GetStaticPaths = async () => {
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
   const paths: string[] = []
 
   for await (const archive of archiveList) {
-    const { totalCount } = await getBlogTargetMonth(0, archive.originDate)
+    const { totalCount } = await getBlogTargetMonthService(
+      0,
+      archive.originDate
+    )
     // ページ番号の配列を作成
-    const pageCountArray = createPageArray(totalCount)
+    const pageCountArray = createPageArrayLogic(totalCount)
     pageCountArray.forEach((pageNum) => {
       paths.push(`/archive/${archive.linkDate}/page/${pageNum}`)
     })
@@ -98,7 +106,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * getStaticProps
- * @param context
+ * @param {GetStaticPropsContext<ParsedUrlQuery>} context
  * @returns
  */
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -119,13 +127,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const offset = (pageNum - 1) * BLOG_SHOW_COUNT
 
   // ブログ一覧データ取得 ---------
-  const blogData = await getBlogTargetMonth(offset, paramDate)
+  const blogData = await getBlogTargetMonthService(offset, paramDate)
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   const props: ArchiveBlogListPageProps = {
     date: paramDate,

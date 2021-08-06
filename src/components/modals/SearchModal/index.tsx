@@ -1,13 +1,18 @@
 /**
  * modals/SearchModal
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
+import Modal from 'react-modal'
 /* components */
-import { Presenter } from './Presenter'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
+import { CloseIcon } from '@/components/common/icons/CloseIcon'
 /* types */
-import { EventType } from '@/types/event'
+import { EventType } from '@/types/Event'
+/* styles */
+import styles from './styles.module.scss'
+
+Modal.setAppElement('#__next')
 
 /**
  * Props
@@ -21,11 +26,12 @@ type Props = {
 }
 
 /**
- * container
- * @param props Props
+ * SearchModal
+ * @param {Props} props
  * @returns
  */
 export const SearchModal: React.FC<Props> = (props: Props) => {
+  /* props */
   const {
     searchText,
     isSearchModalVisible,
@@ -35,12 +41,32 @@ export const SearchModal: React.FC<Props> = (props: Props) => {
   } = props
 
   return (
-    <Presenter
-      searchText={searchText}
-      isSearchModalVisible={isSearchModalVisible}
-      handleCloseSearchModal={handleCloseSearchModal}
-      onChangeSearchText={onChangeSearchText}
-      onKeyUpSearch={onKeyUpSearch}
-    />
+    <Modal
+      isOpen={isSearchModalVisible}
+      onRequestClose={handleCloseSearchModal}
+      overlayClassName={{
+        base: styles.overlay_base,
+        afterOpen: styles.overlay_after,
+        beforeClose: styles.overlay_before,
+      }}
+      className={{
+        base: styles.content_base,
+        afterOpen: styles.content_after,
+        beforeClose: styles.content_before,
+      }}
+      closeTimeoutMS={500}
+    >
+      <div>
+        <SearchInputForm
+          text={searchText}
+          placeholder="検索"
+          onChange={onChangeSearchText}
+          onKeyUp={onKeyUpSearch}
+        />
+        <div className={styles.close} onClick={handleCloseSearchModal}>
+          <CloseIcon size={32} />
+        </div>
+      </div>
+    </Modal>
   )
 }

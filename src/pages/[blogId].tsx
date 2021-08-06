@@ -11,24 +11,25 @@ import hljs from 'highlight.js'
 import { BlogItemTemplate } from '@/components/pages/BlogItemTemplate'
 import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
-import { getBlogs, getBlogBy } from '@/service/blogs'
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+import { getArchiveListService } from '@/service/ArchiveService'
+/* apis */
+import { getBlogsApi, getBlogByApi } from '@/apis/BlogApi'
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
-import { getArchiveList } from '@/logic/ArchiveLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { BlogItemType, TableOfContentType } from '@/types/blog'
-import { CategoryType } from '@/types/category'
-import { ProfileType } from '@/types/profile'
-import { ArchiveType } from '@/types/archive'
+import { BlogItemType, TableOfContentType } from '@/types/Blog'
+import { CategoryType } from '@/types/Category'
+import { ProfileType } from '@/types/Profile'
+import { ArchiveType } from '@/types/Archive'
 
 /**
- * props
+ * Props
  */
 type BlogItemPageProps = {
   blogItem: BlogItemType
@@ -42,10 +43,11 @@ type BlogItemPageProps = {
 
 /**
  * BlogsItemPage
- * @param props BlogItemPageProps
+ * @param {BlogItemPageProps} props
  * @returns
  */
 const BlogItemPage: NextPage<BlogItemPageProps> = (props) => {
+  /* props */
   const {
     blogItem,
     highlightedBody,
@@ -55,6 +57,7 @@ const BlogItemPage: NextPage<BlogItemPageProps> = (props) => {
     archiveList,
     draftKey,
   } = props
+  /* hooks */
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
   React.useEffect(() => {
@@ -99,14 +102,14 @@ const BlogItemPage: NextPage<BlogItemPageProps> = (props) => {
  */
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = []
-  const { totalCount } = await getBlogs(0)
+  const { totalCount } = await getBlogsApi(0)
 
   // ページ番号の配列を作成
-  const pageCountArray = createPageArray(totalCount)
+  const pageCountArray = createPageArrayLogic(totalCount)
 
   for await (const pageNum of pageCountArray) {
     const offset = (pageNum - 1) * BLOG_SHOW_COUNT
-    const blogData = await getBlogs(offset)
+    const blogData = await getBlogsApi(offset)
     blogData.blogList.forEach((blog) => {
       paths.push(`/${blog.id}`)
     })
@@ -120,6 +123,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * getStaticProps
+ * @param {GetStaticPropsContext<ParsedUrlQuery>} context
  * @returns
  */
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -140,13 +144,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     // ブログ記事詳細データ取得 ---------
-    const blogDetailData = await getBlogBy(blogId, draftKey)
+    const blogDetailData = await getBlogByApi(blogId, draftKey)
     // カテゴリーデータ取得 ---------
-    const categoryData = await getCategories()
+    const categoryData = await getCategoriesApi()
     // プロフィールデータ取得 ---------
-    const profile = await getProfileBy()
+    const profile = await getProfileByApi()
     // アーカイブデータ取得 ---------
-    const archiveList = await getArchiveList()
+    const archiveList = await getArchiveListService()
 
     // シンタックハイライト文章作成
     // https://qiita.com/cawauchi/items/ff6489b17800c5676908

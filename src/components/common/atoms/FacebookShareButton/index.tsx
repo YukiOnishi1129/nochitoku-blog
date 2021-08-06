@@ -1,6 +1,5 @@
 /**
  * common/atoms/FacebookShareButton
- * PresentationalComponent
  * @package Component
  */
 import React from 'react'
@@ -10,7 +9,7 @@ import {
 } from 'react-share'
 
 /**
- * props
+ * Props
  */
 export type FacebookShareButtonProps = {
   shareUrl: string
@@ -20,12 +19,13 @@ export type FacebookShareButtonProps = {
 
 /**
  * FacebookShareButton
- * @param props FacebookShareButtonProps
+ * @param {FacebookShareButtonProps} props
  * @returns
  */
 export const FacebookShareButton: React.FC<FacebookShareButtonProps> = (
   props: FacebookShareButtonProps
 ) => {
+  /* props */
   const { shareUrl, size = 40, radius = 10 } = props
 
   return (

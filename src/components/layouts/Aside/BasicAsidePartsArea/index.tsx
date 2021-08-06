@@ -1,11 +1,10 @@
 /**
  * layouts/Aside/BasicAsidePartsArea
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-/* components */
-import { Presenter } from './Presenter'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -16,12 +15,19 @@ type Props = {
 }
 
 /**
- * container
- * @param props
+ * BasicAsidePartsArea
+ * @param {Props} props
  * @returns
  */
 export const BasicAsidePartsArea: React.FC<Props> = (props: Props) => {
+  /* props */
   const { children, title } = props
 
-  return <Presenter title={title}>{children}</Presenter>
+  return (
+    <>
+      <h6 className={styles.title}>{title}</h6>
+      <div className={styles.bar} />
+      <div className={styles.field}>{children}</div>
+    </>
+  )
 }

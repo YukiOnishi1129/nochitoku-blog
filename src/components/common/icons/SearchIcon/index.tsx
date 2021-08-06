@@ -14,7 +14,7 @@ export type SearchIconProps = {
 
 /**
  * SearchIcon
- * @param props
+ * @param {SearchIconProps} props
  * @returns
  */
 export const SearchIcon: React.FC<SearchIconProps> = (

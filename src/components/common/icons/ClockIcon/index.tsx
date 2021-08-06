@@ -14,7 +14,7 @@ export type ClockIconProps = {
 
 /**
  * ClockIcon
- * @param props ClockIconProps
+ * @param {ClockIconProps} props
  * @returns
  */
 export const ClockIcon: React.FC<ClockIconProps> = (props: ClockIconProps) => (

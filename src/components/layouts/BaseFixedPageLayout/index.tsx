@@ -1,13 +1,14 @@
 /**
  * layouts/BaseFixedPageLayout
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
 /* components */
-import { Presenter } from './Presenter'
+import { BaseLayout } from '@/components/layouts/BaseLayout'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * Props
@@ -19,15 +20,16 @@ export type Props = {
 }
 
 /**
- * container
- * @param props
+ * BaseFixedPageLayout
+ * @param {Props} props
  */
 export const BaseFixedPageLayout: React.FC<Props> = (props: Props) => {
+  /* props */
   const { children, metaData, breadName } = props
 
   return (
-    <Presenter metaData={metaData} breadName={breadName}>
-      {children}
-    </Presenter>
+    <BaseLayout metaData={metaData} breadName={breadName}>
+      <article className={styles.article}>{children}</article>
+    </BaseLayout>
   )
 }

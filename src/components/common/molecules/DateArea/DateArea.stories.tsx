@@ -5,7 +5,7 @@
  */
 import { Story, Meta } from '@storybook/react/types-6-0'
 /* components */
-import { Presenter as DateArea, DateAreaProps } from './Presenter'
+import { DateArea, DateAreaProps } from './index'
 
 export default {
   title: 'common/molecules/DateArea',
@@ -25,5 +25,5 @@ const Template: Story<DateAreaProps> = (args) => <DateArea {...args} />
  */
 export const Primary = Template.bind({})
 Primary.args = {
-  showDate: '2021.01.01',
+  date: '2021.01.01',
 }

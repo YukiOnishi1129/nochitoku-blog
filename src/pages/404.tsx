@@ -8,17 +8,18 @@ import Head from 'next/head'
 /* components */
 import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
-import { getCategories } from '@/service/categories'
-/* logic */
-import { getArchiveList } from '@/logic/ArchiveLogic'
+import { getArchiveListService } from '@/service/ArchiveService'
+/* apis */
+import { getCategoriesApi } from '@/apis/CategoryApi'
+
 /* types */
-import { CategoryType } from '@/types/category'
-import { ArchiveType } from '@/types/archive'
+import { CategoryType } from '@/types/Category'
+import { ArchiveType } from '@/types/Archive'
 
 /**
- * props
+ * Props
  */
 type Error404PageProps = {
   categories: CategoryType[]
@@ -27,13 +28,15 @@ type Error404PageProps = {
 
 /**
  * Error404Page
- * @param props Error404PageProps
+ * @param {Error404PageProps} props
  * @returns
  */
 export const Error404Page: NextPage<Error404PageProps> = (
   props: Error404PageProps
 ) => {
+  /* props */
   const { categories, archiveList } = props
+  /* hooks */
   const { setCategoryData, setArchive } = useSetDate()
 
   React.useEffect(() => {
@@ -57,9 +60,9 @@ export const Error404Page: NextPage<Error404PageProps> = (
  */
 export const getStaticProps: GetStaticProps = async () => {
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   const props: Error404PageProps = {
     categories: categoryData,

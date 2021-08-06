@@ -1,18 +1,23 @@
 /**
  * pages/BlogItemTemplate
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
+import Link from 'next/link'
+import Image from 'next/image'
 /* components */
-import { Presenter } from './Presenter'
-/* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
+import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { SnsShareBar } from '@/components/common/molecules/SnsShareBar'
+import { SnsShareArea } from '@/components/common/molecules/SnsShareArea'
+import { TitleArea } from './organisms/TitleArea'
+import { TableOfContents } from './organisms/TableOfContents'
+import { HighlightBody } from '@/components/common/molecules/HighlightBody'
+/* hooks */
+import { useBlogItemTemplate } from './useBlogItemTemplate'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
-import { BlogItemType, TableOfContentType } from '@/types/blog'
-import { ImageType } from '@/types/image'
+import { BlogItemType, TableOfContentType } from '@/types/Blog'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -25,42 +30,59 @@ type Props = {
 }
 
 /**
- * container
- * @param props Props
+ * BlogItemTemplate
+ * @param {Props} props
  * @returns
  */
 export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
+  /* props */
   const { blogItem, highlightedBody, tableOfContents, draftKey } = props
-
-  const propsImage: ImageType = {
-    url: blogItem?.image?.url ? blogItem.image.url : '/no_image.png',
-    width: blogItem?.image?.width ? blogItem.image.width : 750,
-    height: blogItem?.image?.height ? blogItem.image.height : 422,
-  }
-
-  const router = useRouter()
-  let shareUrl = NOCHITOKU_URL
-  if (router?.asPath && typeof router.asPath === 'string') {
-    shareUrl = NOCHITOKU_URL + router.asPath
-  }
-
-  const metaData: MetaHeadType = {
-    title: `${blogItem.title} | ${BASE_TITLE}`,
-    description: blogItem.description,
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: blogItem.image.url,
-    url: NOCHITOKU_URL + router.asPath,
-  }
+  /* hooks */
+  const { state } = useBlogItemTemplate({ blogItem })
 
   return (
-    <Presenter
-      metaData={metaData}
-      blogItem={blogItem}
-      image={propsImage}
-      highlightedBody={highlightedBody}
-      tableOfContents={tableOfContents}
-      shareUrl={shareUrl}
-      draftKey={draftKey}
-    />
+    <BasePostPageLayout metaData={state.metaData} breadName={blogItem.title}>
+      <section className={styles.container}>
+        {!!draftKey && (
+          <div>
+            現在プレビューモードで閲覧中です。
+            <Link href={`/api/cancel-preview?id=${blogItem.id}`}>
+              <a>プレビューを解除</a>
+            </Link>
+          </div>
+        )}
+        <div className={styles.image}>
+          <Image
+            src={state.image.url}
+            alt="Picture"
+            width={state.image.width * 2}
+            height={state.image.height * 2}
+          />
+        </div>
+
+        <main className={styles.main}>
+          <div className={styles.leftBar}>
+            {/* SNSシェアボタン */}
+            <SnsShareBar title={blogItem.title} shareUrl={state.shareUrl} />
+          </div>
+
+          <div className={styles.rightBar}>
+            {/* ブログタイトルエリア */}
+            <TitleArea blogItem={blogItem} />
+
+            {/* 目次 */}
+            <TableOfContents tableOfContents={tableOfContents} />
+
+            {/* 記事本文 */}
+            <HighlightBody highlightedBody={highlightedBody} />
+
+            {/* SNSシェアボタン */}
+            <div className={styles.shareArea}>
+              <SnsShareArea title={blogItem.title} shareUrl={state.shareUrl} />
+            </div>
+          </div>
+        </main>
+      </section>
+    </BasePostPageLayout>
   )
 }

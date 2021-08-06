@@ -1,16 +1,15 @@
 /**
  * common/atoms/InputForm
- * PresentationalComponent
  * @package Component
  */
 import React from 'react'
 /* types */
-import { EventType } from '@/types/event'
+import { EventType } from '@/types/Event'
 /* styles */
 import styles from './styles.module.scss'
 
 /**
- * props
+ * Props
  */
 export type InputFormProps = {
   text: string
@@ -22,10 +21,11 @@ export type InputFormProps = {
 
 /**
  * InputForm
- * @param props
+ * @param {InputFormProps} props
  * @returns
  */
 export const InputForm: React.FC<InputFormProps> = (props: InputFormProps) => {
+  /* props */
   const { text, placeholder, onChange, onKeyUp, onClick } = props
 
   return (

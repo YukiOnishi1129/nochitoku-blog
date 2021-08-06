@@ -1,18 +1,21 @@
 /**
  * pages/ProfileTemplate
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
+import Image from 'next/image'
 /* components */
-import { Presenter } from './Presenter'
-/* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
+import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { SnsShareBar } from '@/components/common/molecules/SnsShareBar'
+import { PageTitle } from '@/components/common/atoms/PageTitle'
+import { SnsShareArea } from '@/components/common/molecules/SnsShareArea'
+import { HighlightBody } from '@/components/common/molecules/HighlightBody'
+/* hooks */
+import { useProfileTemplate } from './useProfileTemplate'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
-import { ProfileType } from '@/types/profile'
-import { ImageType } from '@/types/image'
+import { ProfileType } from '@/types/Profile'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -23,39 +26,46 @@ type Props = {
 }
 
 /**
- * container
- * @param props Props
+ * ProfileTemplate
+ * @param {Props} props
  * @returns
  */
 export const ProfileTemplate: React.FC<Props> = (props: Props) => {
+  /* props */
   const { profile, highlightedBody } = props
-
-  const propsImage: ImageType = {
-    url: profile.articleImage.url,
-    width: profile.articleImage.width,
-    height: profile.articleImage.height,
-  }
-
-  const router = useRouter()
-  let shareUrl = NOCHITOKU_URL
-  if (router?.asPath && typeof router.asPath === 'string') {
-    shareUrl = NOCHITOKU_URL + router.asPath
-  }
-
-  const metaData: MetaHeadType = {
-    title: `プロフィール | ${BASE_TITLE}`,
-    description: profile.description,
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: propsImage.url,
-    url: NOCHITOKU_URL + router.asPath,
-  }
+  /* hooks */
+  const { state } = useProfileTemplate({ profile })
 
   return (
-    <Presenter
-      metaData={metaData}
-      image={propsImage}
-      highlightedBody={highlightedBody}
-      shareUrl={shareUrl}
-    />
+    <BasePostPageLayout metaData={state.metaData} breadName="プロフィール">
+      {/* ページタイトル */}
+      <PageTitle title={`プロフィール`} />
+      <section className={styles.container}>
+        <div className={styles.image}>
+          <Image
+            src={state.image.url}
+            alt="Picture"
+            width={state.image.width}
+            height={state.image.height}
+          />
+        </div>
+
+        <main className={styles.main}>
+          <div className={styles.leftBar}>
+            {/* SNSシェアボタン */}
+            <SnsShareBar title="プロフィール" shareUrl={state.shareUrl} />
+          </div>
+          <div className={styles.rightBar}>
+            {/* 記事本文 */}
+            <HighlightBody highlightedBody={highlightedBody} />
+
+            {/* SNSシェアボタン */}
+            <div className={styles.shareArea}>
+              <SnsShareArea title="プロフィール" shareUrl={state.shareUrl} />
+            </div>
+          </div>
+        </main>
+      </section>
+    </BasePostPageLayout>
   )
 }

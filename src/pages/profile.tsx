@@ -9,18 +9,19 @@ import hljs from 'highlight.js'
 /* components */
 import { ProfileTemplate } from '@/components/pages/ProfileTemplate'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
-import { getArchiveList } from '@/logic/ArchiveLogic'
+import { getArchiveListService } from '@/service/ArchiveService'
+/* apis */
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* types */
-import { CategoryType } from '@/types/category'
-import { ProfileType } from '@/types/profile'
-import { ArchiveType } from '@/types/archive'
+import { CategoryType } from '@/types/Category'
+import { ProfileType } from '@/types/Profile'
+import { ArchiveType } from '@/types/Archive'
 
 /**
- * ProfilePageProps
+ * Props
  */
 export type ProfilePageProps = {
   profile: ProfileType
@@ -31,13 +32,15 @@ export type ProfilePageProps = {
 
 /**
  * ProfilePage
- * @param props ProfilePageProps
+ * @param {ProfilePageProps} props
  * @returns
  */
 export const ProfilePage: NextPage<ProfilePageProps> = (
   props: ProfilePageProps
 ) => {
+  /* props */
   const { profile, highlightedBody, categories, archiveList } = props
+  /* hooks */
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
   React.useEffect(() => {
@@ -62,12 +65,12 @@ export const ProfilePage: NextPage<ProfilePageProps> = (
  */
 export const getStaticProps: GetStaticProps = async () => {
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
 
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   // シンタックハイライト文章作成
   // https://qiita.com/cawauchi/items/ff6489b17800c5676908
