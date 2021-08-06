@@ -11,6 +11,9 @@ import * as blogService from '@/service/BlogService'
 /* logic */
 import * as dateLogic from '@/logic/DateLogic'
 
+// 日本語化
+dayjs.locale(`ja`)
+
 // mockの変数
 /* service */
 let isBlogsArchivesServiceSpy: jest.SpyInstance<unknown>
@@ -23,9 +26,6 @@ let changeYearMonthDateLogicSpy: jest.SpyInstance<unknown>
 let changeYearMonthLogicSpy: jest.SpyInstance<unknown>
 let subtractMonthDateLogicSpy: jest.SpyInstance<unknown>
 let changeShowYearMonthLogicSpy: jest.SpyInstance<unknown>
-
-// 日本語化
-dayjs.locale(`ja`)
 
 // 変数
 let mockCurrentDate: dayjs.Dayjs
