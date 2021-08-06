@@ -1,11 +1,11 @@
 /**
  * layouts/BreadList
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-/* components */
-import { Presenter } from './Presenter'
+import Link from 'next/link'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -15,12 +15,24 @@ type Props = {
 }
 
 /**
- * container
- * @param props Props
+ * BreadList
+ * @param {Props} props
  * @returns
  */
 export const BreadList: React.FC<Props> = (props: Props) => {
+  /* props */
   const { breadName } = props
 
-  return <Presenter breadName={breadName} />
+  return (
+    <div className={styles.bread}>
+      <ul className={styles.bread__list}>
+        <li className={styles.bread__item}>
+          <Link href="/">
+            <span className={styles.bread__link}>HOME</span>
+          </Link>
+        </li>
+        <li className={styles.breadName}>{breadName}</li>
+      </ul>
+    </div>
+  )
 }

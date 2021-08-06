@@ -1,15 +1,22 @@
 /**
  * layouts/BaseLayout
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
-import { animateScroll as scroll } from 'react-scroll'
 /* components */
-import { Presenter } from './Presenter'
+import { MetaHead } from '@/components/layouts/MetaHead'
+import { Header } from '@/components/layouts/Header'
+import { BreadList } from '@/components/layouts/BreadList'
+import { Footer } from '@/components/layouts/Footer'
+import { ArrowIcon } from '@/components/common/icons/ArrowIcon'
+import { SearchModal } from '@/components/modals/SearchModal'
+import { MenuModal } from '@/components/modals/MenuModal'
+/* hooks */
+import { useBaseLayout } from './useBaseLayout'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * Props
@@ -21,92 +28,54 @@ export type Props = {
 }
 
 /**
- * container
- * @param props
+ * BaseLayout
+ * @param {Props} props
  */
 export const BaseLayout: React.FC<Props> = (props: Props) => {
-  const router = useRouter()
+  /* props */
   const { children, metaData, breadName } = props
-  // SearchModal用のstate
-  const [searchText, setSearchText] = React.useState('')
-  const [isSearchModalVisible, setIsSearchModalVisible] = React.useState(false)
-  // MenuModal用のstate
-  const [isMenuModalVisible, setIsMenuModalVisible] = React.useState(false)
-
-  /**
-   * SearchModalを開く処理
-   */
-  const handleOpenSearchModal = () => {
-    setIsSearchModalVisible(true)
-  }
-
-  /**
-   * SearchModalを閉じる処理
-   */
-  const handleCloseSearchModal = () => {
-    setIsSearchModalVisible(false)
-  }
-
-  /**
-   * SearchModalを開く処理
-   */
-  const handleOpenMenuModal = () => {
-    setIsMenuModalVisible(true)
-  }
-
-  /**
-   * SearchModalを閉じる処理
-   */
-  const handleCloseMenuModal = () => {
-    setIsMenuModalVisible(false)
-  }
-
-  /**
-   * 検索キーワード変更処理
-   * @param e React.ChangeEvent<HTMLInputElement>
-   */
-  const onChangeSearchText = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value)
-  }
-
-  /**
-   * 検索フォーム キーアップ処理
-   * @param e React.KeyboardEvent<HTMLInputElement>
-   */
-  const onKeyUpSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // 検索キーワードがあり、Enterをクリックした場合、検索ページに遷移
-    if (e.key === 'Enter' && searchText !== '') {
-      router.push({
-        pathname: '/search',
-        query: { keyword: searchText },
-      })
-      handleCloseSearchModal()
-    }
-  }
-
-  /**
-   * ページトップに移動する
-   */
-  const scrollToTop = () => {
-    scroll.scrollToTop()
-  }
+  /* hooks */
+  const { state, action } = useBaseLayout()
 
   return (
-    <Presenter
-      metaData={metaData}
-      breadName={breadName}
-      searchText={searchText}
-      isSearchModalVisible={isSearchModalVisible}
-      isMenuModalVisible={isMenuModalVisible}
-      scrollToTop={scrollToTop}
-      handleOpenSearchModal={handleOpenSearchModal}
-      handleCloseSearchModal={handleCloseSearchModal}
-      handleOpenMenuModal={handleOpenMenuModal}
-      handleCloseMenuModal={handleCloseMenuModal}
-      onChangeSearchText={onChangeSearchText}
-      onKeyUpSearch={onKeyUpSearch}
-    >
-      {children}
-    </Presenter>
+    <>
+      <MetaHead metaData={metaData} />
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
+          <Header
+            handleOpenSearchModal={action.handleOpenSearchModal}
+            handleOpenMenuModal={action.handleOpenMenuModal}
+          />
+          <div className={styles.headerEmpty} />
+        </div>
+        {!!breadName && <BreadList breadName={breadName} />}
+
+        <div className={styles.divider}>{children}</div>
+        <div className={styles.footer}>
+          <Footer />
+        </div>
+        {/* スクロールトップボタン */}
+        <div className={styles.fixButton} onClick={action.scrollToTop}>
+          <ArrowIcon size={70} color="#c8c8c8" />
+        </div>
+        {/* スクロールトップボタン SP */}
+        <div className={styles.fixButton__sp} onClick={action.scrollToTop}>
+          <ArrowIcon size={44} color="#c8c8c8" />
+        </div>
+        {/* 検索モーダル */}
+        <SearchModal
+          searchText={state.searchText}
+          isSearchModalVisible={state.isSearchModalVisible}
+          handleCloseSearchModal={action.handleCloseSearchModal}
+          onChangeSearchText={action.onChangeSearchText}
+          onKeyUpSearch={action.onKeyUpSearch}
+        />
+        {/* メニューモーダル */}
+        <MenuModal
+          isMenuModalVisible={state.isMenuModalVisible}
+          handleCloseMenuModal={action.handleCloseMenuModal}
+        />
+      </div>
+    </>
   )
 }

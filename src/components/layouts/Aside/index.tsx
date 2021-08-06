@@ -1,48 +1,79 @@
 /**
  * layouts/Aside/
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
 /* components */
-import { Presenter } from './Presenter'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
+import { ProfileArea } from '@/components/layouts/Aside/ProfileArea'
+import { ProfileAreaResponsive } from '@/components/layouts/Aside/ProfileAreaResponsive'
+import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
+import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
+/* hooks */
+import { useAside } from './useAside'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
- * container
+ * Aside
  * @returns
  */
 export const Aside: React.FC = () => {
-  const router = useRouter()
-  const [searchText, setSearchText] = React.useState('')
-
-  /**
-   * 検索キーワード変更処理
-   * @param e React.ChangeEvent<HTMLInputElement>
-   */
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value)
-  }
-
-  /**
-   * 検索フォーム キーアップ処理
-   * @param e React.KeyboardEvent<HTMLInputElement>
-   */
-  const onSearchKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // 検索キーワードがあり、Enterをクリックした場合、検索ページに遷移
-    if (e.key === 'Enter' && searchText !== '') {
-      router.push({
-        pathname: '/search',
-        query: { keyword: searchText },
-      })
-    }
-  }
+  /* hooks */
+  const { state, action } = useAside()
 
   return (
-    <Presenter
-      searchText={searchText}
-      onChange={onChange}
-      onKeyUp={onSearchKeyUp}
-    />
+    <aside className={styles.aside}>
+      {/* 検索フォーム */}
+      <div className={styles.search}>
+        <SearchInputForm
+          text={state.searchText}
+          placeholder="検索"
+          onChange={action.onChange}
+          onKeyUp={action.onSearchKeyUp}
+        />
+      </div>
+
+      {/* プロフィールエリア */}
+      <div className={styles.profile}>
+        <ProfileArea />
+      </div>
+
+      {/* プロフィールエリア レスポンシブ */}
+      <div className={styles.profile__responsive}>
+        <ProfileAreaResponsive />
+      </div>
+
+      {/* 検索フォーム レスポンシブ */}
+      <div className={styles.search__responsive}>
+        <SearchInputForm
+          text={state.searchText}
+          placeholder="検索"
+          size={32}
+          onChange={action.onChange}
+          onKeyUp={action.onSearchKeyUp}
+        />
+      </div>
+
+      {/* 検索フォーム レスポンシブ */}
+      <div className={styles.search__sp}>
+        <SearchInputForm
+          text={state.searchText}
+          placeholder="検索"
+          size={20}
+          onChange={action.onChange}
+          onKeyUp={action.onSearchKeyUp}
+        />
+      </div>
+
+      {/* カテゴリーエリア */}
+      <div className={styles.parts}>
+        <CategoryArea />
+      </div>
+      {/* アーカイブエリア */}
+      <div className={styles.parts}>
+        <ArchiveArea />
+      </div>
+    </aside>
   )
 }

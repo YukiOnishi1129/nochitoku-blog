@@ -1,13 +1,15 @@
 /**
  * layouts/BasePostPageLayout
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
 /* components */
-import { Presenter } from './Presenter'
+import { BaseLayout } from '@/components/layouts/BaseLayout'
+import { Aside } from '@/components/layouts/Aside'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * Props
@@ -19,15 +21,19 @@ export type Props = {
 }
 
 /**
- * container
- * @param props
+ * BasePostPageLayout
+ * @param {Props} props
  */
 export const BasePostPageLayout: React.FC<Props> = (props: Props) => {
+  /* props */
   const { children, metaData, breadName } = props
 
   return (
-    <Presenter metaData={metaData} breadName={breadName}>
-      {children}
-    </Presenter>
+    <BaseLayout metaData={metaData} breadName={breadName}>
+      <article className={styles.article}>{children}</article>
+      <div className={styles.aside}>
+        <Aside />
+      </div>
+    </BaseLayout>
   )
 }
