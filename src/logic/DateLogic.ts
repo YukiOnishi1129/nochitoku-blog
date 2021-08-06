@@ -10,7 +10,7 @@ dayjs.locale(`ja`)
 
 /**
  * 現在日時取得
- * @returns
+ * @returns {dayjs.Dayjs}
  */
 export const getCurrentDateLogic = () => {
   return dayjs()
@@ -18,7 +18,7 @@ export const getCurrentDateLogic = () => {
 
 /**
  * ブログ開始日時取得
- * @returns
+ * @returns {dayjs.Dayjs}
  */
 export const getBlogStartDateLogic = () => {
   return dayjs('2021-04-01')
@@ -26,64 +26,73 @@ export const getBlogStartDateLogic = () => {
 
 /**
  * 月初の日時を取得
- * @param day string
- * @returns
+ * @param {string} day
+ *
+ * @returns {string}
  */
-export const getStartOfMonthLogic = (date: string) => {
+export const getStartOfMonthLogic = (date: string): string => {
   return dayjs(date).startOf('month').format()
 }
 
 /**
  * 月末の日時を取得
- * @param date string
- * @returns
+ * @param {string} date
+ *
+ * @returns {string}
  */
-export const getEndOfMonthLogic = (date: string) => {
+export const getEndOfMonthLogic = (date: string): string => {
   return dayjs(date).endOf('month').format()
 }
 
 /**
  * 日付フォーマット変換(YYYY.M.D)
- * @param date
- * @returns
+ * @param {string} date
+ *
+ * @returns {string}
  */
-export const showYearMonthDayLogic = (date: string) => {
+export const showYearMonthDayLogic = (date: string): string => {
   return dayjs(date).format('YYYY.M.D')
 }
 
 /**
  * 日付フォーマット変換(YYYY-MM-DD)
- * @param date
- * @returns
+ * @param {string} date
+ *
+ * @returns {string}
  */
-export const changeYearMonthDateLogic = (date: string) => {
+export const changeYearMonthDateLogic = (date: string): string => {
   return dayjs(date).format('YYYY-MM-DD')
 }
 
 /**
  * 日付フォーマット変換(YYYY-MM)
- * @param date
- * @returns
+ * @param {string} date
+ *
+ * @returns {string}
  */
-export const changeYearMonthLogic = (date: string) => {
+export const changeYearMonthLogic = (date: string): string => {
   return dayjs(date).format('YYYY-MM')
 }
 /**
  * 日付フォーマット変換(YYYY年M月)
- * @param date
- * @returns
+ * @param {string} date
+ *
+ * @returns {string}
  */
-export const changeShowYearMonthLogic = (date: string) => {
+export const changeShowYearMonthLogic = (date: string): string => {
   return dayjs(date).format('YYYY年M月')
 }
 
 /**
  * 減算処理 (月毎)
- * @param date
- * @param diffMonth
+ * @param {string} date
+ * @param {number} diffMonth
  * @returns
  */
-export const subtractMonthDateLogic = (date: string, diffMonth: number) => {
+export const subtractMonthDateLogic = (
+  date: string,
+  diffMonth: number
+): string => {
   return dayjs(date).subtract(diffMonth, 'M').format()
 }
 
