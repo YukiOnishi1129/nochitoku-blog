@@ -10,10 +10,10 @@ import {
 } from '@/apis/BlogApi'
 /* logics */
 import {
-  getStartOfMonth,
-  getEndOfMonth,
-  addOneDay,
-  subtractOneDay,
+  getStartOfMonthLogic,
+  getEndOfMonthLogic,
+  addOneDayLogic,
+  subtractOneDayLogic,
 } from '@/logic/DateLogic'
 
 /**
@@ -28,8 +28,8 @@ export const getBlogTargetMonthService = async (
   targetDate: string
 ) => {
   // 引数設定
-  const startMonth = subtractOneDay(getStartOfMonth(targetDate)) // 対象月の月初日付の一日前取得
-  const endMonth = addOneDay(getEndOfMonth(targetDate)) // 対象月の月末日付の翌日取得
+  const startMonth = subtractOneDayLogic(getStartOfMonthLogic(targetDate)) // 対象月の月初日付の一日前取得
+  const endMonth = addOneDayLogic(getEndOfMonthLogic(targetDate)) // 対象月の月末日付の翌日取得
 
   // 記事データ取得
   const blogDate = await getBlogContainArchiveMonthApi(
@@ -52,8 +52,8 @@ export const isBlogsArchivesService = async (
   endDate: string
 ): Promise<boolean> => {
   // 引数の設定
-  const queryStartDate = subtractOneDay(startDate)
-  const queryEndDate = addOneDay(endDate)
+  const queryStartDate = subtractOneDayLogic(startDate)
+  const queryEndDate = addOneDayLogic(endDate)
   // 記事数取得
   const totalCount = await getBlogArchivesCountApi(queryStartDate, queryEndDate)
 

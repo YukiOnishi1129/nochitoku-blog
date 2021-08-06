@@ -3,7 +3,7 @@
  * @package Hooks
  */
 /* logics */
-import { showYearMonthDay } from '@/logic/DateLogic'
+import { showYearMonthDayLogic } from '@/logic/DateLogic'
 
 /**
  * interface
@@ -23,7 +23,7 @@ export const useDateArea = (param: HooksParam) => {
 
   return {
     state: {
-      showDate: showYearMonthDay(date),
+      showDate: showYearMonthDayLogic(date),
     },
   }
 }

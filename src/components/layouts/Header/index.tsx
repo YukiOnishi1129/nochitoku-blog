@@ -11,7 +11,7 @@ import { MenuIcon } from '@/components/common/icons/MenuIcon'
 /* constants */
 import { NAVIGATION_LINK } from '@/constants/navigation'
 /* logic */
-import { isNotSearchPage } from '@/logic/CommonLogic'
+import { isNotSearchPageLogic } from '@/logic/CommonLogic'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -59,7 +59,7 @@ export const Header: React.FC<Props> = (props: Props) => {
         {/* SP アイコン */}
         <div className={styles.sp}>
           {/* 検索 */}
-          {isNotSearchPage(router.pathname) && (
+          {isNotSearchPageLogic(router.pathname) && (
             <div className={styles.sp__search} onClick={handleOpenSearchModal}>
               <SearchIcon />
             </div>

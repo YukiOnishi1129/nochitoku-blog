@@ -15,8 +15,8 @@ import { getArchiveListService } from '@/service/ArchiveService'
 import { getCategoriesApi } from '@/apis/CategoryApi'
 import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
-import { changeShowYearMonth } from '@/logic/DateLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
+import { changeShowYearMonthLogic } from '@/logic/DateLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
@@ -72,7 +72,9 @@ const ArchiveBlogListPage: NextPage<ArchiveBlogListPageProps> = (
     setArchive,
   ])
 
-  return <ArchiveTemplate date={date} breadName={changeShowYearMonth(date)} />
+  return (
+    <ArchiveTemplate date={date} breadName={changeShowYearMonthLogic(date)} />
+  )
 }
 
 /**
@@ -90,7 +92,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       archive.originDate
     )
     // ページ番号の配列を作成
-    const pageCountArray = createPageArray(totalCount)
+    const pageCountArray = createPageArrayLogic(totalCount)
     pageCountArray.forEach((pageNum) => {
       paths.push(`/archive/${archive.linkDate}/page/${pageNum}`)
     })

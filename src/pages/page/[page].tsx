@@ -15,7 +15,7 @@ import { getBlogsApi } from '@/apis/BlogApi'
 import { getCategoriesApi } from '@/apis/CategoryApi'
 import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
@@ -80,7 +80,7 @@ const BlogListPage: NextPage<BlogListPageProps> = (
 export const getStaticPaths: GetStaticPaths = async () => {
   const { totalCount } = await getBlogsApi(0)
   // ページ番号の配列を作成
-  const pageCountArray = createPageArray(totalCount)
+  const pageCountArray = createPageArrayLogic(totalCount)
   // pathの配列を作成
   const paths = pageCountArray.map((pageNum) => `/page/${pageNum}`)
   return {

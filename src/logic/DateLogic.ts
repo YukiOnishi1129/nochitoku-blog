@@ -12,7 +12,7 @@ dayjs.locale(`ja`)
  * 現在日時取得
  * @returns
  */
-export const getCurrentDate = () => {
+export const getCurrentDateLogic = () => {
   return dayjs()
 }
 
@@ -20,7 +20,7 @@ export const getCurrentDate = () => {
  * ブログ開始日時取得
  * @returns
  */
-export const getBlogStartDate = () => {
+export const getBlogStartDateLogic = () => {
   return dayjs('2021-04-01')
 }
 
@@ -29,7 +29,7 @@ export const getBlogStartDate = () => {
  * @param day string
  * @returns
  */
-export const getStartOfMonth = (date: string) => {
+export const getStartOfMonthLogic = (date: string) => {
   return dayjs(date).startOf('month').format()
 }
 
@@ -38,7 +38,7 @@ export const getStartOfMonth = (date: string) => {
  * @param date string
  * @returns
  */
-export const getEndOfMonth = (date: string) => {
+export const getEndOfMonthLogic = (date: string) => {
   return dayjs(date).endOf('month').format()
 }
 
@@ -47,7 +47,7 @@ export const getEndOfMonth = (date: string) => {
  * @param date
  * @returns
  */
-export const showYearMonthDay = (date: string) => {
+export const showYearMonthDayLogic = (date: string) => {
   return dayjs(date).format('YYYY.M.D')
 }
 
@@ -56,7 +56,7 @@ export const showYearMonthDay = (date: string) => {
  * @param date
  * @returns
  */
-export const changeYearMonthDate = (date: string) => {
+export const changeYearMonthDateLogic = (date: string) => {
   return dayjs(date).format('YYYY-MM-DD')
 }
 
@@ -65,7 +65,7 @@ export const changeYearMonthDate = (date: string) => {
  * @param date
  * @returns
  */
-export const changeYearMonth = (date: string) => {
+export const changeYearMonthLogic = (date: string) => {
   return dayjs(date).format('YYYY-MM')
 }
 /**
@@ -73,7 +73,7 @@ export const changeYearMonth = (date: string) => {
  * @param date
  * @returns
  */
-export const changeShowYearMonth = (date: string) => {
+export const changeShowYearMonthLogic = (date: string) => {
   return dayjs(date).format('YYYY年M月')
 }
 
@@ -83,7 +83,7 @@ export const changeShowYearMonth = (date: string) => {
  * @param diffMonth
  * @returns
  */
-export const subtractMonthDate = (date: string, diffMonth: number) => {
+export const subtractMonthDateLogic = (date: string, diffMonth: number) => {
   return dayjs(date).subtract(diffMonth, 'M').format()
 }
 
@@ -92,7 +92,7 @@ export const subtractMonthDate = (date: string, diffMonth: number) => {
  * @param date
  * @returns
  */
-export const addOneDay = (date: string) => {
+export const addOneDayLogic = (date: string) => {
   return dayjs(date).add(1, 'd').format()
 }
 
@@ -101,6 +101,6 @@ export const addOneDay = (date: string) => {
  * @param date
  * @returns
  */
-export const subtractOneDay = (date: string) => {
+export const subtractOneDayLogic = (date: string) => {
   return dayjs(date).subtract(1, 'd').format()
 }

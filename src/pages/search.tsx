@@ -11,7 +11,7 @@ import { useSetDate } from '@/hooks/SetData'
 /* apis */
 import { getBlogsApi } from '@/apis/BlogApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { totalCount } = await getBlogsApi(0)
 
   // ページ番号の配列を作成
-  const pageCountArray = createPageArray(totalCount)
+  const pageCountArray = createPageArrayLogic(totalCount)
 
   for await (const pageNum of pageCountArray) {
     const offset = (pageNum - 1) * BLOG_SHOW_COUNT

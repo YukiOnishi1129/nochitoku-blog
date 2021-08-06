@@ -15,7 +15,7 @@ import { getBlogsContainCategoryApi } from '@/apis/BlogApi'
 import { getCategoriesApi } from '@/apis/CategoryApi'
 import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
-import { createPageArray } from '@/logic/CommonLogic'
+import { createPageArrayLogic } from '@/logic/CommonLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
@@ -102,7 +102,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   for await (const category of categoryData) {
     const { totalCount } = await getBlogsContainCategoryApi(0, category.id)
     // ページ番号の配列を作成
-    const pageCountArray = createPageArray(totalCount)
+    const pageCountArray = createPageArrayLogic(totalCount)
     pageCountArray.forEach((pageNum) => {
       paths.push(`/category/${category.id}/page/${pageNum}`)
     })
