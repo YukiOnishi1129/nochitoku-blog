@@ -8,13 +8,14 @@ import { NextPage, GetStaticProps, GetStaticPaths } from 'next'
 import { PageTemplate } from '@/components/pages/PageTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
+/* service */
+import { getArchiveListService } from '@/service/ArchiveService'
 /* apis */
 import { getBlogsApi } from '@/apis/BlogApi'
 import { getCategoriesApi } from '@/apis/CategoryApi'
 import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
-import { getArchiveList } from '@/logic/ArchiveLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
@@ -111,7 +112,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // プロフィールデータ取得 ---------
   const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   const props: BlogListPageProps = {
     blogList: blogData.blogList,

@@ -12,13 +12,14 @@ import { BlogItemTemplate } from '@/components/pages/BlogItemTemplate'
 import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
+/* service */
+import { getArchiveListService } from '@/service/ArchiveService'
 /* apis */
 import { getBlogsApi, getBlogByApi } from '@/apis/BlogApi'
 import { getCategoriesApi } from '@/apis/CategoryApi'
 import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
-import { getArchiveList } from '@/logic/ArchiveLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
@@ -149,7 +150,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // プロフィールデータ取得 ---------
     const profile = await getProfileByApi()
     // アーカイブデータ取得 ---------
-    const archiveList = await getArchiveList()
+    const archiveList = await getArchiveListService()
 
     // シンタックハイライト文章作成
     // https://qiita.com/cawauchi/items/ff6489b17800c5676908

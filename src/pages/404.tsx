@@ -9,10 +9,11 @@ import Head from 'next/head'
 import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
+/* service */
+import { getArchiveListService } from '@/service/ArchiveService'
 /* apis */
 import { getCategoriesApi } from '@/apis/CategoryApi'
-/* logic */
-import { getArchiveList } from '@/logic/ArchiveLogic'
+
 /* types */
 import { CategoryType } from '@/types/category'
 import { ArchiveType } from '@/types/archive'
@@ -61,7 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // カテゴリーデータ取得 ---------
   const categoryData = await getCategoriesApi()
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   const props: Error404PageProps = {
     categories: categoryData,

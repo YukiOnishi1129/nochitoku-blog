@@ -10,11 +10,11 @@ import hljs from 'highlight.js'
 import { ProfileTemplate } from '@/components/pages/ProfileTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
+/* service */
+import { getArchiveListService } from '@/service/ArchiveService'
 /* apis */
 import { getCategoriesApi } from '@/apis/CategoryApi'
 import { getProfileByApi } from '@/apis/ProfileApi'
-/* logic */
-import { getArchiveList } from '@/logic/ArchiveLogic'
 /* types */
 import { CategoryType } from '@/types/category'
 import { ProfileType } from '@/types/profile'
@@ -70,7 +70,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const categoryData = await getCategoriesApi()
 
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   // シンタックハイライト文章作成
   // https://qiita.com/cawauchi/items/ff6489b17800c5676908

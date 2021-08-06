@@ -8,13 +8,14 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { ArchiveTemplate } from '@/components/pages/ArchiveTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
+/* service */
+import { getBlogTargetMonthService } from '@/service/BlogService'
+import { getArchiveListService } from '@/service/ArchiveService'
 /* apis */
 import { getCategoriesApi } from '@/apis/CategoryApi'
 import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
-import { getBlogTargetMonth } from '@/logic/BlogLogic'
-import { getArchiveList } from '@/logic/ArchiveLogic'
 import { changeShowYearMonth } from '@/logic/DateLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
@@ -80,11 +81,14 @@ const ArchiveBlogListPage: NextPage<ArchiveBlogListPageProps> = (
  */
 export const getStaticPaths: GetStaticPaths = async () => {
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
   const paths: string[] = []
 
   for await (const archive of archiveList) {
-    const { totalCount } = await getBlogTargetMonth(0, archive.originDate)
+    const { totalCount } = await getBlogTargetMonthService(
+      0,
+      archive.originDate
+    )
     // ページ番号の配列を作成
     const pageCountArray = createPageArray(totalCount)
     pageCountArray.forEach((pageNum) => {
@@ -121,13 +125,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const offset = (pageNum - 1) * BLOG_SHOW_COUNT
 
   // ブログ一覧データ取得 ---------
-  const blogData = await getBlogTargetMonth(offset, paramDate)
+  const blogData = await getBlogTargetMonthService(offset, paramDate)
   // カテゴリーデータ取得 ---------
   const categoryData = await getCategoriesApi()
   // プロフィールデータ取得 ---------
   const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
-  const archiveList = await getArchiveList()
+  const archiveList = await getArchiveListService()
 
   const props: ArchiveBlogListPageProps = {
     date: paramDate,

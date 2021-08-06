@@ -1,6 +1,7 @@
 /**
- * アーカイブ関連のロジック
- * @package logics
+ * BlogService
+ * アーカイブ関連のサービス層
+ * @package service
  */
 /* apis */
 import { isBlogsArchivesService } from '@/service/BlogService'
@@ -19,11 +20,11 @@ import {
 import { ArchiveType } from '@/types/archive'
 
 /**
- * TODO: サービス層へ移行
  * アーカイブリスト取得処理
- * @returns
+ *
+ * @returns {Promise<ArchiveType[]>}
  */
-export const getArchiveList = async () => {
+export const getArchiveListService = async (): Promise<ArchiveType[]> => {
   const currentDate = getCurrentDate() // 現在日時
   const startBlogDate = getBlogStartDate() // ブログ開始日時
 
