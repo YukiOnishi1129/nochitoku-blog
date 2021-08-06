@@ -40,15 +40,19 @@ describe('【Logicテスト】DateLogic test', () => {
   describe('【関数テスト】getStartOfMonthLogic test', () => {
     test('【正常系】月初の日時を取得', () => {
       const targetDate = '2020-01-22'
-      const expectResultDate = '2020-01-01T00:00:00+09:00'
-      expect(getStartOfMonthLogic(targetDate)).toBe(expectResultDate)
+      const expectResultDate = '2020-01-01 00:00:00'
+      expect(
+        dayjs(getStartOfMonthLogic(targetDate)).format('YYYY-MM-DD HH:mm:ss')
+      ).toBe(expectResultDate)
     })
   })
   describe('【関数テスト】getEndOfMonthLogic test', () => {
     test('【正常系】月末の日時を取得', () => {
       const targetDate = '2020-01-22'
-      const expectResultDate = '2020-01-31T23:59:59+09:00'
-      expect(getEndOfMonthLogic(targetDate)).toBe(expectResultDate)
+      const expectResultDate = '2020-01-31 23:59:59'
+      expect(
+        dayjs(getEndOfMonthLogic(targetDate)).format('YYYY-MM-DD HH:mm:ss')
+      ).toBe(expectResultDate)
     })
   })
 
@@ -88,41 +92,51 @@ describe('【Logicテスト】DateLogic test', () => {
     test('【正常系】月単位で減算処理される(1ヶ月前)', () => {
       const targetDate = '2020-01-09'
       const diffMonth = 1
-      const expectResultDate = '2019-12-09T00:00:00+09:00'
-      expect(subtractMonthDateLogic(targetDate, diffMonth)).toBe(
-        expectResultDate
-      )
+      const expectResultDate = '2019-12-09 00:00:00'
+      expect(
+        dayjs(subtractMonthDateLogic(targetDate, diffMonth)).format(
+          'YYYY-MM-DD HH:mm:ss'
+        )
+      ).toBe(expectResultDate)
     })
     test('【正常系】月単位で減算処理される(6ヶ月前)', () => {
       const targetDate = '2020-01-09'
       const diffMonth = 6
-      const expectResultDate = '2019-07-09T00:00:00+09:00'
-      expect(subtractMonthDateLogic(targetDate, diffMonth)).toBe(
-        expectResultDate
-      )
+      const expectResultDate = '2019-07-09 00:00:00'
+      expect(
+        dayjs(subtractMonthDateLogic(targetDate, diffMonth)).format(
+          'YYYY-MM-DD HH:mm:ss'
+        )
+      ).toBe(expectResultDate)
     })
     test('【正常系】月単位で減算処理される(12ヶ月前)', () => {
       const targetDate = '2020-01-09'
       const diffMonth = 12
-      const expectResultDate = '2019-01-09T00:00:00+09:00'
-      expect(subtractMonthDateLogic(targetDate, diffMonth)).toBe(
-        expectResultDate
-      )
+      const expectResultDate = '2019-01-09 00:00:00'
+      expect(
+        dayjs(subtractMonthDateLogic(targetDate, diffMonth)).format(
+          'YYYY-MM-DD HH:mm:ss'
+        )
+      ).toBe(expectResultDate)
     })
   })
 
   describe('【関数テスト】addOneDayLogic test', () => {
     test('【正常系】1日増算処理が実行される', () => {
       const targetDate = '2020-01-09'
-      const expectResultDate = '2020-01-10T00:00:00+09:00'
-      expect(addOneDayLogic(targetDate)).toBe(expectResultDate)
+      const expectResultDate = '2020-01-10 00:00:00'
+      expect(
+        dayjs(addOneDayLogic(targetDate)).format('YYYY-MM-DD HH:mm:ss')
+      ).toBe(expectResultDate)
     })
   })
   describe('【関数テスト】subtractOneDayLogic test', () => {
     test('【正常系】1日減算処理が実行される', () => {
       const targetDate = '2020-01-09'
-      const expectResultDate = '2020-01-08T00:00:00+09:00'
-      expect(subtractOneDayLogic(targetDate)).toBe(expectResultDate)
+      const expectResultDate = '2020-01-08 00:00:00'
+      expect(
+        dayjs(subtractOneDayLogic(targetDate)).format('YYYY-MM-DD HH:mm:ss')
+      ).toBe(expectResultDate)
     })
   })
 })
