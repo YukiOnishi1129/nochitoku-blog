@@ -18,7 +18,7 @@ import { BLOG_SHOW_COUNT } from '@/constants/config'
 import { BlogItemType } from '@/types/blog'
 
 /**
- * props
+ * Props
  */
 type SearchPageProps = {
   blogList: BlogItemType[]
@@ -31,7 +31,9 @@ type SearchPageProps = {
  * @returns
  */
 const SearchPage: NextPage<SearchPageProps> = (props: SearchPageProps) => {
+  /* props */
   const { blogList, totalCount } = props
+  /* hooks */
   const { setBlogData } = useSetDate()
 
   React.useEffect(() => {

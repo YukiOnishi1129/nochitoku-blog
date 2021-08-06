@@ -28,7 +28,7 @@ import { ProfileType } from '@/types/profile'
 import { ArchiveType } from '@/types/archive'
 
 /**
- * props
+ * Props
  */
 type BlogItemPageProps = {
   blogItem: BlogItemType
@@ -42,10 +42,11 @@ type BlogItemPageProps = {
 
 /**
  * BlogsItemPage
- * @param props BlogItemPageProps
+ * @param {BlogItemPageProps} props
  * @returns
  */
 const BlogItemPage: NextPage<BlogItemPageProps> = (props) => {
+  /* props */
   const {
     blogItem,
     highlightedBody,
@@ -55,6 +56,7 @@ const BlogItemPage: NextPage<BlogItemPageProps> = (props) => {
     archiveList,
     draftKey,
   } = props
+  /* hooks */
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
   React.useEffect(() => {
@@ -120,6 +122,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * getStaticProps
+ * @param {GetStaticPropsContext<ParsedUrlQuery>} context
  * @returns
  */
 export const getStaticProps: GetStaticProps = async (context) => {

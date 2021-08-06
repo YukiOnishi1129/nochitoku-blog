@@ -21,7 +21,7 @@ import { ProfileType } from '@/types/profile'
 import { ArchiveType } from '@/types/archive'
 
 /**
- * props
+ * Props
  */
 type TopPageProps = {
   blogList: BlogItemType[]
@@ -33,11 +33,13 @@ type TopPageProps = {
 
 /**
  * TopPage
- * @param props TopPageProps
+ * @param {TopPageProps} props
  * @returns
  */
 const TopPage: NextPage<TopPageProps> = (props: TopPageProps) => {
+  /* props */
   const { blogList, totalCount, categories, profile, archiveList } = props
+  /* hooks */
   const {
     setBlogData,
     setCategoryData,

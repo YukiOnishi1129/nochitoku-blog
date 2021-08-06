@@ -15,8 +15,8 @@ const BASE_URL = `${
 
 /**
  * プレビューAPI
- * @param req NextApiRequest
- * @param res NextApiResponse
+ * @param {NextApiRequest} req
+ * @param {NextApiResponse} res
  * @returns
  */
 const preview = async (req: NextApiRequest, res: NextApiResponse) => {

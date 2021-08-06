@@ -12,7 +12,7 @@ import { TermTemplate } from '@/components/pages/TermTemplate'
 import { getTerm } from '@/service/fixedArticle'
 
 /**
- * props
+ * Props
  */
 type TermPageProps = {
   title: string
@@ -21,10 +21,11 @@ type TermPageProps = {
 
 /**
  * TermPage
- * @param props TermPageProps
+ * @param {TermPageProps} props
  * @returns
  */
 export const TermPage: NextPage<TermPageProps> = (props: TermPageProps) => {
+  /* props */
   const { title, highlightedBody } = props
 
   return <TermTemplate title={title} highlightedBody={highlightedBody} />

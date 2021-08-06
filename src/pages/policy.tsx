@@ -12,7 +12,7 @@ import { PolicyTemplate } from '@/components/pages/PolicyTemplate'
 import { getPolicy } from '@/service/fixedArticle'
 
 /**
- * props
+ * Props
  */
 type PolicyPageProps = {
   title: string
@@ -21,12 +21,13 @@ type PolicyPageProps = {
 
 /**
  * PolicyPage
- * @param props PolicyPageProps
+ * @param {PolicyPageProps} props
  * @returns
  */
 export const PolicyPage: NextPage<PolicyPageProps> = (
   props: PolicyPageProps
 ) => {
+  /* props */
   const { title, highlightedBody } = props
 
   return <PolicyTemplate title={title} highlightedBody={highlightedBody} />

@@ -18,7 +18,7 @@ import { CategoryType } from '@/types/category'
 import { ArchiveType } from '@/types/archive'
 
 /**
- * props
+ * Props
  */
 type Error404PageProps = {
   categories: CategoryType[]
@@ -27,13 +27,15 @@ type Error404PageProps = {
 
 /**
  * Error404Page
- * @param props Error404PageProps
+ * @param {Error404PageProps} props
  * @returns
  */
 export const Error404Page: NextPage<Error404PageProps> = (
   props: Error404PageProps
 ) => {
+  /* props */
   const { categories, archiveList } = props
+  /* hooks */
   const { setCategoryData, setArchive } = useSetDate()
 
   React.useEffect(() => {

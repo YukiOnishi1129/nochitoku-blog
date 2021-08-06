@@ -20,7 +20,7 @@ import { ProfileType } from '@/types/profile'
 import { ArchiveType } from '@/types/archive'
 
 /**
- * ProfilePageProps
+ * Props
  */
 export type ProfilePageProps = {
   profile: ProfileType
@@ -31,13 +31,15 @@ export type ProfilePageProps = {
 
 /**
  * ProfilePage
- * @param props ProfilePageProps
+ * @param {ProfilePageProps} props
  * @returns
  */
 export const ProfilePage: NextPage<ProfilePageProps> = (
   props: ProfilePageProps
 ) => {
+  /* props */
   const { profile, highlightedBody, categories, archiveList } = props
+  /* hooks */
   const { setCategoryData, setProfileData, setArchive } = useSetDate()
 
   React.useEffect(() => {

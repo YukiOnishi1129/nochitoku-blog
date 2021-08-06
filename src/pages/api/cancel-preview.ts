@@ -6,8 +6,8 @@ import { NextApiResponse, NextApiRequest } from 'next'
 
 /**
  * プレビューモード解除
- * @param req NextApiRequest
- * @param res NextApiResponse
+ * @param {NextApiRequest} req
+ * @param {NextApiResponse} res
  */
 const cancelPreview = async (req: NextApiRequest, res: NextApiResponse) => {
   res.clearPreviewData()

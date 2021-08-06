@@ -25,7 +25,7 @@ import { ProfileType } from '@/types/profile'
 import { ArchiveType } from '@/types/archive'
 
 /**
- * props
+ * Props
  */
 export type ArchiveBlogListPageProps = {
   date: string
@@ -38,13 +38,15 @@ export type ArchiveBlogListPageProps = {
 
 /**
  * ArchiveBlogListPage
- * @param props ArchiveBlogListPageProps
+ * @param {ArchiveBlogListPageProps} props
  * @returns
  */
 const ArchiveBlogListPage: NextPage<ArchiveBlogListPageProps> = (
   props: ArchiveBlogListPageProps
 ) => {
+  /* props */
   const { date, blogList, totalCount, categories, profile, archiveList } = props
+  /* hooks */
   const {
     setBlogData,
     setCategoryData,
@@ -98,7 +100,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * getStaticProps
- * @param context
+ * @param {GetStaticPropsContext<ParsedUrlQuery>} context
  * @returns
  */
 export const getStaticProps: GetStaticProps = async (context) => {

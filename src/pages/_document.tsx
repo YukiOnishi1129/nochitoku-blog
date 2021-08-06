@@ -1,5 +1,6 @@
 /**
  * _document.tsx
+ * @package pages
  */
 import NextDocument, { Head, Html, Main, NextScript } from 'next/document'
 /* libs */
