@@ -8,9 +8,9 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { ArchiveTemplate } from '@/components/pages/ArchiveTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
-/* service */
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+/* apis */
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
 import { getBlogTargetMonth } from '@/logic/BlogLogic'
@@ -123,9 +123,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // ブログ一覧データ取得 ---------
   const blogData = await getBlogTargetMonth(offset, paramDate)
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()
 

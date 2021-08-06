@@ -8,10 +8,10 @@ import { NextPage, GetStaticProps } from 'next'
 import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
-/* service */
-import { getBlogs } from '@/service/blogs'
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+/* apis */
+import { getBlogsApi } from '@/apis/BlogApi'
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
 import { getArchiveList } from '@/logic/ArchiveLogic'
 /* types */
@@ -73,11 +73,11 @@ const TopPage: NextPage<TopPageProps> = (props: TopPageProps) => {
  */
 export const getStaticProps: GetStaticProps = async () => {
   // ブログ一覧データ取得 ---------
-  const blogData = await getBlogs(0)
+  const blogData = await getBlogsApi(0)
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()
 

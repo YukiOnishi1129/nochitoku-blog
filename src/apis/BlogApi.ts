@@ -1,14 +1,13 @@
 /**
+ * BlogApi.ts
  * ノチトクブログAPI
- * @package service
+ * @package apis
  */
 /* config */
 import globalAxios from '@/config/globalAxios'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 import { initBlogItem, initBlogData } from '@/constants/initState'
-/* logics */
-import { addOneDay, subtractOneDay } from '@/logic/DateLogic'
 /* types */
 import { BlogDataType } from '@/types/blog'
 
@@ -23,10 +22,11 @@ const QUERY_LIMIT = '&limit='
 
 /**
  * ブログ一覧取得
- * @param offset number
- * @returns blogData BlogDataType
+ * @param {number} offset
+ *
+ * @returns {Promise<BlogDataType>}
  */
-export const getBlogs = async (offset: number) => {
+export const getBlogsApi = async (offset: number): Promise<BlogDataType> => {
   const blogData: BlogDataType = initBlogData
   try {
     const res = await globalAxios.get(
@@ -35,7 +35,7 @@ export const getBlogs = async (offset: number) => {
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
-    throw new Error(`API ERROR: getBlogs`)
+    throw new Error(`API ERROR: getBlogsApi`)
   }
 
   return blogData
@@ -43,14 +43,15 @@ export const getBlogs = async (offset: number) => {
 
 /**
  * カテゴリーに紐づくブログ一覧取得
- * @param offset number
- * @param categoryId string
- * @returns
+ * @param {number} offset
+ * @param {string} categoryId
+ *
+ * @returns {Promise<BlogDataType>} blogData
  */
-export const getBlogsContainCategory = async (
+export const getBlogsContainCategoryApi = async (
   offset: number,
   categoryId: string
-) => {
+): Promise<BlogDataType> => {
   const blogData: BlogDataType = initBlogData
 
   try {
@@ -66,7 +67,7 @@ export const getBlogsContainCategory = async (
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
-    throw new Error(`API ERROR: getBlogsContainCategory`)
+    throw new Error(`API ERROR: getBlogsContainCategoryApi`)
   }
 
   return blogData
@@ -74,15 +75,17 @@ export const getBlogsContainCategory = async (
 
 /**
  * 対象日付の月のブログ記事一覧取得
- * @param startDate
- * @param endDate
- * @returns
+ * @param {number} offset
+ * @param {string} startDate
+ * @param {string} endDate
+ *
+ * @returns {Promise<BlogDataType>}
  */
-export const getBlogContainArchiveMonth = async (
+export const getBlogContainArchiveMonthApi = async (
   offset: number,
   startDate: string,
   endDate: string
-) => {
+): Promise<BlogDataType> => {
   const blogData: BlogDataType = initBlogData
 
   try {
@@ -100,44 +103,44 @@ export const getBlogContainArchiveMonth = async (
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
-    throw new Error(`API ERROR: getBlogContainArchiveMonth`)
+    throw new Error(`API ERROR: getBlogContainArchiveMonthApi`)
   }
   return blogData
 }
 
 /**
- * 対象日付の月の記事があるか確認
- * @param startDate
- * @param endDate
- * @returns
+ * 対象日付の月の記事数を取得
+ * @param {string} startDate
+ * @param {string} endDate
+ *
+ * @returns　{Promise<number | undefined>}
  */
-export const isBlogsArchives = async (startDate: string, endDate: string) => {
-  let totalCount = 0
-  const queryStartDate = subtractOneDay(startDate)
-  const queryEndDate = addOneDay(endDate)
+export const getBlogArchivesCountApi = async (
+  startDate: string,
+  endDate: string
+): Promise<number | undefined> => {
   try {
     const res = await globalAxios.get(
       BASE_URL +
         '?filters=createdAt[greater_than]' +
-        queryStartDate +
+        startDate +
         '[and]createdAt[less_than]' +
-        queryEndDate
+        endDate
     )
-    totalCount = res.data.totalCount
+    return res.data.totalCount
   } catch (error) {
-    throw new Error(`API ERROR: isBlogsArchives`)
+    throw new Error(`API ERROR: getBlogArchivesCountApi`)
   }
-
-  return totalCount > 0
 }
 
 /**
  * ブログ記事詳細取得
- * @param id string
- * @param draftKey string
- * @returns blogDetail BlogItemType
+ * @param {string} id
+ * @param {string} draftKey
+ *
+ * @returns {BlogItemType}
  */
-export const getBlogBy = async (id: string, draftKey: string) => {
+export const getBlogByApi = async (id: string, draftKey: string) => {
   let blogDetail = initBlogItem
   try {
     const res = await globalAxios.get(
@@ -145,7 +148,7 @@ export const getBlogBy = async (id: string, draftKey: string) => {
     )
     blogDetail = res.data
   } catch (error) {
-    throw new Error(`API ERROR: getBlogBy`)
+    throw new Error(`API ERROR: getBlogByApi`)
   }
 
   return blogDetail

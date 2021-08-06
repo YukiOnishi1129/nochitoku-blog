@@ -1,11 +1,14 @@
 /**
+ * FixArticleApi.ts
  * ノチトク固定記事API
- * @package service
+ * @package apis
  */
 /* config */
 import globalAxios from '@/config/globalAxios'
 /* constants */
 import { initFixedArticleData } from '@/constants/initState'
+/* types */
+import { FixedArticleType } from '@/types/fixedArticle'
 
 /**
  * constant
@@ -16,16 +19,16 @@ const BASE_URL = `${
 
 /**
  * プライバシーポリシーデータ取得
- * @returns
+ * @returns {Promise<FixedArticleType>}
  */
-export const getPolicy = async () => {
+export const getPolicyApi = async (): Promise<FixedArticleType> => {
   let policyData = initFixedArticleData
 
   try {
     const res = await globalAxios.get(BASE_URL + 'policy')
     policyData = res.data
   } catch (error) {
-    throw new Error(`API ERROR: getPolicy`)
+    throw new Error(`API ERROR: getPolicyApi`)
   }
 
   return policyData
@@ -33,16 +36,17 @@ export const getPolicy = async () => {
 
 /**
  * 利用規約データ取得
- * @returns
+ *
+ * @returns {Promise<FixedArticleType>}
  */
-export const getTerm = async () => {
+export const getTermApi = async (): Promise<FixedArticleType> => {
   let termData = initFixedArticleData
 
   try {
     const res = await globalAxios.get(BASE_URL + 'term')
     termData = res.data
   } catch (error) {
-    throw new Error(`API ERROR: getTerm`)
+    throw new Error(`API ERROR: getTermApi`)
   }
 
   return termData

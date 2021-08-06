@@ -10,9 +10,10 @@ import hljs from 'highlight.js'
 import { ProfileTemplate } from '@/components/pages/ProfileTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
-/* service */
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+/* apis */
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
+/* logic */
 import { getArchiveList } from '@/logic/ArchiveLogic'
 /* types */
 import { CategoryType } from '@/types/category'
@@ -64,9 +65,9 @@ export const ProfilePage: NextPage<ProfilePageProps> = (
  */
 export const getStaticProps: GetStaticProps = async () => {
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
 
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()

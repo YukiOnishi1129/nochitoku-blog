@@ -8,8 +8,8 @@ import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 /* components */
 import { TermTemplate } from '@/components/pages/TermTemplate'
-/* services */
-import { getTerm } from '@/service/fixedArticle'
+/* apis */
+import { getTermApi } from '@/apis/FixedArticleApi'
 
 /**
  * Props
@@ -37,7 +37,7 @@ export const TermPage: NextPage<TermPageProps> = (props: TermPageProps) => {
  */
 export const getStaticProps: GetStaticProps = async () => {
   // 利用規約データ取得 ---------
-  const termData = await getTerm()
+  const termData = await getTermApi()
 
   // / シンタックハイライト文章作成
   // https://qiita.com/cawauchi/items/ff6489b17800c5676908

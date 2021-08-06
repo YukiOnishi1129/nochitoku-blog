@@ -12,10 +12,10 @@ import { BlogItemTemplate } from '@/components/pages/BlogItemTemplate'
 import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
-/* service */
-import { getBlogs, getBlogBy } from '@/service/blogs'
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+/* apis */
+import { getBlogsApi, getBlogByApi } from '@/apis/BlogApi'
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
 import { getArchiveList } from '@/logic/ArchiveLogic'
@@ -101,14 +101,14 @@ const BlogItemPage: NextPage<BlogItemPageProps> = (props) => {
  */
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = []
-  const { totalCount } = await getBlogs(0)
+  const { totalCount } = await getBlogsApi(0)
 
   // ページ番号の配列を作成
   const pageCountArray = createPageArray(totalCount)
 
   for await (const pageNum of pageCountArray) {
     const offset = (pageNum - 1) * BLOG_SHOW_COUNT
-    const blogData = await getBlogs(offset)
+    const blogData = await getBlogsApi(offset)
     blogData.blogList.forEach((blog) => {
       paths.push(`/${blog.id}`)
     })
@@ -143,11 +143,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     // ブログ記事詳細データ取得 ---------
-    const blogDetailData = await getBlogBy(blogId, draftKey)
+    const blogDetailData = await getBlogByApi(blogId, draftKey)
     // カテゴリーデータ取得 ---------
-    const categoryData = await getCategories()
+    const categoryData = await getCategoriesApi()
     // プロフィールデータ取得 ---------
-    const profile = await getProfileBy()
+    const profile = await getProfileByApi()
     // アーカイブデータ取得 ---------
     const archiveList = await getArchiveList()
 

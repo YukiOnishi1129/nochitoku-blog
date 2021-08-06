@@ -8,10 +8,10 @@ import { NextPage, GetStaticPaths, GetStaticProps } from 'next'
 import { CategoryTemplate } from '@/components/pages/CategoryTemplate'
 /* hooks */
 import { useSetDate } from '@/hooks/SetData'
-/* service */
-import { getBlogsContainCategory } from '@/service/blogs'
-import { getCategories } from '@/service/categories'
-import { getProfileBy } from '@/service/profile'
+/* apis */
+import { getBlogsContainCategoryApi } from '@/apis/BlogApi'
+import { getCategoriesApi } from '@/apis/CategoryApi'
+import { getProfileByApi } from '@/apis/ProfileApi'
 /* logic */
 import { createPageArray } from '@/logic/CommonLogic'
 import { getArchiveList } from '@/logic/ArchiveLogic'
@@ -94,12 +94,12 @@ const CategoryBlogListPage: NextPage<CategoryBlogListPageProps> = (
  * @returns
  */
 export const getStaticPaths: GetStaticPaths = async () => {
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   const paths: string[] = []
 
   // https://qiita.com/risto24/items/b3483f0b8c484e3eea5e
   for await (const category of categoryData) {
-    const { totalCount } = await getBlogsContainCategory(0, category.id)
+    const { totalCount } = await getBlogsContainCategoryApi(0, category.id)
     // ページ番号の配列を作成
     const pageCountArray = createPageArray(totalCount)
     pageCountArray.forEach((pageNum) => {
@@ -135,11 +135,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const offset = (pageNum - 1) * BLOG_SHOW_COUNT
 
   // ブログ一覧データ取得 ---------
-  const blogData = await getBlogsContainCategory(offset, categoryId)
+  const blogData = await getBlogsContainCategoryApi(offset, categoryId)
   // カテゴリーデータ取得 ---------
-  const categoryData = await getCategories()
+  const categoryData = await getCategoriesApi()
   // プロフィールデータ取得 ---------
-  const profile = await getProfileBy()
+  const profile = await getProfileByApi()
   // アーカイブデータ取得 ---------
   const archiveList = await getArchiveList()
 

@@ -1,6 +1,7 @@
 /**
+ * CategoryApi.ts
  * ノチトクカテゴリーAPI
- * @package service
+ * @package apis
  */
 /* config */
 import globalAxios from '@/config/globalAxios'
@@ -19,30 +20,36 @@ const BASE_URL = `${
 /**
  * カテゴリー一覧取得
  */
-export const getCategories = async () => {
-  let categories: CategoryType[] = []
+
+/**
+ * カテゴリー一覧取得
+ * @returns {Promise<CategoryType[]>}
+ */
+export const getCategoriesApi = async (): Promise<CategoryType[]> => {
+  let categoryList: CategoryType[] = []
   try {
     const res = await globalAxios.get(BASE_URL)
-    categories = res.data.contents
+    categoryList = res.data.contents
   } catch (error) {
-    throw new Error(`API ERROR: getCategories`)
+    throw new Error(`API ERROR: getCategoriesApi`)
   }
 
-  return categories
+  return categoryList
 }
 
 /**
  * カテゴリー詳細取得
- * @param id string
- * @returns category CategoryType
+ * @param {string} id
+ *
+ * @returns {Promise<CategoryType>}
  */
-export const getCategoryBy = async (id: string) => {
+export const getCategoryByApi = async (id: string): Promise<CategoryType> => {
   let category: CategoryType = initCategoryData
   try {
     const res = await globalAxios.get(BASE_URL + id)
     category = res.data
   } catch (error) {
-    throw new Error(`API ERROR: getCategoryBy`)
+    throw new Error(`API ERROR: getCategoryByApi`)
   }
   return category
 }

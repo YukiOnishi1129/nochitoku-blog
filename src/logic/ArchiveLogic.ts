@@ -2,8 +2,8 @@
  * アーカイブ関連のロジック
  * @package logics
  */
-/* service */
-import { isBlogsArchives } from '@/service/blogs'
+/* apis */
+import { isBlogsArchivesService } from '@/service/BlogService'
 /* logic */
 import {
   getCurrentDate,
@@ -19,6 +19,7 @@ import {
 import { ArchiveType } from '@/types/archive'
 
 /**
+ * TODO: サービス層へ移行
  * アーカイブリスト取得処理
  * @returns
  */
@@ -42,7 +43,7 @@ export const getArchiveList = async () => {
     const endMonth = getEndOfMonth(targetDate) // 対象月の月末日付取得
 
     // 対象の年月に投稿した記事があるか判定
-    if (await isBlogsArchives(startMonth, endMonth)) {
+    if (await isBlogsArchivesService(startMonth, endMonth)) {
       archiveList.push({
         originDate: changeYearMonthDate(startMonth),
         linkDate: changeYearMonth(startMonth),
