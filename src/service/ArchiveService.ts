@@ -1,9 +1,9 @@
 /**
- * BlogService
+ * ArchiveService
  * アーカイブ関連のサービス層
  * @package service
  */
-/* apis */
+/* service */
 import { isBlogsArchivesService } from '@/service/BlogService'
 /* logic */
 import {
@@ -30,6 +30,9 @@ export const getArchiveListService = async (): Promise<ArchiveType[]> => {
 
   // 現在月とブログ開始月の差分 (月数)
   const diffMonthCount = currentDate.diff(startBlogDate, 'month')
+
+  // 現在日時がブログ開始時よりも以前の場合、空配列を返却する
+  if (currentDate < startBlogDate) return []
 
   // アーカイブ月取得処理
   const archiveList: ArchiveType[] = []
