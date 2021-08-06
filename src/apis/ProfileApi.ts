@@ -1,5 +1,5 @@
 /**
- * FixArticleApi.ts
+ * ProfileApi.ts
  * ノチトクプロフィールAPI
  * @package apis
  */
@@ -16,24 +16,6 @@ import { ProfileType } from '@/types/Profile'
 const BASE_URL = `${
   process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/'
 }/profile/`
-
-/**
- * プロフィール一覧取得
- * @returns {Promise<ProfileType[]>}
- */
-export const getProfileApi = async (): Promise<ProfileType[]> => {
-  let profileList: ProfileType[] = []
-
-  try {
-    const res = await globalAxios.get(BASE_URL)
-    if (res?.data?.contents) {
-      profileList = res.data.contents
-    }
-  } catch (error) {
-    throw new Error(`API ERROR: getProfileApi`)
-  }
-  return profileList
-}
 
 /**
  * プロフィール詳細取得
