@@ -7,7 +7,7 @@ import { NextPage, GetStaticProps } from 'next'
 /* components */
 import { SearchTemplate } from '@/components/pages/SearchTemplate'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* apis */
 import { getBlogsApi } from '@/apis/BlogApi'
 /* logic */

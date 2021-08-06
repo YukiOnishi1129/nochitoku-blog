@@ -11,7 +11,7 @@ import hljs from 'highlight.js'
 import { BlogItemTemplate } from '@/components/pages/BlogItemTemplate'
 import { Error404Template } from '@/components/pages/Error404Template'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
 import { getArchiveListService } from '@/service/ArchiveService'
 /* apis */

@@ -7,7 +7,7 @@ import { NextPage, GetStaticProps } from 'next'
 /* components */
 import { TopTemplate } from '@/components/pages/TopTemplate'
 /* hooks */
-import { useSetDate } from '@/hooks/SetData'
+import { useSetDate } from '@/hooks/useSetData'
 /* service */
 import { getArchiveListService } from '@/service/ArchiveService'
 /* apis */
