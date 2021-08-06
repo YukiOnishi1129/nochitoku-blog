@@ -1,18 +1,18 @@
 /**
  * pages/ArchiveTemplate
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
 /* components */
-import { Presenter } from './Presenter'
-/* contexts */
-import { useBlogState } from '@/contexts/BlogContext'
-/* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
-/* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { BasePostPageLayout } from '@/components/layouts/BasePostPageLayout'
+import { PageTitle } from '@/components/common/atoms/PageTitle'
+import { BlogItem } from '@/components/common/molecules/BlogItem'
+import { BlogItemResponsive } from '@/components/common/molecules/BlogItemResponsive'
+import { Pagination } from '@/components/common/molecules/Pagination'
+/* hooks */
+import { useArchiveTemplate } from './useArchiveTemplate'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
  * props
@@ -23,32 +23,46 @@ type Props = {
 }
 
 /**
- * container
- * @param prop
+ * ArchiveTemplate
+ * @param {Props} prop
  * @returns
  */
 export const ArchiveTemplate: React.FC<Props> = (props: Props) => {
+  /* props */
   const { date, breadName } = props
-  const { blogList, totalCount } = useBlogState()
-
-  const router = useRouter()
-
-  const metaData: MetaHeadType = {
-    title: `「${breadName}」の記事一覧 | ${BASE_TITLE}`,
-    description:
-      'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: NOCHITOKU_URL + '/assets/share_image.png',
-    url: NOCHITOKU_URL + router.asPath,
-  }
+  /* hooks */
+  const { state } = useArchiveTemplate({ breadName })
 
   return (
-    <Presenter
-      metaData={metaData}
-      date={date}
-      blogList={blogList}
-      totalCount={totalCount}
-      breadName={breadName}
-    />
+    <BasePostPageLayout metaData={state.metaData} breadName={breadName}>
+      {/* ページタイトル */}
+      <PageTitle title={`${breadName}の記事一覧`} />
+      {/* ブログ記事一覧表示 */}
+      <div className={styles.blogItem}>
+        {state.blogList.length > 0 &&
+          state.blogList.map((blogItem, index) => (
+            <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
+          ))}
+      </div>
+
+      {/* ブログ記事一覧表示 レスポンシブ*/}
+      <div className={styles.blogItem__responsive}>
+        {state.blogList.length > 0 &&
+          state.blogList.map((blogItem, index) => (
+            <BlogItemResponsive
+              key={`${blogItem.id}_${index}`}
+              blogItem={blogItem}
+            />
+          ))}
+      </div>
+
+      {/* ページネーション */}
+      {state.totalCount / state.BLOG_SHOW_COUNT > 1 && (
+        <Pagination
+          totalCount={state.totalCount}
+          link={`/archive/${date}/page/`}
+        />
+      )}
+    </BasePostPageLayout>
   )
 }

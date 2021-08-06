@@ -1,61 +1,71 @@
 /**
  * pages/Error404Template
- * ContainerComponent
  * @package Component
  */
 import React from 'react'
-import { useRouter } from 'next/router'
 /* components */
-import { Presenter } from './Presenter'
-/* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
-/* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { BaseFixedPageLayout } from '@/components/layouts/BaseFixedPageLayout'
+import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
+import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
+import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
+/* hooks */
+import { useError404Template } from './useError404Template'
+/* styles */
+import styles from './styles.module.scss'
 
 /**
- * container
+ * Error404Template
  * @returns
  */
 export const Error404Template: React.FC = () => {
-  const router = useRouter()
-  const [searchText, setSearchText] = React.useState('')
-  /**
-   * 検索キーワード変更処理
-   * @param e React.ChangeEvent<HTMLInputElement>
-   */
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value)
-  }
-
-  /**
-   * 検索フォーム キーアップ処理
-   * @param e React.KeyboardEvent<HTMLInputElement>
-   */
-  const onSearchKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    // 検索キーワードがあり、Enterをクリックした場合、検索ページに遷移
-    if (e.key === 'Enter' && searchText !== '') {
-      router.push({
-        pathname: '/search',
-        query: { keyword: searchText },
-      })
-    }
-  }
-
-  const metaData: MetaHeadType = {
-    title: `NOT FOUND | ${BASE_TITLE}`,
-    description:
-      'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: NOCHITOKU_URL + '/assets/share_image.png',
-    url: NOCHITOKU_URL,
-  }
+  /* hooks */
+  const { state, action } = useError404Template()
 
   return (
-    <Presenter
-      metaData={metaData}
-      searchText={searchText}
-      onChange={onChange}
-      onKeyUp={onSearchKeyUp}
-    />
+    <BaseFixedPageLayout metaData={state.metaData}>
+      <div className={styles.error}>
+        <div className={styles.title}>
+          <h1>NOT FOUND</h1>
+          <h2>お探しのページは見つかりませんでした。</h2>
+        </div>
+        {/* 検索フォーム */}
+        <div className={styles.search}>
+          <SearchInputForm
+            text={state.searchText}
+            placeholder="検索"
+            onChange={action.onChange}
+            onKeyUp={action.onSearchKeyUp}
+          />
+        </div>
+        {/* 検索フォーム　レスポンシブ */}
+        <div className={styles.search__responsive}>
+          <SearchInputForm
+            text={state.searchText}
+            placeholder="検索"
+            size={32}
+            onChange={action.onChange}
+            onKeyUp={action.onSearchKeyUp}
+          />
+        </div>
+        {/* 検索フォーム　sp */}
+        <div className={styles.search__sp}>
+          <SearchInputForm
+            text={state.searchText}
+            placeholder="検索"
+            size={24}
+            onChange={action.onChange}
+            onKeyUp={action.onSearchKeyUp}
+          />
+        </div>
+        {/* カテゴリーエリア */}
+        <div className={styles.category}>
+          <CategoryArea />
+        </div>
+        {/* アーカイブエリア */}
+        <div className={styles.archive}>
+          <ArchiveArea />
+        </div>
+      </div>
+    </BaseFixedPageLayout>
   )
 }

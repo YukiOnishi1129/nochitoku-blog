@@ -1,6 +1,5 @@
 /**
  * pages/TopTemplate
- * ContainerComponent
  * @package Component
  */
 import React from 'react'

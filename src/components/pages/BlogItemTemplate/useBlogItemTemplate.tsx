@@ -1,5 +1,5 @@
 /**
- * useProfileTemplate
+ * useBlogItemTemplate
  * @package Hooks
  */
 import React from 'react'
@@ -8,37 +8,37 @@ import { useRouter } from 'next/router'
 import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* types */
 import { MetaHeadType } from '@/types/metaHead'
-import { ProfileType } from '@/types/profile'
+import { BlogItemType } from '@/types/blog'
 import { ImageType } from '@/types/image'
 
 /**
  * interface
  */
 interface HooksParam {
-  profile: ProfileType
+  blogItem: BlogItemType
 }
 
 /**
- * useProfileTemplate
- * @param {HooksParam} params
+ * useBlogItemTemplate
+ * @param {HooksParam} param
  * @returns
  */
-export const useProfileTemplate = (params: HooksParam) => {
-  /* params */
-  const { profile } = params
+export const useBlogItemTemplate = (param: HooksParam) => {
+  /* param */
+  const { blogItem } = param
   /* router */
   const router = useRouter()
   /* local */
   const [image] = React.useState<ImageType>({
-    url: profile.articleImage.url,
-    width: profile.articleImage.width,
-    height: profile.articleImage.height,
+    url: blogItem?.image?.url ? blogItem.image.url : '/no_image.png',
+    width: blogItem?.image?.width ? blogItem.image.width : 750,
+    height: blogItem?.image?.height ? blogItem.image.height : 422,
   })
   const [metaData] = React.useState<MetaHeadType>({
-    title: `プロフィール | ${BASE_TITLE}`,
-    description: profile.description,
+    title: `${blogItem.title} | ${BASE_TITLE}`,
+    description: blogItem.description,
     keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: image.url,
+    image: blogItem.image.url,
     url: NOCHITOKU_URL + router.asPath,
   })
 
@@ -49,9 +49,9 @@ export const useProfileTemplate = (params: HooksParam) => {
 
   return {
     state: {
+      metaData,
       image,
       shareUrl,
-      metaData,
     },
   }
 }
