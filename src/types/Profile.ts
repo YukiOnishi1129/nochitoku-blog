@@ -3,7 +3,7 @@
  * @package types
  */
 /*types */
-import { ImageType } from './image'
+import { ImageType } from './Image'
 
 /**
  * ProfileType

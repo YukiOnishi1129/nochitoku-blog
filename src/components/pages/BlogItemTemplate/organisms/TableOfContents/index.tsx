@@ -5,7 +5,7 @@
 import React from 'react'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 /* types */
-import { TableOfContentType } from '@/types/blog'
+import { TableOfContentType } from '@/types/Blog'
 /* styles */
 import styles from './styles.module.scss'
 

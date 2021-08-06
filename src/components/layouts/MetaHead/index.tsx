@@ -5,7 +5,7 @@
 import React from 'react'
 import Head from 'next/head'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
 
 /**
  * props

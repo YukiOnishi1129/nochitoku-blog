@@ -4,8 +4,8 @@
  */
 import React from 'react'
 /* types */
-import { BlogItemType } from '@/types/blog'
-import { ImageType } from '@/types/image'
+import { BlogItemType } from '@/types/Blog'
+import { ImageType } from '@/types/Image'
 
 /**
  * interface

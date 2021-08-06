@@ -7,7 +7,7 @@ import React from 'react'
 import { InputForm } from '@/components/common/atoms/InputForm'
 import { SearchIcon } from '@/components/common/icons/SearchIcon'
 /* types */
-import { EventType } from '@/types/event'
+import { EventType } from '@/types/Event'
 /* styles */
 import styles from './styles.module.scss'
 

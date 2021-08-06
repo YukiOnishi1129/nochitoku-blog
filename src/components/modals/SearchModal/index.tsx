@@ -8,7 +8,7 @@ import Modal from 'react-modal'
 import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
 import { CloseIcon } from '@/components/common/icons/CloseIcon'
 /* types */
-import { EventType } from '@/types/event'
+import { EventType } from '@/types/Event'
 /* styles */
 import styles from './styles.module.scss'
 

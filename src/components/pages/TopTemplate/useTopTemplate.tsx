@@ -8,7 +8,7 @@ import { useBlogState } from '@/contexts/BlogContext'
 /* constants */
 import { NOCHITOKU_URL, BASE_TITLE, BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
 
 /**
  * useTopTemplate

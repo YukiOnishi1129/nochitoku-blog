@@ -17,7 +17,7 @@ import {
   subtractMonthDateLogic,
 } from '@/logic/DateLogic'
 /* types */
-import { ArchiveType } from '@/types/archive'
+import { ArchiveType } from '@/types/Archive'
 
 /**
  * アーカイブリスト取得処理

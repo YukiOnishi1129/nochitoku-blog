@@ -8,7 +8,7 @@ import globalAxios from '@/config/globalAxios'
 /* constants */
 import { initFixedArticleData } from '@/constants/initState'
 /* types */
-import { FixedArticleType } from '@/types/fixedArticle'
+import { FixedArticleType } from '@/types/FixedArticle'
 
 /**
  * constant

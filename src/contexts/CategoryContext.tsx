@@ -5,7 +5,7 @@
  */
 import React from 'react'
 /* types */
-import { CategoryType } from '@/types/category'
+import { CategoryType } from '@/types/Category'
 
 // State --------------
 export type CategoryStateType = {

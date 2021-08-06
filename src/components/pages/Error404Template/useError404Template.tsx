@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 /* constants */
 import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
 
 /**
  * useError404Template

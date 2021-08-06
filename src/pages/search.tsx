@@ -15,7 +15,7 @@ import { createPageArrayLogic } from '@/logic/CommonLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType } from '@/types/Blog'
 
 /**
  * Props

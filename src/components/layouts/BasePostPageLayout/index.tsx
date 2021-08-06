@@ -7,7 +7,7 @@ import React from 'react'
 import { BaseLayout } from '@/components/layouts/BaseLayout'
 import { Aside } from '@/components/layouts/Aside'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
 /* styles */
 import styles from './styles.module.scss'
 

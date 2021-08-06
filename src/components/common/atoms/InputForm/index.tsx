@@ -4,7 +4,7 @@
  */
 import React from 'react'
 /* types */
-import { EventType } from '@/types/event'
+import { EventType } from '@/types/Event'
 /* styles */
 import styles from './styles.module.scss'
 

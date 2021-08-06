@@ -9,7 +9,7 @@ import globalAxios from '@/config/globalAxios'
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 import { initBlogItem, initBlogData } from '@/constants/initState'
 /* types */
-import { BlogDataType } from '@/types/blog'
+import { BlogDataType } from '@/types/Blog'
 
 /**
  * constant

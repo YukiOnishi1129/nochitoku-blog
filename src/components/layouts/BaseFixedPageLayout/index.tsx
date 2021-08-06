@@ -6,7 +6,7 @@ import React from 'react'
 /* components */
 import { BaseLayout } from '@/components/layouts/BaseLayout'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
 /* styles */
 import styles from './styles.module.scss'
 

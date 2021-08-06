@@ -15,7 +15,7 @@ import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
 import { useBlogItemTemplate } from './useBlogItemTemplate'
 /* types */
-import { BlogItemType, TableOfContentType } from '@/types/blog'
+import { BlogItemType, TableOfContentType } from '@/types/Blog'
 /* styles */
 import styles from './styles.module.scss'
 

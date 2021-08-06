@@ -20,10 +20,10 @@ import { changeShowYearMonthLogic } from '@/logic/DateLogic'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { BlogItemType } from '@/types/blog'
-import { CategoryType } from '@/types/category'
-import { ProfileType } from '@/types/profile'
-import { ArchiveType } from '@/types/archive'
+import { BlogItemType } from '@/types/Blog'
+import { CategoryType } from '@/types/Category'
+import { ProfileType } from '@/types/Profile'
+import { ArchiveType } from '@/types/Archive'
 
 /**
  * Props

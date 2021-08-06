@@ -7,9 +7,9 @@ import { useRouter } from 'next/router'
 /* constants */
 import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
-import { ProfileType } from '@/types/profile'
-import { ImageType } from '@/types/image'
+import { MetaHeadType } from '@/types/MetaHead'
+import { ProfileType } from '@/types/Profile'
+import { ImageType } from '@/types/Image'
 
 /**
  * interface

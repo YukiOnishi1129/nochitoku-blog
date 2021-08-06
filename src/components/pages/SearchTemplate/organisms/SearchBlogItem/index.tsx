@@ -8,8 +8,8 @@ import Image from 'next/image'
 /*　component */
 import { DateArea } from '@/components/common/molecules/DateArea'
 /* types */
-import { BlogItemType } from '@/types/blog'
-import { ImageType } from '@/types/image'
+import { BlogItemType } from '@/types/Blog'
+import { ImageType } from '@/types/Image'
 /* styles */
 import styles from './styles.module.scss'
 

@@ -14,7 +14,7 @@ import { MenuModal } from '@/components/modals/MenuModal'
 /* hooks */
 import { useBaseLayout } from './useBaseLayout'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
 /* styles */
 import styles from './styles.module.scss'
 

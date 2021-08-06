@@ -3,8 +3,8 @@
  * @package types
  */
 /*types */
-import { CategoryType } from './category'
-import { ImageType } from './image'
+import { CategoryType } from './Category'
+import { ImageType } from './Image'
 
 /**
  * BlogItemType

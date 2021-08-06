@@ -8,7 +8,7 @@ import globalAxios from '@/config/globalAxios'
 /* constants */
 import { initCategoryData } from '@/constants/initState'
 /* types */
-import { CategoryType } from '@/types/category'
+import { CategoryType } from '@/types/Category'
 
 /**
  * constant

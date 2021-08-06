@@ -13,7 +13,7 @@ import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
 import { useProfileTemplate } from './useProfileTemplate'
 /* types */
-import { ProfileType } from '@/types/profile'
+import { ProfileType } from '@/types/Profile'
 /* styles */
 import styles from './styles.module.scss'
 

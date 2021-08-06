@@ -11,7 +11,7 @@ import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* constants */
 import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* types */
-import { MetaHeadType } from '@/types/metaHead'
+import { MetaHeadType } from '@/types/MetaHead'
 
 /**
  * usePageTemplate

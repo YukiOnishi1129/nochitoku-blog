@@ -10,7 +10,7 @@ import { DateArea } from '@/components/common/molecules/DateArea'
 /* hooks */
 import { useBlogItem } from './useBlogItem'
 /* types */
-import { BlogItemType } from '@/types/blog'
+import { BlogItemType } from '@/types/Blog'
 /* styles */
 import styles from './styles.module.scss'
 

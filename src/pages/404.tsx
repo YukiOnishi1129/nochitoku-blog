@@ -15,8 +15,8 @@ import { getArchiveListService } from '@/service/ArchiveService'
 import { getCategoriesApi } from '@/apis/CategoryApi'
 
 /* types */
-import { CategoryType } from '@/types/category'
-import { ArchiveType } from '@/types/archive'
+import { CategoryType } from '@/types/Category'
+import { ArchiveType } from '@/types/Archive'
 
 /**
  * Props
