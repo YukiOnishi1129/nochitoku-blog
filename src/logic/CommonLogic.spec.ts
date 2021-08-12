@@ -34,12 +34,18 @@ describe('【Logicテスト】CommonLogic test', () => {
   })
   describe('【関数テスト】isNotSearchPageLogic', () => {
     test('【正常系】pathNameが「/search」の場合、結果はfalse', () => {
+      // 引数
       const pathName = '/search'
-      expect(isNotSearchPageLogic(pathName)).toBe(false)
+      // 想定する結果
+      const expectResult = false
+      expect(isNotSearchPageLogic(pathName)).toBe(expectResult)
     })
     test('【正常系】pathNameが「検索」以外の場合、結果はtrue', () => {
+      // 引数
       const pathName = '/about'
-      expect(isNotSearchPageLogic(pathName)).toBe(true)
+      // 想定する結果
+      const expectResult = true
+      expect(isNotSearchPageLogic(pathName)).toBe(expectResult)
     })
   })
 })
