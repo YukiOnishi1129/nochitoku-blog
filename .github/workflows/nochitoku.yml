@@ -1,8 +1,6 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -22,11 +20,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: yarn
 
+        # ライブラリをinstall
       - name: Install Dependencies
         run: yarn --frozen-lockfile
 
+        # lint実行
       - name: Static Analytics
         run: yarn lint
 
+        # unit test
       - name: Unit Test
         run: yarn test

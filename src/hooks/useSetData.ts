@@ -1,5 +1,5 @@
 /**
- * SetData
+ * useSetData
  *
  * @package Hooks
  */
