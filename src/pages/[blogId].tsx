@@ -58,7 +58,7 @@ const BlogItemPage: NextPage<BlogItemPageProps> = (props) => {
     draftKey,
   } = props
   /* hooks */
-  const { setCategoryData, setProfileData, setArchive } = useSetDate()
+  const [{ setCategoryData, setProfileData, setArchive }] = useSetDate()
 
   React.useEffect(() => {
     if (!!categories && !!profile && !!archiveList) {

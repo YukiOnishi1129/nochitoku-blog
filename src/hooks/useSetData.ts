@@ -65,10 +65,5 @@ export const useSetDate = () => {
     [dispatchArchive]
   )
 
-  return {
-    setBlogData,
-    setCategoryData,
-    setProfileData,
-    setArchive,
-  }
+  return [{ setBlogData, setCategoryData, setProfileData, setArchive }]
 }

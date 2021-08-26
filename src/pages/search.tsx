@@ -34,7 +34,7 @@ const SearchPage: NextPage<SearchPageProps> = (props: SearchPageProps) => {
   /* props */
   const { blogList, totalCount } = props
   /* hooks */
-  const { setBlogData } = useSetDate()
+  const [{ setBlogData }] = useSetDate()
 
   React.useEffect(() => {
     setBlogData(blogList, totalCount)

@@ -65,7 +65,7 @@ describe('【Hooksテスト】useSetDate test', () => {
       const { result } = renderHook(() => useSetDate())
 
       // hooksの実行
-      act(() => result.current.setBlogData(blogList, totalCount))
+      act(() => result.current[0].setBlogData(blogList, totalCount))
 
       // dispatchが実行されたかを確認
       expect(useBlogDispatchSpy.mock.calls.length).toBe(1)
@@ -96,7 +96,7 @@ describe('【Hooksテスト】useSetDate test', () => {
       const { result } = renderHook(() => useSetDate())
 
       // hooksの実行
-      act(() => result.current.setCategoryData(categories))
+      act(() => result.current[0].setCategoryData(categories))
 
       // dispatchが実行されたかを確認
       expect(useCategoryDispatchSpy.mock.calls.length).toBe(1)
@@ -126,7 +126,7 @@ describe('【Hooksテスト】useSetDate test', () => {
       const { result } = renderHook(() => useSetDate())
 
       // hooksの実行
-      act(() => result.current.setProfileData(profile))
+      act(() => result.current[0].setProfileData(profile))
 
       // dispatchが実行されたかを確認
       expect(useProfileDispatchSpy.mock.calls.length).toBe(1)
@@ -162,7 +162,7 @@ describe('【Hooksテスト】useSetDate test', () => {
       const { result } = renderHook(() => useSetDate())
 
       // hooksの実行
-      act(() => result.current.setArchive(archive))
+      act(() => result.current[0].setArchive(archive))
 
       // dispatchが実行されたかを確認
       expect(useArchiveDispatchSpy.mock.calls.length).toBe(1)

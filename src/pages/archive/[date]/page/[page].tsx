@@ -48,12 +48,9 @@ const ArchiveBlogListPage: NextPage<ArchiveBlogListPageProps> = (
   /* props */
   const { date, blogList, totalCount, categories, profile, archiveList } = props
   /* hooks */
-  const {
-    setBlogData,
-    setCategoryData,
-    setProfileData,
-    setArchive,
-  } = useSetDate()
+  const [
+    { setBlogData, setCategoryData, setProfileData, setArchive },
+  ] = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)

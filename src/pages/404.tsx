@@ -37,7 +37,7 @@ export const Error404Page: NextPage<Error404PageProps> = (
   /* props */
   const { categories, archiveList } = props
   /* hooks */
-  const { setCategoryData, setArchive } = useSetDate()
+  const [{ setCategoryData, setArchive }] = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)
