@@ -29,10 +29,10 @@ export const TermTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { title, highlightedBody } = props
   /* hooks */
-  const { state } = useTermTemplate({ title })
+  const [states] = useTermTemplate({ title })
 
   return (
-    <BaseFixedPageLayout metaData={state.metaData} breadName={title}>
+    <BaseFixedPageLayout metaData={states.metaData} breadName={title}>
       {/* ページタイトル */}
       <PageTitle title={title} />
       <div className={styles.body}>

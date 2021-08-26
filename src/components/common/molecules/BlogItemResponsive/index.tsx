@@ -30,17 +30,17 @@ export const BlogItemResponsive: React.FC<Props> = (props: Props) => {
   /* props */
   const { blogItem } = props
   /* hooks */
-  const { state } = useBlogItemResponsive({ blogItem })
+  const [states] = useBlogItemResponsive({ blogItem })
 
   return (
     <Link href="/[blogId]" as={`/${blogItem.id}`}>
       <div className={styles.container}>
         <div className={styles.image}>
           <Image
-            src={state.image.url}
+            src={states.image.url}
             alt="Picture"
-            width={state.image.width * 2}
-            height={state.image.height * 2}
+            width={states.image.width * 2}
+            height={states.image.height * 2}
           />
         </div>
         <h2 className={styles.title}>{blogItem.title}</h2>

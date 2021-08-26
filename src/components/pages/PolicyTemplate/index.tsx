@@ -29,10 +29,10 @@ export const PolicyTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { title, highlightedBody } = props
   /* hooks */
-  const { state } = usePolicyTemplate({ title })
+  const [states] = usePolicyTemplate({ title })
 
   return (
-    <BaseFixedPageLayout metaData={state.metaData} breadName={title}>
+    <BaseFixedPageLayout metaData={states.metaData} breadName={title}>
       {/* ページタイトル */}
       <PageTitle title={title} />
       <div className={styles.body}>

@@ -34,12 +34,13 @@ export const useProfileAreaResponsive = () => {
     [router]
   )
 
-  return {
-    state: {
-      profile,
-    },
-    action: {
-      handleClick,
-    },
+  const states = {
+    profile,
   }
+
+  const actions = {
+    handleClick,
+  }
+
+  return [states, actions] as const
 }

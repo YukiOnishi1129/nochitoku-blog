@@ -29,9 +29,9 @@ export const useBlogItemResponsive = (param: HooksParam) => {
     height: blogItem?.image?.height ? blogItem.image.height : 422,
   })
 
-  return {
-    state: {
-      image,
-    },
+  const states = {
+    image,
   }
+
+  return [states] as const
 }

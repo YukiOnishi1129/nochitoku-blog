@@ -30,48 +30,48 @@ export const SearchTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { breadName } = props
   /* hooks */
-  const { state, action } = useSearchTemplate(breadName)
+  const [states, actions] = useSearchTemplate(breadName)
 
   return (
-    <BaseLayout metaData={state.metaData} breadName={breadName}>
+    <BaseLayout metaData={states.metaData} breadName={breadName}>
       <div className={styles.container}>
         <PageTitle title="検索結果" />
         {/* 検索フォーム */}
         <div className={styles.input}>
           <SearchInputForm
-            text={state.searchText}
+            text={states.searchText}
             placeholder="検索"
-            onChange={action.onChange}
+            onChange={actions.onChange}
           />
         </div>
         {/* 検索フォーム レスポンシブ*/}
         <div className={styles.input__responsive}>
           <SearchInputForm
-            text={state.searchText}
+            text={states.searchText}
             placeholder="検索"
             size={32}
-            onChange={action.onChange}
+            onChange={actions.onChange}
           />
         </div>
 
         {/* 検索フォーム　sp */}
         <div className={styles.input__sp}>
           <SearchInputForm
-            text={state.searchText}
+            text={states.searchText}
             placeholder="検索"
             size={24}
-            onChange={action.onChange}
+            onChange={actions.onChange}
           />
         </div>
 
         {/* 検索結果一覧 */}
         <div className={styles.list}>
-          {state.showBlogList.length > 0 &&
-            state.showBlogList.map((blog) => (
+          {states.showBlogList.length > 0 &&
+            states.showBlogList.map((blog) => (
               <SearchBlogItem key={blog.id} blogItem={blog} />
             ))}
 
-          {state.showBlogList.length === 0 && (
+          {states.showBlogList.length === 0 && (
             <div className={styles.unknown}>
               <p>検索したキーワードは記事がありませんでした。</p>
               <p>別のキーワードで検索してみてください。</p>
@@ -81,12 +81,12 @@ export const SearchTemplate: React.FC<Props> = (props: Props) => {
 
         {/* 検索結果一覧 レスポンシブ */}
         <div className={styles.list__responsive}>
-          {state.showBlogList.length > 0 &&
-            state.showBlogList.map((blog) => (
+          {states.showBlogList.length > 0 &&
+            states.showBlogList.map((blog) => (
               <BlogItemResponsive key={blog.id} blogItem={blog} />
             ))}
 
-          {state.showBlogList.length === 0 && (
+          {states.showBlogList.length === 0 && (
             <div className={styles.unknown}>
               <p>検索したキーワードは記事がありませんでした。</p>
               <p>別のキーワードで検索してみてください。</p>

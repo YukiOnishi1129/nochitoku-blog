@@ -67,14 +67,15 @@ export const useSearchTemplate = (breadName: string) => {
     setShowBlogList(searchBlogList)
   }, [queryText, blogList])
 
-  return {
-    state: {
-      searchText,
-      showBlogList,
-      metaData,
-    },
-    action: {
-      onChange,
-    },
+  const states = {
+    searchText,
+    showBlogList,
+    metaData,
   }
+
+  const actions = {
+    onChange,
+  }
+
+  return [states, actions] as const
 }

@@ -20,31 +20,33 @@ import styles from './styles.module.scss'
  */
 export const ProfileArea: React.FC = () => {
   /* hooks */
-  const { state, action } = useProfileArea()
+  const [states, actions] = useProfileArea()
 
   return (
     <BasicAsidePartsArea title="プロフィール">
-      {state.profile.id !== '' && (
+      {states.profile.id !== '' && (
         <div className={styles.container}>
           {/* アバター */}
           <div className={styles.image}>
             <Image
               className={styles.image__pic}
-              src={state.profile.userImage.url}
+              src={states.profile.userImage.url}
               alt="Picture"
-              width={state.profile.userImage.width}
-              height={state.profile.userImage.height}
+              width={states.profile.userImage.width}
+              height={states.profile.userImage.height}
             />
           </div>
           <hr className={styles.border} />
 
           {/* プロフィール */}
           <div className={styles.profile}>
-            <p className={styles.profile__name}>{state.profile.name}</p>
+            <p className={styles.profile__name}>{states.profile.name}</p>
             <p className={styles.profile__eng_name}>
-              {state.profile.englishName}
+              {states.profile.englishName}
             </p>
-            <p className={styles.profile__position}>{state.profile.position}</p>
+            <p className={styles.profile__position}>
+              {states.profile.position}
+            </p>
           </div>
 
           {/* SNSアイコンボタン */}
@@ -52,7 +54,7 @@ export const ProfileArea: React.FC = () => {
             <li className={styles.sns__icon}>
               <a
                 target="_blank"
-                href={state.profile.twitter}
+                href={states.profile.twitter}
                 rel="noopener noreferrer"
               >
                 <TwitterIcon />
@@ -61,7 +63,7 @@ export const ProfileArea: React.FC = () => {
             <li className={styles.sns__icon}>
               <a
                 target="_blank"
-                href={state.profile.github}
+                href={states.profile.github}
                 rel="noopener noreferrer"
               >
                 <GithubIcon />
@@ -70,7 +72,7 @@ export const ProfileArea: React.FC = () => {
             <li className={styles.sns__icon}>
               <a
                 target="_blank"
-                href={state.profile.facebook}
+                href={states.profile.facebook}
                 rel="noopener noreferrer"
               >
                 <FaceBookIcon />
@@ -81,7 +83,7 @@ export const ProfileArea: React.FC = () => {
           {/* ボタン */}
           <button
             className={styles.button}
-            onClick={(e) => action.handleClick(e)}
+            onClick={(e) => actions.handleClick(e)}
           >
             more
           </button>

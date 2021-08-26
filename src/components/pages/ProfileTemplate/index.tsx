@@ -34,26 +34,26 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { profile, highlightedBody } = props
   /* hooks */
-  const { state } = useProfileTemplate({ profile })
+  const [states] = useProfileTemplate({ profile })
 
   return (
-    <BasePostPageLayout metaData={state.metaData} breadName="プロフィール">
+    <BasePostPageLayout metaData={states.metaData} breadName="プロフィール">
       {/* ページタイトル */}
       <PageTitle title={`プロフィール`} />
       <section className={styles.container}>
         <div className={styles.image}>
           <Image
-            src={state.image.url}
+            src={states.image.url}
             alt="Picture"
-            width={state.image.width}
-            height={state.image.height}
+            width={states.image.width}
+            height={states.image.height}
           />
         </div>
 
         <main className={styles.main}>
           <div className={styles.leftBar}>
             {/* SNSシェアボタン */}
-            <SnsShareBar title="プロフィール" shareUrl={state.shareUrl} />
+            <SnsShareBar title="プロフィール" shareUrl={states.shareUrl} />
           </div>
           <div className={styles.rightBar}>
             {/* 記事本文 */}
@@ -61,7 +61,7 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
 
             {/* SNSシェアボタン */}
             <div className={styles.shareArea}>
-              <SnsShareArea title="プロフィール" shareUrl={state.shareUrl} />
+              <SnsShareArea title="プロフィール" shareUrl={states.shareUrl} />
             </div>
           </div>
         </main>

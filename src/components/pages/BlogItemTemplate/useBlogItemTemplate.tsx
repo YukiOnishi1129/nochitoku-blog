@@ -47,11 +47,11 @@ export const useBlogItemTemplate = (param: HooksParam) => {
     shareUrl = NOCHITOKU_URL + router.asPath
   }
 
-  return {
-    state: {
-      metaData,
-      image,
-      shareUrl,
-    },
+  const states = {
+    metaData,
+    image,
+    shareUrl,
   }
+
+  return [states] as const
 }

@@ -43,13 +43,14 @@ export const useAside = () => {
     [router, searchText]
   )
 
-  return {
-    state: {
-      searchText,
-    },
-    action: {
-      onChange,
-      onSearchKeyUp,
-    },
+  const states = {
+    searchText,
   }
+
+  const actions = {
+    onChange,
+    onSearchKeyUp,
+  }
+
+  return [states, actions] as const
 }

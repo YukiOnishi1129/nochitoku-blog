@@ -20,17 +20,17 @@ import styles from './styles.module.scss'
  */
 export const Aside: React.FC = () => {
   /* hooks */
-  const { state, action } = useAside()
+  const [states, actions] = useAside()
 
   return (
     <aside className={styles.aside}>
       {/* 検索フォーム */}
       <div className={styles.search}>
         <SearchInputForm
-          text={state.searchText}
+          text={states.searchText}
           placeholder="検索"
-          onChange={action.onChange}
-          onKeyUp={action.onSearchKeyUp}
+          onChange={actions.onChange}
+          onKeyUp={actions.onSearchKeyUp}
         />
       </div>
 
@@ -47,22 +47,22 @@ export const Aside: React.FC = () => {
       {/* 検索フォーム レスポンシブ */}
       <div className={styles.search__responsive}>
         <SearchInputForm
-          text={state.searchText}
+          text={states.searchText}
           placeholder="検索"
           size={32}
-          onChange={action.onChange}
-          onKeyUp={action.onSearchKeyUp}
+          onChange={actions.onChange}
+          onKeyUp={actions.onSearchKeyUp}
         />
       </div>
 
       {/* 検索フォーム レスポンシブ */}
       <div className={styles.search__sp}>
         <SearchInputForm
-          text={state.searchText}
+          text={states.searchText}
           placeholder="検索"
           size={20}
-          onChange={action.onChange}
-          onKeyUp={action.onSearchKeyUp}
+          onChange={actions.onChange}
+          onKeyUp={actions.onSearchKeyUp}
         />
       </div>
 

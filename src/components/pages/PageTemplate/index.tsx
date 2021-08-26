@@ -19,22 +19,22 @@ import styles from './styles.module.scss'
  */
 export const PageTemplate: React.FC = () => {
   /* hooks */
-  const { state } = usePageTemplate()
+  const [states] = usePageTemplate()
 
   return (
-    <BasePostPageLayout metaData={state.metaData}>
+    <BasePostPageLayout metaData={states.metaData}>
       {/* ブログ記事一覧表示 */}
       <div className={styles.blogItem}>
-        {state.blogList.length > 0 &&
-          state.blogList.map((blogItem, index) => (
+        {states.blogList.length > 0 &&
+          states.blogList.map((blogItem, index) => (
             <BlogItem key={`${blogItem.id}_${index}`} blogItem={blogItem} />
           ))}
       </div>
 
       {/* ブログ記事一覧表示 レスポンシブ*/}
       <div className={styles.blogItem__responsive}>
-        {state.blogList.length > 0 &&
-          state.blogList.map((blogItem, index) => (
+        {states.blogList.length > 0 &&
+          states.blogList.map((blogItem, index) => (
             <BlogItemResponsive
               key={`${blogItem.id}_${index}`}
               blogItem={blogItem}
@@ -43,8 +43,8 @@ export const PageTemplate: React.FC = () => {
       </div>
 
       {/* ページネーション */}
-      {state.totalCount / state.BLOG_SHOW_COUNT > 1 && (
-        <Pagination totalCount={state.totalCount} link="/page/" />
+      {states.totalCount / states.BLOG_SHOW_COUNT > 1 && (
+        <Pagination totalCount={states.totalCount} link="/page/" />
       )}
     </BasePostPageLayout>
   )
