@@ -47,11 +47,11 @@ export const useProfileTemplate = (params: HooksParam) => {
     shareUrl = NOCHITOKU_URL + router.asPath
   }
 
-  return {
-    state: {
-      image,
-      shareUrl,
-      metaData,
-    },
+  const states = {
+    image,
+    shareUrl,
+    metaData,
   }
+
+  return [states]
 }

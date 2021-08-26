@@ -55,14 +55,15 @@ export const useError404Template = () => {
     [router, searchText]
   )
 
-  return {
-    state: {
-      metaData,
-      searchText,
-    },
-    action: {
-      onChange,
-      onSearchKeyUp,
-    },
+  const states = {
+    metaData,
+    searchText,
   }
+
+  const actions = {
+    onChange,
+    onSearchKeyUp,
+  }
+
+  return [states, actions] as const
 }

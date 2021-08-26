@@ -35,9 +35,9 @@ export const useTermTemplate = (params: HooksParam) => {
     url: NOCHITOKU_URL + router.asPath,
   })
 
-  return {
-    state: {
-      metaData,
-    },
+  const states = {
+    metaData,
   }
+
+  return [states] as const
 }

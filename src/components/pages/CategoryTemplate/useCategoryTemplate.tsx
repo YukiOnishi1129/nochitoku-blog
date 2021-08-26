@@ -40,12 +40,12 @@ export const useCategoryTemplate = (params: HooksParams) => {
     url: NOCHITOKU_URL + router.asPath,
   })
 
-  return {
-    state: {
-      metaData,
-      blogList,
-      totalCount,
-      BLOG_SHOW_COUNT,
-    },
+  const states = {
+    metaData,
+    blogList,
+    totalCount,
+    BLOG_SHOW_COUNT,
   }
+
+  return [states] as const
 }

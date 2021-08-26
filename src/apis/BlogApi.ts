@@ -35,6 +35,7 @@ export const getBlogsApi = async (offset: number): Promise<BlogDataType> => {
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
+    console.log(error) // eslint-disable-line no-console
     throw new Error(`API ERROR: getBlogsApi`)
   }
 
@@ -103,6 +104,7 @@ export const getBlogContainArchiveMonthApi = async (
     blogData.blogList = res.data.contents
     blogData.totalCount = res.data.totalCount
   } catch (error) {
+    console.log(error) // eslint-disable-line no-console
     throw new Error(`API ERROR: getBlogContainArchiveMonthApi`)
   }
   return blogData
@@ -129,6 +131,7 @@ export const getBlogArchivesCountApi = async (
     )
     return res.data.totalCount
   } catch (error) {
+    console.log(error) // eslint-disable-line no-console
     throw new Error(`API ERROR: getBlogArchivesCountApi`)
   }
 }
@@ -148,6 +151,7 @@ export const getBlogByApi = async (id: string, draftKey: string) => {
     )
     blogDetail = res.data
   } catch (error) {
+    console.log(error) // eslint-disable-line no-console
     throw new Error(`API ERROR: getBlogByApi`)
   }
 

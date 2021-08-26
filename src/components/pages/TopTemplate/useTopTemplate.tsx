@@ -27,12 +27,12 @@ export const useTopTemplate = () => {
     url: NOCHITOKU_URL,
   })
 
-  return {
-    state: {
-      blogList,
-      totalCount,
-      metaData,
-      BLOG_SHOW_COUNT,
-    },
+  const states = {
+    blogList,
+    totalCount,
+    metaData,
+    BLOG_SHOW_COUNT,
   }
+
+  return [states] as const
 }

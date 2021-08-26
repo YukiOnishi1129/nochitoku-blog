@@ -30,7 +30,7 @@ export const MenuModal: React.FC<Props> = (props: Props) => {
   /* props */
   const { isMenuModalVisible, handleCloseMenuModal } = props
   /* hooks */
-  const { action } = useMenuModal({ handleCloseMenuModal })
+  const [actions] = useMenuModal({ handleCloseMenuModal })
 
   return (
     <Modal
@@ -50,13 +50,13 @@ export const MenuModal: React.FC<Props> = (props: Props) => {
     >
       <ul className={styles.links}>
         <li className={styles.title}>MENU</li>
-        <li className={styles.link} onClick={action.handleHomeLink}>
+        <li className={styles.link} onClick={actions.handleHomeLink}>
           ホーム
         </li>
-        <li className={styles.link} onClick={action.handleAboutLink}>
+        <li className={styles.link} onClick={actions.handleAboutLink}>
           このブログについて
         </li>
-        <li onClick={action.handleProfileLink}>プロフィール</li>
+        <li onClick={actions.handleProfileLink}>プロフィール</li>
       </ul>
 
       <div className={styles.close} onClick={handleCloseMenuModal}>

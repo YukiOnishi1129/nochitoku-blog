@@ -25,19 +25,19 @@ export const Pagination: React.FC<Props> = (props: Props) => {
   /* props */
   const { totalCount, link } = props
   /* hooks */
-  const { state, action } = usePagination()
+  const [states, actions] = usePagination()
 
   return (
     <ul className={styles.container}>
       {totalCount !== 0 &&
-        action
-          .pageRange(1, Math.ceil(totalCount / state.BLOG_SHOW_COUNT))
+        actions
+          .pageRange(1, Math.ceil(totalCount / states.BLOG_SHOW_COUNT))
           .map((number, index) => (
             <li className={styles.iconArea} key={index}>
               <Link href={`${link}${number}`}>
                 <span
                   className={
-                    state.currentPage !== number
+                    states.currentPage !== number
                       ? styles.icon
                       : styles.currentIcon
                   }

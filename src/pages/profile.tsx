@@ -41,7 +41,7 @@ export const ProfilePage: NextPage<ProfilePageProps> = (
   /* props */
   const { profile, highlightedBody, categories, archiveList } = props
   /* hooks */
-  const { setCategoryData, setProfileData, setArchive } = useSetDate()
+  const [{ setCategoryData, setProfileData, setArchive }] = useSetDate()
 
   React.useEffect(() => {
     setCategoryData(categories)

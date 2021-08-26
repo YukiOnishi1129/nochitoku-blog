@@ -55,11 +55,11 @@ export const useMenuModal = (param: HooksParam) => {
     handleCloseMenuModal()
   }, [router, handleCloseMenuModal])
 
-  return {
-    action: {
-      handleHomeLink,
-      handleAboutLink,
-      handleProfileLink,
-    },
+  const actions = {
+    handleHomeLink,
+    handleAboutLink,
+    handleProfileLink,
   }
+
+  return [actions] as const
 }

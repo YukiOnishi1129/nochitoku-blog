@@ -19,10 +19,10 @@ import styles from './styles.module.scss'
  */
 export const Error404Template: React.FC = () => {
   /* hooks */
-  const { state, action } = useError404Template()
+  const [states, actions] = useError404Template()
 
   return (
-    <BaseFixedPageLayout metaData={state.metaData}>
+    <BaseFixedPageLayout metaData={states.metaData}>
       <div className={styles.error}>
         <div className={styles.title}>
           <h1>NOT FOUND</h1>
@@ -31,30 +31,30 @@ export const Error404Template: React.FC = () => {
         {/* 検索フォーム */}
         <div className={styles.search}>
           <SearchInputForm
-            text={state.searchText}
+            text={states.searchText}
             placeholder="検索"
-            onChange={action.onChange}
-            onKeyUp={action.onSearchKeyUp}
+            onChange={actions.onChange}
+            onKeyUp={actions.onSearchKeyUp}
           />
         </div>
         {/* 検索フォーム　レスポンシブ */}
         <div className={styles.search__responsive}>
           <SearchInputForm
-            text={state.searchText}
+            text={states.searchText}
             placeholder="検索"
             size={32}
-            onChange={action.onChange}
-            onKeyUp={action.onSearchKeyUp}
+            onChange={actions.onChange}
+            onKeyUp={actions.onSearchKeyUp}
           />
         </div>
         {/* 検索フォーム　sp */}
         <div className={styles.search__sp}>
           <SearchInputForm
-            text={state.searchText}
+            text={states.searchText}
             placeholder="検索"
             size={24}
-            onChange={action.onChange}
-            onKeyUp={action.onSearchKeyUp}
+            onChange={actions.onChange}
+            onKeyUp={actions.onSearchKeyUp}
           />
         </div>
         {/* カテゴリーエリア */}

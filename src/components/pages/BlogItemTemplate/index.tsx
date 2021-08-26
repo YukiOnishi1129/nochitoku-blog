@@ -38,10 +38,10 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { blogItem, highlightedBody, tableOfContents, draftKey } = props
   /* hooks */
-  const { state } = useBlogItemTemplate({ blogItem })
+  const [states] = useBlogItemTemplate({ blogItem })
 
   return (
-    <BasePostPageLayout metaData={state.metaData} breadName={blogItem.title}>
+    <BasePostPageLayout metaData={states.metaData} breadName={blogItem.title}>
       <section className={styles.container}>
         {!!draftKey && (
           <div>
@@ -53,17 +53,17 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
         )}
         <div className={styles.image}>
           <Image
-            src={state.image.url}
+            src={states.image.url}
             alt="Picture"
-            width={state.image.width * 2}
-            height={state.image.height * 2}
+            width={states.image.width * 2}
+            height={states.image.height * 2}
           />
         </div>
 
         <main className={styles.main}>
           <div className={styles.leftBar}>
             {/* SNSシェアボタン */}
-            <SnsShareBar title={blogItem.title} shareUrl={state.shareUrl} />
+            <SnsShareBar title={blogItem.title} shareUrl={states.shareUrl} />
           </div>
 
           <div className={styles.rightBar}>
@@ -78,7 +78,7 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
 
             {/* SNSシェアボタン */}
             <div className={styles.shareArea}>
-              <SnsShareArea title={blogItem.title} shareUrl={state.shareUrl} />
+              <SnsShareArea title={blogItem.title} shareUrl={states.shareUrl} />
             </div>
           </div>
         </main>

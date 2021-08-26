@@ -54,12 +54,9 @@ const CategoryBlogListPage: NextPage<CategoryBlogListPageProps> = (
     archiveList,
   } = props
   /* hooks */
-  const {
-    setBlogData,
-    setCategoryData,
-    setProfileData,
-    setArchive,
-  } = useSetDate()
+  const [
+    { setBlogData, setCategoryData, setProfileData, setArchive },
+  ] = useSetDate()
 
   const categoryName = categories.filter((category) => {
     return category.id === categoryId

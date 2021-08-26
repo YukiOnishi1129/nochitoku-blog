@@ -26,13 +26,14 @@ export const usePagination = () => {
     currentPage = Number(query.page)
   }
 
-  return {
-    state: {
-      currentPage,
-      BLOG_SHOW_COUNT,
-    },
-    action: {
-      pageRange,
-    },
+  const states = {
+    currentPage,
+    BLOG_SHOW_COUNT,
   }
+
+  const actions = {
+    pageRange,
+  }
+
+  return [states, actions] as const
 }
