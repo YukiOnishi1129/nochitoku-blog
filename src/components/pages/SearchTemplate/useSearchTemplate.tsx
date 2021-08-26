@@ -4,6 +4,8 @@
  */
 import React from 'react'
 import { useRouter } from 'next/router'
+/* logics */
+import { searchBlogListLogic } from '@/logic/BlogLogic'
 /* contexts */
 import { useBlogState } from '@/contexts/BlogContext'
 /* constants */
@@ -49,22 +51,14 @@ export const useSearchTemplate = (breadName: string) => {
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setSearchText(event.target.value)
-
-      const searchBlogList = blogList.filter((blog) => {
-        // キーワード部分一致
-        return blog.title.indexOf(event.target.value) > -1
-      })
-      setShowBlogList(searchBlogList)
+      setShowBlogList(searchBlogListLogic(blogList, event.target.value))
     },
     [blogList]
   )
 
   React.useEffect(() => {
     // 画面遷移時のみurlのgetで渡ってきたキーワードで検索
-    const searchBlogList = blogList.filter((blog) => {
-      return blog.title.indexOf(queryText) > -1
-    })
-    setShowBlogList(searchBlogList)
+    setShowBlogList(searchBlogListLogic(blogList, queryText))
   }, [queryText, blogList])
 
   const states = {
