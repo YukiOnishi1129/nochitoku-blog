@@ -32,11 +32,18 @@ jobs:
       - name: Unit Test
         run: yarn test
 
+        # build app
+      - name: App Build
+        run: yarn build
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }}
+          NEXT_PUBLIC_BLOG_SHOW_COUNT: ${{ secrets.NEXT_PUBLIC_BLOG_SHOW_COUNT }}
+
         # start app
-      - name: Start App
-        run: |
-          yarn build
-          yarn start &
+      - name: App Start
+        run: yarn start
 
         # e2e test
       - name: E2E Test
