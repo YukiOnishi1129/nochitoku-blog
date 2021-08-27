@@ -7,7 +7,12 @@
 .icon {
   position: absolute;
   right: 15px;
-  top: 5px;
+  top: 2px;
+
+  @include mq(lg) {
+    right: 15px;
+    top: 5px;
+  }
 
   @include mq(md) {
     right: 15px;
