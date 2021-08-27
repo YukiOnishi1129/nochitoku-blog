@@ -9,7 +9,6 @@ import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 /* types */
 import { MetaHeadType } from '@/types/MetaHead'
 import { BlogItemType } from '@/types/Blog'
-import { ImageType } from '@/types/Image'
 
 /**
  * interface
@@ -29,11 +28,6 @@ export const useBlogItemTemplate = (param: HooksParam) => {
   /* router */
   const router = useRouter()
   /* local */
-  const [image] = React.useState<ImageType>({
-    url: blogItem?.image?.url ? blogItem.image.url : '/no_image.png',
-    width: blogItem?.image?.width ? blogItem.image.width : 750,
-    height: blogItem?.image?.height ? blogItem.image.height : 422,
-  })
   const [metaData] = React.useState<MetaHeadType>({
     title: `${blogItem.title} | ${BASE_TITLE}`,
     description: blogItem.description,
@@ -49,7 +43,6 @@ export const useBlogItemTemplate = (param: HooksParam) => {
 
   const states = {
     metaData,
-    image,
     shareUrl,
   }
 

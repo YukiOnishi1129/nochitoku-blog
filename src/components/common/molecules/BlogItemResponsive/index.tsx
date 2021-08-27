@@ -8,7 +8,7 @@ import Image from 'next/image'
 /*　component */
 import { DateArea } from '@/components/common/molecules/DateArea'
 /* hooks */
-import { useBlogItemResponsive } from './useBlogItemResponsive'
+import { useBlogItemImage } from '@/hooks/useBlogItemImage'
 /* types */
 import { BlogItemType } from '@/types/Blog'
 /* styles */
@@ -30,7 +30,7 @@ export const BlogItemResponsive: React.FC<Props> = (props: Props) => {
   /* props */
   const { blogItem } = props
   /* hooks */
-  const [states] = useBlogItemResponsive({ blogItem })
+  const [states] = useBlogItemImage({ blogItem })
 
   return (
     <Link href="/[blogId]" as={`/${blogItem.id}`}>

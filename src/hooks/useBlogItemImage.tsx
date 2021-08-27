@@ -1,5 +1,5 @@
 /**
- * useBlogItemResponsive
+ * useBlogItemImage
  * @package Hooks
  */
 import React from 'react'
@@ -19,7 +19,7 @@ interface HooksParam {
  * @param {HooksParam} param
  * @returns
  */
-export const useBlogItemResponsive = (param: HooksParam) => {
+export const useBlogItemImage = (param: HooksParam) => {
   /* param */
   const { blogItem } = param
   /* local */

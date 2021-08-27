@@ -14,6 +14,7 @@ import { TableOfContents } from './organisms/TableOfContents'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
 import { useBlogItemTemplate } from './useBlogItemTemplate'
+import { useBlogItemImage } from '@/hooks/useBlogItemImage'
 /* types */
 import { BlogItemType, TableOfContentType } from '@/types/Blog'
 /* styles */
@@ -39,6 +40,7 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
   const { blogItem, highlightedBody, tableOfContents, draftKey } = props
   /* hooks */
   const [states] = useBlogItemTemplate({ blogItem })
+  const [imageStates] = useBlogItemImage({ blogItem })
 
   return (
     <BasePostPageLayout metaData={states.metaData} breadName={blogItem.title}>
@@ -53,10 +55,10 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
         )}
         <div className={styles.image}>
           <Image
-            src={states.image.url}
+            src={imageStates.image.url}
             alt="Picture"
-            width={states.image.width * 2}
-            height={states.image.height * 2}
+            width={imageStates.image.width * 2}
+            height={imageStates.image.height * 2}
           />
         </div>
 
