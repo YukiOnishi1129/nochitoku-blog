@@ -8,7 +8,7 @@ import { BaseFixedPageLayout } from '@/components/layouts/BaseFixedPageLayout'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
-import { usePolicyTemplate } from './usePolicyTemplate'
+import { useMetaData } from '@/hooks/useMetaData'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -29,10 +29,10 @@ export const PolicyTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { title, highlightedBody } = props
   /* hooks */
-  const [states] = usePolicyTemplate({ title })
+  const [{ metaData }] = useMetaData({ title })
 
   return (
-    <BaseFixedPageLayout metaData={states.metaData} breadName={title}>
+    <BaseFixedPageLayout metaData={metaData} breadName={title}>
       {/* ページタイトル */}
       <PageTitle title={title} />
       <div className={styles.body}>

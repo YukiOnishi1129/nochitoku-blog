@@ -10,6 +10,7 @@ import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
 import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
 /* hooks */
 import { useError404Template } from './useError404Template'
+import { useMetaData } from '@/hooks/useMetaData'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -20,9 +21,10 @@ import styles from './styles.module.scss'
 export const Error404Template: React.FC = () => {
   /* hooks */
   const [states, actions] = useError404Template()
+  const [{ metaData }] = useMetaData({ errorFlg: true })
 
   return (
-    <BaseFixedPageLayout metaData={states.metaData}>
+    <BaseFixedPageLayout metaData={metaData}>
       <div className={styles.error}>
         <div className={styles.title}>
           <h1>NOT FOUND</h1>

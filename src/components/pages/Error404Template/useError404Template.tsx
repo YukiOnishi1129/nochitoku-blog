@@ -4,10 +4,6 @@
  */
 import React from 'react'
 import { useRouter } from 'next/router'
-/* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
-/* types */
-import { MetaHeadType } from '@/types/MetaHead'
 
 /**
  * useError404Template
@@ -18,14 +14,6 @@ export const useError404Template = () => {
   const router = useRouter()
   /* local */
   const [searchText, setSearchText] = React.useState('')
-  const [metaData] = React.useState<MetaHeadType>({
-    title: `NOT FOUND | ${BASE_TITLE}`,
-    description:
-      'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: NOCHITOKU_URL + '/assets/share_image.png',
-    url: NOCHITOKU_URL,
-  })
 
   /**
    * 検索キーワード変更処理
@@ -56,7 +44,6 @@ export const useError404Template = () => {
   )
 
   const states = {
-    metaData,
     searchText,
   }
 

@@ -15,6 +15,7 @@ import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
 import { useBlogItemTemplate } from './useBlogItemTemplate'
 import { useBlogItemImage } from '@/hooks/useBlogItemImage'
+import { useMetaData } from '@/hooks/useMetaData'
 /* types */
 import { BlogItemType, TableOfContentType } from '@/types/Blog'
 /* styles */
@@ -39,11 +40,16 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { blogItem, highlightedBody, tableOfContents, draftKey } = props
   /* hooks */
-  const [states] = useBlogItemTemplate({ blogItem })
-  const [imageStates] = useBlogItemImage({ blogItem })
+  const [states] = useBlogItemTemplate()
+  const [{ image }] = useBlogItemImage({ blogItem })
+  const [{ metaData }] = useMetaData({
+    title: blogItem.title,
+    description: blogItem.description,
+    imagePath: blogItem.image.url,
+  })
 
   return (
-    <BasePostPageLayout metaData={states.metaData} breadName={blogItem.title}>
+    <BasePostPageLayout metaData={metaData} breadName={blogItem.title}>
       <section className={styles.container}>
         {!!draftKey && (
           <div>
@@ -55,10 +61,10 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
         )}
         <div className={styles.image}>
           <Image
-            src={imageStates.image.url}
+            src={image.url}
             alt="Picture"
-            width={imageStates.image.width * 2}
-            height={imageStates.image.height * 2}
+            width={image.width * 2}
+            height={image.height * 2}
           />
         </div>
 

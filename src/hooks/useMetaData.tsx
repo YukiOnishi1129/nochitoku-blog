@@ -23,6 +23,7 @@ interface HooksParam {
   title?: string
   description?: string
   imagePath?: string
+  errorFlg?: boolean
 }
 
 /**
@@ -32,17 +33,21 @@ interface HooksParam {
  */
 export const useMetaData = (param: HooksParam) => {
   /* param */
-  const { title, description, imagePath } = param
+  const { title, description, imagePath, errorFlg } = param
   /* router */
   const router = useRouter()
 
   /* local */
   const [metaData] = React.useState<MetaHeadType>({
-    title: selectMetaDataTitleLogic({ router, title }),
-    description: selectMetaDataDescriptionLogic({ router, description }),
+    title: selectMetaDataTitleLogic({ router, title, errorFlg }),
+    description: selectMetaDataDescriptionLogic({
+      router,
+      description,
+      errorFlg,
+    }),
     keyword: METADATA_KEYWORD.BASIC,
-    image: selectMetaDataImageLogic({ router, image: imagePath }),
-    url: selectMetaDataUrl({ router }),
+    image: selectMetaDataImageLogic({ router, image: imagePath, errorFlg }),
+    url: selectMetaDataUrl({ router, errorFlg }),
   })
 
   const state = {

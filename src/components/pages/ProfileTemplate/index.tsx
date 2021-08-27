@@ -12,6 +12,7 @@ import { SnsShareArea } from '@/components/common/molecules/SnsShareArea'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
 import { useProfileTemplate } from './useProfileTemplate'
+import { useMetaData } from '@/hooks/useMetaData'
 /* types */
 import { ProfileType } from '@/types/Profile'
 /* styles */
@@ -35,9 +36,13 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
   const { profile, highlightedBody } = props
   /* hooks */
   const [states] = useProfileTemplate({ profile })
+  const [{ metaData }] = useMetaData({
+    title: 'プロフィール',
+    description: profile.description,
+  })
 
   return (
-    <BasePostPageLayout metaData={states.metaData} breadName="プロフィール">
+    <BasePostPageLayout metaData={metaData} breadName="プロフィール">
       {/* ページタイトル */}
       <PageTitle title={`プロフィール`} />
       <section className={styles.container}>

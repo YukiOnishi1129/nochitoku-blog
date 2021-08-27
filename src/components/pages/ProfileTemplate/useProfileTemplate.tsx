@@ -5,9 +5,8 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 /* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
+import { NOCHITOKU_URL } from '@/constants/config'
 /* types */
-import { MetaHeadType } from '@/types/MetaHead'
 import { ProfileType } from '@/types/Profile'
 import { ImageType } from '@/types/Image'
 
@@ -34,13 +33,6 @@ export const useProfileTemplate = (params: HooksParam) => {
     width: profile.articleImage.width,
     height: profile.articleImage.height,
   })
-  const [metaData] = React.useState<MetaHeadType>({
-    title: `プロフィール | ${BASE_TITLE}`,
-    description: profile.description,
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: image.url,
-    url: NOCHITOKU_URL + router.asPath,
-  })
 
   let shareUrl = NOCHITOKU_URL
   if (router?.asPath && typeof router.asPath === 'string') {
@@ -50,7 +42,6 @@ export const useProfileTemplate = (params: HooksParam) => {
   const states = {
     image,
     shareUrl,
-    metaData,
   }
 
   return [states]
