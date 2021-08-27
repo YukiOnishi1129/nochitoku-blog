@@ -31,3 +31,16 @@ jobs:
         # unit test
       - name: Unit Test
         run: yarn test
+
+        # start app
+      - name: Start App
+        run: |
+          yarn build
+          yarn start &
+
+        # e2e test
+      - name: E2E Test
+        uses: cypress-io/github-action@v2
+        with:
+          wait-on: 'http://localhost:3000'
+          working-directory: cypress
