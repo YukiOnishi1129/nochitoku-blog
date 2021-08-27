@@ -9,7 +9,8 @@ import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
 import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
 import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
 /* hooks */
-import { useError404Template } from './useError404Template'
+import { useMetaData } from '@/hooks/useMetaData'
+import { useSearchForm } from '@/hooks/useSearchForm'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -19,10 +20,15 @@ import styles from './styles.module.scss'
  */
 export const Error404Template: React.FC = () => {
   /* hooks */
-  const [states, actions] = useError404Template()
+  // const [states, actions] = useError404Template()
+  const [{ metaData }] = useMetaData({ errorFlg: true })
+  const [
+    { searchText },
+    { onChangeSearchText, onKeyUpSearchBlog },
+  ] = useSearchForm({})
 
   return (
-    <BaseFixedPageLayout metaData={states.metaData}>
+    <BaseFixedPageLayout metaData={metaData}>
       <div className={styles.error}>
         <div className={styles.title}>
           <h1>NOT FOUND</h1>
@@ -31,30 +37,30 @@ export const Error404Template: React.FC = () => {
         {/* 検索フォーム */}
         <div className={styles.search}>
           <SearchInputForm
-            text={states.searchText}
+            text={searchText}
             placeholder="検索"
-            onChange={actions.onChange}
-            onKeyUp={actions.onSearchKeyUp}
+            onChange={onChangeSearchText}
+            onKeyUp={onKeyUpSearchBlog}
           />
         </div>
         {/* 検索フォーム　レスポンシブ */}
         <div className={styles.search__responsive}>
           <SearchInputForm
-            text={states.searchText}
+            text={searchText}
             placeholder="検索"
             size={32}
-            onChange={actions.onChange}
-            onKeyUp={actions.onSearchKeyUp}
+            onChange={onChangeSearchText}
+            onKeyUp={onKeyUpSearchBlog}
           />
         </div>
         {/* 検索フォーム　sp */}
         <div className={styles.search__sp}>
           <SearchInputForm
-            text={states.searchText}
+            text={searchText}
             placeholder="検索"
             size={24}
-            onChange={actions.onChange}
-            onKeyUp={actions.onSearchKeyUp}
+            onChange={onChangeSearchText}
+            onKeyUp={onKeyUpSearchBlog}
           />
         </div>
         {/* カテゴリーエリア */}

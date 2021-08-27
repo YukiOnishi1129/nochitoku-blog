@@ -1,5 +1,5 @@
 /**
- * useDateArea
+ * useDate
  * @package Hooks
  */
 /* logics */
@@ -13,17 +13,17 @@ interface HooksParam {
 }
 
 /**
- *
+ * useDate
  * @param {HooksParam} param
  * @returns
  */
-export const useDateArea = (param: HooksParam) => {
+export const useDate = (param: HooksParam) => {
   /* param */
   const { date } = param
 
-  return {
-    state: {
-      showDate: showYearMonthDayLogic(date),
-    },
+  const state = {
+    showYearMonthDate: showYearMonthDayLogic(date),
   }
+
+  return [state]
 }

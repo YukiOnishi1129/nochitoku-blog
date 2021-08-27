@@ -6,7 +6,8 @@ import React from 'react'
 /* component */
 import { ClockIcon } from '@/components/common/icons/ClockIcon'
 /* hooks */
-import { useDateArea } from './useDateArea'
+import { useDate } from '@/hooks/useDate'
+
 /* styles */
 import styles from './styles.module.scss'
 
@@ -27,7 +28,7 @@ export const DateArea: React.FC<DateAreaProps> = (props: DateAreaProps) => {
   /* props */
   const { date, size } = props
   /* hooks */
-  const { state } = useDateArea({ date })
+  const [{ showYearMonthDate }] = useDate({ date })
 
   return (
     <div className={styles.container}>
@@ -35,7 +36,7 @@ export const DateArea: React.FC<DateAreaProps> = (props: DateAreaProps) => {
         <ClockIcon size={size} />
       </div>
 
-      <p className={styles.date}>{state.showDate}</p>
+      <p className={styles.date}>{showYearMonthDate}</p>
     </div>
   )
 }

@@ -9,8 +9,10 @@ import { BasicAsidePartsArea } from '@/components/layouts/Aside/BasicAsidePartsA
 import { TwitterIcon } from '@/components/common/icons/TwitterIcon'
 import { GithubIcon } from '@/components/common/icons/GithubIcon'
 import { FaceBookIcon } from '@/components/common/icons/FaceBookIcon'
+/* contexts */
+import { useProfileState } from '@/contexts/ProfileContext'
 /* hooks */
-import { useProfileArea } from './useProfileArea'
+import { useProfilePageTransition } from '@/hooks/useProfilePageTransition'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -19,34 +21,32 @@ import styles from './styles.module.scss'
  * @returns
  */
 export const ProfileArea: React.FC = () => {
+  /* contexts */
+  const { profile } = useProfileState()
   /* hooks */
-  const [states, actions] = useProfileArea()
+  const [{ onClickTransitionProfilePage }] = useProfilePageTransition()
 
   return (
     <BasicAsidePartsArea title="プロフィール">
-      {states.profile.id !== '' && (
+      {profile.id !== '' && (
         <div className={styles.container}>
           {/* アバター */}
           <div className={styles.image}>
             <Image
               className={styles.image__pic}
-              src={states.profile.userImage.url}
+              src={profile.userImage.url}
               alt="Picture"
-              width={states.profile.userImage.width}
-              height={states.profile.userImage.height}
+              width={profile.userImage.width}
+              height={profile.userImage.height}
             />
           </div>
           <hr className={styles.border} />
 
           {/* プロフィール */}
           <div className={styles.profile}>
-            <p className={styles.profile__name}>{states.profile.name}</p>
-            <p className={styles.profile__eng_name}>
-              {states.profile.englishName}
-            </p>
-            <p className={styles.profile__position}>
-              {states.profile.position}
-            </p>
+            <p className={styles.profile__name}>{profile.name}</p>
+            <p className={styles.profile__eng_name}>{profile.englishName}</p>
+            <p className={styles.profile__position}>{profile.position}</p>
           </div>
 
           {/* SNSアイコンボタン */}
@@ -54,7 +54,7 @@ export const ProfileArea: React.FC = () => {
             <li className={styles.sns__icon}>
               <a
                 target="_blank"
-                href={states.profile.twitter}
+                href={profile.twitter}
                 rel="noopener noreferrer"
               >
                 <TwitterIcon />
@@ -63,7 +63,7 @@ export const ProfileArea: React.FC = () => {
             <li className={styles.sns__icon}>
               <a
                 target="_blank"
-                href={states.profile.github}
+                href={profile.github}
                 rel="noopener noreferrer"
               >
                 <GithubIcon />
@@ -72,7 +72,7 @@ export const ProfileArea: React.FC = () => {
             <li className={styles.sns__icon}>
               <a
                 target="_blank"
-                href={states.profile.facebook}
+                href={profile.facebook}
                 rel="noopener noreferrer"
               >
                 <FaceBookIcon />
@@ -83,7 +83,7 @@ export const ProfileArea: React.FC = () => {
           {/* ボタン */}
           <button
             className={styles.button}
-            onClick={(e) => actions.handleClick(e)}
+            onClick={(e) => onClickTransitionProfilePage(e)}
           >
             more
           </button>

@@ -8,7 +8,7 @@ import { BaseFixedPageLayout } from '@/components/layouts/BaseFixedPageLayout'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
-import { useTermTemplate } from './useTermTemplate'
+import { useMetaData } from '@/hooks/useMetaData'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -29,7 +29,7 @@ export const TermTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { title, highlightedBody } = props
   /* hooks */
-  const [states] = useTermTemplate({ title })
+  const [states] = useMetaData({ title })
 
   return (
     <BaseFixedPageLayout metaData={states.metaData} breadName={title}>

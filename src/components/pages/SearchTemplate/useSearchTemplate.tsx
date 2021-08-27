@@ -8,17 +8,12 @@ import { useRouter } from 'next/router'
 import { searchBlogListLogic } from '@/logic/BlogLogic'
 /* contexts */
 import { useBlogState } from '@/contexts/BlogContext'
-/* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
-/* types */
-import { MetaHeadType } from '@/types/MetaHead'
 
 /**
  * useSearchTemplate
- * @param {string} breadName
  * @returns
  */
-export const useSearchTemplate = (breadName: string) => {
+export const useSearchTemplate = () => {
   /* router */
   const router = useRouter()
   /* contexts */
@@ -34,14 +29,6 @@ export const useSearchTemplate = (breadName: string) => {
   const [searchText, setSearchText] = React.useState(queryText)
   // 検索キーワードにHitしたブログ記事一覧
   const [showBlogList, setShowBlogList] = React.useState(blogList)
-  const [metaData] = React.useState<MetaHeadType>({
-    title: `${breadName} | ${BASE_TITLE}`,
-    description:
-      'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
-    keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-    image: NOCHITOKU_URL + '/assets/share_image.png',
-    url: NOCHITOKU_URL + router.pathname,
-  })
 
   /**
    * 動的検索キーワード更新処理
@@ -64,7 +51,6 @@ export const useSearchTemplate = (breadName: string) => {
   const states = {
     searchText,
     showBlogList,
-    metaData,
   }
 
   const actions = {

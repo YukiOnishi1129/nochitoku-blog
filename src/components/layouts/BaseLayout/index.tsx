@@ -12,7 +12,9 @@ import { ArrowIcon } from '@/components/common/icons/ArrowIcon'
 import { SearchModal } from '@/components/modals/SearchModal'
 import { MenuModal } from '@/components/modals/MenuModal'
 /* hooks */
-import { useBaseLayout } from './useBaseLayout'
+import { useLayout } from '@/hooks/useLayout'
+import { useModal } from '@/hooks/useModal'
+import { useSearchForm } from '@/hooks/useSearchForm'
 /* types */
 import { MetaHeadType } from '@/types/MetaHead'
 /* styles */
@@ -35,7 +37,23 @@ export const BaseLayout: React.FC<Props> = (props: Props) => {
   /* props */
   const { children, metaData, breadName } = props
   /* hooks */
-  const { state, action } = useBaseLayout()
+  const [{ scrollToTop }] = useLayout()
+  const [
+    { isSearchModalVisible, isMenuModalVisible },
+    {
+      handleOpenSearchModal,
+      handleCloseSearchModal,
+      handleOpenMenuModal,
+      handleCloseMenuModal,
+      handleHomeLink,
+      handleAboutLink,
+      handleProfileLink,
+    },
+  ] = useModal()
+  const [
+    { searchText },
+    { onChangeSearchText, onKeyUpSearchBlogModal },
+  ] = useSearchForm({ handleCloseSearchModal })
 
   return (
     <>
@@ -43,8 +61,8 @@ export const BaseLayout: React.FC<Props> = (props: Props) => {
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <Header
-            handleOpenSearchModal={action.handleOpenSearchModal}
-            handleOpenMenuModal={action.handleOpenMenuModal}
+            handleOpenSearchModal={handleOpenSearchModal}
+            handleOpenMenuModal={handleOpenMenuModal}
           />
           <div className={styles.headerEmpty} />
         </div>
@@ -55,25 +73,28 @@ export const BaseLayout: React.FC<Props> = (props: Props) => {
           <Footer />
         </div>
         {/* スクロールトップボタン */}
-        <div className={styles.fixButton} onClick={action.scrollToTop}>
+        <div className={styles.fixButton} onClick={scrollToTop}>
           <ArrowIcon size={70} color="#c8c8c8" />
         </div>
         {/* スクロールトップボタン SP */}
-        <div className={styles.fixButton__sp} onClick={action.scrollToTop}>
+        <div className={styles.fixButton__sp} onClick={scrollToTop}>
           <ArrowIcon size={44} color="#c8c8c8" />
         </div>
         {/* 検索モーダル */}
         <SearchModal
-          searchText={state.searchText}
-          isSearchModalVisible={state.isSearchModalVisible}
-          handleCloseSearchModal={action.handleCloseSearchModal}
-          onChangeSearchText={action.onChangeSearchText}
-          onKeyUpSearch={action.onKeyUpSearch}
+          searchText={searchText}
+          isSearchModalVisible={isSearchModalVisible}
+          handleCloseSearchModal={handleCloseSearchModal}
+          onChangeSearchText={onChangeSearchText}
+          onKeyUpSearch={onKeyUpSearchBlogModal}
         />
         {/* メニューモーダル */}
         <MenuModal
-          isMenuModalVisible={state.isMenuModalVisible}
-          handleCloseMenuModal={action.handleCloseMenuModal}
+          isMenuModalVisible={isMenuModalVisible}
+          handleCloseMenuModal={handleCloseMenuModal}
+          handleHomeLink={handleHomeLink}
+          handleAboutLink={handleAboutLink}
+          handleProfileLink={handleProfileLink}
         />
       </div>
     </>

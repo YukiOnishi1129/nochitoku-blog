@@ -11,7 +11,8 @@ import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { SnsShareArea } from '@/components/common/molecules/SnsShareArea'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
-import { useProfileTemplate } from './useProfileTemplate'
+import { useMetaData } from '@/hooks/useMetaData'
+import { useShareUrl } from '@/hooks/useShareUrl'
 /* types */
 import { ProfileType } from '@/types/Profile'
 /* styles */
@@ -34,26 +35,30 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { profile, highlightedBody } = props
   /* hooks */
-  const [states] = useProfileTemplate({ profile })
+  const [{ metaData }] = useMetaData({
+    title: 'プロフィール',
+    description: profile.description,
+  })
+  const [{ shareUrl }] = useShareUrl()
 
   return (
-    <BasePostPageLayout metaData={states.metaData} breadName="プロフィール">
+    <BasePostPageLayout metaData={metaData} breadName="プロフィール">
       {/* ページタイトル */}
       <PageTitle title={`プロフィール`} />
       <section className={styles.container}>
         <div className={styles.image}>
           <Image
-            src={states.image.url}
+            src={profile.articleImage.url}
             alt="Picture"
-            width={states.image.width}
-            height={states.image.height}
+            width={profile.articleImage.width}
+            height={profile.articleImage.height}
           />
         </div>
 
         <main className={styles.main}>
           <div className={styles.leftBar}>
             {/* SNSシェアボタン */}
-            <SnsShareBar title="プロフィール" shareUrl={states.shareUrl} />
+            <SnsShareBar title="プロフィール" shareUrl={shareUrl} />
           </div>
           <div className={styles.rightBar}>
             {/* 記事本文 */}
@@ -61,7 +66,7 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
 
             {/* SNSシェアボタン */}
             <div className={styles.shareArea}>
-              <SnsShareArea title="プロフィール" shareUrl={states.shareUrl} />
+              <SnsShareArea title="プロフィール" shareUrl={shareUrl} />
             </div>
           </div>
         </main>

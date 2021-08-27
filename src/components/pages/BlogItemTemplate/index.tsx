@@ -13,7 +13,8 @@ import { TitleArea } from './organisms/TitleArea'
 import { TableOfContents } from './organisms/TableOfContents'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
-import { useBlogItemTemplate } from './useBlogItemTemplate'
+import { useMetaData } from '@/hooks/useMetaData'
+import { useShareUrl } from '@/hooks/useShareUrl'
 /* types */
 import { BlogItemType, TableOfContentType } from '@/types/Blog'
 /* styles */
@@ -38,10 +39,15 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { blogItem, highlightedBody, tableOfContents, draftKey } = props
   /* hooks */
-  const [states] = useBlogItemTemplate({ blogItem })
+  const [{ metaData }] = useMetaData({
+    title: blogItem.title,
+    description: blogItem.description,
+    imagePath: blogItem.image.url,
+  })
+  const [{ shareUrl }] = useShareUrl()
 
   return (
-    <BasePostPageLayout metaData={states.metaData} breadName={blogItem.title}>
+    <BasePostPageLayout metaData={metaData} breadName={blogItem.title}>
       <section className={styles.container}>
         {!!draftKey && (
           <div>
@@ -53,17 +59,17 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
         )}
         <div className={styles.image}>
           <Image
-            src={states.image.url}
+            src={blogItem.image.url}
             alt="Picture"
-            width={states.image.width * 2}
-            height={states.image.height * 2}
+            width={blogItem.image.width * 2}
+            height={blogItem.image.height * 2}
           />
         </div>
 
         <main className={styles.main}>
           <div className={styles.leftBar}>
-            {/* SNSシェアボタン */}
-            <SnsShareBar title={blogItem.title} shareUrl={states.shareUrl} />
+            {/* SNSシェアボタン 左サイドバー */}
+            <SnsShareBar title={blogItem.title} shareUrl={shareUrl} />
           </div>
 
           <div className={styles.rightBar}>
@@ -76,9 +82,9 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
             {/* 記事本文 */}
             <HighlightBody highlightedBody={highlightedBody} />
 
-            {/* SNSシェアボタン */}
+            {/* SNSシェアボタン 記事最下層 */}
             <div className={styles.shareArea}>
-              <SnsShareArea title={blogItem.title} shareUrl={states.shareUrl} />
+              <SnsShareArea title={blogItem.title} shareUrl={shareUrl} />
             </div>
           </div>
         </main>

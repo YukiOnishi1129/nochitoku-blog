@@ -10,11 +10,9 @@ import * as blogLogic from '@/logic/BlogLogic'
 /* contexts */
 import * as blogContext from '@/contexts/BlogContext'
 /* constants */
-import { NOCHITOKU_URL, BASE_TITLE } from '@/constants/config'
 import { initBlogItem } from '@/constants/initState'
 /* types */
 import { BlogItemType } from '@/types/Blog'
-import { MetaHeadType } from '@/types/MetaHead'
 
 // 変数定義
 let initialBlogList: BlogItemType[]
@@ -73,11 +71,11 @@ describe('【Hooksテスト】useSearchTemplate test', () => {
         push: jest.fn(),
       }
       useRouterSpy.mockReturnValue(router)
-      const { result } = renderHook(() => useSearchTemplate('テストタイトル'))
+      const { result } = renderHook(() => useSearchTemplate())
       expect(result.current[0].searchText).toBe('テストキーワード')
     })
     test('【異常系】初期検索キーワードがない場合、searchTextの初期値は空文字になる', () => {
-      const { result } = renderHook(() => useSearchTemplate('テストタイトル'))
+      const { result } = renderHook(() => useSearchTemplate())
       expect(result.current[0].searchText).toBe('')
     })
     test('【異常系】初期検索キーワードがStringでない場合、searchTextの初期値は空文字になる', () => {
@@ -87,49 +85,15 @@ describe('【Hooksテスト】useSearchTemplate test', () => {
         push: jest.fn(),
       }
       useRouterSpy.mockReturnValue(router)
-      const { result } = renderHook(() => useSearchTemplate('テストタイトル'))
+      const { result } = renderHook(() => useSearchTemplate())
       expect(result.current[0].searchText).toBe('')
     })
   })
 
   describe('【状態テスト】showBlogList', () => {
     test('【正常系】contextの値がshowBlogListの初期値として定義される。', () => {
-      const { result } = renderHook(() => useSearchTemplate('テストタイトル'))
+      const { result } = renderHook(() => useSearchTemplate())
       expect(result.current[0].showBlogList).toEqual(initialBlogList)
-    })
-  })
-
-  describe('【状態テスト】metaData', () => {
-    beforeEach(() => {
-      // routerのモック化
-      useRouterSpy = jest.spyOn(require('next/router'), 'useRouter')
-      useRouterSpy.mockImplementation(() => ({
-        query: {},
-        pathname: '/search',
-        push: jest.fn(),
-      }))
-    })
-
-    afterEach(() => {
-      // routerのモック化
-      useRouterSpy = jest.spyOn(require('next/router'), 'useRouter')
-      useRouterSpy.mockImplementation(() => ({
-        query: {},
-        pathname: '/search',
-        push: jest.fn(),
-      }))
-    })
-    test('【正常系】metaDataが定義される。', () => {
-      const expectResult: MetaHeadType = {
-        title: `テストタイトル | ${BASE_TITLE}`,
-        description:
-          'のちのち役に立つITエンジニアの技術ブログ。React, Next.jsをはじめとしたフロントエンドのスキルや、AWS, Node.js, ReactNativeなど幅広いITスキルのノウハウを発信しています。',
-        keyword: 'エンジニア,IT,プログラミング,フロントエンド,AWS',
-        image: NOCHITOKU_URL + '/assets/share_image.png',
-        url: NOCHITOKU_URL + '/search',
-      }
-      const { result } = renderHook(() => useSearchTemplate('テストタイトル'))
-      expect(result.current[0].metaData).toEqual(expectResult)
     })
   })
 
@@ -169,7 +133,7 @@ describe('【Hooksテスト】useSearchTemplate test', () => {
     })
 
     test('【正常系】検索キーワードがstateに更新される。ブログ記事の検索結果がstateに更新される。', () => {
-      const { result } = renderHook(() => useSearchTemplate('テストタイトル'))
+      const { result } = renderHook(() => useSearchTemplate())
       expect(result.current[0].searchText).toBe('')
       act(() => result.current[1].onChange(eventObject))
       expect(result.current[0].searchText).toBe('テスト')

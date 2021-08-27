@@ -3,14 +3,15 @@
  * @package Component
  */
 import React from 'react'
-/* hooks */
-import { useSearchTemplate } from './useSearchTemplate'
 /* components */
 import { BaseLayout } from '@/components/layouts/BaseLayout'
 import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { SearchInputForm } from '@/components/common/molecules/SearchInputForm'
 import { SearchBlogItem } from './organisms/SearchBlogItem'
 import { BlogItemResponsive } from '@/components/common/molecules/BlogItemResponsive'
+/* hooks */
+import { useSearchTemplate } from './useSearchTemplate'
+import { useMetaData } from '@/hooks/useMetaData'
 /* styles*/
 import styles from './styles.module.scss'
 
@@ -30,10 +31,11 @@ export const SearchTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { breadName } = props
   /* hooks */
-  const [states, actions] = useSearchTemplate(breadName)
+  const [states, actions] = useSearchTemplate()
+  const [{ metaData }] = useMetaData({ title: breadName })
 
   return (
-    <BaseLayout metaData={states.metaData} breadName={breadName}>
+    <BaseLayout metaData={metaData} breadName={breadName}>
       <div className={styles.container}>
         <PageTitle title="検索結果" />
         {/* 検索フォーム */}
