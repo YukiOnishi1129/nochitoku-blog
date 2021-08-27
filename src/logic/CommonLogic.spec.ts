@@ -175,11 +175,69 @@ describe('【Logicテスト】CommonLogic test', () => {
   })
 
   describe('【関数テスト】selectMetaDataDescriptionLogic', () => {
-    test('【正常系】', () => {
+    test('【正常系】「ブログ記事」ページの場合、想定した文字列が返却される。', () => {
       // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.BLOG_ITEM,
+      } as NextRouter
+      const description = 'ブログ記事です。'
+      // 予測値
+      const expectResult = description
+      expect(selectMetaDataDescriptionLogic({ router, description })).toBe(
+        expectResult
+      )
+    })
+    test('【正常系】「プロフィール」ページの場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.PROFILE,
+      } as NextRouter
+      const description = 'プロフィールです。'
+      // 予測値
+      const expectResult = description
+      expect(selectMetaDataDescriptionLogic({ router, description })).toBe(
+        expectResult
+      )
+    })
+    test('【正常系】「プライバシーポリシー」ページの場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.POLICY,
+      } as NextRouter
+      // 予測値
+      const expectResult = METADATA_DESCRIPTION.POLICY
+      expect(selectMetaDataDescriptionLogic({ router })).toBe(expectResult)
+    })
+    test('【正常系】「免責事項」ページの場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.TERM,
+      } as NextRouter
+      // 予測値
+      const expectResult = METADATA_DESCRIPTION.TERM
+      expect(selectMetaDataDescriptionLogic({ router })).toBe(expectResult)
+    })
+    test('【正常系】「TOP」ページの場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.TOP,
+      } as NextRouter
+      // 予測値
+      const expectResult = METADATA_DESCRIPTION.BASIC
+      expect(selectMetaDataDescriptionLogic({ router })).toBe(expectResult)
     })
     test('【異常系】errorFlgがtrueの場合', () => {
       // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.TOP,
+      } as NextRouter
+      const description = 'ブログ記事です。'
+      const errorFlg = true
+      // 予測値
+      const expectResult = METADATA_DESCRIPTION.BASIC
+      expect(
+        selectMetaDataDescriptionLogic({ router, description, errorFlg })
+      ).toBe(expectResult)
     })
   })
 
