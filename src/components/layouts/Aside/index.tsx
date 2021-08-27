@@ -10,7 +10,7 @@ import { ProfileAreaResponsive } from '@/components/layouts/Aside/ProfileAreaRes
 import { CategoryArea } from '@/components/layouts/Aside/CategoryArea'
 import { ArchiveArea } from '@/components/layouts/Aside/ArchiveArea'
 /* hooks */
-import { useAside } from './useAside'
+import { useSearchForm } from '@/hooks/useSearchForm'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -20,17 +20,20 @@ import styles from './styles.module.scss'
  */
 export const Aside: React.FC = () => {
   /* hooks */
-  const [states, actions] = useAside()
+  const [
+    { searchText },
+    { onChangeSearchText, onKeyUpSearchBlog },
+  ] = useSearchForm({})
 
   return (
     <aside className={styles.aside}>
       {/* 検索フォーム */}
       <div className={styles.search}>
         <SearchInputForm
-          text={states.searchText}
+          text={searchText}
           placeholder="検索"
-          onChange={actions.onChange}
-          onKeyUp={actions.onSearchKeyUp}
+          onChange={onChangeSearchText}
+          onKeyUp={onKeyUpSearchBlog}
         />
       </div>
 
@@ -47,22 +50,22 @@ export const Aside: React.FC = () => {
       {/* 検索フォーム レスポンシブ */}
       <div className={styles.search__responsive}>
         <SearchInputForm
-          text={states.searchText}
+          text={searchText}
           placeholder="検索"
           size={32}
-          onChange={actions.onChange}
-          onKeyUp={actions.onSearchKeyUp}
+          onChange={onChangeSearchText}
+          onKeyUp={onKeyUpSearchBlog}
         />
       </div>
 
       {/* 検索フォーム レスポンシブ */}
       <div className={styles.search__sp}>
         <SearchInputForm
-          text={states.searchText}
+          text={searchText}
           placeholder="検索"
           size={20}
-          onChange={actions.onChange}
-          onKeyUp={actions.onSearchKeyUp}
+          onChange={onChangeSearchText}
+          onKeyUp={onKeyUpSearchBlog}
         />
       </div>
 
