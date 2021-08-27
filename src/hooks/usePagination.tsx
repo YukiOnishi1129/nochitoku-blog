@@ -23,6 +23,7 @@ export const usePagination = () => {
    * @return { number[]}
    */
   const createPageRange = React.useCallback((start: number, end: number) => {
+    if (end < start) return []
     // 「...Array」で1ページから最終ページまでの番号を配列に入れている
     // 「map((_, i) => start + i)」で1ページ目の番号は0なので、iを足している
     // ページの配列を作る

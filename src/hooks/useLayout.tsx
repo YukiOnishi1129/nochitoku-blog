@@ -3,7 +3,7 @@
  * @package Hooks
  */
 import React from 'react'
-import { animateScroll as scroll } from 'react-scroll'
+import { animateScroll } from 'react-scroll'
 
 /**
  * useLayout
@@ -14,7 +14,7 @@ export const useLayout = () => {
    * ページトップに移動する
    */
   const scrollToTop = React.useCallback(() => {
-    scroll.scrollToTop()
+    animateScroll.scrollToTop()
   }, [])
 
   const actions = {
