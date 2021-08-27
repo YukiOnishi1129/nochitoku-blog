@@ -5,7 +5,9 @@
 import React from 'react'
 import Link from 'next/link'
 /* hooks */
-import { usePagination } from './usePagination'
+import { usePagination } from '@/hooks/usePagination'
+/* constants */
+import { BLOG_SHOW_COUNT } from '@/constants/config'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -25,28 +27,26 @@ export const Pagination: React.FC<Props> = (props: Props) => {
   /* props */
   const { totalCount, link } = props
   /* hooks */
-  const [states, actions] = usePagination()
+  const [{ currentPage }, { createPageRange }] = usePagination()
 
   return (
     <ul className={styles.container}>
       {totalCount !== 0 &&
-        actions
-          .pageRange(1, Math.ceil(totalCount / states.BLOG_SHOW_COUNT))
-          .map((number, index) => (
+        createPageRange(1, Math.ceil(totalCount / BLOG_SHOW_COUNT)).map(
+          (number, index) => (
             <li className={styles.iconArea} key={index}>
               <Link href={`${link}${number}`}>
                 <span
                   className={
-                    states.currentPage !== number
-                      ? styles.icon
-                      : styles.currentIcon
+                    currentPage !== number ? styles.icon : styles.currentIcon
                   }
                 >
                   {number}
                 </span>
               </Link>
             </li>
-          ))}
+          )
+        )}
     </ul>
   )
 }
