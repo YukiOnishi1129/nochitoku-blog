@@ -5,7 +5,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 /* logics */
-import { createShareUrl } from '@/logic/CommonLogic'
+import { createShareUrlLogic } from '@/logic/CommonLogic'
 
 /**
  * useShareUrl
@@ -15,7 +15,7 @@ export const useShareUrl = () => {
   /* router */
   const router = useRouter()
   /* locals */
-  const [shareUrl] = React.useState(createShareUrl(router))
+  const [shareUrl] = React.useState(createShareUrlLogic(router))
 
   const state = { shareUrl }
 

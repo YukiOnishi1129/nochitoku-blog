@@ -9,7 +9,7 @@ import {
   selectMetaDataTitleLogic,
   selectMetaDataDescriptionLogic,
   selectMetaDataImageLogic,
-  selectMetaDataUrl,
+  selectMetaDataUrlLogic,
 } from '@/logic/CommonLogic'
 /* constants */
 import { METADATA_KEYWORD } from '@/constants/config'
@@ -47,7 +47,7 @@ export const useMetaData = (param: HooksParam) => {
     }),
     keyword: METADATA_KEYWORD.BASIC,
     image: selectMetaDataImageLogic({ router, image: imagePath, errorFlg }),
-    url: selectMetaDataUrl({ router, errorFlg }),
+    url: selectMetaDataUrlLogic({ router, errorFlg }),
   })
 
   const state = {

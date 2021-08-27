@@ -128,7 +128,7 @@ export const selectMetaDataImageLogic = ({
  * @param { router: NextRouter, errorFlg?: boolean } param0
  * @returns
  */
-export const selectMetaDataUrl = ({
+export const selectMetaDataUrlLogic = ({
   router,
   errorFlg,
 }: {
@@ -154,8 +154,8 @@ export const selectMetaDataUrl = ({
  *
  * @returns {string}
  */
-export const createShareUrl = (router: NextRouter) => {
-  if (router?.asPath && typeof router.asPath === 'string') {
+export const createShareUrlLogic = (router: NextRouter): string => {
+  if (router?.asPath) {
     return NOCHITOKU_URL + router.asPath
   }
   return NOCHITOKU_URL
