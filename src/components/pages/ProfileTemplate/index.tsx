@@ -11,7 +11,6 @@ import { PageTitle } from '@/components/common/atoms/PageTitle'
 import { SnsShareArea } from '@/components/common/molecules/SnsShareArea'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
-import { useProfileTemplate } from './useProfileTemplate'
 import { useMetaData } from '@/hooks/useMetaData'
 import { useShareUrl } from '@/hooks/useShareUrl'
 /* types */
@@ -36,7 +35,6 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { profile, highlightedBody } = props
   /* hooks */
-  const [states] = useProfileTemplate({ profile })
   const [{ metaData }] = useMetaData({
     title: 'プロフィール',
     description: profile.description,
@@ -50,10 +48,10 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
       <section className={styles.container}>
         <div className={styles.image}>
           <Image
-            src={states.image.url}
+            src={profile.articleImage.url}
             alt="Picture"
-            width={states.image.width}
-            height={states.image.height}
+            width={profile.articleImage.width}
+            height={profile.articleImage.height}
           />
         </div>
 

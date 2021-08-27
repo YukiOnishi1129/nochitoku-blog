@@ -13,7 +13,6 @@ import { TitleArea } from './organisms/TitleArea'
 import { TableOfContents } from './organisms/TableOfContents'
 import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
-import { useBlogItemImage } from '@/hooks/useBlogItemImage'
 import { useMetaData } from '@/hooks/useMetaData'
 import { useShareUrl } from '@/hooks/useShareUrl'
 /* types */
@@ -40,7 +39,6 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
   /* props */
   const { blogItem, highlightedBody, tableOfContents, draftKey } = props
   /* hooks */
-  const [{ image }] = useBlogItemImage({ blogItem })
   const [{ metaData }] = useMetaData({
     title: blogItem.title,
     description: blogItem.description,
@@ -61,10 +59,10 @@ export const BlogItemTemplate: React.FC<Props> = (props: Props) => {
         )}
         <div className={styles.image}>
           <Image
-            src={image.url}
+            src={blogItem.image.url}
             alt="Picture"
-            width={image.width * 2}
-            height={image.height * 2}
+            width={blogItem.image.width * 2}
+            height={blogItem.image.height * 2}
           />
         </div>
 

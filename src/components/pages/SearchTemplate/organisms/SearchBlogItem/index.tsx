@@ -7,8 +7,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 /*　component */
 import { DateArea } from '@/components/common/molecules/DateArea'
-/* hooks */
-import { useBlogItemImage } from '@/hooks/useBlogItemImage'
 /* types */
 import { BlogItemType } from '@/types/Blog'
 /* styles */
@@ -29,18 +27,16 @@ type Props = {
 export const SearchBlogItem: React.FC<Props> = (props: Props) => {
   /* props */
   const { blogItem } = props
-  /* hooks */
-  const [states] = useBlogItemImage({ blogItem })
 
   return (
     <Link href="/[blogId]" as={`/${blogItem.id}`}>
       <div className={styles.container}>
         <div className={styles.image}>
           <Image
-            src={states.image.url}
+            src={blogItem.image.url}
             alt="Picture"
-            width={states.image.width * 2}
-            height={states.image.height * 2}
+            width={blogItem.image.width * 2}
+            height={blogItem.image.height * 2}
           />
         </div>
         <h2 className={styles.title}>{blogItem.title}</h2>

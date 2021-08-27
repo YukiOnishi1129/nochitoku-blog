@@ -3,7 +3,7 @@
  * @package Hooks
  */
 import React from 'react'
-import { useRouter, NextRouter } from 'next/router'
+import { useRouter } from 'next/router'
 /* logics */
 import { createShareUrl } from '@/logic/CommonLogic'
 
