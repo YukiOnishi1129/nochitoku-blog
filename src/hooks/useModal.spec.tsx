@@ -6,6 +6,7 @@ import { renderHook, act } from '@testing-library/react-hooks'
 /* hooks */
 import { useModal } from './useModal'
 
+// モック化する外部モジュールを格納する変数を定義
 /* router */
 let useRouterSpy: jest.SpyInstance<unknown>
 let routerPushSpy: jest.SpyInstance<unknown>
