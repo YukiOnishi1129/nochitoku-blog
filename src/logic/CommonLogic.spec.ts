@@ -17,14 +17,10 @@ import {
 import {
   NOCHITOKU_URL,
   BASE_TITLE,
-  BLOG_SHOW_COUNT,
   METADATA_DESCRIPTION,
   METADATA_IMAGE,
 } from '@/constants/config'
-import { NAVIGATION_LINK, ROUTER_PATH_NAME } from '@/constants/navigation'
-
-// モック化する外部モジュールを格納する変数を定義
-let useRouterSpy: jest.SpyInstance<unknown>
+import { ROUTER_PATH_NAME } from '@/constants/navigation'
 
 describe('【Logicテスト】CommonLogic test', () => {
   describe('【関数テスト】createPageArrayLogic', () => {
@@ -284,11 +280,43 @@ describe('【Logicテスト】CommonLogic test', () => {
   })
 
   describe('【関数テスト】selectMetaDataImageLogic', () => {
-    test('【正常系】', () => {
+    test('【正常系】「TOP」ページの場合、想定した文字列が返却される。', () => {
       // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.TOP,
+      } as NextRouter
+      // 予測値
+      const expectResult = NOCHITOKU_URL
+      expect(selectMetaDataUrlLogic({ router })).toBe(expectResult)
+    })
+    test('【正常系】「検索」ページの場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.SEARCH,
+      } as NextRouter
+      // 予測値
+      const expectResult = NOCHITOKU_URL + router.pathname
+      expect(selectMetaDataUrlLogic({ router })).toBe(expectResult)
+    })
+    test('【正常系】「TOP」と「検索」ページ以外の場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.PROFILE,
+        asPath: ROUTER_PATH_NAME.PROFILE,
+      } as NextRouter
+      // 予測値
+      const expectResult = NOCHITOKU_URL + router.asPath
+      expect(selectMetaDataUrlLogic({ router })).toBe(expectResult)
     })
     test('【異常系】errorFlgがtrueの場合', () => {
       // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.PROFILE,
+      } as NextRouter
+      const errorFlg = true
+      // 予測値
+      const expectResult = NOCHITOKU_URL
+      expect(selectMetaDataUrlLogic({ router, errorFlg })).toBe(expectResult)
     })
   })
 
