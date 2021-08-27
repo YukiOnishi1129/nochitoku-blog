@@ -242,11 +242,44 @@ describe('【Logicテスト】CommonLogic test', () => {
   })
 
   describe('【関数テスト】selectMetaDataImageLogic', () => {
-    test('【正常系】', () => {
+    test('【正常系】「ブログ記事」ページの場合、想定した文字列が返却される。', () => {
       // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.BLOG_ITEM,
+      } as NextRouter
+      const image = 'test.png'
+      // 予測値
+      const expectResult = image
+      expect(selectMetaDataImageLogic({ router, image })).toBe(expectResult)
+    })
+    test('【正常系】「プロフィール」ページの場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.PROFILE,
+      } as NextRouter
+      const image = 'test.png'
+      // 予測値
+      const expectResult = image
+      expect(selectMetaDataImageLogic({ router, image })).toBe(expectResult)
+    })
+    test('【正常系】「TOP」ページの場合、想定した文字列が返却される。', () => {
+      // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.TOP,
+      } as NextRouter
+      // 予測値
+      const expectResult = METADATA_IMAGE.BASIC
+      expect(selectMetaDataImageLogic({ router })).toBe(expectResult)
     })
     test('【異常系】errorFlgがtrueの場合', () => {
       // 引数
+      const router = {
+        pathname: ROUTER_PATH_NAME.TOP,
+      } as NextRouter
+      const errorFlg = true
+      // 予測値
+      const expectResult = METADATA_IMAGE.BASIC
+      expect(selectMetaDataImageLogic({ router, errorFlg })).toBe(expectResult)
     })
   })
 
