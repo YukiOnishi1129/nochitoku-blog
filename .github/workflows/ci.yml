@@ -42,12 +42,13 @@ jobs:
           NEXT_PUBLIC_BLOG_SHOW_COUNT: ${{ secrets.NEXT_PUBLIC_BLOG_SHOW_COUNT }}
 
         # start app
-      - name: App Start
-        run: yarn start
-
-        # e2e test
+      # - name: App Start
+      #   run: yarn start
+      # e2e test
       - name: E2E Test
         uses: cypress-io/github-action@v2
         with:
-          wait-on: 'http://localhost:3000'
-          working-directory: cypress
+          start: yarn start
+        # with:
+        #   wait-on: 'http://localhost:3000'
+        #   working-directory: cypress
