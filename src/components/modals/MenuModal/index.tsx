@@ -6,8 +6,6 @@ import React from 'react'
 import Modal from 'react-modal'
 /* components */
 import { CloseIcon } from '@/components/common/icons/CloseIcon'
-/* hooks */
-import { useMenuModal } from './useMenuModal'
 /* styles */
 import styles from './styles.module.scss'
 
@@ -19,6 +17,9 @@ Modal.setAppElement('#__next')
 type Props = {
   isMenuModalVisible: boolean
   handleCloseMenuModal: () => void
+  handleHomeLink: () => void
+  handleAboutLink: () => void
+  handleProfileLink: () => void
 }
 
 /**
@@ -28,9 +29,13 @@ type Props = {
  */
 export const MenuModal: React.FC<Props> = (props: Props) => {
   /* props */
-  const { isMenuModalVisible, handleCloseMenuModal } = props
-  /* hooks */
-  const [actions] = useMenuModal({ handleCloseMenuModal })
+  const {
+    isMenuModalVisible,
+    handleCloseMenuModal,
+    handleHomeLink,
+    handleAboutLink,
+    handleProfileLink,
+  } = props
 
   return (
     <Modal
@@ -50,13 +55,13 @@ export const MenuModal: React.FC<Props> = (props: Props) => {
     >
       <ul className={styles.links}>
         <li className={styles.title}>MENU</li>
-        <li className={styles.link} onClick={actions.handleHomeLink}>
+        <li className={styles.link} onClick={handleHomeLink}>
           ホーム
         </li>
-        <li className={styles.link} onClick={actions.handleAboutLink}>
+        <li className={styles.link} onClick={handleAboutLink}>
           このブログについて
         </li>
-        <li onClick={actions.handleProfileLink}>プロフィール</li>
+        <li onClick={handleProfileLink}>プロフィール</li>
       </ul>
 
       <div className={styles.close} onClick={handleCloseMenuModal}>
