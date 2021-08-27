@@ -13,6 +13,7 @@ import { HighlightBody } from '@/components/common/molecules/HighlightBody'
 /* hooks */
 import { useProfileTemplate } from './useProfileTemplate'
 import { useMetaData } from '@/hooks/useMetaData'
+import { useShareUrl } from '@/hooks/useShareUrl'
 /* types */
 import { ProfileType } from '@/types/Profile'
 /* styles */
@@ -40,6 +41,7 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
     title: 'プロフィール',
     description: profile.description,
   })
+  const [{ shareUrl }] = useShareUrl()
 
   return (
     <BasePostPageLayout metaData={metaData} breadName="プロフィール">
@@ -58,7 +60,7 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
         <main className={styles.main}>
           <div className={styles.leftBar}>
             {/* SNSシェアボタン */}
-            <SnsShareBar title="プロフィール" shareUrl={states.shareUrl} />
+            <SnsShareBar title="プロフィール" shareUrl={shareUrl} />
           </div>
           <div className={styles.rightBar}>
             {/* 記事本文 */}
@@ -66,7 +68,7 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
 
             {/* SNSシェアボタン */}
             <div className={styles.shareArea}>
-              <SnsShareArea title="プロフィール" shareUrl={states.shareUrl} />
+              <SnsShareArea title="プロフィール" shareUrl={shareUrl} />
             </div>
           </div>
         </main>

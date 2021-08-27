@@ -147,3 +147,16 @@ export const selectMetaDataUrl = ({
       return NOCHITOKU_URL + router.asPath
   }
 }
+
+/**
+ * share用のURLを作成
+ * @param {NextRouter} router
+ *
+ * @returns {string}
+ */
+export const createShareUrl = (router: NextRouter) => {
+  if (router?.asPath && typeof router.asPath === 'string') {
+    return NOCHITOKU_URL + router.asPath
+  }
+  return NOCHITOKU_URL
+}
