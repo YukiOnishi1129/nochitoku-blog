@@ -43,7 +43,7 @@ jobs:
 
         # start app
       - name: App Start
-        run: yarn start
+        run: yarn start &
 
         # e2e test
       - name: E2E Test
