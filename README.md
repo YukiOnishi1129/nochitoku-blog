@@ -95,3 +95,46 @@ type: リスト形式
 |:---|:---|:---|
 |title|タイトル|テキストフィールド|
 |body|本文|リッチエディタ|
+
+## 環境変数
+プロジェクトルートに.envファイルを作成し、以下の項目を設定してください。
+- X_API_KEY (microCMSのAPIキー)
+- NEXT_PUBLIC_BASE_URL (microCMSのAPIのベースURL)
+- NEXT_PUBLIC_GOOGLE_ANALYTICS_ID(Google AnalyticsのID)
+- NEXT_PUBLIC_BLOG_SHOW_COUNT (記事一覧画面に表示する最大記事数)
+
+例:
+
+```
+X_API_KEY=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+NEXT_PUBLIC_BASE_URL=https://xxxxxx.microcms.io/api/v1
+NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=xxx-xxxxxxx
+NEXT_PUBLIC_BLOG_SHOW_COUNT=8
+
+```
+
+## 開発方法
+
+```
+# パッケージをinstall
+$ yarn 
+
+# 開発サーバーを起動(localhost:3000)
+$ yarn dev
+
+# 静的サイトを生成
+$ yarn build
+
+# 静的サイトを起動(localhost:3000)
+$ yarn start
+
+# storybookを起動
+$ yarn storybook
+
+# 単体テストを実行
+$ yarn test
+
+# E2Eテストを実行 (※事前にyarn startで静的サイトを起動しておくこと)
+$ yarn cy:run
+
+```
