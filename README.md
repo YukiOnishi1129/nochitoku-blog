@@ -38,3 +38,60 @@
 - Jest
 - Cypress
 - GitHub Actions
+
+## microCMSのAPIスキーマ設定
+
+### ブログ
+
+endpoint: blogs
+<br>
+type: リスト形式
+
+| フィールドID | 表示名 | 種類 |
+|:---|:---|:---|
+|title|タイトル|テキストフィールド|
+|body|本文|リッチエディタ|
+|image|アイキャッチ|画像|
+|categories|カテゴリー|複数コンテンツ参照 -カテゴリー|
+|description|記事の説明文|テキストフィールド|
+
+### カテゴリー
+
+endpoint: categories
+<br>
+type: リスト形式
+
+| フィールドID | 表示名 | 種類 |
+|:---|:---|:---|
+|name|カテゴリー名|テキストフィールド|
+
+### プロフィール
+
+endpoint: profile
+<br>
+type: リスト形式
+
+| フィールドID | 表示名 | 種類 |
+|:---|:---|:---|
+|name|ユーザー名|テキストフィールド|
+|englishName|英字ユーザー名|テキストフィールド|
+|position|役職|テキストフィールド|
+|introduction|紹介文|テキストエリア|
+|userImage|アバター画像|画像|
+|articleImage|記事画像|画像|
+|description|プロフィールの紹介文|テキストフィールド|
+|contents|本文|リッチエディタ|
+|twitter|Twitterリンク|テキストフィールド|
+|github|Githubリンク|テキストフィールド|
+|facebook|Facebookリンク|テキストフィールド|
+
+### 固定記事
+
+endpoint: fixed
+<br>
+type: リスト形式
+
+| フィールドID | 表示名 | 種類 |
+|:---|:---|:---|
+|title|タイトル|テキストフィールド|
+|body|本文|リッチエディタ|
