@@ -47,13 +47,13 @@ export const Header: React.FC<Props> = (props: Props) => {
         {/* リンク */}
         <div className={styles.link}>
           <Link href={NAVIGATION_LINK.TOP}>
-            <h2>ホーム</h2>
+            <h2 data-test-id="home-header-link">ホーム</h2>
           </Link>
           <Link href={NAVIGATION_LINK.ABOUT}>
-            <h2>このブログについて</h2>
+            <h2 data-test-id="about-header-link">このブログについて</h2>
           </Link>
           <Link href={NAVIGATION_LINK.PROFILE}>
-            <h2>プロフィール</h2>
+            <h2 data-test-id="profile-header-link">プロフィール</h2>
           </Link>
         </div>
         {/* SP アイコン */}
