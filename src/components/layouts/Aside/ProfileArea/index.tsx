@@ -82,6 +82,7 @@ export const ProfileArea: React.FC = () => {
 
           {/* ボタン */}
           <button
+            data-test-id="test-more-responsive"
             className={styles.button}
             onClick={(e) => onClickTransitionProfilePage(e)}
           >

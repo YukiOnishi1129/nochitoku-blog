@@ -49,6 +49,7 @@ export const ProfileAreaResponsive: React.FC = () => {
             <p className={styles.profile__position}>{profile.position}</p>
             {/* ボタン */}
             <button
+              data-test-id="test-more"
               className={styles.profile__button}
               onClick={(e) => onClickTransitionProfilePage(e)}
             >
