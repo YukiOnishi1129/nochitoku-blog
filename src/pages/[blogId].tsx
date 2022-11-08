@@ -28,6 +28,10 @@ import { CategoryType } from '@/types/Category'
 import { ProfileType } from '@/types/Profile'
 import { ArchiveType } from '@/types/Archive'
 
+type _PreviewData = {
+  draftKey: string
+}
+
 /**
  * Props
  */
@@ -138,8 +142,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (params?.blogId && typeof params.blogId === 'string') {
     blogId = params.blogId
   }
-  if (previewData?.draftKey && typeof previewData.draftKey === 'string') {
-    draftKey = previewData.draftKey
+  const preview = previewData as _PreviewData
+  if (preview?.draftKey && typeof preview.draftKey === 'string') {
+    draftKey = preview.draftKey
   }
 
   try {

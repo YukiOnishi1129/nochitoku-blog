@@ -35,6 +35,7 @@ export const SearchBlogItem: React.FC<Props> = (props: Props) => {
           <Image
             src={blogItem.image.url}
             alt="Picture"
+            layout="responsive"
             width={blogItem.image.width * 2}
             height={blogItem.image.height * 2}
           />

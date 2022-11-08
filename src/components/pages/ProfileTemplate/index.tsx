@@ -50,6 +50,7 @@ export const ProfileTemplate: React.FC<Props> = (props: Props) => {
           <Image
             src={profile.articleImage.url}
             alt="Picture"
+            layout="responsive"
             width={profile.articleImage.width}
             height={profile.articleImage.height}
           />

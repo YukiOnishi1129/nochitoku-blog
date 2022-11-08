@@ -1,6 +1,9 @@
-module.exports = {
+import type { Config } from 'jest'
+
+const config: Config = {
   preset: 'ts-jest',
   roots: ['<rootDir>/src'],
+  testEnvironment: 'jsdom',
   moduleNameMapper: {
     // src ディレクトリをエイリアスのルートに設定
     '^@/(.*)$': '<rootDir>/src/$1',
@@ -9,12 +12,14 @@ module.exports = {
     '\\.(scss)$': 'identity-obj-proxy',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
-  globals: {
-    // test 時に TypeScript の設定を一部変更して実行する設定
-    'ts-jest': {
-      tsconfig: {
-        jsx: 'react',
+  transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: './tsconfig.test.json',
       },
-    },
+    ],
   },
 }
+
+export default config

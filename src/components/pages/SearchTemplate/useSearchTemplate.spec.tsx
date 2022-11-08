@@ -2,7 +2,7 @@
  * useSearchTemplate.spec
  * @package hooks
  */
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 /* hooks */
 import { useSearchTemplate } from './useSearchTemplate'
 /* logics */
