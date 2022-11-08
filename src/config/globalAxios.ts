@@ -1,6 +1,6 @@
 /**
  * axios初期設定
- * @@package config
+ * @package config
  */
 import axios from 'axios'
 

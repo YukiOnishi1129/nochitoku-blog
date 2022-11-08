@@ -2,7 +2,7 @@
  * useSearchForm.spec
  * @package hooks
  */
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 /* hooks */
 import { useSearchForm } from './useSearchForm'
 

@@ -2,7 +2,7 @@
  * useLayout.spec
  * @package hooks
  */
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 /* hooks */
 import { useLayout } from './useLayout'
 

@@ -2,7 +2,7 @@
  * useShareUrl.spec
  * @package hooks
  */
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 /* hooks */
 import { useShareUrl } from './useShareUrl'
 /* logics */
