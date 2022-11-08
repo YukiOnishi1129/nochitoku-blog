@@ -36,6 +36,7 @@ export const ProfileArea: React.FC = () => {
               className={styles.image__pic}
               src={profile.userImage.url}
               alt="Picture"
+              layout="responsive"
               width={profile.userImage.width}
               height={profile.userImage.height}
             />
